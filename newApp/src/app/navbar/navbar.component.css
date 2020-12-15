@@ -1,0 +1,247 @@
+body {
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    width: 100vw;
+    left: 0;
+    top: 0;
+    position: fixed;
+}
+
+div {
+    font-family: "Lato", Helvetica, sans-serif;
+}
+
+button {
+    background-color: transparent;
+}
+
+.logo {
+    background-image: url("/src/assets/images/dcsn_logo.jpeg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#navLogo {
+    width: 170px;
+    height: 40px;
+    margin: 5px;
+    margin-right: 5vw;
+    float: left;
+}
+
+#navWrapper {
+    border-bottom: 3px solid black;
+    height: 50px;
+    background-color: #fff;
+}
+
+#genreContainerWrapper {
+    border-bottom: 2px solid #000;
+    /* Transition */
+    transition: all 0.3s ease-in-out;
+    line-height: 0;
+    padding: 0 1em;
+    color: transparent;
+    margin-top: -2px;
+    height: 0px;
+    line-height: 0;
+}
+
+.navButtonWrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.navButton {
+    font-size: 1em;
+    padding: 5px 10px;
+    text-align: center;
+    letter-spacing: 0.3em;
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+}
+
+.navButton:before {
+    margin-right: 5px;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 51%;
+    right: 51%;
+    bottom: 0;
+    background: #005086;
+    height: 2px;
+    -webkit-transition-property: left, right;
+    transition-property: left, right;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.navButton:hover:before,
+.navButton:focus:before,
+.navButton:active:before {
+    left: 5%;
+    right: 5%;
+}
+
+#navArticleButton {
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    -webkit-text-stroke: 1px black;
+    color: white;
+}
+
+#navArticleButton:hover:before,
+#navArticleButton:focus:before,
+#navArticleButton:active:before {
+    left: 51%;
+    right: 51%;
+}
+
+#loginButton {
+    border: 2px solid black;
+    text-align: center;
+    padding: 10px;
+}
+
+#genreButtonWrapper {
+    width: 70vw;
+    margin-left: 14vw;
+    line-height: 0px;
+}
+
+.genreContainer {
+    width: 25%;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    /* Hover */
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.genreContainer:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+    -webkit-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.genreContainer:hover,
+.genreContainer:focus,
+.genreContainer:active {}
+
+.genreContainer:hover:before,
+.genreContainer:focus:before,
+.genreContainer:active:before {
+    -webkit-transform: scaleY(6.25);
+    transform: scaleY(6.25);
+}
+
+#navGenre2:hover:before,
+#navGenre2:focus:before,
+#navGenre2:active:before {
+    -webkit-transform: scaleY(7.55);
+    transform: scaleY(7.55);
+}
+
+#navGenre4:hover:before,
+#navGenre4:focus:before,
+#navGenre4:active:before {
+    -webkit-transform: scaleY(3.6);
+    transform: scaleY(3.6);
+}
+
+#navGenre1:before {
+    background: #adffa2;
+}
+
+#navGenre2:before {
+    background: #ff8d8d;
+}
+
+#navGenre3:before {
+    background: #fdff9c;
+}
+
+#navGenre4:before {
+    background: #a6edff;
+}
+
+#navGenre1 a:hover {
+    background-color: #98e08f;
+}
+
+#navGenre2 a:hover {
+    background-color: #d47777;
+}
+
+#navGenre3 a:hover {
+    background-color: #d5d684;
+}
+
+#navGenre4 a:hover {
+    background-color: #7ecbdf;
+}
+
+.genreButton {
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.genreDropdown {
+    display: none;
+    position: absolute;
+    min-width: 100%;
+    z-index: 1;
+}
+
+.genreDropdown a {
+    color: black;
+    padding: 20px 16px;
+    text-decoration: none;
+    display: block;
+    border-top: transparent;
+    font-size: 0.75em;
+}
+
+.genreContainer:hover .genreDropdown {
+    display: block;
+}
