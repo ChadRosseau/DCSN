@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const express = require("express");
 const expressApp = express();
 const port = 3000;
@@ -65,3 +66,5 @@ app.config(function($routeProvider) {
         redirectTo: '/home'
     });
 });
+=======
+>>>>>>> 9beb7c37bab53de18868d2d8fb8a9bc6cade919c
