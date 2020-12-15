@@ -162,9 +162,10 @@ button {
     transition-timing-function: ease-out;
 }
 
-.genreContainer:hover,
+
+/* .genreContainer:hover,
 .genreContainer:focus,
-.genreContainer:active {}
+.genreContainer:active {} */
 
 .genreContainer:hover:before,
 .genreContainer:focus:before,
