@@ -38,7 +38,7 @@ const firebaseConfig = {
   ],
   providers: [],
   bootstrap: [
-    AppComponent, 
+    AppComponent,
     NavbarComponent
   ]
 })
