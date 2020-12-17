@@ -3,11 +3,11 @@
       <div class="logo" id="navLogo"></div>
       <div id="navWrapper">
         <div class="navButtonWrapper">
-            <div class="navButton">HOME</div>
-            <div class="navButton">JOIN US</div>
+            <div class="navButton" routerLink="/">HOME</div>
+            <div class="navButton" routerLink="/join-us">JOIN US</div>
             <div class="navButton" id="navArticleButton" (mouseenter)="dropDown()">ARTICLES</div>
-            <div class="navButton">ABOUT</div>
-            <div class="navButton">CONTACT</div>
+            <div class="navButton" routerLink="/about">ABOUT</div>
+            <div class="navButton" routerLink="/contact">CONTACT</div>
             <div class="navButton" id="loginButton">LOGIN</div>
         </div>
       </div>

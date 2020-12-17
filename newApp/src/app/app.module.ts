@@ -11,6 +11,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { JoinUsComponent } from './join-us/join-us.component';
+import { ContactComponent } from './contact/contact.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyD1qHH3zsiDBGVJL1lusKecWhZjTDyo1AU",
@@ -26,7 +30,11 @@ const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent,
+    AboutComponent,
+    JoinUsComponent,
+    ContactComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
@@ -38,8 +46,7 @@ const firebaseConfig = {
   ],
   providers: [],
   bootstrap: [
-    AppComponent,
-    NavbarComponent
+    AppComponent
   ]
 })
 export class AppModule { }
