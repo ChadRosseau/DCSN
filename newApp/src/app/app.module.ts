@@ -15,16 +15,17 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { JoinUsComponent } from './join-us/join-us.component';
 import { ContactComponent } from './contact/contact.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD1qHH3zsiDBGVJL1lusKecWhZjTDyo1AU",
-  authDomain: "dcsn-e8f7a.firebaseapp.com",
-  databaseURL: "https://dcsn-e8f7a-default-rtdb.firebaseio.com",
-  projectId: "dcsn-e8f7a",
-  storageBucket: "dcsn-e8f7a.appspot.com",
-  messagingSenderId: "327191415154",
-  appId: "1:327191415154:web:a4653bfb4629a94f79f5eb",
-  measurementId: "G-300TVBWZ72"
+  apiKey: 'AIzaSyD1qHH3zsiDBGVJL1lusKecWhZjTDyo1AU',
+  authDomain: 'dcsn-e8f7a.firebaseapp.com',
+  databaseURL: 'https://dcsn-e8f7a-default-rtdb.firebaseio.com',
+  projectId: 'dcsn-e8f7a',
+  storageBucket: 'dcsn-e8f7a.appspot.com',
+  messagingSenderId: '327191415154',
+  appId: '1:327191415154:web:a4653bfb4629a94f79f5eb',
+  measurementId: 'G-300TVBWZ72',
 };
 
 @NgModule({
@@ -34,7 +35,8 @@ const firebaseConfig = {
     HomeComponent,
     AboutComponent,
     JoinUsComponent,
-    ContactComponent
+    ContactComponent,
+    CreatePostComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
@@ -42,11 +44,9 @@ const firebaseConfig = {
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [
-    AppComponent
-  ]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
