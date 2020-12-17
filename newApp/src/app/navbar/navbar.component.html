@@ -1,54 +1,58 @@
-<nav>
-  <div class="logo" id="navLogo"></div>
-  <div id="navWrapper">
-    <div class="navButtonWrapper">
-      <div class="navButton" routerLink="/">HOME</div>
-      <div class="navButton" routerLink="/join-us">JOIN US</div>
-      <div class="navButton" id="navArticleButton" (mouseenter)="dropDown()">
-        ARTICLES
-      </div>
-      <div class="navButton" routerLink="/about">ABOUT</div>
-      <div class="navButton" routerLink="/contact">CONTACT</div>
-      <div class="navButton" routerLink="/create-post">POST</div>
-      <div class="navButton" id="loginButton">LOGIN</div>
-    </div>
-  </div>
-  <div id="genreContainerWrapper" (mouseenter)="dropDown()" (mouseleave)="dropUp()">
-    <div class="navButtonWrapper" id="genreButtonWrapper">
-      <div class="genreContainer" id="navGenre1">
-        <p class="genreButton">SUSTAINABILITY</p>
-        <div class="genreDropdown">
-          <a href="">CLEAN ENERGY</a>
-          <a href="">CLIMATE ACTION</a>
-          <a href="">LIFE BELOW WATER</a>
-          <a href="">SUSTAINABLE CITIES</a>
+
+    <nav>
+      <div class="logo" id="navLogo"></div>
+      <div id="navWrapper">
+        <div class="navButtonWrapper">
+            <div class="navButton" routerLink="/">HOME</div>
+            <div class="navButton" routerLink="/join-us">JOIN US</div>
+            <div class="navButton" id="navArticleButton" (mouseenter)="dropDown()">ARTICLES</div>
+            <div class="navButton" routerLink="/about">ABOUT</div>
+            <div class="navButton" routerLink="/contact">CONTACT</div>
+            <div class="navButton" routerLink="/create-post">POST</div>
+            <div id="loginButton">LOGIN</div>
         </div>
       </div>
-      <div class="genreContainer" id="navGenre2">
-        <p class="genreButton">POVERTY</p>
-        <div class="genreDropdown">
-          <a href="">HUNGER</a>
-          <a href="">HEALTH & WELLBEING</a>
-          <a href="">EDUCATION</a>
-          <a href="">CLEAN WATER & SANITATION</a>
-          <a href="">GENDER EQUALITY</a>
-        </div>
-      </div>
-      <div class="genreContainer" id="navGenre3">
-        <p class="genreButton">ECONOMY</p>
-        <div class="genreDropdown">
-          <a href="">RESPONSIBLE CONSUMPTION</a>
-          <a href="">DECENT WORK</a>
-          <a href="">INDUSTRY & INNOVATION</a>
-          <a href="">WEALTH INEQUALITY</a>
-        </div>
-      </div>
-      <div class="genreContainer" id="navGenre4">
-        <p class="genreButton">POLITICS</p>
-        <div class="genreDropdown">
-          <a href="">PEACE & JUSTICE</a>
-          <a href="">PARTNERSHIPS</a>
-        </div>
+      <div id="genreContainerWrapper" (mouseenter)="dropDown()" (mouseleave)="dropUp()">
+          <div class="navButtonWrapper" id="genreButtonWrapper">
+            <div class="genreContainer" id="navGenre1">
+              <p class="genreButton">ECONOMY</p>
+              <div class="genreDropdown">
+                <a href="">RESPONSIBLE CONSUMPTION</a>
+                <a href="">DECENT WORK</a>
+                <a href="">INDUSTRY & INNOVATION</a>
+                <a href="">WEALTH INEQUALITY</a>
+              </div>
+            </div>
+            <div class="genreContainer" id="navGenre2">
+              <p class="genreButton">POVERTY</p>
+              <div class="genreDropdown">
+                <a href="">HUNGER</a>
+                <a href="">HEALTH & WELLBEING</a>
+                <a href="">EDUCATION</a>
+                <a href="">CLEAN WATER & SANITATION</a>
+                <a href="">GENDER EQUALITY</a>
+              </div>
+            </div>
+            <div class="genreContainer" id="navGenre3">
+              <p class="genreButton">SUSTAINABILITY</p>
+              <div class="genreDropdown">
+                <a href="">CLEAN ENERGY</a>
+                <a href="">CLIMATE ACTION</a>
+                <a href="">LIFE ON LAND</a>
+                <a href="">LIFE BELOW WATER</a>
+                <a href="">SUSTAINABLE CITIES</a>
+              </div>
+            </div>
+            <div class="genreContainer" id="navGenre4">
+              <p class="genreButton">POLITICS</p>
+              <div class="genreDropdown">
+                <a href="">PEACE & JUSTICE</a>
+                <a href="">PARTNERSHIPS</a>
+              </div>
+            </div>
+          </div>
+		  <i class="addButton far fa-plus-square"></i>
+
       </div>
     </div>
   </div>
