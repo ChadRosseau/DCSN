@@ -22,7 +22,7 @@ button {
 }
 
 .logo {
-    background-image: url("/src/assets/images/dcsn_logo.jpeg");
+    background-image: url("../../assets/images/dcsn_logo.jpeg");
     background-size: contain;
     background-repeat: no-repeat;
 }
