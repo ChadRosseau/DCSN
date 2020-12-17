@@ -6,39 +6,45 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-post.component.css'],
 })
 export class CreatePostComponent implements OnInit {
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   //public categories = ['Sustainability', 'Poverty', 'Economy', 'Politics'];
-  public subcategories = [
-    {
-      key: 'Sustainability',
-      value: [
-        'Clean Energy',
-        'Climate Action',
-        'Life Below Water',
-        'Sustainable Cities',
-      ],
-    },
-    {
-      key: 'Poverty',
-      value: [
-        'Hunger',
-        'Health & Wellbeing',
-        'Education',
-        'Clean Water & Sanitation',
-        'Gender Equality',
-      ],
-    },
-    {
-      key: 'Economy',
-      value: [
-        'Responsible Consumption',
-        'Decent Work',
-        'Industry & Innovation',
-        'Wealth Inequality',
-      ],
-    },
-    { key: 'Politics', value: ['Peace & Justice', 'Partnerships'] },
-  ];
+  public subcategories = {
+    Economy: [
+      'Responsible Consumption',
+      'Decent Work',
+      'Industry & Innovation',
+      'Wealth Inequality',
+    ],
+    Poverty: [
+      'Hunger',
+      'Health & Wellbeing',
+      'Education',
+      'Clean Water & Sanitation',
+      'Gender Equality'
+    ],
+    Sustainability: [
+      'Clean Energy',
+      'Climate Action',
+      'Life On Land',
+      'Life Below Water',
+      'Sustainable Cities'
+    ],
+    Politics: [
+      'Peace & Justice',
+      'Partnerships'
+    ]
+  };
+
+  public categories = Object.keys(this.subcategories);
+
+  public currentSubcategories;
+
+  setCategory(value) {
+    console.log(value);
+    this.currentSubcategories = this.subcategories[value];
+  }
 }
+
+

@@ -1,19 +1,24 @@
 <div>
 
     <h3>Create Article</h3>
-    <h5>Type:</h5>
-    <select>
-        <option value="{{category.key}}" *ngFor="let category of subcategories">
-            {{category.key}}
+    <h5>Category:</h5>
+    <select #t (change)="setCategory(t.value)">
+        <option value="null">- Select -</option>
+        <option value="{{category}}" *ngFor="let category of categories">
+            {{category}}
         </option>
     </select>
 
-    <!-- <h5>Subtype:</h5>
-            <select>
-                <option [value]="subcategory" *ngFor="let subcategory of subcategories.value[0]">
-                    {{subcategory}}
-                </option>
-            </select> -->
+    <h5>Subcategory:</h5>
+    <select [hidden]="currentSubcategories" >
+        <option [value]="null">- Please select a category first -</option>
+    </select>
+    <select [hidden]="!currentSubcategories">
+        <option [value]="null">- Select -</option>
+        <option [value]="subcategory" *ngFor="let subcategory of currentSubcategories">
+            {{subcategory}}
+        </option>
+    </select>
 
     <h5>Title:</h5>
     <input type=" text" name="" />
