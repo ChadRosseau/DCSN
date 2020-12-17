@@ -1,9 +1,9 @@
-body {
-    margin: 0px;
-}
-
 a {
     text-decoration: none;
+}
+
+p {
+    margin-top: 1rem;
 }
 
 nav {
@@ -22,7 +22,7 @@ button {
 }
 
 .logo {
-    background-image: url("../../assets/images/dcsn_logo.jpeg");
+    background-image: url("../../assets/images/dcsn_logo_3.png");
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -36,13 +36,13 @@ button {
 }
 
 #navWrapper {
-    border-bottom: 3px solid black;
+    /* border-bottom: 3px solid #FFF; */
     height: 50px;
-    background-color: #fff;
+    background-color: rgba(0, 45, 115, .85);
 }
 
 #genreContainerWrapper {
-    border-bottom: 2px solid #000;
+    /* border-bottom: 2px solid #000; */
     /* Transition */
     transition: all 0.3s ease-in-out;
     line-height: 0;
@@ -62,6 +62,7 @@ button {
 
 .navButton {
     font-size: 1em;
+    color: #FFF;
     padding: 5px 10px;
     text-align: center;
     letter-spacing: 0.3em;
@@ -82,7 +83,7 @@ button {
     left: 51%;
     right: 51%;
     bottom: 0;
-    background: #005086;
+    background: #FFF;
     height: 2px;
     -webkit-transition-property: left, right;
     transition-property: left, right;
@@ -103,8 +104,8 @@ button {
     font-size: 2.5em;
     font-weight: bold;
     letter-spacing: 0.1em;
-    -webkit-text-stroke: 1px black;
-    color: white;
+    -webkit-text-stroke: 1.5px #FFF;
+    color: transparent;
 }
 
 #navArticleButton:hover:before,
@@ -115,15 +116,61 @@ button {
 }
 
 #loginButton {
-    border: 2px solid black;
-    text-align: center;
-    padding: 10px;
+    color: #FFF;
+    border: 2px solid #FFF;
+    padding: 4px 10px;
+    padding-right: 11px;
+    letter-spacing: 0.05em;
+    /* Transition */
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    position: relative;
+    background: transparent;
+    -webkit-transition-property: color;
+    transition-property: color;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+#loginButton:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #FFF;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+#loginButton:hover,
+#loginButton:focus,
+#loginButton:active {
+    color: rgba(0, 45, 115, .85);
+}
+
+#loginButton:hover:before,
+#loginButton:focus:before,
+#loginButton:active:before {
+    -webkit-transform: scale(1);
+    transform: scale(1);
 }
 
 #genreButtonWrapper {
     width: 70vw;
     margin-left: 14vw;
     line-height: 0px;
+    float: left;
 }
 
 .genreContainer {
@@ -170,15 +217,15 @@ button {
 .genreContainer:hover:before,
 .genreContainer:focus:before,
 .genreContainer:active:before {
-    -webkit-transform: scaleY(6.25);
-    transform: scaleY(6.25);
-}
-
-#navGenre2:hover:before,
-#navGenre2:focus:before,
-#navGenre2:active:before {
     -webkit-transform: scaleY(7.55);
     transform: scaleY(7.55);
+}
+
+#navGenre1:hover:before,
+#navGenre1:focus:before,
+#navGenre1:active:before {
+    -webkit-transform: scaleY(6.25);
+    transform: scaleY(6.25);
 }
 
 #navGenre4:hover:before,
@@ -189,42 +236,42 @@ button {
 }
 
 #navGenre1:before {
-    background: #adffa2;
+    background: rgba(253, 255, 156, 0.85);
 }
 
 #navGenre2:before {
-    background: #ff8d8d;
+    background: rgba(255, 141, 141, 0.85);
 }
 
 #navGenre3:before {
-    background: #fdff9c;
+    background: rgb(173, 255, 162, 0.85);
 }
 
 #navGenre4:before {
-    background: #a6edff;
+    background: rgba(166, 237, 255, 0.85);
 }
 
 #navGenre1 a:hover {
-    background-color: #98e08f;
+    background-color: rgba(213, 214, 132, 0.6);
 }
 
 #navGenre2 a:hover {
-    background-color: #d47777;
+    background-color: rgba(212, 119, 119, 0.6);
 }
 
 #navGenre3 a:hover {
-    background-color: #d5d684;
+    background-color: rgba(128, 189, 120, 0.6);
 }
 
 #navGenre4 a:hover {
-    background-color: #7ecbdf;
+    background-color: rgba(126, 203, 223, 0.6);
 }
 
 .genreButton {
     font-size: 16px;
     border: none;
     cursor: pointer;
-    font-weight: bolder;
+    font-weight: 300;
 }
 
 .genreDropdown {
@@ -239,10 +286,30 @@ button {
     padding: 20px 16px;
     text-decoration: none;
     display: block;
-    border-top: transparent;
     font-size: 0.75em;
+}
+
+.genreContainer:hover .genreButton {
+    color: #000;
 }
 
 .genreContainer:hover .genreDropdown {
     display: block;
+}
+
+.addButton {
+    float: right;
+    padding: 1px;
+    width: 25px;
+    height: 25px;
+    margin: 2.5;
+    border: none;
+    transform: none;
+    font-size: 1.5em;
+    right: 10px;
+}
+
+.addButton:hover {
+    cursor: pointer;
+    color: rgba(0, 45, 115, .85);
 }

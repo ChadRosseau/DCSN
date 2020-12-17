@@ -12,23 +12,26 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  dropDown() {
-    let wrapper = document.getElementById("genreContainerWrapper");
-    wrapper.style.lineHeight = "1.5";
-    wrapper.style.height = "30px";
-    wrapper.style.color = "#000";
-    wrapper.style.borderBottom = "2px solid #000"
-    wrapper.style.overflow = "visible";
-    wrapper.style.marginTop = "0px;"
-  }
+	dropDown() {
+		let wrapper = document.getElementById("genreContainerWrapper");
+		wrapper.style.lineHeight = "1.5";
+		wrapper.style.height = "30px";
+		wrapper.style.color = "#FFF";
+		wrapper.style.overflow = "visible";
+		wrapper.style.marginTop = "0px";
+		wrapper.style.backgroundColor = "rgba(0, 113, 189, 0.85)";
+		wrapper.style.borderTop = "3px solid #FFF";
+	}
+	dropUp() {
+		let wrapper = document.getElementById("genreContainerWrapper");
+		wrapper.style.lineHeight = "0";
+		wrapper.style.height = "0px";
+		wrapper.style.color = "transparent";
+		wrapper.style.overflow = "hidden";
+		wrapper.style.marginTop = "-2px;"
+		wrapper.style.backgroundColor = "transparent";
+		wrapper.style.borderTop = "none";
+	}
 
-  dropUp() {
-    let wrapper = document.getElementById("genreContainerWrapper");
-    wrapper.style.lineHeight = "0";
-    wrapper.style.height = "0px";
-    wrapper.style.color = "transparent";
-    wrapper.style.overflow = "hidden";
-    wrapper.style.marginTop = "-2px;"
-  }
 
 }

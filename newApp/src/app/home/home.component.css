@@ -1,0 +1,7 @@
+.hero1 {
+    background-image: url("https://www.discovery.edu.hk/dcwebsite/wp-content/uploads/2015/02/Swimming-Banner-1500x550.jpg");
+    width: 100vw;
+    height: 70vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
