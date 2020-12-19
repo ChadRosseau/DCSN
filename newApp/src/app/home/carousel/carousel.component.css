@@ -1,0 +1,70 @@
+.slick-slider {
+    width: 100%;
+    height: 85vh;
+    background: #000;
+}
+
+.carouselSlide {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    width: 100%;
+    height: 85vh;
+}
+
+.prev-slide.slick-disabled,
+.next-slide.slick-disabled {
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+.prev-slide {
+    left: -33px;
+}
+
+.next-slide {
+    right: -33px;
+}
+
+.prev-slide:hover {
+    background-position: 0px -53px;
+}
+
+.next-slide:hover {
+    background-position: -24px -53px;
+}
+
+.carouselOverlay {
+    position: absolute;
+    width: 99vw;
+    height: 50vh;
+    top: 20vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 3px #FFF;
+    font-weight: bold;
+    background-color: rgba(0, 45, 115, .55);
+}
+
+.carouselOverlay h4 {
+    font-size: 3em;
+    -webkit-text-stroke: 2px #FFF;
+    letter-spacing: 0.6em;
+}
+
+.carouselOverlay div {
+    background-image: url("../../../assets/images/dc_logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 3vh auto 0;
+    width: 12vh;
+    height: 12vh;
+}
+
+.carouselOverlay h1 {
+    font-size: 8em;
+}

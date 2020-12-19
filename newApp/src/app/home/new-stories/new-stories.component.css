@@ -1,0 +1,82 @@
+.heroWrapper {
+    padding-top: 25px;
+    width: 100%;
+    height: 150vh;
+}
+
+h2 {
+    text-align: center;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 3px #000;
+    /* color: #002d73; */
+    font-weight: bold;
+    font-size: 4em;
+}
+
+.storyWrapper {
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.storyContainer {
+    margin: 10px 0;
+    width: 100%;
+    height: 40vh;
+    border: 1px solid black;
+    box-shadow: 5px 10px 5px;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    display: flex;
+    justify-content: space-around;
+    background: #FFF;
+}
+
+.storyContainer:hover {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.storyContainer p {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+}
+
+.textContainer {
+    width: 60%;
+    margin: 10px 20px;
+}
+
+.authorContainer p {
+    color: #969696;
+    margin-top: -5px;
+}
+
+.authorPfp {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    float: left;
+    margin-top: 5px;
+    margin-right: 20px;
+}
+
+.articleImage {
+    width: 40%;
+    height: 100%;
+    border-left: 1px solid #000;
+    float: right;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}

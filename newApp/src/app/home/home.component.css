@@ -1,7 +1,78 @@
-.hero1 {
-    background-image: url("https://www.discovery.edu.hk/dcwebsite/wp-content/uploads/2015/02/Swimming-Banner-1500x550.jpg");
-    width: 100vw;
+.heroWrapper {
     height: 70vh;
-    background-size: contain;
+    margin: 2px 0px;
+    padding: 10vh 15vw;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.aboutWrapper {
+    background-image: url("https://www.discovery.edu.hk/dcwebsite/wp-content/uploads/2015/02/Technology-Banner-1500x550.jpg");
+}
+
+.join-usWrapper {
+    background-image: url("https://www.discovery.edu.hk/dcwebsite/wp-content/uploads/2015/02/Athletics-Banner-1500x550.jpg");
+}
+
+.contactWrapper {
+    background-image: url("https://www.discovery.edu.hk/dcwebsite/wp-content/themes/dc-master/assets/images/home/school-building.jpg");
+}
+
+.heroBody {
+    width: 70vw;
+    height: 50vh;
+    padding: 2.5vh;
+    border-radius: 40px;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: space-around;
+}
+
+.aboutHero {
+    background: rgba(123, 229, 255, 0.85);
+}
+
+.join-usHero {
+    background: rgba(153, 255, 140, 0.85);
+}
+
+.contactHero {
+    background: rgba(255, 208, 106, 0.85);
+}
+
+.bodyText {
+    width: 40vw;
+    font-size: 1.2em;
+    margin: 0 2.5vh;
+}
+
+.bodyText h3 {
+    font-size: 2em;
+    /* text-align: center; */
+}
+
+.bodyText h5 {
+    /* text-align: center; */
+    font-weight: bold;
+    color: #002e77;
+}
+
+.bodyText h5:hover {
+    color: #0044b1;
+    cursor: pointer;
+}
+
+.join-usHero .bodyText {
+    text-align: right;
+}
+
+.bodyImage {
+    width: 40vh;
+    height: 40vh;
+    margin: 2.5vh;
+    border-radius: 40px;
+    background-image: url(https://facstaff.susqu.edu/brakke/opaque/opaqsqX.gif);
+    background-size: cover;
     background-repeat: no-repeat;
 }

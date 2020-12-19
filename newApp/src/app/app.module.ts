@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// Carousel
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+
 // Firebase imports
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -16,6 +19,9 @@ import { AboutComponent } from './about/about.component';
 import { JoinUsComponent } from './join-us/join-us.component';
 import { ContactComponent } from './contact/contact.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { CarouselComponent } from './home/carousel/carousel.component';
+import { NewStoriesComponent } from './home/new-stories/new-stories.component';
+import { GlobalGoalsComponent } from './home/global-goals/global-goals.component';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyD1qHH3zsiDBGVJL1lusKecWhZjTDyo1AU',
@@ -37,14 +43,18 @@ const firebaseConfig = {
     JoinUsComponent,
     ContactComponent,
     CreatePostComponent,
+    CarouselComponent,
+    NewStoriesComponent,
+    GlobalGoalsComponent
   ],
   imports: [
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
+    SlickCarouselModule,
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],
