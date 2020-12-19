@@ -4,15 +4,6 @@
     height: 150vh;
 }
 
-h2 {
-    text-align: center;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 3px #000;
-    /* color: #002d73; */
-    font-weight: bold;
-    font-size: 4em;
-}
-
 .storyWrapper {
     width: 70%;
     margin: 0 auto;
