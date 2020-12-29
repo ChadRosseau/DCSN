@@ -24,6 +24,7 @@ export class CarouselComponent implements OnInit {
   ];
 
   slideConfig = {
+    "autoplay": true,
     "slidesToShow": 1,
     "slidesToScroll": 1,
     "nextArrow": "<i class='nav-btn next-slide fas fa-angle-right'></i>",

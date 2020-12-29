@@ -1,5 +1,6 @@
+<h2>THIS MONTH'S GOAL:</h2>
 <div class="goalsWrapper">
-    <div class="goalBox" *ngFor="let goal of goals; let i = index" style="background-image: url({{goal.image}}); width: {{boxSize}}px; height: {{boxSize}}px" (click)="flipActive(i)">
-        <div class="goalOverlay" [hidden]="!{{goal.active}}"></div>
+    <div class="goalBox" *ngFor="let goal of goals; let i = index" style="background-image: url({{goal.image}}); width: {{boxSize}}px; height: {{boxSize}}px" (click)="flipDisplay(i)" id="goal{{goal.id}}">
+        <div class="goalOverlay" style="display: {{goal.display}}"></div>
     </div>
 </div>

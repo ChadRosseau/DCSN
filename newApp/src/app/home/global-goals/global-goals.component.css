@@ -1,15 +1,34 @@
+h2 {
+    text-align: center;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 3px #000;
+    /* color: #002d73; */
+    font-weight: bold;
+    font-size: 4em;
+    margin: 40px 0;
+}
+
 .goalsWrapper {
     width: 100%;
     height: 20vw;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 40px;
 }
 
 .goalBox {
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
+}
+
+.goalBox:hover {
+    cursor: pointer;
+}
+
+#goal0 {
+    background-size: contain;
 }
 
 .goalOverlay {

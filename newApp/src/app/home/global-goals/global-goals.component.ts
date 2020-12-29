@@ -29,118 +29,118 @@ export class GlobalGoalsComponent implements OnInit {
       id: 0,
       image: "",
       url: "",
-      active: false
+      display: "none"
     },
     {
       id: 1,
       image: "",
       url: "",
-      active: false
+      display: "none"
     },
     {
       id: 2,
       image: "",
       url: "",
-      active: false
+      display: "block"
     },
     {
       id: 3,
       image: "",
       url: "",
-      active: false
+      display: "block"
     },
     {
       id: 4,
       image: "",
       url: "",
-      active: false
+      display: "block"
     },
     {
       id: 5,
       image: "",
       url: "",
-      active: false
+      display: "block"
     },
     {
       id: 6,
       image: "",
       url: "",
-      active: false
+      display: "block"
     },
     {
       id: 7,
       image: "",
       url: "",
-      active: false
+      display: "block"
     },
     {
       id: 8,
       image: "",
       url: "",
-      active: false
+      display: "block"
     },
     {
       id: 9,
       image: "",
       url: "",
-      active: false
+      display: "block"
     },
     {
       id: 10,
       image: "",
       url: "",
-      active: false
+      display: "block"
     },
     {
       id: 11,
       image: "",
       url: "",
-      active: false
+      display: "block"
     },
     {
       id: 12,
       image: "",
       url: "",
-      active: false
+      display: "block"
     },
     {
       id: 13,
       image: "",
       url: "",
-      active: false
+      display: "block"
     },
     {
       id: 14,
       image: "",
       url: "",
-      active: false
+      display: "block"
     },
     {
       id: 15,
       image: "",
       url: "",
-      active: false
+      display: "block"
     },
     {
       id: 16,
       url: "",
-      active: false
+      display: "block"
     },
     {
       id: 17,
       image: "",
       url: "",
-      active: false
+      display: "block"
     }
   ]
 
-  flipActive(id) {
+  flipDisplay(id) {
     for(let i = 0; i < this.goals.length; i++) {
       if(id === this.goals[i].id) {
-        if (this.goals[i].active === true) {
-          this.goals[i].active = false;
-        } else if (this.goals[i].active === false){
-          this.goals[i].active = true;
+        if (this.goals[i].display === "block") {
+          this.goals[i].display = "none";
+        } else if (this.goals[i].display === "none"){
+          this.goals[i].display = "block";
         }
       }
     }
