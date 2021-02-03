@@ -57,7 +57,7 @@
 }
 
 .carouselOverlay div {
-    background-image: url("../../../assets/images/dc_logo.png");
+    background-image: url("../../../../assets/images/dc_logo.png");
     background-size: contain;
     background-repeat: no-repeat;
     margin: 3vh auto 0;

@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// Environment
+import { environment } from '../environments/environment';
+
 // Carousel
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
@@ -13,26 +16,15 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 // Component imports
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
-import { JoinUsComponent } from './join-us/join-us.component';
-import { ContactComponent } from './contact/contact.component';
-import { CreatePostComponent } from './create-post/create-post.component';
-import { CarouselComponent } from './home/carousel/carousel.component';
-import { NewStoriesComponent } from './home/new-stories/new-stories.component';
-import { GlobalGoalsComponent } from './home/global-goals/global-goals.component';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyD1qHH3zsiDBGVJL1lusKecWhZjTDyo1AU',
-  authDomain: 'dcsn-e8f7a.firebaseapp.com',
-  databaseURL: 'https://dcsn-e8f7a-default-rtdb.firebaseio.com',
-  projectId: 'dcsn-e8f7a',
-  storageBucket: 'dcsn-e8f7a.appspot.com',
-  messagingSenderId: '327191415154',
-  appId: '1:327191415154:web:a4653bfb4629a94f79f5eb',
-  measurementId: 'G-300TVBWZ72',
-};
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
+import { JoinUsComponent } from './components/join-us/join-us.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
+import { CarouselComponent } from './components/home/carousel/carousel.component';
+import { NewStoriesComponent } from './components/home/new-stories/new-stories.component';
+import { GlobalGoalsComponent } from './components/home/global-goals/global-goals.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +40,7 @@ const firebaseConfig = {
     GlobalGoalsComponent
   ],
   imports: [
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
@@ -59,4 +51,4 @@ const firebaseConfig = {
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

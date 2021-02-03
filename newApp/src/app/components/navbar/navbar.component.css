@@ -23,7 +23,7 @@ button {
 }
 
 .logo {
-    background-image: url("../../assets/images/dcsn_logo_3.png");
+    background-image: url("../../../assets/images/dcsn_logo_3.png");
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -158,6 +158,7 @@ button {
 #loginButton:focus,
 #loginButton:active {
     color: rgba(0, 45, 115, .85);
+    cursor: pointer;
 }
 
 #loginButton:hover:before,

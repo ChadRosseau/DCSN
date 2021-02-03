@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
-import { CreatePostComponent } from './create-post/create-post.component';
-import { HomeComponent } from './home/home.component';
-import { JoinUsComponent } from './join-us/join-us.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
+import { HomeComponent } from './components/home/home.component';
+import { JoinUsComponent } from './components/join-us/join-us.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
