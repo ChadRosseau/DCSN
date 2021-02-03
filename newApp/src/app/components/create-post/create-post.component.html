@@ -1,8 +1,8 @@
-<div>
+<div class="hero">
 
     <h3>Create Article</h3>
     <h5>Category:</h5>
-    <select #t (change)="setCategory(t.value)">
+    <select #c (change)="setCategory(c.value)">
         <option value="null">- Select -</option>
         <option value="{{category}}" *ngFor="let category of categories">
             {{category}}
@@ -11,34 +11,34 @@
 
     <h5>Subcategory:</h5>
     <select [hidden]="currentSubcategories">
-        <option [value]="null">- Please select a category first -</option>
+        <option [value]="null" selected>- Please select a category first -</option>
     </select>
-    <select [hidden]="!currentSubcategories">
-        <option [value]="null">- Select -</option>
+    <select #s [hidden]="!currentSubcategories">
+        <option [value]="null" selected>- Select -</option>
         <option [value]="subcategory" *ngFor="let subcategory of currentSubcategories">
             {{subcategory}}
         </option>
     </select>
 
     <h5>Title:</h5>
-    <input type=" text" name="" />
+    <input [(ngModel)]="newArticle.title" type="text" name="" />
 
     <h5>Subtitle:</h5>
-    <input type="text" name="" />
+    <input [(ngModel)]="newArticle.subtitle" type="text" name="" />
 
     <h5>Blurb:</h5>
-    <input type="text" name="" />
+    <input [(ngModel)]="newArticle.blurb" type="text" name="" />
 
-    <h5>Thumbnail:</h5>
-    <input type="file" id="fileUpload" name="" />
+    <!-- <h5>Thumbnail:</h5>
+    <input [(ngModel)]="newArticle.title"type="file" id="fileUpload" name="" /> -->
 
-    <h5>Video Link:</h5>
-    <input type="text" name="" />
+    <!-- <h5>Video Link:</h5>
+    <input type="text" name="" /> -->
 
     <h5>Body:</h5>
-    <textarea></textarea>
+    <textarea [(ngModel)]="newArticle.body"></textarea>
 
-    <button class="hvr-shutter-out-horizontal">
+    <button class="hvr-shutter-out-horizontal" (click)="createArticle(c.value, s.value)">
         Submit
     </button>
 

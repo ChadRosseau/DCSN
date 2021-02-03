@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 // Environment
 import { environment } from '../environments/environment';
@@ -46,6 +47,7 @@ import { GlobalGoalsComponent } from './components/home/global-goals/global-goal
     AngularFireStorageModule, // storage
     SlickCarouselModule,
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

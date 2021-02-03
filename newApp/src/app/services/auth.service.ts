@@ -62,7 +62,8 @@ export class AuthService {
     dbUserRef.set(data);
     this.user$ = dbUserRef.valueChanges();
     this.userKey = uid;
-    return location.reload();
+    console.log(this.userKey);
+    // return location.reload();
   }
 }
 
