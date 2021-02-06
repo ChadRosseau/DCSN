@@ -13,6 +13,7 @@ export class ArticleComponent implements OnInit {
   pageData: {
     categoryColor: string;
     subcategoryColor: string;
+    dataLoaded: boolean;
   }
 
   constructor(private auth: AuthService, private route: ActivatedRoute) { }
@@ -22,7 +23,8 @@ export class ArticleComponent implements OnInit {
     // Set pagedata defaults
     this.pageData = {
       categoryColor: "",
-      subcategoryColor: ""
+      subcategoryColor: "",
+      dataLoaded: false
     }
 
     // Fetch current article id from URL.
@@ -57,6 +59,7 @@ export class ArticleComponent implements OnInit {
 
         // Set article data
         this.article = articleData;
+        this.pageData.dataLoaded = true;
       });
     });
   }

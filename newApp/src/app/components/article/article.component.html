@@ -1,5 +1,5 @@
 <div class="articleHero">
-    <div class="articleWrapper">
+    <div class="articleWrapper" [hidden]="!pageData.dataLoaded">
         <div class="categoriesContainer">
             <div class="categoryTag" [style.backgroundColor]="pageData.categoryColor">{{article.category}}</div>
             <div class="subcategoryTag" [style.backgroundColor]="pageData.subcategoryColor">{{article.subcategory}}
