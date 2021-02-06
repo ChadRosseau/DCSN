@@ -26,6 +26,7 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 import { CarouselComponent } from './components/home/carousel/carousel.component';
 import { NewStoriesComponent } from './components/home/new-stories/new-stories.component';
 import { GlobalGoalsComponent } from './components/home/global-goals/global-goals.component';
+import { ArticleComponent } from './components/article/article.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { GlobalGoalsComponent } from './components/home/global-goals/global-goal
     CreatePostComponent,
     CarouselComponent,
     NewStoriesComponent,
-    GlobalGoalsComponent
+    GlobalGoalsComponent,
+    ArticleComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

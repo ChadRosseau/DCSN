@@ -76,6 +76,14 @@ button {
     overflow: hidden;
 }
 
+.navButton:hover {
+    cursor: pointer;
+}
+
+.navButton:focus {
+    outline: none;
+}
+
 .navButton:before {
     margin-right: 5px;
     content: "";

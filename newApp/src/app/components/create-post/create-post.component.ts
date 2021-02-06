@@ -14,7 +14,6 @@ export class CreatePostComponent implements OnInit {
     subcategory: string,
     title: string,
     subtitle: string,
-    blurb: string,
     body: string
   }
 
@@ -26,7 +25,6 @@ export class CreatePostComponent implements OnInit {
       subcategory: "",
       title: "",
       subtitle: "",
-      blurb: "",
       body: ""
     }
   }
@@ -71,10 +69,14 @@ export class CreatePostComponent implements OnInit {
     this.newArticle.category = category;
     this.newArticle.subcategory = subcategory;
 
+    // Get timestamp for operation
+    const currentDate = new Date();
+    const timestamp = currentDate.getTime();
+
     // Upload article to db.
     console.log(this.newArticle);
 
-    const dbArticlesRef = this.auth.db.database.ref(`articles/${category}/${subcategory}`);
+    const dbArticlesRef = this.auth.db.database.ref(`articles/moderating`);
     let newPush = dbArticlesRef.push()
     let pushId = newPush.key;
     newPush.set({
@@ -84,8 +86,8 @@ export class CreatePostComponent implements OnInit {
       subcategory: this.newArticle.subcategory,
       title: this.newArticle.title,
       subtitle: this.newArticle.subtitle,
-      blurb: this.newArticle.blurb,
-      body: this.newArticle.body
+      body: this.newArticle.body,
+      writtenDate: timestamp
     });
   }
 }

@@ -1,0 +1,26 @@
+<div class="articleHero">
+    <div class="articleWrapper">
+        <div class="categoriesContainer">
+            <div class="categoryTag" [style.backgroundColor]="pageData.categoryColor">{{article.category}}</div>
+            <div class="subcategoryTag" [style.backgroundColor]="pageData.subcategoryColor">{{article.subcategory}}
+            </div>
+        </div>
+        <h2 class="title">{{article.title}}</h2>
+        <hr>
+        <div class="authorContainer">
+            <div class="authorPfp" style="background-image: url({{article.author.photoURL}})">
+            </div>
+            <p class="authorName">{{article.author.displayName}}</p>
+            <p class="timestamp">{{article.writtenDate}}</p>
+        </div>
+        <h4 class="subtitle">
+            {{article.subtitle}}
+        </h4>
+        <div class="mainImage"></div>
+        <div class="bodyWrapper">
+            <div class="bodyText">
+                {{article.body}}
+            </div>
+        </div>
+    </div>
+</div>
