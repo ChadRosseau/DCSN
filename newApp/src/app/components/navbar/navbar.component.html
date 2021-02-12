@@ -4,7 +4,8 @@
         <div class="navButtonWrapper">
             <div class="navButton" routerLink="/">HOME</div>
             <div class="navButton" routerLink="/join-us">JOIN US</div>
-            <div class="navButton" id="navArticleButton" (mouseenter)="dropDown()">ARTICLES</div>
+            <div class="navButton" id="navArticleButton" (mouseenter)="dropDown()" [routerLink]="['/archive']">ARTICLES
+            </div>
             <div class="navButton" routerLink="/about">ABOUT</div>
             <div class="navButton" routerLink="/contact">CONTACT</div>
             <div id="loginButton" [hidden]="userObject != null" (click)="auth.googleSignIn()">LOGIN</div>

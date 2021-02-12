@@ -1,0 +1,22 @@
+<div class="archiveHero">
+    <!-- <div class="sidebar"></div> -->
+    <div class="archiveWrapper">
+        <h2>ARTICLES</h2>
+        <div class="articlesWrapper">
+            <div class="articlePreview" *ngFor="let article of filteredArticles; let i = index"
+                [routerLink]="['/article', article.articleId]">
+                <div class="titleBar">
+                    <p class="previewTitle">{{article.title}}</p>
+                    <div class="articleBlurb">
+                        {{article.subtitle}}
+                    </div>
+                    <div class="barBottom">
+                        <p class="previewTimestamp">{{article.newDate}}</p>
+                        <div class="categoryTag" [style.backgroundColor]="article.tagColor">{{article.subcategory}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

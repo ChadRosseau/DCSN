@@ -75,7 +75,7 @@ export class ArticleComponent implements OnInit {
         this.pageData.subcategoryColor = 'rgba(212, 119, 119, 0.6)';
         break;
       case 'Sustainability':
-        this.pageData.categoryColor = 'rgb(173, 255, 162, 0.85)';
+        this.pageData.categoryColor = 'rgba(173, 255, 162, 0.85)';
         this.pageData.subcategoryColor = 'rgba(128, 189, 120, 0.6)';
         break;
       case 'Politics':

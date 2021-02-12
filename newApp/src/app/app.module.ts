@@ -27,6 +27,7 @@ import { CarouselComponent } from './components/home/carousel/carousel.component
 import { NewStoriesComponent } from './components/home/new-stories/new-stories.component';
 import { GlobalGoalsComponent } from './components/home/global-goals/global-goals.component';
 import { ArticleComponent } from './components/article/article.component';
+import { ArchiveComponent } from './components/archive/archive.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ArticleComponent } from './components/article/article.component';
     CarouselComponent,
     NewStoriesComponent,
     GlobalGoalsComponent,
-    ArticleComponent
+    ArticleComponent,
+    ArchiveComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
