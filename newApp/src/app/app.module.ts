@@ -29,6 +29,10 @@ import { GlobalGoalsComponent } from './components/home/global-goals/global-goal
 import { ArticleComponent } from './components/article/article.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 
+// Service imports
+import { AuthService } from './services/auth.service';
+import { ArchiveService } from './services/archive.service';
+
 @NgModule({
   declarations: [
     AppComponent,

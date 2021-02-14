@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedDataService } from 'src/app/services/shared-data.service';
 import { AuthService } from '../../services/auth.service';
-
-
+import { ArchiveService } from '../../services/archive.service';
 
 @Component({
 	selector: 'app-navbar',
@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
 export class NavbarComponent implements OnInit {
 	userObject = null;
 
-	constructor(public auth: AuthService) {
+	constructor(public auth: AuthService, public sharedData: SharedDataService, public archiveService: ArchiveService) {
 		if (auth.user$) {
 			this.auth.user$.subscribe(u => {
 				this.userObject = u;
@@ -43,5 +43,16 @@ export class NavbarComponent implements OnInit {
 		wrapper.style.borderTop = "none";
 	}
 
+	setFilter(category, subcategory) {
+		this.archiveService.filters.categories = [category];
+		if (subcategory != 'none') {
+			this.archiveService.filters.subcategories = [subcategory];
+		} else {
+			this.archiveService.filters.subcategories = [];
+		}
+		this.archiveService.filters.words = "";
+		this.archiveService.fillFilters();
+		this.archiveService.applyFilters();
+	}
 
 }

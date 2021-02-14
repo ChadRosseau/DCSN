@@ -18,24 +18,12 @@ import { User } from './user';
 export class AuthService {
   user$: Observable<User>;
   userKey: string;
-  // Filters for archive
-  filters: {
-    categories: Array<any>,
-    subcategories: Array<any>,
-    words: Array<any>
-  }
 
   constructor(
     private afAuth: AngularFireAuth,
     public db: AngularFireDatabase,
     public router: Router
   ) {
-
-    this.filters = {
-      categories: [],
-      subcategories: [],
-      words: []
-    }
 
     sessionStorage.clear();
     this.user$ = this.afAuth.authState.pipe(

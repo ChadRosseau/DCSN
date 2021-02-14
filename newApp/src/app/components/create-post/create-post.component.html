@@ -4,7 +4,7 @@
     <h5>Category:</h5>
     <select #c (change)="setCategory(c.value)">
         <option value="null">- Select -</option>
-        <option value="{{category}}" *ngFor="let category of categories">
+        <option value="{{category}}" *ngFor="let category of sharedData.categories">
             {{category}}
         </option>
     </select>

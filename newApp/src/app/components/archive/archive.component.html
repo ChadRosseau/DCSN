@@ -1,9 +1,36 @@
 <div class="archiveHero">
-    <!-- <div class="sidebar"></div> -->
+    <div class="sidebar" [ngClass]="{'open': pageData.filterMenu}">
+        <h4>FILTER</h4>
+        <div class="searchBar">
+            <label><i class="fas fa-search"></i></label>
+            <input type="text" [(ngModel)]="archiveService.filters.words" (keyup)="archiveService.applyFilters()">
+            <i class="fas fa-window-close" id="resetButton" (click)="archiveService.resetFilters()"></i>
+        </div>
+        <div class="categoryFilter" *ngFor="let category of sharedData.categories">
+            <label class="inputContainer">{{category}}
+                <input type="checkbox" id="{{category}}"
+                    [checked]="this.archiveService.filters.categories.includes(category)"
+                    (change)="archiveService.updateFilter('categories', category)">
+                <span class="checkmark" [style.borderColor]="sharedData.colors.categories[category]"></span>
+            </label>
+            <div class="subcategoryFilter" *ngFor="let subcategory of sharedData.subcategories[category]"
+                [hidden]="!this.archiveService.filters.categories.includes(category)">
+                <label class="inputContainer">{{subcategory}}
+                    <input type="checkbox" id="{{subcategory}}"
+                        [checked]="this.archiveService.filters.subcategories.includes(subcategory)"
+                        (change)="archiveService.updateFilter('subcategories', subcategory)">
+                    <span class="checkmark" [style.borderColor]="sharedData.colors.subcategories[category]"></span>
+                </label>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="closebtn" (click)="pageData.filterMenu = !pageData.filterMenu">&times;</a>
+    </div>
     <div class="archiveWrapper">
         <h2>ARTICLES</h2>
+        <div class="filterButton" (click)="pageData.filterMenu = !pageData.filterMenu"
+            [ngClass]="{'active': pageData.filterMenu}">FILTER</div>
         <div class="articlesWrapper">
-            <div class="articlePreview" *ngFor="let article of filteredArticles; let i = index"
+            <div class="articlePreview" *ngFor="let article of archiveService.filteredArticles; let i = index"
                 [routerLink]="['/article', article.articleId]">
                 <div class="titleBar">
                     <p class="previewTitle">{{article.title}}</p>

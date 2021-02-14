@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { SharedDataService } from '../../services/shared-data.service';
 
 @Component({
   selector: 'app-create-post',
@@ -17,7 +17,7 @@ export class CreatePostComponent implements OnInit {
     body: string
   }
 
-  constructor(public auth: AuthService, private router: Router) { }
+  constructor(public auth: AuthService, public sharedData: SharedDataService) { }
 
   ngOnInit(): void {
     this.newArticle = {
@@ -29,39 +29,10 @@ export class CreatePostComponent implements OnInit {
     }
   }
 
-  public subcategories = {
-    Economy: [
-      'Responsible Consumption',
-      'Decent Work',
-      'Industry & Innovation',
-      'Wealth Inequality',
-    ],
-    Poverty: [
-      'Hunger',
-      'Health & Wellbeing',
-      'Education',
-      'Clean Water & Sanitation',
-      'Gender Equality'
-    ],
-    Sustainability: [
-      'Clean Energy',
-      'Climate Action',
-      'Life On Land',
-      'Life Below Water',
-      'Sustainable Cities'
-    ],
-    Politics: [
-      'Peace & Justice',
-      'Partnerships'
-    ]
-  };
-
-  public categories = Object.keys(this.subcategories);
-
   public currentSubcategories;
 
   setCategory(value) {
-    this.currentSubcategories = this.subcategories[value];
+    this.currentSubcategories = this.sharedData.subcategories[value];
   }
 
   createArticle(category, subcategory) {
@@ -74,8 +45,6 @@ export class CreatePostComponent implements OnInit {
     const timestamp = currentDate.getTime();
 
     // Upload article to db.
-    console.log(this.newArticle);
-
     const dbArticlesRef = this.auth.db.database.ref(`articles/moderating`);
     let newPush = dbArticlesRef.push()
     let pushId = newPush.key;
