@@ -12,11 +12,6 @@ import { ArchiveService } from 'src/app/services/archive.service';
 export class ArchiveComponent implements OnInit {
   dbArticles;
   articlesData;
-  filters: {
-    categories: Array<any>,
-    subcategories: Array<any>,
-    words: Array<any>
-  }
   pageData = {
     filterMenu: false
   }
