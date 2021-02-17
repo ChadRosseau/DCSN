@@ -166,21 +166,41 @@
 /* Sidebar */
 
 .sidebar {
-    height: 100%;
+    height: calc(100% - 50px);
     width: 0;
     position: fixed;
     z-index: 1;
-    top: 0;
+    bottom: 0;
     left: 0;
     background-color: rgba(0, 45, 115, 0.9);
     overflow-x: hidden;
-    padding-top: 60px;
     transition: 0.5s;
+}
+
+
+/* Custom Scrollbar */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FFF;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #CCC;
 }
 
 .sidebar.open {
     width: 25vw!important;
     padding-left: 10px;
+    border: 5px solid transparent;
 }
 
 .sidebar h4 {
@@ -190,8 +210,8 @@
 
 .sidebar .closebtn {
     position: absolute;
-    top: 60px;
-    right: 51px;
+    top: 0;
+    right: 47px;
     font-size: 36px;
     color: #FFF;
 }
@@ -214,7 +234,7 @@
     font-size: 35px;
     margin-left: 10px;
     position: absolute;
-    top: 123px;
+    top: 64px;
     color: white;
     cursor: pointer;
 }
