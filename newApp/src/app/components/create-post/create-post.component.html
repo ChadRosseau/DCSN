@@ -1,43 +1,61 @@
 <div class="hero">
 
     <h3>Create Article</h3>
-    <h5>Category:</h5>
-    <select #c (change)="setCategory(c.value)">
-        <option value="null">- Select -</option>
-        <option value="{{category}}" *ngFor="let category of sharedData.categories">
-            {{category}}
-        </option>
-    </select>
 
-    <h5>Subcategory:</h5>
-    <select [hidden]="currentSubcategories">
-        <option [value]="null" selected>- Please select a category first -</option>
-    </select>
-    <select #s [hidden]="!currentSubcategories">
-        <option [value]="null" selected>- Select -</option>
-        <option [value]="subcategory" *ngFor="let subcategory of currentSubcategories">
-            {{subcategory}}
-        </option>
-    </select>
+    <form [formGroup]="createArticleForm">
+        <h5>Category:</h5>
+        <select [formControl]="createArticleForm.controls.category"
+            (change)="setCategory(createArticleForm.controls.category)">
+            <option value="null">- Select -</option>
+            <option value="{{category}}" *ngFor="let category of sharedData.categories">
+                {{category}}
+            </option>
+        </select>
 
-    <h5>Title:</h5>
-    <input [(ngModel)]="newArticle.title" type="text" name="" />
+        <h5>Subcategory:</h5>
+        <select [hidden]="currentSubcategories">
+            <option [value]="null" selected>- Please select a category first -</option>
+        </select>
+        <select [formControl]="createArticleForm.controls.subcategory" [hidden]="currentSubcategories == []">
+            <option [value]="null" selected>- Select -</option>
+            <option [value]="subcategory" *ngFor="let subcategory of currentSubcategories">
+                {{subcategory}}
+            </option>
+        </select>
 
-    <h5>Subtitle:</h5>
-    <input [(ngModel)]="newArticle.subtitle" type="text" name="" />
+        <mat-form-field class="title">
+            <h5>Title:</h5>
+            <input [formControl]="createArticleForm.controls.title" type="text" name="" />
+            <mat-error *ngIf="createArticleForm.controls.title.hasError('required')">
+                Title is required
+            </mat-error>
+        </mat-form-field>
 
-    <!-- <h5>Thumbnail:</h5>
+        <h5>Subtitle:</h5>
+        <input [formControl]="createArticleForm.controls.subtitle" type="text" name="" />
+
+        <!-- <h5>Thumbnail:</h5>
     <input [(ngModel)]="newArticle.title"type="file" id="fileUpload" name="" /> -->
 
-    <!-- <h5>Video Link:</h5>
+        <!-- <h5>Video Link:</h5>
     <input type="text" name="" /> -->
 
-    <h5>Body:</h5>
-    <textarea [(ngModel)]="newArticle.body"></textarea>
 
-    <button class="hvr-shutter-out-horizontal" (click)="createArticle(c.value, s.value)">
-        Submit
-    </button>
 
+        <h5>Body:</h5>
+        <editor [formControl]="createArticleForm.controls.body" initialValue="<p>Initial content of the editor</p>"
+            apiKey="yx8a3up6w2hnadnvmm5ntt1ryttjrdbddr7yjpdh4dm3kg92" [init]="{
+            icons: 'material',
+            skin: 'borderless',
+            plugins: 'wordcount',
+            menubar: false,
+            min_height: 150
+        }">
+        </editor>
+
+        <button class="hvr-shutter-out-horizontal">
+            Submit
+        </button>
+    </form>
 
 </div>

@@ -53,7 +53,6 @@ export class ArchiveService {
         this.filteredArticles.push(article);
       }
     });
-    console.log(this.filteredArticles);
   }
 
   // Check if article title or subtitle contains search terms.

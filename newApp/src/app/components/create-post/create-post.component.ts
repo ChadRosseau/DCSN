@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { SharedDataService } from '../../services/shared-data.service';
 
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AsyncSubject, Subject } from 'rxjs';
+import { maxLength } from './maxlength.validator';
+
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
@@ -29,10 +33,23 @@ export class CreatePostComponent implements OnInit {
     }
   }
 
-  public currentSubcategories;
+  public currentSubcategories = [];
 
   setCategory(value) {
     this.currentSubcategories = this.sharedData.subcategories[value];
+  }
+
+  private editorSubject: Subject<any> = new AsyncSubject();
+
+  public createArticleForm = new FormGroup({
+    title: new FormControl("", Validators.required),
+    subtitle: new FormControl("", Validators.required),
+    body: new FormControl("", Validators.required, maxLength(this.editorSubject, 10))
+  });
+
+  handleEditorInit(e) {
+    this.editorSubject.next(e.editor);
+    this.editorSubject.complete();
   }
 
   createArticle(category, subcategory) {

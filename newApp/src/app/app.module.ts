@@ -1,12 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { MaterialModule } from './material.module';
 
 // Environment
 import { environment } from '../environments/environment';
 
 // Carousel
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+
+// Tiny Text Editor
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 // Firebase imports
 import { AngularFireModule } from '@angular/fire';
@@ -28,10 +33,7 @@ import { NewStoriesComponent } from './components/home/new-stories/new-stories.c
 import { GlobalGoalsComponent } from './components/home/global-goals/global-goals.component';
 import { ArticleComponent } from './components/article/article.component';
 import { ArchiveComponent } from './components/archive/archive.component';
-
-// Service imports
-import { AuthService } from './services/auth.service';
-import { ArchiveService } from './services/archive.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -55,10 +57,17 @@ import { ArchiveService } from './services/archive.service';
     AngularFireStorageModule, // storage
     SlickCarouselModule,
     BrowserModule,
+    EditorModule,
     FormsModule,
-    AppRoutingModule
+    ReactiveFormsModule,
+    AppRoutingModule,
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+  ]
 })
 export class AppModule { }

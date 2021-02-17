@@ -16,12 +16,9 @@ export class ArchiveComponent implements OnInit {
     filterMenu: false
   }
 
-  constructor(private auth: AuthService, public sharedData: SharedDataService, public archiveService: ArchiveService) {
-    console.log("constructed");
-  }
+  constructor(private auth: AuthService, public sharedData: SharedDataService, public archiveService: ArchiveService) { }
 
   ngOnInit(): void {
-    console.log("initialized");
 
     // Fetch all articles to show, and apply filters.
     this.dbArticles = this.auth.db.object<any>(`articles/moderating`).valueChanges().subscribe(data => {
