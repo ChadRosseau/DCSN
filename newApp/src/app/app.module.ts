@@ -34,6 +34,7 @@ import { GlobalGoalsComponent } from './components/home/global-goals/global-goal
 import { ArticleComponent } from './components/article/article.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ArrayReversePipe } from './pipes/array-reverse.pipe';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GlobalGoalsComponent,
     ArticleComponent,
     ArchiveComponent,
+    ArrayReversePipe,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
