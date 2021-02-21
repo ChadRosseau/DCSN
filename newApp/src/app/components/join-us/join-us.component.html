@@ -1,1 +1,53 @@
-<p>join-us works!</p>
+<div class="pageWrapper">
+    <div class="hero1">
+        <div class="overlay">
+            <div class="text">
+                <h2> Join Us</h2>
+                <p>
+                    The Discovery College Student News organization has a multitude of different positions open for
+                    application, with each catering for a specific skillset. Whether you are an inquisitive journalist,
+                    tech guru or aspiring Picasso, our organization has a place for you and your skills.
+                    <br><br>
+                    This page will
+                    guide you through the roles of our organization, the benefits of being a DCSN member, and how to
+                    apply.
+                </p>
+            </div>
+            <div class="image"></div>
+        </div>
+    </div>
+    <div class="hero2">
+        <div class="roleSelectorWrapper">
+            <h2>ROLES</h2>
+            <div class="roleSelector" (click)="setGuideRole(role)" *ngFor="let role of roles"
+                [ngClass]="{active: role == guideRole.name}">
+                {{role}}</div>
+        </div>
+        <div class="rolesContainer">
+            <h4>{{guideRole.name}}</h4>
+            <div class="rolesText">
+                <p [innerHTML]="guideRole.description">
+                </p>
+                <p>
+                    Interested? Fill out our <a href="">{{guideRole.name}} application form</a> and email it to
+                    <a href="{{'mailto:dcsn@dc.edu.hk?subject=' + guideRole.name + ' DCSN Application'}}"
+                        target="_blank">dcsn@dc.edu.hk</a>
+                    for consideration!
+                </p>
+            </div>
+            <div class="rolesImage" [style.backgroundImage]="guideRole.image"></div>
+        </div>
+    </div>
+    <div class="hero3">
+        <h4>Questions?</h4>
+        <p>
+            If you have any questions or queries, please fill out our <a href="">contact form</a>, or email us at
+            dcsn@dc.edu.hk, and our team will get back to you shortly.
+        </p>
+    </div>
+</div>
+
+<!-- Every position at DCSN holds credit for the MYP/DP Community Engagement program, the types of which
+                    differ between
+                    positions. Joining DCSN is a great way to give back to the local community while helping to promote
+                    student awareness and achievement within our school. -->
