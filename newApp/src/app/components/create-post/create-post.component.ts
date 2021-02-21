@@ -5,6 +5,7 @@ import { SharedDataService } from '../../services/shared-data.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AsyncSubject, Subject } from 'rxjs';
 import { maxLength } from './maxlength.validator';
+import { TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 
 @Component({
   selector: 'app-create-post',
@@ -13,36 +14,43 @@ import { maxLength } from './maxlength.validator';
 })
 export class CreatePostComponent implements OnInit {
 
-  newArticle: {
-    category: string,
-    subcategory: string,
-    title: string,
-    subtitle: string,
-    body: string
-  }
+  currentSubcategories;
+
+  tinyInit;
 
   constructor(public auth: AuthService, public sharedData: SharedDataService) { }
 
   ngOnInit(): void {
-    this.newArticle = {
-      category: "",
-      subcategory: "",
-      title: "",
-      subtitle: "",
-      body: ""
+    this.currentSubcategories = [];
+    console.log(TINYMCE_SCRIPT_SRC);
+    this.tinyInit = {
+      icons: 'material',
+      skin: 'borderless',
+      // plugins: 'wordcount',
+      plugins: [
+        "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+        "searchreplace wordcount visualblocks visualchars code fullscreen",
+        "insertdatetime media nonbreaking save table contextmenu directionality",
+        "emoticons template paste textcolor colorpicker textpattern"
+      ],
+      menubar: false,
+      min_height: 150
     }
   }
 
-  public currentSubcategories = [];
-
   setCategory(value) {
     this.currentSubcategories = this.sharedData.subcategories[value];
+    console.log(value);
+    console.log(this.sharedData.subcategories[value]);
+    console.log(this.currentSubcategories)
   }
 
   private editorSubject: Subject<any> = new AsyncSubject();
 
   public createArticleForm = new FormGroup({
     title: new FormControl("", Validators.required),
+    category: new FormControl("", Validators.required),
+    subcategory: new FormControl("", Validators.required),
     subtitle: new FormControl("", Validators.required),
     body: new FormControl("", Validators.required, maxLength(this.editorSubject, 10))
   });
@@ -52,29 +60,33 @@ export class CreatePostComponent implements OnInit {
     this.editorSubject.complete();
   }
 
-  createArticle(category, subcategory) {
-    // Set category and subcategory info
-    this.newArticle.category = category;
-    this.newArticle.subcategory = subcategory;
+  // createArticle(category, subcategory) {
+  //   // Set category and subcategory info
+  //   this.newArticle.category = category;
+  //   this.newArticle.subcategory = subcategory;
 
-    // Get timestamp for operation
-    const currentDate = new Date();
-    const timestamp = currentDate.getTime();
+  //   // Get timestamp for operation
+  //   const currentDate = new Date();
+  //   const timestamp = currentDate.getTime();
 
-    // Upload article to db.
-    const dbArticlesRef = this.auth.db.database.ref(`articles/moderating`);
-    let newPush = dbArticlesRef.push()
-    let pushId = newPush.key;
-    newPush.set({
-      articleId: pushId,
-      author: this.auth.userKey,
-      category: this.newArticle.category,
-      subcategory: this.newArticle.subcategory,
-      title: this.newArticle.title,
-      subtitle: this.newArticle.subtitle,
-      body: this.newArticle.body,
-      writtenDate: timestamp
-    });
+  //   // Upload article to db.
+  //   const dbArticlesRef = this.auth.db.database.ref(`articles/moderating`);
+  //   let newPush = dbArticlesRef.push()
+  //   let pushId = newPush.key;
+  //   newPush.set({
+  //     articleId: pushId,
+  //     author: this.auth.userKey,
+  //     category: this.newArticle.category,
+  //     subcategory: this.newArticle.subcategory,
+  //     title: this.newArticle.title,
+  //     subtitle: this.newArticle.subtitle,
+  //     body: this.newArticle.body,
+  //     writtenDate: timestamp
+  //   });
+  // }
+
+  log(input) {
+    console.log(input);
   }
 }
 
