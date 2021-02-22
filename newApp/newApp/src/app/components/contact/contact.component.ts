@@ -51,7 +51,7 @@ export class ContactComponent implements OnInit {
       this.submitted = false; // hide the response message on multiple submits
       this.http
         .post(
-          'https://script.google.com/macros/s/AKfycbw17VuK2oP7pE9MWHkbz8kn3nAvDLvlc16xMUwnyvzX2UIZs1XKb93m/exec',
+          'https://script.google.com/macros/s/AKfycbz5Oc90HjwCGN8y-T_bBbF5gRWocP4L0jd-vBeNMujIdiLVsubDKIniqQ/exec',
           formData
         )
         .subscribe(
