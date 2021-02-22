@@ -1,41 +1,38 @@
-<section class="hero">
-    <div class="hero-body">
-        <div class="container">
-
-            <h1 class="title">Contact Us!</h1>
-
+<div class="pageWrapper">
+    <div class="hero1">
+        <div class="overlay">
+            <div class="text">
+                <h2>Contact Us</h2>
+                <p>
+                    Questions? Comments? Queries? Concerns?
+                    <br>
+                    Get in contact with us using the form below, and we will get back to you shortly!
+                </p>
+            </div>
         </div>
     </div>
-</section>
-<section>
-    <div class="container">
+    <section>
+        <div class="container">
 
 
-        <form class="contact" [formGroup]="form" method="post" (ngSubmit)="onSubmit()">
+            <form class="contact" [formGroup]="form" method="post" (ngSubmit)="onSubmit()">
 
-            <input [formControl]="name" required placeholder="Name">
+                <input [formControl]="name" required placeholder="Name">
+                <input [formControl]="email" placeholder="email@dc.edu.hk" required>
+                <input [formControl]="subject" placeholder="Subject" class="long" required>
 
+                <textarea [formControl]="message" maxlength="512" placeholder="Write your message here..."
+                    required></textarea>
 
+                <button [disabled]="isLoading" class="submit" type="submit">Submit</button>
+                <input [formControl]="honeypot" class="hidden" type="text" />
+                <div [ngClass]="!submitted? 'hidden' : 'visible'" class="center-text">
+                    <span>{{responseMessage}}</span>
 
-            <input [formControl]="email" placeholder="email@dc.edu.hk" required>
-
-
-            <input [formControl]="subject" placeholder="Subject" class="long" required>
-
-
-
-            <textarea [formControl]="message" maxlength="512" placeholder="Write your message here..."
-                required></textarea>
-
-
-            <button [disabled]="isLoading" class="submit" type="submit">Submit</button>
-            <input [formControl]="honeypot" class="hidden" type="text" />
-            <div [ngClass]="!submitted? 'hidden' : 'visible'" class="center-text">
-                <span>{{responseMessage}}</span>
-
-            </div>
-        </form>
+                </div>
+            </form>
 
 
-    </div>
-</section>
+        </div>
+    </section>
+</div>
