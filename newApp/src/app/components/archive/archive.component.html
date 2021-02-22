@@ -30,7 +30,7 @@
         <div class="filterButton" (click)="pageData.filterMenu = !pageData.filterMenu"
             [ngClass]="{'active': pageData.filterMenu}">FILTER</div>
         <div class="articlesWrapper">
-            <div class="articlePreview" *ngFor="let article of archiveService.filteredArticles; let i = index"
+            <div class="articlePreview" *ngFor="let article of archiveService.filteredArticles | reverse; let i = index"
                 [routerLink]="['/article', article.articleId]">
                 <div class="titleBar">
                     <p class="previewTitle">{{article.title}}</p>
