@@ -40,7 +40,7 @@ button {
     /* border-bottom: 3px solid #FFF; */
     height: 50px;
     background-color: rgba(0, 45, 115, .85);
-    box-shadow: 2px 5px 5px;
+    box-shadow: -1px 5px 5px;
 }
 
 #genreContainerWrapper {
