@@ -76,7 +76,7 @@ export class SharedDataService {
     },
     ICT: {
       name: 'ICT',
-      description: `The ICT division is responsible for managing, maintaining, and updating any software the newspaper requires. Website management, upkeep and development are core elements of an ICT technician’s profession. 
+      description: `The ICT division is responsible for managing, maintaining, and updating any software the newspaper requires. Website management, upkeep and development are core elements of an ICT technician’s role. 
                   <br><br>
                   The DCSN website is built using the Angular CLI framework and maintains a Firebase database backend. Technicians must be eager to learn and improve, and familiar with working with APIs and external documentation to write custom code. It should be noted that the level of programming skill required for this role exceeds that of the average high-school student.
                   <br><br>
@@ -85,10 +85,38 @@ export class SharedDataService {
     },
     Graphics: {
       name: 'Graphics',
-      description: `Graphic designers are a group working for the newspaper to provide all kinds of illustrations for the newspaper. This may include graphics for advertisement, for accompanying articles, or for standalone content in the form of posters, banners, videos, and more.`,
+      description: `The Graphic Design department at DCSN provides a variety of visual content for the newspaper. 
+                    <br><br>
+                    The primary role of the Graphic Design department lies in creating artistic pieces to accompany articles or other media produced by contributors. However, there are also a variety of other areas it contributes to, including graphics for the ICT team to implement in the DCSN website, standalone content in the form of posters or banners, and promotional content such as advertising graphics for social media, the school Ding page, and more.
+                    <br><br>
+                    Prospective artists should possess a solid understanding of basic artistic principles and a passion for creativity. While DCSN does accept use of a variety of mediums for artistic creation, experience using digital art tools and/or editing software is favourable.`,
       image: "url('https://paintingvalley.com/images/rapunzel-painting-30.jpg')"
     },
   }
+
+  public joinusInfo = [
+    {
+      head: "Applications",
+      body: `Once you have submitted your application, the department heads at DCSN will review your form. 
+             <br><br>
+             Should they determine that you fufill the requirements for role and are suitable for the position, you will be notified and given access to the organization.`
+    },
+    {
+      head: "Leadership",
+      body: `DCSN is one of few organisations at DC which allow for students to remain with the network over multiple years.
+             <br><br>
+             As students grow older and gain experience, additional leadership roles may open in availability for them, including heads of department, assistant heads, and more.`
+    },
+    {
+      head: "CE/CAS",
+      body: `Every position at DCSN holds credit for the MYP/DP Community Engagement program, the types of which
+             differ between positions. 
+             <br><br>
+             Joining DCSN is a great way to give back to the local community while helping to promote
+             student awareness and achievement within our school.`
+    },
+  ]
+
 
   constructor() { }
 }
