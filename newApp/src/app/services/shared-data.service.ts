@@ -17,7 +17,6 @@ export class SharedDataService {
       'Health & Wellbeing',
       'Education',
       'Clean Water & Sanitation',
-      'Gender Equality'
     ],
     Sustainability: [
       'Clean Energy',
@@ -28,6 +27,7 @@ export class SharedDataService {
     ],
     Politics: [
       'Peace & Justice',
+      'Gender Equality',
       'Partnerships'
     ]
   };

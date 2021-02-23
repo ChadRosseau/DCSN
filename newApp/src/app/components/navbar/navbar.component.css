@@ -232,22 +232,22 @@ button {
 .genreContainer:hover:before,
 .genreContainer:focus:before,
 .genreContainer:active:before {
-    -webkit-transform: scaleY(7.55);
-    transform: scaleY(7.55);
-}
-
-#navGenre1:hover:before,
-#navGenre1:focus:before,
-#navGenre1:active:before {
     -webkit-transform: scaleY(6.25);
     transform: scaleY(6.25);
+}
+
+#navGenre3:hover:before,
+#navGenre3:focus:before,
+#navGenre3:active:before {
+    -webkit-transform: scaleY(7.55);
+    transform: scaleY(7.55);
 }
 
 #navGenre4:hover:before,
 #navGenre4:focus:before,
 #navGenre4:active:before {
-    -webkit-transform: scaleY(3.6);
-    transform: scaleY(3.6);
+    -webkit-transform: scaleY(5);
+    transform: scaleY(5);
 }
 
 #navGenre1:before {
