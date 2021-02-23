@@ -37,6 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ArrayReversePipe } from './pipes/array-reverse.pipe';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ArticleComponent,
     ArchiveComponent,
     ArrayReversePipe,
+    FooterComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
