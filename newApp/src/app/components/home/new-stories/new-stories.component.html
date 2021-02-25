@@ -1,14 +1,22 @@
 <div class="heroWrapper">
     <div class="storyWrapper">
-        <div class="storyContainer" *ngFor="let article of articles | slice:0:3;">
-            <div class="textContainer">
+        <div class="storyContainer" *ngFor="let article of recentArticles"
+            [routerLink]="['/article', article.articleId]">
+            <div class=" textContainer">
                 <h3>{{article.title}}</h3>
                 <div class="authorContainer">
-                    <div class="authorPfp" style="background-image: url({{article.author.pfp}})"></div>
-                    <p>{{article.author.name}} <br> {{article.publishDate}}</p>
+                    <div class="authorPfp" style="background-image: url({{article.author.photoURL}})"></div>
+                    <p>{{article.author.displayName}} <br> {{article.newDate}}</p>
                 </div>
-                <p>{{article.body}}</p>
-                <p>Tags: {{article.tags}}</p>
+                <p class="articleBody">{{article.body}}</p>
+                <div class="categoriesContainer">
+                    <div class="categoryTag" [style.backgroundColor]="sharedData.colors.categories[article.category]">
+                        {{article.category}}</div>
+                    <div class="subcategoryTag"
+                        [style.backgroundColor]="sharedData.colors.subcategories[article.category]">
+                        {{article.subcategory}}
+                    </div>
+                </div>
             </div>
             <div class="articleImage" style="background-image: url({{article.preview}})"></div>
         </div>

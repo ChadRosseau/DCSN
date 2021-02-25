@@ -5,20 +5,19 @@
     <form [formGroup]="createArticleForm">
         <h5>Category:</h5>
         <select [formControl]="createArticleForm.controls.category"
-            (change)="setCategory(createArticleForm.value.category)">
-            <option disabled selected value="">- Select -</option>
+            (change)="setCategory(createArticleForm.controls.category)">
+            <option value="null">- Select -</option>
             <option value="{{category}}" *ngFor="let category of sharedData.categories">
                 {{category}}
             </option>
         </select>
 
         <h5>Subcategory:</h5>
-        <select [hidden]="createArticleForm.value.category != ''">
-            <option disabled selected value="">- Please select a category first -</option>
+        <select [hidden]="currentSubcategories">
+            <option [value]="null" selected>- Please select a category first -</option>
         </select>
-        <select [formControl]="createArticleForm.controls.subcategory"
-            [hidden]="createArticleForm.value.category == ''">
-            <option disabled selected hidden value="">- Select -</option>
+        <select [formControl]="createArticleForm.controls.subcategory" [hidden]="currentSubcategories == []">
+            <option [value]="null" selected>- Select -</option>
             <option [value]="subcategory" *ngFor="let subcategory of currentSubcategories">
                 {{subcategory}}
             </option>
@@ -26,8 +25,7 @@
 
         <mat-form-field class="title">
             <h5>Title:</h5>
-            <input [formControl]="createArticleForm.controls.title" type="text" name=""
-                (change)="log(createArticleForm)" />
+            <input [formControl]="createArticleForm.controls.title" type="text" name="" />
             <mat-error *ngIf="createArticleForm.controls.title.hasError('required')">
                 Title is required
             </mat-error>
@@ -44,25 +42,16 @@
 
 
 
-        <div class="mat-form-field-wrapper">
-            <h2>Body:</h2>
-            <editor apiKey="yx8a3up6w2hnadnvmm5ntt1ryttjrdbddr7yjpdh4dm3kg92"
-                [formControl]="createArticleForm.controls.body" class="mat-elevation-z1"
-                (onInit)="handleEditorInit($event)" [init]="tinyInit"></editor>
-
-            <div class="mat-form-field-subscript-wrapper">
-                <mat-error *ngIf="createArticleForm.controls.body.hasError('maxlength')">
-                    Your post exceeds exceeds the character limit
-                    {{ myForm.controls.body.getError('maxlength').actualLength }} /
-                    {{ myForm.controls.body.getError('maxlength').requiredLength }}
-                </mat-error>
-
-                <mat-error
-                    *ngIf="createArticleForm.controls.body.touched && createArticleForm.controls.body.hasError('required')">
-                    This form is required
-                </mat-error>
-            </div>
-        </div>
+        <h5>Body:</h5>
+        <editor [formControl]="createArticleForm.controls.body" initialValue="<p>Initial content of the editor</p>"
+            apiKey="yx8a3up6w2hnadnvmm5ntt1ryttjrdbddr7yjpdh4dm3kg92" [init]="{
+            icons: 'material',
+            skin: 'borderless',
+            plugins: 'wordcount',
+            menubar: false,
+            min_height: 150
+        }">
+        </editor>
 
         <button class="hvr-shutter-out-horizontal">
             Submit

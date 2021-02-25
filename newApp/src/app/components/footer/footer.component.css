@@ -1,0 +1,135 @@
+footer {
+    width: 100%;
+    height: 300px;
+    background: rgb(7, 27, 48);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px 10px;
+}
+
+
+/* DC Information on left */
+
+.dcWrapper {
+    width: 30%;
+    height: 100%;
+    padding-top: 50px;
+}
+
+.dcWrapper img {
+    margin-bottom: 20px;
+    ;
+}
+
+.dcWrapper .tagline {
+    color: #890033;
+    text-align: left;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 1pt;
+}
+
+.dcWrapper .dcInfo {
+    color: #fff;
+    font-size: 12px;
+}
+
+.dcWrapper .dcInfo a {
+    color: #FFF;
+    text-decoration: underline;
+}
+
+.dcWrapper .dcInfo a:hover {
+    color: #A1A1A1;
+}
+
+
+/* News Logo, blurb, and routing */
+
+.middleWrapper {
+    width: 40%;
+    height: 100%;
+    position: relative;
+    padding-top: 20px;
+}
+
+.middleWrapper .dcLogo {
+    background-image: url("../../../assets/images/dcsn_logo_3.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 3vh auto 0;
+    width: 350px;
+    height: 100px;
+}
+
+.middleWrapper .motto {
+    color: #FFF;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 200;
+}
+
+.middleWrapper ul {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    margin: 40px 7px;
+}
+
+.middleWrapper ul .divider {
+    width: 1px;
+    height: 24px;
+    background-color: #FFF;
+}
+
+.middleWrapper li {
+    display: inline;
+}
+
+.middleWrapper li a {
+    text-decoration: none;
+    color: #FFF;
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+
+
+/* Social Media */
+
+.socialWrapper {
+    width: 30%;
+    height: 100%;
+    padding-top: 75px;
+}
+
+.socialWrapper h4 {
+    font-size: 1.5em;
+    color: #FFF;
+    text-align: center;
+    font-weight: 300;
+    margin: 10px 0;
+}
+
+.socialWrapper .mediaContainer {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.socialWrapper .mediaButton {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline;
+    text-align: center;
+    font-size: 2.5em;
+    color: #FFF;
+}
+
+.socialWrapper .mediaButton i {
+    /* color: #FFF; */
+}

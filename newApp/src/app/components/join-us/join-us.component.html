@@ -1,1 +1,62 @@
-<p>join-us works!</p>
+<div class="pageWrapper">
+    <div class="hero1">
+        <div class="overlay">
+            <div class="text">
+                <h2> Join Us</h2>
+                <p>
+                    The Discovery College Student News organization has a multitude of different positions open for
+                    application, with each catering for a specific skillset. Whether you are an inquisitive journalist,
+                    tech guru or aspiring Picasso, our organization has a place for you and your skills.
+                    <br><br>
+                    This page will
+                    guide you through the roles of our organization, the benefits of being a DCSN member, and how to
+                    apply.
+                </p>
+            </div>
+            <div class="image"></div>
+        </div>
+    </div>
+    <div class="hero2">
+        <div class="roleSelectorWrapper">
+            <h2>ROLES</h2>
+            <div class="roleSelector" (click)="setGuideRole(role)" *ngFor="let role of roles"
+                [ngClass]="{active: role == guideRole.name}">
+                {{role}}</div>
+        </div>
+        <div class="rolesContainer">
+            <h4>{{guideRole.name}}</h4>
+            <div class="rolesText">
+                <p [innerHTML]="guideRole.description">
+                </p>
+                <p>
+                    Interested? Fill out our <a href="">{{guideRole.name}} application form</a> and email it to
+                    <a href="{{'mailto:dcsn@dc.edu.hk?subject=' + guideRole.name + ' DCSN Application'}}"
+                        target="_blank">dcsn@dc.edu.hk</a>
+                    for consideration!
+                </p>
+            </div>
+            <div class="rolesImage" [style.backgroundImage]="guideRole.image"></div>
+        </div>
+    </div>
+    <div class="hero3">
+        <div class="overlay">
+            <div class="infoWrapper">
+                <div class="infoColumn" *ngFor="let info of sharedData.joinusInfo; let i = index"
+                    [ngClass]="{dividing: i == 1}">
+                    <h4>{{info.head}}</h4>
+                    <p [innerHTML]="info.body"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero4">
+        <div class="questionsContainer">
+            <h4>Questions?</h4>
+            <p>
+                Get in touch with us using our <a [routerLink]="['/contact']">contact page</a>, or by emailing us at
+                <a href="mailto:dcsn@dc.edu.hk" target="_blank">dcsn@dc.edu.hk</a>, and our team will get back to you
+                shortly.
+            </p>
+        </div>
+    </div>
+</div>

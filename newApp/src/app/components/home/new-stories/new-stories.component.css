@@ -35,13 +35,18 @@
 .storyContainer p {
     display: -webkit-box;
     overflow: hidden;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 }
 
 .textContainer {
     width: 60%;
     margin: 10px 20px;
+    position: relative;
+}
+
+.articleBody {
+    margin-top: -10px;
 }
 
 .authorContainer p {
@@ -60,6 +65,21 @@
     float: left;
     margin-top: 5px;
     margin-right: 20px;
+}
+
+.categoriesContainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+}
+
+.categoriesContainer div {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+    width: fit-content;
 }
 
 .articleImage {

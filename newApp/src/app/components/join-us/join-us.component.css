@@ -1,0 +1,234 @@
+.pageWrapper {
+    width: 100%;
+}
+
+
+/* Introduction */
+
+.hero1 {
+    width: 100%;
+    background-image: url("https://www.discovery.edu.hk/dcwebsite/wp-content/uploads/2015/02/Technology-Banner-1500x550.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    height: calc(85vh + 50px);
+}
+
+.hero1 .overlay {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: rgb(0, 45, 115);
+    background: linear-gradient(90deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+    padding: 130px 50px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero1 .overlay .text {
+    display: inline-block;
+    width: 65%;
+}
+
+.hero1 .overlay .text h2 {
+    font-size: 6em;
+    border-bottom: 5px solid #FFF;
+    color: #FFF;
+    margin-bottom: 30px;
+}
+
+.hero1 .overlay .text p {
+    color: #FFF;
+    font-size: 1.5em;
+    font-weight: 200;
+}
+
+.hero1 .image {
+    background-image: url("https://drive.google.com/uc?id=16QBy8V8Z9Xn5opoPfO9b0MR178dwfa97");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 25%;
+    height: 85%;
+    margin-right: 50px;
+    border: 5px solid #FFF;
+}
+
+
+/* Role info */
+
+.hero2 {
+    height: 90vh;
+    width: 100%;
+    padding: 70px 0;
+}
+
+
+/* Selector */
+
+.roleSelectorWrapper {
+    display: inline-block;
+    height: 100%;
+    padding-top: 28px;
+    width: 15%;
+    margin-left: 5%;
+    align-items: center;
+}
+
+.roleSelectorWrapper h2 {
+    font-size: 3.5em;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 7px;
+    color: rgb(0, 45, 115);
+    font-weight: 300;
+}
+
+.roleSelector {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 2px 5px;
+    border: 2px solid #000;
+    cursor: pointer;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.roleSelector.active {
+    background: rgba(0, 45, 115, 1);
+    color: #FFF;
+}
+
+
+/* Container */
+
+.hero2 .rolesContainer {
+    width: 70%;
+    height: 100%;
+    margin-right: 5%;
+    float: right;
+    border-radius: 30px;
+    border: 3px solid black;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero2 .rolesContainer h4 {
+    font-size: 3em;
+    background-color: rgba(0, 45, 115, 1);
+    color: #FFF;
+    padding: 20px;
+}
+
+.hero2 .rolesContainer .rolesText {
+    width: 65%;
+    line-height: 1.2;
+    display: inline-block;
+    margin: 20px 0 20px 20px;
+}
+
+.hero2 .rolesContainer .rolesImage {
+    width: 25%;
+    height: 65%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    float: right;
+    margin: 20px 20px 0 0;
+    border: 5px ridge rgb(0, 45, 115);
+}
+
+
+/* Additional information */
+
+.hero3 {
+    width: 100%;
+    background-image: url("https://www.discovery.edu.hk/dcwebsite/wp-content/uploads/2015/02/Cooking-Banner-1500x550.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    height: 60vh;
+}
+
+.hero3 .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgb(0, 45, 115);
+    background: linear-gradient(180deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.75) 25%, rgba(0, 45, 115, 0.75) 75%, rgba(0, 45, 115, 1) 100%);
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero3 .overlay .infoWrapper {
+    width: 90%;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero3 .overlay .infoWrapper .infoColumn {
+    width: 33.3%;
+    height: 100%;
+    color: #FFF;
+}
+
+.hero3 .overlay .infoWrapper .infoColumn.dividing {
+    border-left: 3px solid #FFF;
+    border-right: 3px solid #FFF;
+}
+
+.hero3 .overlay .infoWrapper .infoColumn h4 {
+    font-size: 3em;
+    font-weight: 300;
+    text-align: center;
+}
+
+.hero3 .overlay .infoWrapper .infoColumn p {
+    font-size: 1.1em;
+    text-align: center;
+    line-height: 1.3;
+    padding: 0 30px;
+}
+
+
+/* Questions */
+
+.hero4 {
+    width: 100%;
+    padding: 50px 0;
+}
+
+.hero4 .questionsContainer {
+    width: 40%;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 20px;
+    color: rgb(0, 45, 115);
+    text-align: center;
+    border: 4px solid rgb(0, 45, 115);
+}
+
+.hero4 .questionsContainer h4 {
+    font-size: 2.5em;
+    font-weight: 300;
+}
+
+.hero4 .questionsContainer a {
+    color: rgb(0, 45, 115);
+    text-decoration: underline;
+}
+
+.hero4 .questionsContainer a:hover {
+    color: rgba(0, 45, 115, 0.6);
+}
