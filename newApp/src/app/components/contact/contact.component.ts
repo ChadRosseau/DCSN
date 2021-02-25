@@ -15,7 +15,7 @@ import {
 })
 export class ContactComponent implements OnInit {
   images;
-
+  re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   form: FormGroup;
   name: FormControl = new FormControl('', [Validators.required]);
   email: FormControl = new FormControl('', [
@@ -33,7 +33,11 @@ export class ContactComponent implements OnInit {
   isLoading: boolean = false; // disable the submit button if we're loading
   responseMessage: string; // the response message to show to the user
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient, private sharedData: SharedDataService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private sharedData: SharedDataService
+  ) {
     this.form = this.formBuilder.group({
       name: this.name,
       email: this.email,
@@ -45,13 +49,16 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     this.images = {
-      hero1Background: this.sharedData.dcImages.techDuo
-    }
+      hero1Background: this.sharedData.dcImages.techDuo,
+    };
   }
 
   onSubmit() {
-    alert('This message has been sent');
-    if (this.form.status == 'VALID' && this.honeypot.value == '') {
+    if (
+      this.form.status == 'VALID' &&
+      this.honeypot.value == '' &&
+      this.re.test(this.form.get('email').value)
+    ) {
       this.form.disable(); // disable the form if it's valid to disable multiple submissions
       var formData: any = new FormData();
       formData.append('name', this.form.get('name').value);
@@ -89,7 +96,10 @@ export class ContactComponent implements OnInit {
             console.log(error);
           }
         );
+      alert('This message has been sent');
       this.form.reset();
+    } else if (!this.re.test(this.form.get('email').value)) {
+      alert('Please enter a valid email address')!;
     }
   }
 }
