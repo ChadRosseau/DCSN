@@ -17,10 +17,10 @@
 
 .hero1 {
     width: 100%;
-    background-image: url("https://www.discovery.edu.hk/dcwebsite/wp-content/uploads/2015/02/Technology-Banner-1500x550.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-position: center;
     position: relative;
     height: calc(55vh + 50px);
 }

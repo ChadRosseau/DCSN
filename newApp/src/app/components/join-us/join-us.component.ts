@@ -9,6 +9,7 @@ import { SharedDataService } from 'src/app/services/shared-data.service';
 export class JoinUsComponent implements OnInit {
   guideRole;
   roles;
+  images;
 
   constructor(public sharedData: SharedDataService) {
     this.setGuideRole('Contributors');
@@ -16,11 +17,15 @@ export class JoinUsComponent implements OnInit {
 
   ngOnInit(): void {
     this.roles = Object.keys(this.sharedData.roleData);
+
+    this.images = {
+      hero1Background: this.sharedData.dcImages.presentation,
+      hero1Image: this.sharedData.dcImages.groupwork,
+    }
   }
 
   setGuideRole(role) {
     this.guideRole = this.sharedData.roleData[role];
-    console.log(this.guideRole);
   }
 
 }

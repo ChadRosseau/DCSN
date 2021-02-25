@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { SharedDataService } from 'src/app/services/shared-data.service';
 import {
   FormBuilder,
   FormGroup,
@@ -10,9 +11,11 @@ import {
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss'],
+  styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent implements OnInit {
+  images;
+
   form: FormGroup;
   name: FormControl = new FormControl('', [Validators.required]);
   email: FormControl = new FormControl('', [
@@ -24,11 +27,13 @@ export class ContactComponent implements OnInit {
     Validators.required,
     Validators.maxLength(256),
   ]);
+
   honeypot: FormControl = new FormControl(''); // we will use this to prevent spam
   submitted: boolean = false; // show and hide the success message
   isLoading: boolean = false; // disable the submit button if we're loading
   responseMessage: string; // the response message to show to the user
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
+
+  constructor(private formBuilder: FormBuilder, private http: HttpClient, private sharedData: SharedDataService) {
     this.form = this.formBuilder.group({
       name: this.name,
       email: this.email,
@@ -37,7 +42,13 @@ export class ContactComponent implements OnInit {
       honeypot: this.honeypot,
     });
   }
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    this.images = {
+      hero1Background: this.sharedData.dcImages.techDuo
+    }
+  }
+
   onSubmit() {
     alert('This message has been sent');
     if (this.form.status == 'VALID' && this.honeypot.value == '') {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedDataService } from '../../../services/shared-data.service';
 
 @Component({
   selector: 'app-carousel',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
 
-  constructor() { }
+  constructor(public sharedData: SharedDataService) { }
 
   ngOnInit(): void {
   }
@@ -16,11 +17,10 @@ export class CarouselComponent implements OnInit {
 
 
   slides = [
-    "https://www.discovery.edu.hk/dcwebsite/wp-content/uploads/2015/02/Swimming-Banner-1500x550.jpg",
-    "https://www.discovery.edu.hk/dcwebsite/wp-content/uploads/2015/02/Technology-Banner-1500x550.jpg",
-    "https://www.discovery.edu.hk/dcwebsite/wp-content/uploads/2015/02/Athletics-Banner-1536x1024.jpg",
-    "https://www.discovery.edu.hk/dcwebsite/wp-content/uploads/2015/02/Basketball-Banner-1536x1024.jpg",
-    "https://www.discovery.edu.hk/dcwebsite/wp-content/uploads/2015/02/Cooking-Banner-1500x550.jpg"
+    this.sharedData.dcImages.map,
+    this.sharedData.dcImages.groupwork,
+    this.sharedData.dcImages.presentation,
+    this.sharedData.dcImages.techDuo
   ];
 
   slideConfig = {

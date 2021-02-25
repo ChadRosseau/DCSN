@@ -1,18 +1,18 @@
 <!-- You can now use your library component in app.component.html -->
-  <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)"
+<ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)"
     (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
     <div ngxSlickItem *ngFor="let slide of slides" class="slide">
-      <!-- <img src="{{slide}}" alt="" width="100%" style="height: 70vh"> -->
-      <div class="carouselSlide" style="background-image: url({{slide}});"></div>
+        <!-- <img src="{{slide}}" alt="" width="100%" style="height: 70vh"> -->
+        <div class="carouselSlide" [style.backgroundImage]="slide"></div>
     </div>
-  </ngx-slick-carousel>
+</ngx-slick-carousel>
 
-  <div class="carouselOverlay">
-      <h4>WELCOME TO THE</h4>
-      <div></div>
-      <h1>STUDENT NEWS</h1>
-  </div>
-  <!-- 
+<div class="carouselOverlay">
+    <h4>WELCOME TO THE</h4>
+    <div></div>
+    <h1>STUDENT NEWS</h1>
+</div>
+<!-- 
   <button (click)="addSlide()">Add</button>
   <button (click)="removeSlide()">Remove</button>
   <button (click)="slickModal.slickGoTo(2)">slickGoto 2</button>
