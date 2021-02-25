@@ -8,13 +8,14 @@ export class SharedDataService {
   public dcImages = {
     map: 'url("https://drive.google.com/uc?id=11scR8_wk_4MTPWKIcJsoBXlmDN0xK9OD")',
     groupwork: 'url("https://drive.google.com/uc?id=1paM6_4yyIAMvRMwo_ZRptOYmm7gJ2pNf")',
-    presentation: 'url("https://drive.google.com/uc?id=1dxMm_o13SSzk9G4nkV9iXKd4166gTbZv")',
+    presentation: 'url("https://drive.google.com/uc?id=1AgHEEMiEmxMfNlHOa0pAMFOkLVaKcf_7")',
     techDuo: 'url("https://drive.google.com/uc?id=1ACLirFjyNvnio1eyKSbi-855zJaMyxbG")',
     mapPointing: 'url("https://drive.google.com/uc?id=1fuEwgmlbkHLnf_TwDIeDIWQ8rNybeZoJ")',
     moderator: 'url("https://drive.google.com/uc?id=1CECRcnXcIUymxaH4qslU3dyT8zksPik-")',
     techSingle: 'url("https://drive.google.com/uc?id=1D-WrOpO2OzyLffAINmMu_PWG81WP6BU-")',
     writerDuo: 'url("https://drive.google.com/uc?id=1_zeRTYylRcDzWIIzSoyCwKfpKMl_lnmC")',
     graphics: 'url("https://drive.google.com/uc?id=1n7GgVnrmp_oFxvauDb_w5Hge_uLl4aww")',
+    graphicsPro: 'url("https://drive.google.com/uc?id=1W5SFWDW86HZPtjIwP9YI7AVgq8i6uyI_")'
   };
 
   public subcategories = {
@@ -102,7 +103,7 @@ export class SharedDataService {
                     The primary role of the Graphic Design department lies in creating artistic pieces to accompany articles or other media produced by contributors. However, there are also a variety of other areas it contributes to, including graphics for the ICT team to implement in the DCSN website, standalone content in the form of posters or banners, and promotional content such as advertising graphics for social media, the school Ding page, and more.
                     <br><br>
                     Prospective artists should possess a solid understanding of basic artistic principles and a passion for creativity. While DCSN does accept use of a variety of mediums for artistic creation, experience using digital art tools and/or editing software is favourable.`,
-      image: this.dcImages.graphics
+      image: this.dcImages.graphicsPro
     },
   }
 
