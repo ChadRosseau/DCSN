@@ -11,31 +11,55 @@
 
 .heroCell {
     width: 25%;
-    padding: 20px;
-    padding-top: -20px;
+    padding: 20px 20px 35px;
     border-radius: 10px;
-    background: rgba(0, 45, 115, 0.8);
+    background: rgb(0, 45, 115);
+    opacity: 0.8;
     color: #FFF;
     position: relative;
-    transition-duration: 0.3s;
 }
 
 .heroCell .iconContainer {
     width: 50px;
     height: 50px;
-    border: 2px solid rgba(0, 45, 115, 0.8);
+    box-shadow: 0 0 0 2pt rgb(0 45 115);
+    border: 2px solid #FFF;
     border-radius: 50%;
-    background: #FFF;
+    background: rgb(0, 45, 115);
     margin: -50px auto 0;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 58px;
+}
+
+.heroCell .iconContainer i {
+    color: #FFF;
+    font-size: 2em;
+}
+
+.heroCell h3,
+.heroCell p,
+.heroCell ul,
+.heroCell h5 {
+    opacity: 1;
 }
 
 .heroCell h3 {
     text-align: center;
     font-size: 2.5em;
+    font-weight: 100;
 }
 
 .heroCell p {
     margin-bottom: 5px;
+    font-size: 0.9em;
+    font-weight: 100;
+    line-height: 1.3em;
+}
+
+.heroCell ul {
+    padding-left: 20px;
+    font-size: 0.9em;
 }
 
 .heroCell h5 {
@@ -45,4 +69,6 @@
     width: 80%;
     outline: none;
     cursor: pointer;
+    font-size: 1.5em;
+    font-weight: 100;
 }
