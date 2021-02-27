@@ -17,9 +17,9 @@ export class CarouselComponent implements OnInit {
 
 
   slides = [
-    this.sharedData.dcImages.map,
-    this.sharedData.dcImages.groupwork,
     this.sharedData.dcImages.presentation,
+    this.sharedData.dcImages.groupwork,
+    this.sharedData.dcImages.map,
     this.sharedData.dcImages.techDuo
   ];
 

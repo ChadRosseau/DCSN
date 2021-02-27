@@ -1,6 +1,20 @@
 .heroWrapper {
     padding: 25px 0;
     width: 100%;
+    /* background-image: url("https://wallpaperaccess.com/full/198038.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; */
+}
+
+.heroWrapper h2 {
+    font-size: 4em;
+    color: rgba(0, 45, 115, 1);
+    font-weight: 400;
+    padding: 20px;
+    margin: 0;
+    text-align: center;
 }
 
 .storyWrapper {
