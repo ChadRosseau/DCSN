@@ -16,7 +16,7 @@ export class GlobalGoalsComponent implements OnInit {
   onResize(event?) {
     this.screenHeight = window.innerHeight;
     this.screenWidth = window.innerWidth;
-    this.boxSize = (this.screenWidth / 9)-2;
+    this.boxSize = (this.screenWidth / 9.5) - 2;
     console.log("window resized");
   }
 
@@ -135,11 +135,11 @@ export class GlobalGoalsComponent implements OnInit {
   ]
 
   flipDisplay(id) {
-    for(let i = 0; i < this.goals.length; i++) {
-      if(id === this.goals[i].id) {
+    for (let i = 0; i < this.goals.length; i++) {
+      if (id === this.goals[i].id) {
         if (this.goals[i].display === "block") {
           this.goals[i].display = "none";
-        } else if (this.goals[i].display === "none"){
+        } else if (this.goals[i].display === "none") {
           this.goals[i].display = "block";
         }
       }
@@ -148,7 +148,7 @@ export class GlobalGoalsComponent implements OnInit {
   }
 
   getImage(id) {
-    return "../../../assets/images/un_goals/"+id+".png";
+    return "../../../assets/images/un_goals/" + id + ".png";
   }
 
   ngOnInit(): void {

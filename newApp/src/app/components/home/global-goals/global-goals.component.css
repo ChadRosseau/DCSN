@@ -1,20 +1,35 @@
-h2 {
-    text-align: center;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 3px #000;
-    /* color: #002d73; */
-    font-weight: bold;
-    font-size: 4em;
-    margin: 40px 0;
+.hero {
+    width: 100%;
+    padding: 10px;
+    background: rgb(0, 75, 135);
+    ;
+}
+
+.textWrapper {
+    width: 36%;
+    display: inline-block;
+    padding: 40px 40px 20px;
+    color: #FFF;
+}
+
+.textWrapper h2 {
+    font-size: 3.5em;
+    font-weight: 200;
+}
+
+.textWrapper p {
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 1.3em;
 }
 
 .goalsWrapper {
-    width: 100%;
-    height: 20vw;
+    width: 64%;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 40px;
+    float: right;
+    background: #FFF;
 }
 
 .goalBox {
