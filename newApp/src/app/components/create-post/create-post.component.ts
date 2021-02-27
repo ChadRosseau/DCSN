@@ -21,7 +21,18 @@ export class CreatePostComponent implements OnInit {
     body: string
   }
 
-  constructor(public auth: AuthService, public sharedData: SharedDataService) { }
+  // public express = express;
+  // public jwt = jwt;
+  // public cord = cors;
+
+  constructor(
+    public auth: AuthService,
+    public sharedData: SharedDataService,
+    // public express: express,
+    // public jwt: jwt,
+    // public cord: cors
+  ) { }
+
 
   ngOnInit(): void {
     this.newArticle = {

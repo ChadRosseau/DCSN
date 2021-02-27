@@ -27,7 +27,6 @@ export class ContactComponent implements OnInit {
     Validators.required,
     Validators.maxLength(256),
   ]);
-
   honeypot: FormControl = new FormControl(''); // we will use this to prevent spam
   submitted: boolean = false; // show and hide the success message
   isLoading: boolean = false; // disable the submit button if we're loading
