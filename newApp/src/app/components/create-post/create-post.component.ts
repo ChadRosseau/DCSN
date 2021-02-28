@@ -22,9 +22,9 @@ export class CreatePostComponent implements OnInit {
     plugins: 'wordcount',
     placeholder: "Body text for your article here...",
     menubar: false,
-    min_height: 150
+    min_height: 450
   };
-  imageShowing;
+  public currentImage;
 
 
   constructor(public auth: AuthService, public sharedData: SharedDataService, public router: Router) { }
@@ -64,7 +64,7 @@ export class CreatePostComponent implements OnInit {
     this.editorSubject.complete();
   }
 
-  createArticle() {
+  createArticle(destination) {
 
     if (this.createArticleForm.valid) {
 
@@ -87,18 +87,29 @@ export class CreatePostComponent implements OnInit {
         thumbURL: this.createArticleForm.value.thumbURL,
         writtenDate: this.time['timestamp']
       });
-      console.log("submitted");
       this.router.navigate(['/']);
     } else {
       this.showErrors = true;
-      console.log("denied");
     }
   }
 
-  log(value) {
-    console.log(value);
-    console.log(this.createArticleForm.valid);
+  imageExists(imageURL) {
+    this.currentImage = "url('https://wpamelia.com/wp-content/uploads/2018/11/ezgif-2-6d0b072c3d3f.gif')";
+
+    fetch(imageURL, { method: 'HEAD' })
+      .then(res => {
+        if (res.status == 404) {
+          this.currentImage = "url('../../../assets/images/image-not-found.jpg')";
+        } else {
+          this.currentImage = `url('${imageURL}')`;
+        }
+      }).catch(err => {
+        if (err == 'TypeError: Failed to fetch') {
+          this.currentImage = `url('${imageURL}')`;
+        }
+      });
   }
+
 
 }
 

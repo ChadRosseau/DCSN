@@ -1,11 +1,9 @@
 <div class="wrapper">
     <h1>Create Article</h1>
-    <div class="hero" (submit)="createArticle()">
-
+    <div class="hero">
         <form [formGroup]="createArticleForm">
             <div class="categoriesContainer">
-                <select [formControl]="createArticleForm.controls.category"
-                    (change)="ngOnInit(); log(createArticleForm)"
+                <select [formControl]="createArticleForm.controls.category" (change)="ngOnInit()"
                     [style.backgroundColor]="sharedData.colors.categories[createArticleForm.value.category]">
                     <option value="" selected disabled hidden>- Select Category -</option>
                     <option [value]="category" *ngFor="let category of sharedData.categories">
@@ -51,7 +49,7 @@
                     [style.backgroundImage]="writerInfo ? 'url(' + writerInfo.photoURL + ')' : 'none'">
                 </div>
                 <p class="authorName">{{writerInfo ? writerInfo.displayName : 'Name loading...'}}</p>
-                <p class="timestamp">{{time != {} ? time.displayTime : 'DD Month YYYY'}}</p>
+                <p class="timestamp">{{time != {} ? time['displayTime'] : 'DD Month YYYY'}}</p>
             </div>
 
             <mat-form-field class="subtitle">
@@ -65,14 +63,17 @@
             </mat-form-field>
 
             <mat-form-field class="thumbURL">
-                <input [formControl]="createArticleForm.controls.thumbURL" type="url" name=""
-                    placeholder="Thumbnail Image URL: (https://www.imageurl.com)" />
-                <mat-error *ngIf="createArticleForm.controls.thumbURL.hasError('required')" [hidden]="!showErrors"
-                    class="error">
-                    Thumbnail URL is required
-                </mat-error>
-                <!-- <div class="thumbURLPreview" [style.backgroundImage]="imageExists(createArticleForm.value.thumbURL)"
-                    [style.display]="createArticleForm.value.thumbURL != '' ? 'block' : 'none'"></div> -->
+                <div class="thumbWrapper" [style.height]="createArticleForm.value.thumbURL != '' ? '300px' : '30px'">
+                    <input [formControl]="createArticleForm.controls.thumbURL" type="url" name=""
+                        placeholder="Thumbnail Image URL: (https://www.imageurl.com)"
+                        (input)="imageExists(createArticleForm.value.thumbURL)" />
+                    <mat-error *ngIf="createArticleForm.controls.thumbURL.hasError('required')" [hidden]="!showErrors"
+                        class="error">
+                        Thumbnail URL is required
+                    </mat-error>
+                    <div class="thumbURLPreview" [style.backgroundImage]="currentImage"
+                        [style.display]="createArticleForm.value.thumbURL != '' ? 'block' : 'none'"></div>
+                </div>
             </mat-form-field>
 
             <!-- <h5>Thumbnail:</h5>
@@ -82,13 +83,15 @@
     <input type="text" name="" /> -->
 
 
-
-            <h5>Body:</h5>
-            <editor [formControl]="createArticleForm.controls.body" value="Body text of the article"
+            <editor [formControl]="createArticleForm.controls.body" content="Body text of the article"
                 apiKey="yx8a3up6w2hnadnvmm5ntt1ryttjrdbddr7yjpdh4dm3kg92" [init]="tinymceInit">
             </editor>
 
-            <input type="submit">
+            <div class="buttonsWrapper">
+                <button [routerLink]="['/']">Discard Article Draft</button>
+                <button (click)="createArticle('creating')">Save Article Draft</button>
+                <button (click)="createArticle('moderating')">Submit for Moderation</button>
+            </div>
         </form>
 
     </div>
