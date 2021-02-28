@@ -12,7 +12,7 @@ import { maxLength } from './maxlength.validator';
   styleUrls: ['./create-post.component.css'],
 })
 export class CreatePostComponent implements OnInit {
-
+  currentSubcategories;
   newArticle: {
     category: string,
     subcategory: string,
@@ -31,19 +31,17 @@ export class CreatePostComponent implements OnInit {
       subtitle: "",
       body: ""
     }
-  }
-
-  public currentSubcategories = [];
-
-  setCategory(value) {
-    this.currentSubcategories = this.sharedData.subcategories[value];
+    this.currentSubcategories = [];
   }
 
   private editorSubject: Subject<any> = new AsyncSubject();
 
   public createArticleForm = new FormGroup({
+    category: new FormControl("", Validators.required),
+    subcategory: new FormControl("", Validators.required),
     title: new FormControl("", Validators.required),
     subtitle: new FormControl("", Validators.required),
+    thumbUrl: new FormControl("", Validators.required),
     body: new FormControl("", Validators.required, maxLength(this.editorSubject, 10))
   });
 
@@ -52,10 +50,7 @@ export class CreatePostComponent implements OnInit {
     this.editorSubject.complete();
   }
 
-  createArticle(category, subcategory) {
-    // Set category and subcategory info
-    this.newArticle.category = category;
-    this.newArticle.subcategory = subcategory;
+  createArticle() {
 
     // Get timestamp for operation
     const currentDate = new Date();
@@ -68,13 +63,18 @@ export class CreatePostComponent implements OnInit {
     newPush.set({
       articleId: pushId,
       author: this.auth.userKey,
-      category: this.newArticle.category,
-      subcategory: this.newArticle.subcategory,
-      title: this.newArticle.title,
-      subtitle: this.newArticle.subtitle,
-      body: this.newArticle.body,
+      category: this.createArticleForm.value.category,
+      subcategory: this.createArticleForm.value.subcategory,
+      title: this.createArticleForm.value.title,
+      subtitle: this.createArticleForm.value.subtitle,
+      body: this.createArticleForm.value.body,
+      thumbUrl: this.createArticleForm.value.thumbUrl,
       writtenDate: timestamp
     });
+  }
+
+  log(value) {
+    console.log(value);
   }
 }
 
