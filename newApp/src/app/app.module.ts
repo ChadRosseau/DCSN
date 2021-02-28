@@ -38,6 +38,7 @@ import { ArrayReversePipe } from './pipes/array-reverse.pipe';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ArchiveComponent,
     ArrayReversePipe,
     FooterComponent,
+    SafeHtmlPipe,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

@@ -1,14 +1,16 @@
 <div class="articleHero">
-    <div class="articleWrapper" [hidden]="!pageData.dataLoaded">
+    <div class="articleWrapper" [hidden]="!dataLoaded">
         <div class="categoriesContainer">
-            <div class="categoryTag" [style.backgroundColor]="pageData.categoryColor">{{article.category}}</div>
-            <div class="subcategoryTag" [style.backgroundColor]="pageData.subcategoryColor">{{article.subcategory}}
+            <div class="categoryTag" [style.backgroundColor]="sharedData.colors.categories[article.category]">
+                {{article.category}}</div>
+            <div class="subcategoryTag" [style.backgroundColor]="sharedData.colors.subcategories[article.category]">
+                {{article.subcategory}}
             </div>
         </div>
         <h2 class="title">{{article.title}}</h2>
         <hr>
         <div class="authorContainer">
-            <div class="authorPfp" style="background-image: url({{article.author.photoURL}})">
+            <div class="authorPfp" [style.backgroundImage]="'url(' + article.author.photoURL + ')'">
             </div>
             <p class="authorName">{{article.author.displayName}}</p>
             <p class="timestamp">{{article.writtenDate}}</p>
@@ -16,10 +18,11 @@
         <h4 class="subtitle">
             {{article.subtitle}}
         </h4>
-        <div class="mainImage"></div>
+        <div class="mainImage"
+            [style.backgroundImage]="article.thumbURL ? 'url(' + article.thumbURL + ')' : 'url(https://static01.nyt.com/images/2021/02/03/us/politics/03dc-repubs-1/03dc-repubs-1-jumbo.jpg?quality=90&auto=webp)'">
+        </div>
         <div class="bodyWrapper">
-            <div class="bodyText">
-                {{article.body}}
+            <div class="bodyText" [innerHTML]="article.body | safeHtml">
             </div>
         </div>
     </div>

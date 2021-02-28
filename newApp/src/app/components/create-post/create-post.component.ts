@@ -5,6 +5,7 @@ import { SharedDataService } from '../../services/shared-data.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AsyncSubject, Subject } from 'rxjs';
 import { maxLength } from './maxlength.validator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-post',
@@ -12,26 +13,38 @@ import { maxLength } from './maxlength.validator';
   styleUrls: ['./create-post.component.css'],
 })
 export class CreatePostComponent implements OnInit {
-  currentSubcategories;
-  newArticle: {
-    category: string,
-    subcategory: string,
-    title: string,
-    subtitle: string,
-    body: string
-  }
+  showErrors;
+  writerInfo;
+  time = {};
+  tinymceInit = {
+    icons: 'material',
+    skin: 'borderless',
+    plugins: 'wordcount',
+    placeholder: "Body text for your article here...",
+    menubar: false,
+    min_height: 150
+  };
+  imageShowing;
 
-  constructor(public auth: AuthService, public sharedData: SharedDataService) { }
+
+  constructor(public auth: AuthService, public sharedData: SharedDataService, public router: Router) { }
 
   ngOnInit(): void {
-    this.newArticle = {
-      category: "",
-      subcategory: "",
-      title: "",
-      subtitle: "",
-      body: ""
+    this.showErrors = false;
+    if (!this.time['currentDate']) {
+      this.time['currentDate'] = new Date();
+      this.time['timestamp'] = this.time['currentDate'].getTime();
+      this.time['displayTime'] = this.time['currentDate'].toLocaleDateString('en-GB', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+      });
     }
-    this.currentSubcategories = [];
+    if (this.auth.userKey && !this.writerInfo) {
+      this.auth.db.object<any>(`users/${this.auth.userKey}`).valueChanges().subscribe(data => {
+        this.writerInfo = data;
+      });
+    }
   }
 
   private editorSubject: Subject<any> = new AsyncSubject();
@@ -41,8 +54,9 @@ export class CreatePostComponent implements OnInit {
     subcategory: new FormControl("", Validators.required),
     title: new FormControl("", Validators.required),
     subtitle: new FormControl("", Validators.required),
-    thumbUrl: new FormControl("", Validators.required),
-    body: new FormControl("", Validators.required, maxLength(this.editorSubject, 10))
+    thumbURL: new FormControl("", Validators.required),
+    body: new FormControl("", Validators.required)
+    // body: new FormControl("", Validators.required, maxLength(this.editorSubject, 10))
   });
 
   handleEditorInit(e) {
@@ -52,30 +66,40 @@ export class CreatePostComponent implements OnInit {
 
   createArticle() {
 
-    // Get timestamp for operation
-    const currentDate = new Date();
-    const timestamp = currentDate.getTime();
+    if (this.createArticleForm.valid) {
 
-    // Upload article to db.
-    const dbArticlesRef = this.auth.db.database.ref(`articles/moderating`);
-    let newPush = dbArticlesRef.push()
-    let pushId = newPush.key;
-    newPush.set({
-      articleId: pushId,
-      author: this.auth.userKey,
-      category: this.createArticleForm.value.category,
-      subcategory: this.createArticleForm.value.subcategory,
-      title: this.createArticleForm.value.title,
-      subtitle: this.createArticleForm.value.subtitle,
-      body: this.createArticleForm.value.body,
-      thumbUrl: this.createArticleForm.value.thumbUrl,
-      writtenDate: timestamp
-    });
+      // Get timestamp for operation
+      this.time['currentDate'] = new Date();
+      this.time['timestamp'] = this.time['currentDate'].getTime();
+
+      // Upload article to db.
+      const dbArticlesRef = this.auth.db.database.ref(`articles/moderating`);
+      let newPush = dbArticlesRef.push()
+      let pushId = newPush.key;
+      newPush.set({
+        articleId: pushId,
+        author: this.auth.userKey,
+        category: this.createArticleForm.value.category,
+        subcategory: this.createArticleForm.value.subcategory,
+        title: this.createArticleForm.value.title,
+        subtitle: this.createArticleForm.value.subtitle,
+        body: this.createArticleForm.value.body,
+        thumbURL: this.createArticleForm.value.thumbURL,
+        writtenDate: this.time['timestamp']
+      });
+      console.log("submitted");
+      this.router.navigate(['/']);
+    } else {
+      this.showErrors = true;
+      console.log("denied");
+    }
   }
 
   log(value) {
     console.log(value);
+    console.log(this.createArticleForm.valid);
   }
+
 }
 
 

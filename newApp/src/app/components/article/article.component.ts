@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SharedDataService } from 'src/app/services/shared-data.service';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -10,22 +11,14 @@ import { AuthService } from '../../services/auth.service';
 export class ArticleComponent implements OnInit {
   currentArticleId: string;
   article;
-  pageData: {
-    categoryColor: string;
-    subcategoryColor: string;
-    dataLoaded: boolean;
-  }
+  dataLoaded;
 
-  constructor(private auth: AuthService, private route: ActivatedRoute) { }
+  constructor(private auth: AuthService, private route: ActivatedRoute, public sharedData: SharedDataService) { }
 
   ngOnInit(): void {
 
     // Set pagedata defaults
-    this.pageData = {
-      categoryColor: "",
-      subcategoryColor: "",
-      dataLoaded: false
-    }
+    this.dataLoaded = false;
 
     // Fetch current article id from URL.
     this.currentArticleId = this.route.snapshot.paramMap.get('articleId');
@@ -54,38 +47,11 @@ export class ArticleComponent implements OnInit {
         });
         articleData.writtenDate = articleDate;
 
-        // Code to set color of tags
-        this.setTagColors(articleData.category);
-
         // Set article data
         this.article = articleData;
-        this.pageData.dataLoaded = true;
+        this.dataLoaded = true;
       });
     });
   }
 
-  setTagColors(category) {
-    switch (category) {
-      case 'Economy':
-        this.pageData.categoryColor = 'rgba(253, 255, 156, 0.85)';
-        this.pageData.subcategoryColor = 'rgba(213, 214, 132, 0.6)';
-        break;
-      case 'Poverty':
-        this.pageData.categoryColor = 'rgba(255, 141, 141, 0.85)';
-        this.pageData.subcategoryColor = 'rgba(212, 119, 119, 0.6)';
-        break;
-      case 'Sustainability':
-        this.pageData.categoryColor = 'rgba(173, 255, 162, 0.85)';
-        this.pageData.subcategoryColor = 'rgba(128, 189, 120, 0.6)';
-        break;
-      case 'Politics':
-        this.pageData.categoryColor = 'rgba(166, 237, 255, 0.85)';
-        this.pageData.subcategoryColor = 'rgba(126, 203, 223, 0.6)';
-        break;
-      default:
-        this.pageData.categoryColor = 'rgba(180, 180, 180, 0.85)';
-        this.pageData.subcategoryColor = 'rgba(100, 100, 100, 0.6)';
-        break;
-    }
-  }
 }

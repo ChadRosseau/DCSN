@@ -64,7 +64,6 @@
     box-shadow: 2px 5px 5px;
     -webkit-transition-duration: 0.3s;
     transition-duration: 0.3s;
-    background-image: url("https://static01.nyt.com/images/2021/02/03/us/politics/03dc-repubs-1/03dc-repubs-1-jumbo.jpg?quality=90&auto=webp");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -94,13 +93,17 @@
     margin-bottom: 0;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .articlePreview .titleBar .articleBlurb {
     display: none;
     color: #FFF;
     font-size: 1.2em;
-    line-height: 1.1em;
+    line-height: 1.4em;
     font-family: 'Roboto Condensed', sans-serif;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
@@ -125,7 +128,8 @@
 
 .articlePreview .titleBar .categoryTag {
     padding: 2px 10px;
-    border-radius: 500px;
+    border-radius: 200px;
+    border: 1.75px solid rgba(0, 0, 0, 0.2);
     width: fit-content;
     opacity: 0.85;
 }
@@ -151,7 +155,10 @@
 }
 
 .articlePreview:hover .titleBar .articleBlurb {
-    display: block;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 
 .articlePreview:hover .titleBar .barBottom {

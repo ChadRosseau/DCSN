@@ -31,6 +31,7 @@
             [ngClass]="{'active': pageData.filterMenu}">FILTER</div>
         <div class="articlesWrapper">
             <div class="articlePreview" *ngFor="let article of archiveService.filteredArticles | reverse; let i = index"
+                [style.backgroundImage]="article.thumbURL ? 'url(' + article.thumbURL + ')' : 'url(https://static01.nyt.com/images/2021/02/03/us/politics/03dc-repubs-1/03dc-repubs-1-jumbo.jpg?quality=90&auto=webp)'"
                 [routerLink]="['/article', article.articleId]">
                 <div class="titleBar">
                     <p class="previewTitle">{{article.title}}</p>
