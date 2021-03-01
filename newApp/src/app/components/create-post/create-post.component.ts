@@ -73,7 +73,7 @@ export class CreatePostComponent implements OnInit {
       this.time['timestamp'] = this.time['currentDate'].getTime();
 
       // Upload article to db.
-      const dbArticlesRef = this.auth.db.database.ref(`articles/moderating`);
+      const dbArticlesRef = this.auth.db.database.ref(`articles/${destination}`);
       let newPush = dbArticlesRef.push()
       let pushId = newPush.key;
       newPush.set({
