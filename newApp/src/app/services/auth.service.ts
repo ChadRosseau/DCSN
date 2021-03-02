@@ -18,6 +18,8 @@ import { User } from './user';
 export class AuthService {
   user$: Observable<User>;
   userKey: string;
+  isStaff: boolean;
+  permission: number;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -30,6 +32,7 @@ export class AuthService {
       switchMap(user => {
         if (user) {
           this.userKey = user.uid;
+          this.checkPermission();
           return this.db.object<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
@@ -63,8 +66,19 @@ export class AuthService {
     dbUserRef.set(data);
     this.user$ = dbUserRef.valueChanges();
     this.userKey = uid;
-    console.log(this.userKey);
+    this.checkPermission();
     // return location.reload();
+  }
+
+  checkPermission() {
+    this.db.object<any>('permissions').valueChanges().subscribe(value => {
+      if (Object.keys(value).includes(this.userKey)) {
+        this.isStaff = true;
+        this.permission = value[this.userKey];
+      } else {
+        this.isStaff = false;
+      }
+    });
   }
 }
 

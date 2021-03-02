@@ -19,6 +19,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
+// Http requests
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 // Component imports
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,10 +38,13 @@ import { ArticleComponent } from './components/article/article.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ArrayReversePipe } from './pipes/array-reverse.pipe';
-
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './components/footer/footer.component';
+
+// Pipes
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+
+// Guards
+import { StaffGuard } from './guards/staff.guard';
 
 @NgModule({
   declarations: [
@@ -73,8 +79,8 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [StaffGuard],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule {}
+export class AppModule { }
