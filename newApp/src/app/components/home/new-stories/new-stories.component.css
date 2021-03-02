@@ -67,20 +67,22 @@
 
 .storiesHeroWrapper #articleBody {
     margin-top: -10px;
+    margin-bottom: 30px;
 }
 
 .storiesHeroWrapper #articleBody p,
 .storiesHeroWrapper #articleBody div {
     font-size: 1rem!important;
     line-height: 1.3rem!important;
-}
-
-.storiesHeroWrapper #articleBody div {
     display: none!important;
 }
 
-.storiesHeroWrapper #articleBody div:first-child {
-    display: block!important;
+.storiesHeroWrapper #articleBody div:first-child,
+.storiesHeroWrapper #articleBody p:first-child {
+    display: -webkit-box!important;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 
 .storiesHeroWrapper .authorContainer p {

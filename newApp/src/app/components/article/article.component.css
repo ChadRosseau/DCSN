@@ -1,57 +1,73 @@
-.articleHero {
-    margin-top: 50px;
-    width: 100%;
-    /* background-color: #afdfee; */
-}
-
 .articleWrapper {
-    width: 60%;
-    margin: 0 auto;
-    padding: 50px;
+    width: 100%;
     /* border: 1px solid black; */
     /* background-color: #d8fdfd; */
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 45, 115, 0.1) 0%, rgba(255, 255, 255, 0) 60%);
 }
 
-.mainImage {
+.headingWrapper {
     width: 100%;
-    height: 300px;
-    background-image: url("https://static01.nyt.com/images/2021/02/03/us/politics/03dc-repubs-1/03dc-repubs-1-jumbo.jpg?quality=90&auto=webp");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: rgb(0, 45, 115);
+    min-height: 40vh;
+    padding: 100px 0 5px;
+}
+
+.categoriesContainer {
+    align-items: center;
+    width: 60%;
+    margin: 20px auto;
+}
+
+.categoriesContainer div {
+    display: inline-block;
+    padding: 0 10px;
+    border-radius: 200px;
+    margin-right: 10px;
+    width: fit-content;
+    border: 1.75px solid rgba(0, 0, 0, 0.2);
+    color: #000;
 }
 
 .title {
     font-size: 2.5em;
     font-family: 'Lato', sans-serif;
-    font-weight: 600;
+    font-weight: 400;
     font-style: italic;
+    width: 60%;
+    margin: 0 auto;
+    color: #dfdfdf;
+}
+
+.headingWrapper hr {
+    margin-bottom: 0;
+    border-top: 2px solid #FFF;
+    width: 60%;
 }
 
 .authorContainer {
     height: 30px;
-    padding: 5px 0;
-    margin-bottom: 50px;
+    margin: 15px auto;
+    width: 60%;
 }
 
 .authorContainer p {
-    color: #969696;
-    line-height: 40px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 35px;
     display: inline-block;
     width: 50%;
 }
 
-.authorPfp {
+.authorContainer .authorPfp {
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    border: 1px solid #000;
+    border: 1px solid #FFF;
     background-size: cover;
     background-position: center;
     overflow: hidden;
     float: left;
-    margin-top: 5px;
-    margin-right: 20px;
+    margin: 0 20px 0 0;
 }
 
 .authorContainer .authorName {
@@ -63,24 +79,57 @@
     width: 20%;
 }
 
-.categoriesContainer {
-    align-items: center;
-}
-
-.categoriesContainer div {
-    display: inline-block;
-    padding: 0 10px;
-    border-radius: 200px;
-    margin-right: 10px;
-    width: fit-content;
-    border: 1.75px solid rgba(0, 0, 0, 0.2);
+.textWrapper {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px 5% 50px;
+    background: #FFF;
 }
 
 .subtitle {
     margin-bottom: 20px;
+    font-weight: 300;
+    font-size: 1.25rem;
+}
+
+.mainImage {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .bodyText {
     font-family: 'Noto Serif TC', serif;
     font-size: 17px;
+}
+
+.bottomWrapper {
+    margin-top: 50px;
+    border-top: 2px solid rgb(7, 27, 48);
+    min-height: 40vh;
+    width: 100%;
+    display: flex;
+}
+
+.referencesWrapper,
+.casWrapper {
+    width: 50%;
+    display: inline-block;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.casWrapper {
+    border-right: 2px solid rgb(7, 27, 48);
+}
+
+.referencesWrapper h4,
+.casWrapper h4 {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 300;
+    margin-bottom: 1rem;
 }

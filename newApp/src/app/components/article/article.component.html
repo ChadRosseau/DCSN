@@ -1,5 +1,5 @@
-<div class="articleHero">
-    <div class="articleWrapper" [hidden]="!dataLoaded">
+<div class="articleWrapper" [hidden]="!dataLoaded">
+    <div class="headingWrapper">
         <div class="categoriesContainer">
             <div class="categoryTag" [style.backgroundColor]="sharedData.colors.categories[article.category]">
                 {{article.category}}</div>
@@ -15,6 +15,8 @@
             <p class="authorName">{{article.author.displayName}}</p>
             <p class="timestamp">{{article.writtenDate}}</p>
         </div>
+    </div>
+    <div class="textWrapper">
         <h4 class="subtitle">
             {{article.subtitle}}
         </h4>
@@ -23,6 +25,16 @@
         </div>
         <div class="bodyWrapper">
             <div class="bodyText" [innerHTML]="article.body | safeHtml">
+            </div>
+        </div>
+        <div class="bottomWrapper">
+            <div class="casWrapper">
+                <h4>CE/CAS</h4>
+                <p>CE/CAS goes here</p>
+            </div>
+            <div class="referencesWrapper">
+                <h4>References</h4>
+                <p>References go here</p>
             </div>
         </div>
     </div>

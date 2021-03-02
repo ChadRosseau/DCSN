@@ -150,7 +150,7 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     position: relative;
-    height: 60vh;
+    height: 65vh;
 }
 
 .hero3 .overlay {
@@ -208,18 +208,19 @@
 }
 
 .hero4 .questionsContainer {
-    width: 40%;
+    width: 50%;
     margin: 0 auto;
     padding: 10px;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     color: rgb(0, 45, 115);
     text-align: center;
-    border: 4px solid rgb(0, 45, 115);
+    /* border: 4px solid rgb(0, 45, 115); */
 }
 
 .hero4 .questionsContainer h4 {
     font-size: 2.5em;
-    font-weight: 300;
+    font-weight: 500;
+    margin-bottom: 15px;
 }
 
 .hero4 .questionsContainer a {
