@@ -1,4 +1,4 @@
-<div class="heroWrapper">
+<div class="storiesHeroWrapper">
     <h2>LATEST ARTICLES</h2>
     <div class="storyWrapper">
         <div class="storyContainer" *ngFor="let article of recentArticles"
@@ -9,14 +9,13 @@
                     <div class="authorPfp" style="background-image: url({{article.author.photoURL}})"></div>
                     <p>{{article.author.displayName}} <br> {{article.newDate}}</p>
                 </div>
-                <p class="articleBody" [innerHTML]="article.body | safeHtml"></p>
-                <div class="categoriesContainer">
-                    <div class="categoryTag" [style.backgroundColor]="sharedData.colors.categories[article.category]">
-                        {{article.category}}</div>
-                    <div class="subcategoryTag"
-                        [style.backgroundColor]="sharedData.colors.subcategories[article.category]">
-                        {{article.subcategory}}
-                    </div>
+                <p id="articleBody" [innerHTML]="article.body | safeHtml" [style.fontSize]="'1rem!important'"></p>
+            </div>
+            <div class="categoriesContainer">
+                <div class="categoryTag" [style.backgroundColor]="sharedData.colors.categories[article.category]">
+                    {{article.category}}</div>
+                <div class="subcategoryTag" [style.backgroundColor]="sharedData.colors.subcategories[article.category]">
+                    {{article.subcategory}}
                 </div>
             </div>
             <div class="articleImage"

@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { SharedDataService } from 'src/app/services/shared-data.service';
-
+import { ViewEncapsulation } from '@angular/core'
 @Component({
   selector: 'app-new-stories',
   templateUrl: './new-stories.component.html',
-  styleUrls: ['./new-stories.component.css']
+  styleUrls: ['./new-stories.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class NewStoriesComponent implements OnInit {
   recentArticles;

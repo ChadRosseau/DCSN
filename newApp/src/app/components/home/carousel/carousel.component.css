@@ -54,20 +54,21 @@
     color: #FFF;
     letter-spacing: 0.3em;
     font-weight: 200;
+    margin: 0;
 }
 
 .carouselOverlay div {
     background-image: url("../../../../assets/images/dc_logo.png");
     background-size: cover;
     background-repeat: no-repeat;
-    margin: 0 auto;
+    margin: 0 auto 10px;
     width: 100px;
     height: 100px;
 }
 
 .carouselOverlay h1 {
-    font-size: 8em;
+    font-size: 7em;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke: 3px #FFF;
-    line-height: 0.9em;
+    line-height: 0.7em;
 }
