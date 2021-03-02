@@ -75,12 +75,17 @@
     line-height: 1.3rem!important;
 }
 
-.storiesHeroWrapper #articleBody div {
+.storiesHeroWrapper #articleBody div,
+.storiesHeroWrapper #articleBody p {
     display: none!important;
 }
 
-.storiesHeroWrapper #articleBody div:first-child {
-    display: block!important;
+.storiesHeroWrapper #articleBody div:first-child,
+.storiesHeroWrapper #articleBody p:first-child {
+    display: -webkit-box!important;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 
 .storiesHeroWrapper .authorContainer p {

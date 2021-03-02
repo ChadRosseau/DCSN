@@ -15,7 +15,8 @@ export class SharedDataService {
     techSingle: 'url("https://drive.google.com/uc?id=1D-WrOpO2OzyLffAINmMu_PWG81WP6BU-")',
     writerDuo: 'url("https://drive.google.com/uc?id=1_zeRTYylRcDzWIIzSoyCwKfpKMl_lnmC")',
     graphics: 'url("https://drive.google.com/uc?id=1n7GgVnrmp_oFxvauDb_w5Hge_uLl4aww")',
-    graphicsPro: 'url("https://drive.google.com/uc?id=1W5SFWDW86HZPtjIwP9YI7AVgq8i6uyI_")'
+    graphicsPro: 'url("https://drive.google.com/uc?id=1W5SFWDW86HZPtjIwP9YI7AVgq8i6uyI_")',
+    groupPhoto: 'url("https://drive.google.com/uc?id=1QIoxS3zyTCMjcW8_sA3lwUZGKXxhZREL")',
   };
 
   public subcategories = {
@@ -55,10 +56,10 @@ export class SharedDataService {
       Politics: 'rgba(166, 237, 255, 0.85)'
     },
     subcategories: {
-      Economy: 'rgba(213, 214, 132, 0.6)',
-      Poverty: 'rgba(212, 119, 119, 0.6)',
-      Sustainability: 'rgba(128, 189, 120, 0.6)',
-      Politics: 'rgba(126, 203, 223, 0.6)'
+      Economy: 'rgba(213, 214, 132, 0.75)',
+      Poverty: 'rgba(212, 119, 119, 0.75)',
+      Sustainability: 'rgba(128, 189, 120, 0.75)',
+      Politics: 'rgba(126, 203, 223, 0.75)'
     },
     roles: {
       Contributors: 'peachpuff',
