@@ -54,7 +54,7 @@
 
 .storiesHeroWrapper .textContainer {
     width: 60%;
-    margin: 10px 20px;
+    margin: 10px 20px 20px;
 }
 
 .storiesHeroWrapper .textContainer h3 {
@@ -67,6 +67,7 @@
 
 .storiesHeroWrapper #articleBody {
     margin-top: -10px;
+    margin-bottom: 30px;
 }
 
 .storiesHeroWrapper #articleBody p,
@@ -75,12 +76,17 @@
     line-height: 1.3rem!important;
 }
 
-.storiesHeroWrapper #articleBody div {
+.storiesHeroWrapper #articleBody div,
+.storiesHeroWrapper #articleBody p {
     display: none!important;
 }
 
-.storiesHeroWrapper #articleBody div:first-child {
-    display: block!important;
+.storiesHeroWrapper #articleBody div:first-child,
+.storiesHeroWrapper #articleBody p:first-child {
+    display: -webkit-box!important;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 
 .storiesHeroWrapper .authorContainer p {
@@ -115,7 +121,6 @@
     margin-right: 10px;
     width: fit-content;
     border: 1.75px solid rgba(0, 0, 0, 0.2);
-    font-size: 14px;
 }
 
 .storiesHeroWrapper .articleImage {
