@@ -21,6 +21,7 @@ export class JoinUsComponent implements OnInit {
     this.images = {
       hero1Background: this.sharedData.dcImages.groupPhoto,
       hero1Image: this.sharedData.dcImages.groupwork,
+      hero3Background: 'url("https://www.discovery.edu.hk/dcwebsite/wp-content/uploads/2015/02/Cooking-Banner-1500x550.jpg")'
     }
   }
 
