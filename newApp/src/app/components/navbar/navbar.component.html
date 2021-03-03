@@ -4,7 +4,8 @@
         <div class="navButtonWrapper">
             <div class="navButton" routerLink="/">HOME</div>
             <div class="navButton" routerLink="/join-us">JOIN US</div>
-            <div class="navButton" id="navArticleButton" (mouseenter)="dropDown()" [routerLink]="['/archive']">ARTICLES
+            <div class="navButton" id="navArticleButton" (mouseenter)="navOpen = true" [routerLink]="['/archive']">
+                ARTICLES
             </div>
             <div class="navButton" routerLink="/about">ABOUT</div>
             <div class="navButton" routerLink="/contact">CONTACT</div>
@@ -12,9 +13,10 @@
             <div id="loginButton" [hidden]="userObject == null" (click)="auth.signOut()">LOGOUT</div>
         </div>
     </div>
-    <div id="genreContainerWrapper" (mouseenter)="dropDown()" (mouseleave)="dropUp()">
+    <div class="genreContainerWrapper" (mouseenter)="navOpen = true" (mouseleave)="navOpen = false"
+        [ngClass]="{'openWrapper': navOpen}">
         <div class="navButtonWrapper" id="genreButtonWrapper" [routerLink]="['/archive']">
-            <div class="genreContainer" id="navGenre1">
+            <div class="genreContainer" id="navGenre1" [style.display]="navOpen ? 'inline-block' : 'none'">
                 <p class="genreButton" (click)="setFilter('Economy', 'none')">ECONOMY</p>
                 <div class="genreDropdown">
                     <a (click)="setFilter('Economy', 'Responsible Consumption')">RESPONSIBLE CONSUMPTION</a>
@@ -23,7 +25,7 @@
                     <a (click)="setFilter('Economy', 'Wealth Inequality')">WEALTH INEQUALITY</a>
                 </div>
             </div>
-            <div class="genreContainer" id="navGenre2">
+            <div class="genreContainer" id="navGenre2" [style.display]="navOpen ? 'inline-block' : 'none'">
                 <p class="genreButton" (click)="setFilter('Poverty', 'none')">POVERTY</p>
                 <div class="genreDropdown">
                     <a (click)="setFilter('Poverty', 'Hunger')">HUNGER</a>
@@ -32,7 +34,7 @@
                     <a (click)="setFilter('Poverty', 'Clean Water & Sanitation')">CLEAN WATER & SANITATION</a>
                 </div>
             </div>
-            <div class="genreContainer" id="navGenre3">
+            <div class="genreContainer" id="navGenre3" [style.display]="navOpen ? 'inline-block' : 'none'">
                 <p class="genreButton" (click)="setFilter('Sustainability', 'none')">SUSTAINABILITY</p>
                 <div class="genreDropdown">
                     <a (click)="setFilter('Sustainability', 'Clean Energy')">CLEAN ENERGY</a>
@@ -42,7 +44,7 @@
                     <a (click)="setFilter('Sustainability', 'Sustainable Cities')">SUSTAINABLE CITIES</a>
                 </div>
             </div>
-            <div class="genreContainer" id="navGenre4">
+            <div class="genreContainer" id="navGenre4" [style.display]="navOpen ? 'inline-block' : 'none'">
                 <p class="genreButton" (click)="setFilter('Politics', 'none')">POLITICS</p>
                 <div class="genreDropdown">
                     <a (click)="setFilter('Politics', 'Peace & Justice')">PEACE & JUSTICE</a>
@@ -51,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <i class="addButton far fa-plus-square" routerLink="/create-post"></i>
+        <i class="addButton far fa-plus-square" routerLink="/create-post" *ngIf="auth.isStaff"></i>
 
     </div>
 

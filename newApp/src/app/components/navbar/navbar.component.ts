@@ -10,6 +10,7 @@ import { ArchiveService } from '../../services/archive.service';
 })
 export class NavbarComponent implements OnInit {
 	userObject = null;
+	navOpen;
 
 	constructor(public auth: AuthService, public sharedData: SharedDataService, public archiveService: ArchiveService) {
 		if (auth.user$) {
@@ -22,26 +23,6 @@ export class NavbarComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
-	dropDown() {
-		let wrapper = document.getElementById("genreContainerWrapper");
-		wrapper.style.lineHeight = "1.5";
-		wrapper.style.height = "30px";
-		wrapper.style.color = "#FFF";
-		wrapper.style.overflow = "visible";
-		wrapper.style.marginTop = "0px";
-		wrapper.style.backgroundColor = "rgba(0, 113, 189, 0.85)";
-		wrapper.style.borderTop = "3px solid #FFF";
-	}
-	dropUp() {
-		let wrapper = document.getElementById("genreContainerWrapper");
-		wrapper.style.lineHeight = "0";
-		wrapper.style.height = "0px";
-		wrapper.style.color = "transparent";
-		wrapper.style.overflow = "hidden";
-		wrapper.style.marginTop = "-2px;"
-		wrapper.style.backgroundColor = "transparent";
-		wrapper.style.borderTop = "none";
-	}
 
 	setFilter(category, subcategory) {
 		this.archiveService.filters.categories = [category];

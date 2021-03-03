@@ -74,13 +74,10 @@
 .storiesHeroWrapper #articleBody div {
     font-size: 1rem!important;
     line-height: 1.3rem!important;
-<<<<<<< HEAD
 }
 
 .storiesHeroWrapper #articleBody div,
 .storiesHeroWrapper #articleBody p {
-=======
->>>>>>> fec99f8104b85298e7f35991fb41f2d0331c0b96
     display: none!important;
 }
 

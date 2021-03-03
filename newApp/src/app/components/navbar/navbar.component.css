@@ -43,16 +43,38 @@ button {
     box-shadow: -1px 5px 5px;
 }
 
-#genreContainerWrapper {
+.genreContainerWrapper {
     /* border-bottom: 2px solid #000; */
     /* Transition */
+    color: transparent;
     transition: all 0.3s ease-in-out;
     line-height: 0;
     padding: 0 1em;
-    color: transparent;
+    background-color: transparent;
     margin-top: -2px;
     height: 0px;
     line-height: 0;
+    border-top: none;
+}
+
+.openWrapper {
+    line-height: 1.5;
+    height: 30px;
+    color: #FFF;
+    overflow: visible;
+    margin-top: 0px;
+    background-color: rgba(0, 113, 189, 0.85);
+    border-top: 3px solid #FFF;
+}
+
+.closedWrapper {
+    color: transparent;
+    line-height: 0;
+    height: 0px;
+    overflow: hidden;
+    margin-top: 2px;
+    background-color: transparent;
+    border-top: none;
 }
 
 .navButtonWrapper {
@@ -193,7 +215,7 @@ button {
     transition: all 0.3s ease-in-out;
     text-align: center;
     /* Hover */
-    display: inline-block;
+    display: none;
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
