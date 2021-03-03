@@ -19,7 +19,7 @@ export class JoinUsComponent implements OnInit {
     this.roles = Object.keys(this.sharedData.roleData);
 
     this.images = {
-      hero1Background: this.sharedData.dcImages.presentation,
+      hero1Background: this.sharedData.dcImages.groupPhoto,
       hero1Image: this.sharedData.dcImages.groupwork,
     }
   }

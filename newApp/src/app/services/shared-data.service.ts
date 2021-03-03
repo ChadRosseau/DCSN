@@ -15,7 +15,8 @@ export class SharedDataService {
     techSingle: 'url("https://drive.google.com/uc?id=1D-WrOpO2OzyLffAINmMu_PWG81WP6BU-")',
     writerDuo: 'url("https://drive.google.com/uc?id=1_zeRTYylRcDzWIIzSoyCwKfpKMl_lnmC")',
     graphics: 'url("https://drive.google.com/uc?id=1n7GgVnrmp_oFxvauDb_w5Hge_uLl4aww")',
-    graphicsPro: 'url("https://drive.google.com/uc?id=1W5SFWDW86HZPtjIwP9YI7AVgq8i6uyI_")'
+    graphicsPro: 'url("https://drive.google.com/uc?id=1W5SFWDW86HZPtjIwP9YI7AVgq8i6uyI_")',
+    groupPhoto: 'url("https://drive.google.com/uc?id=1QIoxS3zyTCMjcW8_sA3lwUZGKXxhZREL")',
   };
 
   public subcategories = {
