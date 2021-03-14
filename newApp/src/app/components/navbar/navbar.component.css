@@ -22,6 +22,10 @@ button {
     background-color: transparent;
 }
 
+.disabled {
+    pointer-events: none;
+}
+
 .logo {
     background-image: url("../../../assets/images/dcsn_logo_3.png");
     background-size: contain;
@@ -46,13 +50,10 @@ button {
 #genreContainerWrapper {
     /* border-bottom: 2px solid #000; */
     /* Transition */
-    transition: all 0.3s ease-in-out;
-    line-height: 0;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
     padding: 0 1em;
-    color: transparent;
-    margin-top: -2px;
-    height: 0px;
-    line-height: 0;
+    width: 100%;
 }
 
 .navButtonWrapper {
@@ -117,6 +118,8 @@ button {
 #navArticleButton {
     font-size: 2.5em;
     font-weight: bold;
+    line-height: 1;
+    padding: 0;
     letter-spacing: 0.1em;
     -webkit-text-stroke: 1.5px #FFF;
     color: transparent;
@@ -181,6 +184,28 @@ button {
     transform: scale(1);
 }
 
+.closedNav {
+    line-height: 0;
+    height: 0px;
+    color: transparent;
+    margin-top: -2px;
+    background-color: transparent;
+    border-top: 0px solid #FFF;
+    transition-delay: 400ms;
+    pointer-events: none;
+}
+
+.openedNav {
+    line-height: 1.5;
+    height: 30px;
+    color: #FFF;
+    overflow: visible;
+    margin-top: 0px;
+    background-color: rgba(0, 113, 189, 0.85);
+    border-top: 3px solid #FFF;
+    transition-delay: 0ms;
+}
+
 #genreButtonWrapper {
     width: 70vw;
     margin-left: 14vw;
@@ -190,96 +215,48 @@ button {
 
 .genreContainer {
     width: 25%;
-    transition: all 0.3s ease-in-out;
     text-align: center;
-    /* Hover */
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
     position: relative;
-    -webkit-transition-property: color;
-    transition-property: color;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
+    z-index: 1;
 }
 
 .genreContainer:before {
     content: "";
     position: absolute;
-    z-index: -1;
+    width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    -webkit-transform: scaleY(0);
     transform: scaleY(0);
-    -webkit-transform-origin: 50% 0;
-    transform-origin: 50% 0;
-    -webkit-transition-property: transform;
-    transition-property: transform;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out;
+    transform-origin: top;
+    transition-duration: 100ms;
+    transition-delay: 300ms;
+    z-index: -1;
 }
 
-
-/* .genreContainer:hover,
-.genreContainer:focus,
-.genreContainer:active {} */
-
-.genreContainer:hover:before,
-.genreContainer:focus:before,
-.genreContainer:active:before {
-    -webkit-transform: scaleY(6.25);
-    transform: scaleY(6.25);
+.genreContainer:hover:before {
+    transform: scaleY(1);
+    transition-delay: 0ms;
 }
 
-#navGenre3:hover:before,
-#navGenre3:focus:before,
-#navGenre3:active:before {
-    -webkit-transform: scaleY(7.55);
-    transform: scaleY(7.55);
-}
-
-#navGenre4:hover:before,
-#navGenre4:focus:before,
-#navGenre4:active:before {
-    -webkit-transform: scaleY(5);
-    transform: scaleY(5);
-}
-
-#navGenre1:before {
+#navGenre1:before,
+#navGenre1 .genreDropdown {
     background: rgba(253, 255, 156, 0.85);
 }
 
-#navGenre2:before {
+#navGenre2:before,
+#navGenre2 .genreDropdown {
     background: rgba(255, 141, 141, 0.85);
 }
 
-#navGenre3:before {
+#navGenre3:before,
+#navGenre3 .genreDropdown {
     background: rgb(173, 255, 162, 0.85);
 }
 
-#navGenre4:before {
+#navGenre4:before,
+#navGenre4 .genreDropdown {
     background: rgba(166, 237, 255, 0.85);
-}
-
-#navGenre1 a:hover {
-    background-color: rgba(213, 214, 132, 0.6);
-}
-
-#navGenre2 a:hover {
-    background-color: rgba(212, 119, 119, 0.6);
-}
-
-#navGenre3 a:hover {
-    background-color: rgba(128, 189, 120, 0.6);
-}
-
-#navGenre4 a:hover {
-    background-color: rgba(126, 203, 223, 0.6);
 }
 
 .genreButton {
@@ -292,11 +269,28 @@ button {
     text-align: center;
 }
 
+.genreContainer:hover .genreButton {
+    color: #000;
+}
+
 .genreDropdown {
-    display: none;
     position: absolute;
     min-width: 100%;
+    left: 0;
+    top: 30px;
+    height: fit-content;
     z-index: 1;
+    overflow: hidden;
+    max-height: 0;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in;
+    transition-delay: 0ms;
+}
+
+.genreContainer:hover .genreDropdown {
+    max-height: 300px;
+    padding-bottom: 5px;
+    transition-delay: 100ms;
 }
 
 .genreDropdown a {
@@ -308,14 +302,27 @@ button {
     width: 100%;
     text-align: center;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
 }
 
-.genreContainer:hover .genreButton {
-    color: #000;
+.genreDropdown a::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 300ms ease-in;
 }
 
-.genreContainer:hover .genreDropdown {
-    display: block;
+.genreDropdown a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 .addButton {

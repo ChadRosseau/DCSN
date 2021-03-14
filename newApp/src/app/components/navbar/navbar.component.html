@@ -4,7 +4,9 @@
         <div class="navButtonWrapper">
             <div class="navButton" routerLink="/">HOME</div>
             <div class="navButton" routerLink="/join-us">JOIN US</div>
-            <div class="navButton" id="navArticleButton" (mouseenter)="dropDown()" [routerLink]="['/archive']">ARTICLES
+            <div class="navButton" id="navArticleButton" (mouseenter)="navOpen = true; navOpening = true"
+                (mouseleave)="navOpening = false" [routerLink]="['/archive']">
+                ARTICLES
             </div>
             <div class="navButton" routerLink="/about">ABOUT</div>
             <div class="navButton" routerLink="/contact">CONTACT</div>
@@ -12,8 +14,10 @@
             <div id="loginButton" [hidden]="userObject == null" (click)="auth.signOut()">LOGOUT</div>
         </div>
     </div>
-    <div id="genreContainerWrapper" (mouseenter)="dropDown()" (mouseleave)="dropUp()">
-        <div class="navButtonWrapper" id="genreButtonWrapper" [routerLink]="['/archive']">
+    <div id="genreContainerWrapper" (mouseenter)="navOpen = true" (mouseleave)="navOpen = false"
+        [ngClass]="{openedNav: navOpen, closedNav: !navOpen}">
+        <div class="navButtonWrapper" id="genreButtonWrapper" [routerLink]="['/archive']"
+            [ngClass]="{disabled: navOpening}">
             <div class="genreContainer" id="navGenre1">
                 <p class="genreButton" (click)="setFilter('Economy', 'none')">ECONOMY</p>
                 <div class="genreDropdown">
@@ -51,7 +55,7 @@
                 </div>
             </div>
         </div>
-        <i class="addButton far fa-plus-square" routerLink="/create-post"></i>
+        <i class="addButton far fa-plus-square" routerLink="/create-post" *ngIf="auth.isStaff"></i>
 
     </div>
 

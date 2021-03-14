@@ -56,10 +56,10 @@ export class SharedDataService {
       Politics: 'rgba(166, 237, 255, 0.85)'
     },
     subcategories: {
-      Economy: 'rgba(213, 214, 132, 0.6)',
-      Poverty: 'rgba(212, 119, 119, 0.6)',
-      Sustainability: 'rgba(128, 189, 120, 0.6)',
-      Politics: 'rgba(126, 203, 223, 0.6)'
+      Economy: 'rgba(213, 214, 132, 0.75)',
+      Poverty: 'rgba(212, 119, 119, 0.75)',
+      Sustainability: 'rgba(128, 189, 120, 0.75)',
+      Politics: 'rgba(126, 203, 223, 0.75)'
     },
     roles: {
       Contributors: 'peachpuff',
