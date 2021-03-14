@@ -50,13 +50,10 @@ button {
 #genreContainerWrapper {
     /* border-bottom: 2px solid #000; */
     /* Transition */
-    transition: all 0.3s ease-in-out;
-    line-height: 0;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
     padding: 0 1em;
-    color: transparent;
-    margin-top: -2px;
-    height: 0px;
-    line-height: 0;
+    width: 100%;
 }
 
 .navButtonWrapper {
@@ -121,6 +118,8 @@ button {
 #navArticleButton {
     font-size: 2.5em;
     font-weight: bold;
+    line-height: 1;
+    padding: 0;
     letter-spacing: 0.1em;
     -webkit-text-stroke: 1.5px #FFF;
     color: transparent;
@@ -183,6 +182,28 @@ button {
 #loginButton:active:before {
     -webkit-transform: scale(1);
     transform: scale(1);
+}
+
+.closedNav {
+    line-height: 0;
+    height: 0px;
+    color: transparent;
+    margin-top: -2px;
+    background-color: transparent;
+    border-top: 0px solid #FFF;
+    transition-delay: 400ms;
+    pointer-events: none;
+}
+
+.openedNav {
+    line-height: 1.5;
+    height: 30px;
+    color: #FFF;
+    overflow: visible;
+    margin-top: 0px;
+    background-color: rgba(0, 113, 189, 0.85);
+    border-top: 3px solid #FFF;
+    transition-delay: 0ms;
 }
 
 #genreButtonWrapper {
@@ -261,7 +282,8 @@ button {
     z-index: 1;
     overflow: hidden;
     max-height: 0;
-    transition: all 300ms ease-in;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in;
     transition-delay: 0ms;
 }
 
