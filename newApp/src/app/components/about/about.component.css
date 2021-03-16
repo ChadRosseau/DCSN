@@ -1,0 +1,259 @@
+.aboutWrapper {
+    width: 100%;
+    margin-top: 50px;
+}
+
+
+/* Hero 1 - Header */
+
+.hero1 {
+    width: 100%;
+    height: 50vh;
+    position: relative;
+    background-position: 0% 15%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.hero1 .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(196, 196, 196, 0) 0%, rgba(0, 45, 115, 0.8) 70%);
+}
+
+.hero1 .overlay h1 {
+    position: absolute;
+    left: 0;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 7em;
+    color: #FFF;
+    font-weight: 200;
+    text-shadow: 0px 12px 6px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Hero 2 - Our Mission*/
+
+.hero2 {
+    width: 100%;
+    padding: 50px;
+}
+
+.hero2 h3 {
+    font-size: 4em;
+    font-weight: 300;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 40px;
+    color: rgb(0, 45, 115);
+}
+
+.hero2 .textWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #000;
+    position: relative;
+}
+
+.hero2 .textWrapper .leftColumn,
+.hero2 .textWrapper .rightColumn {
+    width: 45%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero2 .textWrapper .section {
+    flex-grow: 1;
+    padding-bottom: 30px;
+}
+
+.hero2 .textWrapper .leftColumn .section {
+    text-align: right;
+}
+
+.hero2 .textWrapper .leftColumn {
+    margin-right: 5%;
+}
+
+.hero2 .textWrapper .rightColumn h5 {
+    font-size: 2em;
+    font-weight: 300;
+    color: rgb(0, 45, 115);
+    margin-bottom: 10px;
+}
+
+.hero2 .textWrapper .rightColumn h5 i {
+    width: 10%;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.hero2 .textWrapper .rightColumn p {
+    margin-left: calc(10% + 20px);
+}
+
+
+/* Hero 3 - Our History */
+
+.hero3 {
+    width: 100%;
+    position: relative;
+    background: rgb(0, 45, 115);
+    background: linear-gradient( 180deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.75) 25%, rgba(0, 45, 115, 0.75) 75%, rgba(0, 45, 115, 1) 100%);
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero3 .backgroundImage {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.hero3 .text {
+    width: 36%;
+    color: #FFF;
+    margin-right: 5%;
+}
+
+.hero3 .text h3 {
+    font-size: 4em;
+    font-weight: 300;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 20px;
+}
+
+.hero3 .text p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.hero3 .text .button {
+    padding: 10px 30px;
+    color: #FFF;
+    border: 2px solid #FFF;
+    border-radius: 50px;
+    text-align: center;
+    margin-top: 40px;
+    width: fit-content;
+}
+
+.hero3 .chart {
+    background-image: url("../../../assets/images/about-chart.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-grow: 1;
+}
+
+
+/* Hero 4 - Our Staff */
+
+.hero4 {
+    width: 100%;
+    height: 90vh;
+}
+
+
+/* Hero 5 - Our Process */
+
+.hero5 {
+    width: 100%;
+    position: relative;
+    background: rgb(0, 45, 115);
+    background: linear-gradient( 180deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.75) 25%, rgba(0, 45, 115, 0.75) 75%, rgba(0, 45, 115, 1) 100%);
+    padding: 50px 12%;
+    display: flex;
+    flex-direction: column;
+    color: #FFF;
+    text-align: center;
+}
+
+.hero5 .backgroundImage {
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.hero5 h3 {
+    font-size: 4em;
+    font-weight: 300;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 20px;
+}
+
+.hero5 p {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.hero5 .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero5 .button {
+    padding: 10px 15px;
+    color: #FFF;
+    border: 2px solid #FFF;
+    text-align: center;
+    margin-top: 40px;
+    min-width: 200px;
+}
+
+
+/* Hero 6 - Questions */
+
+.hero6 {
+    width: 100%;
+    padding: 50px 0;
+}
+
+.hero6 .questionsContainer {
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+    /* border-radius: 20px; */
+    color: #000;
+    text-align: center;
+    /* border: 4px solid rgb(0, 45, 115); */
+}
+
+.hero6 .questionsContainer h4 {
+    font-size: 2.5em;
+    font-weight: 500;
+    color: rgb(0, 45, 115);
+    margin-bottom: 15px;
+}
+
+.hero6 .questionsContainer a {
+    color: rgb(0, 75, 135);
+    font-weight: 500;
+}
+
+.hero6 .questionsContainer a:hover {
+    color: rgba(0, 75, 135, 0.6);
+}

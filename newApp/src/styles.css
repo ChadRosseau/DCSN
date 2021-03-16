@@ -13,6 +13,11 @@ body {
     /* background: rgba(0, 45, 115)!important; */
 }
 
+a,
+a:hover {
+    text-decoration: none!important;
+}
+
 .nav-btn {
     position: absolute;
     font-size: 7em;
