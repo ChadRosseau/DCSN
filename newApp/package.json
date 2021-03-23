@@ -26,7 +26,7 @@
     "@ngu/carousel": "^3.0.2",
     "@tinymce/tinymce-angular": "^4.2.1",
     "bootstrap": "^4.5.3",
-    "dompurify": "^2.2.6",
+    "dompurify": "^2.2.7",
     "firebase": "^8.2.0",
     "jquery": "^3.5.1",
     "ngx-slick-carousel": "^0.5.1",
