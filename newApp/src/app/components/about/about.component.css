@@ -143,14 +143,16 @@
     text-align: left;
 }
 
-.hero3 .text .button {
+.hero3 .text button {
     padding: 10px 30px;
+    background: none;
     color: #FFF;
     border: 2px solid #FFF;
     border-radius: 50px;
     text-align: center;
     margin-top: 40px;
     width: fit-content;
+    opacity: 0.65;
 }
 
 .hero3 .chart {
