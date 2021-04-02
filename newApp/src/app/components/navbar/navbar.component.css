@@ -138,6 +138,8 @@ button {
     padding: 4px 10px;
     padding-right: 11px;
     letter-spacing: 0.05em;
+    width: 96px;
+    text-align: center;
     /* Transition */
     display: inline-block;
     vertical-align: middle;

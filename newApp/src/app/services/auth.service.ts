@@ -32,7 +32,7 @@ export class AuthService {
       switchMap(user => {
         if (user) {
           this.userKey = user.uid;
-          this.checkPermission();
+          this.checkPermission(user.uid, user.email, user.displayName, user.photoURL);
           return this.db.object<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
@@ -66,15 +66,29 @@ export class AuthService {
     dbUserRef.set(data);
     this.user$ = dbUserRef.valueChanges();
     this.userKey = uid;
-    this.checkPermission();
+    this.checkPermission(uid, email, displayName, photoURL);
     // return location.reload();
   }
 
-  checkPermission() {
+  checkPermission(uid, email, displayName, photoURL) {
     this.db.object<any>('permissions').valueChanges().subscribe(value => {
       if (Object.keys(value).includes(this.userKey)) {
         this.isStaff = true;
         this.permission = value[this.userKey];
+        let dbProfileRef = this.db.database.ref(`profiles/${this.userKey}`);
+        dbProfileRef.once('value', (snapshot) => {
+          if (!snapshot.val()) {
+            dbProfileRef.set({
+              complete: false,
+              uid: uid,
+              email: email,
+              firstName: "First Name",
+              lastName: "Last Name",
+              photoURL: photoURL,
+              roles: []
+            });
+          }
+        })
       } else {
         this.isStaff = false;
       }

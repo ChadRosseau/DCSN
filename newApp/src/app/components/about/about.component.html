@@ -1,1 +1,166 @@
-<p>about works!</p>
+<div class="aboutWrapper">
+    <div class="hero1" [style.backgroundImage]="images.hero1Background">
+        <div class="overlay">
+            <h1>About Us</h1>
+        </div>
+    </div>
+    <div class="hero2">
+        <h3>Our Mission</h3>
+        <div class="textWrapper">
+            <div class="leftColumn">
+                <div class="section">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut diam lectus. Mauris malesuada
+                    feugiat sapien, sed ultrices nisl commodo id. Donec eu sagittis odio. Nullam efficitur quam sed
+                    iaculis tincidunt. Aenean dignissim libero non ornare pharetra. Donec suscipit augue et ultricies
+                    commodo.
+                </div>
+                <div class="section">
+                    Vivamus molestie odio suscipit lacinia porta. In ex nisl, volutpat ac risus ut, congue euismod
+                    tortor. Morbi tristique cursus tincidunt. Phasellus pretium odio eget enim condimentum congue. Donec
+                    vitae dolor velit. Ut eu nulla massa. Donec at ex quis sapien aliquet aliquam. Maecenas feugiat
+                    purus sed pretium condimentum.
+                </div>
+                <div class="section">
+                    Vivamus molestie odio suscipit lacinia porta. In ex nisl, volutpat ac risus ut, congue euismod
+                    tortor. Morbi tristique cursus tincidunt. Phasellus pretium odio eget enim condimentum congue. Donec
+                    vitae dolor velit. Ut eu nulla massa. Donec at ex quis sapien aliquet aliquam. Maecenas feugiat
+                    purus sed pretium condimentum.
+                </div>
+            </div>
+            <div class="rightColumn">
+                <div class="section">
+
+                    <div class="text">
+                        <h5><i class="fas fa-balance-scale-left"></i>Our Beliefs</h5>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer feugiat, ligula congue
+                            blandit porttitor, est neque molestie felis, in sagittis lorem nunc sit amet justo.
+                        </p>
+                    </div>
+                </div>
+                <div class="section">
+
+                    <div class="text">
+                        <h5><i class="far fa-user"></i>Our People</h5>
+                        <p>
+                            Nulla egestas ante ac orci efficitur cursus. Aenean ac dolor et turpis sagittis laoreet.
+                            Praesent justo felis, suscipit nec quam sit amet, commodo rutrum tellus.
+                        </p>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="text">
+                        <h5><i class="far fa-gem"></i>Our Values</h5>
+                        <p>
+                            Quisque ullamcorper feugiat enim non posuere. Fusce id augue tellus. Phasellus augue risus,
+                            dictum vitae urna sit amet, egestas efficitur sem. Curabitur a elit dui.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero3">
+        <div class="backgroundImage" [style.backgroundImage]="images.hero3Background">
+        </div>
+        <div class="text">
+            <h3>Our History</h3>
+            <p>
+                Interested in the full story of how DCSN came to be?
+            </p>
+            <p>
+                Check out our in-depth guide through the history of DCSN, from a humble Whatsapp newsletter to a
+                fully-fledged student news organization with over 30 members across 5 year levels.
+            </p>
+            <a href="">
+                <button type="button" disabled>
+                    Coming soon
+                </button>
+            </a>
+        </div>
+        <div class="chart"></div>
+    </div>
+    <div class="hero4">
+        <h3>Our Staff</h3>
+        <div class="wrapper">
+            <div class="selector">
+                <div class="header">Department</div>
+                <div class="option" (click)="setDepartment('all')" [ngClass]="{'active': currentDepartment == 'all'}">
+                    <i class="fas fa-circle-notch"></i> All
+                </div>
+                <div class="option" (click)="setDepartment('contributor')"
+                    [ngClass]="{'active': currentDepartment == 'contributor'}">
+                    <i class="far fa-edit"></i> Contributors
+                </div>
+                <div class="option" (click)="setDepartment('moderator')"
+                    [ngClass]="{'active': currentDepartment == 'moderator'}">
+                    <i class="far fa-copy"></i> Moderators
+                </div>
+                <div class="option" (click)="setDepartment('technology')"
+                    [ngClass]="{'active': currentDepartment == 'technology'}">
+                    <i class="fas fa-laptop-code"></i> Technology
+                </div>
+                <div class="option" (click)="setDepartment('graphics')"
+                    [ngClass]="{'active': currentDepartment == 'graphics'}">
+                    <i class="fas fa-palette"></i> Graphics
+                </div>
+            </div>
+            <div class="staffWrapper" id="staffWrapper">
+                <div class="profile" *ngFor="let profile of profiles"
+                    [ngClass]="{'important': checkImportant(profile.description)}"
+                    [hidden]="!checkDepartment(profile.roles)">
+                    <div class="body">
+                        <div class="pfp" [style.backgroundImage]="'url('+profile.photoURL+')'"></div>
+                        <h4>{{profile.firstName}}</h4>
+                        <h4>{{profile.lastName}}</h4>
+                        <h6>{{profile.description}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero5">
+        <div class="backgroundImage" [style.backgroundImage]="images.hero5Background"></div>
+        <h3>Our Process</h3>
+        <p>
+            DCSN has drafted an extensive network of regulatory documents which we use to ensure all of our content
+            falls within our own guidelines, along with the policies of both Discovery College and Hong Kong.
+        </p>
+        <p>
+            Check out the links below to navigate between these documents. All documents are regularly reviewed and
+            updated as the organization deems necessary.
+        </p>
+        <div class="buttons">
+            <a href="">
+                <div class="button">
+                    DCSN Operations
+                </div>
+            </a>
+            <a href="">
+                <div class="button">
+                    Writing Guidelines
+                </div>
+            </a>
+            <a href="">
+                <div class="button">
+                    Moderation Guidelines
+                </div>
+            </a>
+            <a href="">
+                <div class="button">
+                    Graphics Guidelines
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="hero6">
+        <div class="questionsContainer">
+            <h4>Questions?</h4>
+            <p>
+                Get in touch with us using our <a [routerLink]="['/contact']">contact page</a>, or by emailing us at
+                <a href="mailto:dcsn@dc.edu.hk" target="_blank">dcsn@dc.edu.hk</a>, and our team will get back to you
+                shortly.
+            </p>
+        </div>
+    </div>
+</div>
