@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { SharedDataService } from 'src/app/services/shared-data.service';
+import { SharedDataService } from '@services/shared-data.service';
 import {
   FormBuilder,
   FormGroup,
