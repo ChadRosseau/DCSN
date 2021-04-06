@@ -9,6 +9,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { HomeComponent } from './components/home/home.component';
 import { JoinUsComponent } from './components/join-us/join-us.component';
+
+// Guards
 import { StaffGuard } from './guards/staff.guard';
 
 const routes: Routes = [
@@ -22,11 +24,16 @@ const routes: Routes = [
     canActivate: [StaffGuard]
   },
   { path: 'article/:articleId', component: ArticleComponent },
-  { path: 'archive', component: ArchiveComponent }
+  { path: 'archive', component: ArchiveComponent },
+  {
+    path: 'staff',
+    loadChildren: () => import('./components/staff/staff.module').then(m => m.StaffModule)
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule],
 })
+
 export class AppRoutingModule { }
