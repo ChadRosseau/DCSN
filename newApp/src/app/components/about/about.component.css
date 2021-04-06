@@ -42,15 +42,15 @@
 
 .hero2 {
     width: 100%;
-    padding: 50px;
+    padding: 50px 0;
 }
 
 .hero2 h3 {
     font-size: 4em;
     font-weight: 300;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin-bottom: 40px;
     color: rgb(0, 45, 115);
+    margin-left: 50px;
 }
 
 .hero2 .textWrapper {
@@ -67,6 +67,7 @@
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+    padding-top: 20px;
 }
 
 .hero2 .textWrapper .section {
@@ -74,18 +75,27 @@
     padding-bottom: 30px;
 }
 
-.hero2 .textWrapper .leftColumn .section {
-    text-align: right;
-}
-
 .hero2 .textWrapper .leftColumn {
     margin-right: 5%;
+    padding-left: 50px;
+}
+
+.hero2 .textWrapper .rightColumn {
+    padding-left: 20px;
+    padding-right: 50px;
+    background-color: rgb(0, 45, 115);
+    box-shadow: -1px 5px 10px #000;
+    color: #FFF;
+    border-radius: 20px 0px 0px 20px;
+}
+
+.hero2 .textWrapper .leftColumn .section {
+    text-align: right;
 }
 
 .hero2 .textWrapper .rightColumn h5 {
     font-size: 2em;
     font-weight: 300;
-    color: rgb(0, 45, 115);
     margin-bottom: 10px;
 }
 
@@ -190,7 +200,7 @@
     display: flex;
     flex-direction: column;
     border: 4px solid rgb(0, 45, 115);
-    border-radius: 20px;
+    border-radius: 10px;
     width: 20%;
     margin-right: 5%;
     overflow: hidden;
@@ -214,6 +224,7 @@
     font-size: 1.5em;
     border-bottom: 2px solid rgb(0, 45, 115);
     cursor: pointer;
+    transition-duration: 300ms;
 }
 
 .hero4 .wrapper .selector .option i {
@@ -374,6 +385,13 @@
     text-align: center;
     margin-top: 40px;
     min-width: 200px;
+    background-color: transparent;
+    transition-duration: 300ms;
+}
+
+.hero5 .button:hover {
+    color: rgb(0, 45, 115);
+    background-color: #FFF;
 }
 
 
