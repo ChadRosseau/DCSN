@@ -11,7 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { JoinUsComponent } from './components/join-us/join-us.component';
 
 // Guards
-import { StaffGuard } from './guards/staff.guard';
+import { StaffGuard } from '@guards/staff.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,7 +27,7 @@ const routes: Routes = [
   { path: 'archive', component: ArchiveComponent },
   {
     path: 'staff',
-    loadChildren: () => import('./components/staff/staff.module').then(m => m.StaffModule)
+    loadChildren: () => import('@components/staff/staff.module').then(m => m.StaffModule)
   }
 ];
 
