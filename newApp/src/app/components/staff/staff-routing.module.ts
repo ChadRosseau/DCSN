@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router'
-import { OverviewComponent } from './overview/overview.component'
 
 // Guards
-import { StaffGuard } from '@guards/staff.guard';
+import { ChiefGuard } from '@guards/chief.guard';
+
+// Components
+import { OverviewComponent } from './overview/overview.component'
+import { PermissionsComponent } from './permissions/permissions.component';
 
 const routes: Routes = [
-    { path: '', component: OverviewComponent, canActivate: [StaffGuard] }, // default route of the module
-    // { path: 'overview', component: OverviewComponent },
+    { path: '', redirectTo: 'overview' }, // Redirect to overview page
+    { path: 'overview', component: OverviewComponent }, // default route of the module
+    { path: 'permissions', component: PermissionsComponent, canActivate: [ChiefGuard] },
 ]
 
 @NgModule({

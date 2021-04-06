@@ -27,7 +27,8 @@ const routes: Routes = [
   { path: 'archive', component: ArchiveComponent },
   {
     path: 'staff',
-    loadChildren: () => import('@components/staff/staff.module').then(m => m.StaffModule)
+    loadChildren: () => import('@components/staff/staff.module').then(m => m.StaffModule),
+    canActivateChild: [StaffGuard]
   }
 ];
 

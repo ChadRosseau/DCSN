@@ -1,7 +1,9 @@
-.router {
+.wrapper {
     width: 80%;
     margin: 200px auto;
-    display: flex;
-    justify-content: space-around;
+}
+
+table {
+    width: 100%;
     border: 1px solid #000;
 }

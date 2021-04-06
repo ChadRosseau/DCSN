@@ -4,6 +4,7 @@ import { StaffRoutingModule } from './staff-routing.module';
 
 // Staff Components
 import { OverviewComponent } from './overview/overview.component';
+import { PermissionsComponent } from './permissions/permissions.component';
 
 
 @NgModule({
@@ -11,6 +12,6 @@ import { OverviewComponent } from './overview/overview.component';
     CommonModule,
     StaffRoutingModule
   ],
-  declarations: [OverviewComponent]
+  declarations: [OverviewComponent, PermissionsComponent]
 })
 export class StaffModule { }

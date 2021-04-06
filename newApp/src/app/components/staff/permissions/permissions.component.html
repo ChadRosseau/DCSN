@@ -1,0 +1,17 @@
+<div class="wrapper">
+    <h2>Staff Permissions</h2>
+    <table>
+        <tr>
+            <th>UserID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Permission Level</th>
+        </tr>
+        <tr *ngFor="let member of staff">
+            <td>{{member.id}}</td>
+            <td>{{member.firstName}}</td>
+            <td>{{member.lastName}}</td>
+            <td>{{member.permission}}</td>
+        </tr>
+    </table>
+</div>
