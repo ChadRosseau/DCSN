@@ -58,7 +58,6 @@ export class AboutComponent implements OnInit {
           return 0;
         }
       });
-      console.log(data);
       this.profiles = data;
     });
     this.number = Array(12).fill(0);
@@ -67,7 +66,6 @@ export class AboutComponent implements OnInit {
   setDepartment(department) {
     this.currentDepartment = department;
     document.getElementById('staffWrapper').scrollTop = 0;
-    console.log(this.currentDepartment);
   }
 
   checkDepartment(array) {
