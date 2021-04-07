@@ -3,7 +3,45 @@
     margin: 200px auto;
 }
 
-table {
-    width: 100%;
-    border: 1px solid #000;
+.wrapper h2 {
+    text-align: center;
+}
+
+.permissionsTable {
+    border-collapse: collapse;
+    margin: 25px auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.permissionsTable thead tr {
+    background-color: rgb(0, 45, 115);
+    color: #ffffff;
+    text-align: left;
+}
+
+.permissionsTable th,
+.permissionsTable td {
+    padding: 12px 15px;
+}
+
+.permissionsTable .rolesCell {
+    min-width: 130px;
+}
+
+
+/* For styling of dynamically added icons please see styles.css */
+
+.permissionsTable tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.permissionsTable tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.permissionsTable tbody tr:last-of-type {
+    border-bottom: 2px solid rgb(0, 45, 115);
 }

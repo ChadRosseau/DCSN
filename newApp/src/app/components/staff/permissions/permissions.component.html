@@ -1,17 +1,23 @@
 <div class="wrapper">
     <h2>Staff Permissions</h2>
-    <table>
-        <tr>
-            <th>UserID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Permission Level</th>
-        </tr>
-        <tr *ngFor="let member of staff">
-            <td>{{member.id}}</td>
-            <td>{{member.firstName}}</td>
-            <td>{{member.lastName}}</td>
-            <td>{{member.permission}}</td>
-        </tr>
+    <table class="permissionsTable">
+        <thead>
+            <tr>
+                <th>UserID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Role(s)</th>
+                <th>Permission Level</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let member of staff">
+                <td>{{member.id}}</td>
+                <td>{{member.firstName}}</td>
+                <td>{{member.lastName}}</td>
+                <td class="rolesCell" [innerHTML]="member.rolesHTML"></td>
+                <td><input type="number" value="{{member.permission}}"></td>
+            </tr>
+        </tbody>
     </table>
 </div>
