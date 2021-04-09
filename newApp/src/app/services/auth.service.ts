@@ -32,7 +32,7 @@ export class AuthService {
       switchMap(user => {
         if (user) {
           this.userKey = user.uid;
-          this.checkPermission(user.uid, user.email, user.displayName, user.photoURL);
+          this.checkPermission();
           return this.db.object<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
@@ -44,6 +44,7 @@ export class AuthService {
   async googleSignIn() {
     const provider = new firebase.auth.GoogleAuthProvider();
     const credential = await this.afAuth.signInWithPopup(provider);
+    console.log(credential.user);
     return this.updateUserData(credential.user);
   }
 
@@ -66,29 +67,15 @@ export class AuthService {
     dbUserRef.set(data);
     this.user$ = dbUserRef.valueChanges();
     this.userKey = uid;
-    this.checkPermission(uid, email, displayName, photoURL);
+    this.checkPermission();
     // return location.reload();
   }
 
-  checkPermission(uid, email, displayName, photoURL) {
-    this.db.object<any>('permissions').valueChanges().subscribe(value => {
+  checkPermission() {
+    this.db.object<any>('profiles').valueChanges().subscribe(value => {
       if (Object.keys(value).includes(this.userKey)) {
         this.isStaff = true;
-        this.permission = value[this.userKey];
-        let dbProfileRef = this.db.database.ref(`profiles/${this.userKey}`);
-        dbProfileRef.once('value', (snapshot) => {
-          if (!snapshot.val()) {
-            dbProfileRef.set({
-              complete: false,
-              uid: uid,
-              email: email,
-              firstName: "First Name",
-              lastName: "Last Name",
-              photoURL: photoURL,
-              roles: []
-            });
-          }
-        })
+        this.permission = value[this.userKey]['permission'];
       } else {
         this.isStaff = false;
       }

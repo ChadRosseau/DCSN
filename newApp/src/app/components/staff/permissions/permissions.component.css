@@ -45,3 +45,10 @@
 .permissionsTable tbody tr:last-of-type {
     border-bottom: 2px solid rgb(0, 45, 115);
 }
+
+.buttonWrapper {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}

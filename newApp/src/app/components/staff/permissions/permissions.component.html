@@ -1,23 +1,36 @@
 <div class="wrapper">
     <h2>Staff Permissions</h2>
-    <table class="permissionsTable">
+    <table class="permissionsTable" [hidden]="!tableReady">
         <thead>
             <tr>
                 <th>UserID</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Role(s)</th>
-                <th>Permission Level</th>
+                <th colspan="2">Authority</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let member of staff">
-                <td>{{member.id}}</td>
+                <td>{{member.uid}}</td>
                 <td>{{member.firstName}}</td>
                 <td>{{member.lastName}}</td>
                 <td class="rolesCell" [innerHTML]="member.rolesHTML"></td>
-                <td><input type="number" value="{{member.permission}}"></td>
+                <td>
+                    <input type="number" [(ngModel)]="member.permission"
+                        [disabled]="member.permission < minPermission && member.permission != null"
+                        min="{{minPermission}}">
+                </td>
+                <td>
+                    <button (click)="deletePermission(member.uid)"
+                        [disabled]="member.permission < minPermission && member.permission != null">X</button>
+                </td>
             </tr>
         </tbody>
     </table>
+    <div class="buttonWrapper">
+        <button [routerLink]="['/']">Cancel</button>
+        <button (click)="makeProfile()">Make Profile</button>
+        <button (click)="setPermissions()">Save</button>
+    </div>
 </div>
