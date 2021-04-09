@@ -1,12 +1,4 @@
-.info h2 {
-    border-top: 5px solid rgb(0, 45, 115);
-    border-bottom: 5px solid rgb(0, 45, 115);
-    margin: 0;
-    padding: 20px 0;
-    text-align: center;
-    color: #FFF;
-    background: rgb(0, 75, 135);
-}
+/* Further information hero */
 
 .heroWrapper {
     margin-bottom: 2px;
