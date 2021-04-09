@@ -1,19 +1,32 @@
 .wrapper {
-    width: 80%;
-    margin: 200px auto;
+    margin-top: 100px;
 }
+
+
+/* Heading */
 
 .wrapper h2 {
     text-align: center;
+    color: rgb(0, 45, 115);
+    font-size: 5em;
+    font-weight: 400;
 }
+
+.tableContainer {
+    width: 100%;
+    padding-left: 50px;
+    margin-top: 50px;
+}
+
+
+/* Table */
 
 .permissionsTable {
     border-collapse: collapse;
-    margin: 25px auto;
     font-size: 0.9em;
     font-family: sans-serif;
-    min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    max-width: 80%;
 }
 
 .permissionsTable thead tr {
@@ -27,13 +40,6 @@
     padding: 12px 15px;
 }
 
-.permissionsTable .rolesCell {
-    min-width: 130px;
-}
-
-
-/* For styling of dynamically added icons please see styles.css */
-
 .permissionsTable tbody tr {
     border-bottom: 1px solid #dddddd;
 }
@@ -46,9 +52,156 @@
     border-bottom: 2px solid rgb(0, 45, 115);
 }
 
-.buttonWrapper {
-    width: 50%;
-    margin: 0 auto;
+.permissionsTable tbody tr.disabled {
+    opacity: 0.6;
+}
+
+.permissionsTable input {
+    background: none;
+    border: none;
+}
+
+.permissionsTable .pfpCell {
+    padding: 5px;
+}
+
+.permissionsTable .uidCell {
+    opacity: 0.5;
+    max-width: 200px;
+    overflow: auto;
+    padding-bottom: 0;
+}
+
+.permissionsTable .userPfp {
+    width: 40px;
+    height: 40px;
+    border: 2px solid navy;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.permissionsTable .rolesCell {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    min-width: 130px;
+}
+
+.permissionsTable .role {
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.permissionsTable tbody tr.disabled .role {
+    cursor: initial;
+}
+
+.permissionsTable .role.active {
+    opacity: 1;
+}
+
+.permissionsTable .roleIcon {
+    margin-right: 5px;
+    color: rgb(0, 45, 115);
+    font-size: 1.5em;
+}
+
+.permissionsTable .permissionCell .permissionWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.permissionsTable .permissionCell input {
+    width: 45%;
+    border: 2px solid rgb(0, 45, 115);
+    border-radius: 200px;
+    padding: 1px 5px;
+    text-align: right;
+}
+
+.permissionsTable .permissionCell input:focus {
+    outline: none;
+    border-color: rgb(94, 158, 214);
+}
+
+.permissionsTable .permissionCell .incomplete {
+    color: palevioletred;
+    font-size: 1.6em;
+}
+
+.permissionsTable .deleteButton {
+    color: rgb(0, 45, 115);
+    font-size: 1.6em;
+    cursor: pointer;
+}
+
+.permissionsTable tbody tr.disabled .deleteButton {
+    cursor: initial;
+}
+
+.addProfileRow td {
+    padding: 10px;
+    text-align: center;
+    background: rgb(0, 45, 115);
+}
+
+.addProfileRow .addProfileWrapper {
+    display: flex;
+}
+
+.addProfileRow td select {
+    border: 2px solid #FFF;
+    color: #FFF;
+    padding: 3px 5px;
+    background: none;
+    outline: none;
+    margin-right: 15px;
+}
+
+.addProfileRow td i {
+    font-size: 2em;
+    color: #FFF;
+}
+
+.buttonWrapper {
+    width: fit-content;
+    margin: 50px auto;
+}
+
+.buttonWrapper button {
+    background: none;
+    border: 4px solid rgb(0, 45, 115);
+    border-radius: 10px;
+    color: rgb(0, 45, 115);
+    padding: 5px 20px;
+    font-weight: 600;
+    margin: 0 10px;
+    outline: none;
+}
+
+
+/* Sidebar */
+
+.permissionsKey {
+    width: 200px;
+    border-radius: 20px;
+    top: 25vh;
+    margin-left: auto;
+    position: sticky;
+    background: rgb(0, 45, 115);
+    float: right;
+    color: #FFF;
+    padding: 10px 20px;
+}
+
+.permissionsKey h4 {
+    font-size: 2em;
+    font-weight: 300;
+    text-align: center;
+}
+
+.permissionsKey hr {
+    border-color: #FFF;
 }
