@@ -30,7 +30,6 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { JoinUsComponent } from './components/join-us/join-us.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { CreatePostComponent } from './components/create-post/create-post.component';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
 import { NewStoriesComponent } from './components/home/new-stories/new-stories.component';
 import { GlobalGoalsComponent } from './components/home/global-goals/global-goals.component';
@@ -54,7 +53,6 @@ import { StaffGuard } from './guards/staff.guard';
     AboutComponent,
     JoinUsComponent,
     ContactComponent,
-    CreatePostComponent,
     CarouselComponent,
     NewStoriesComponent,
     GlobalGoalsComponent,

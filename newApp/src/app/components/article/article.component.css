@@ -14,7 +14,6 @@
 }
 
 .categoriesContainer {
-    align-items: center;
     width: 60%;
     margin: 20px auto;
 }
@@ -84,8 +83,6 @@
     margin: 0 auto;
     padding: 20px 5% 50px;
     background: #FFF;
-    border-left: 1px solid rgb(0, 45, 115);
-    border-right: 1px solid rgb(0, 45, 115);
 }
 
 .subtitle {

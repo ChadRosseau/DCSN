@@ -53,7 +53,7 @@ export class NewStoriesComponent implements OnInit {
     }
 
     // Code to get author data
-    const authorRef = this.auth.db.database.ref(`users/${article.author}`);
+    const authorRef = this.auth.db.database.ref(`staffProfiles/${article.author}`);
     authorRef.once('value', (snapshot) => {
       let author = snapshot.val();
       article.author = author;

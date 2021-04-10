@@ -31,9 +31,15 @@ export class AuthService {
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          this.userKey = user.uid;
+          let newUid;
+          if (user.email.includes("@dc.edu.hk")) {
+            newUid = user.email.split("@")[0];
+          } else {
+            newUid = user.uid;
+          }
+          this.userKey = newUid;
           this.checkPermission();
-          return this.db.object<User>(`users/${user.uid}`).valueChanges();
+          return this.db.object<User>(`users/${newUid}`).valueChanges();
         } else {
           return of(null);
         }
@@ -44,7 +50,6 @@ export class AuthService {
   async googleSignIn() {
     const provider = new firebase.auth.GoogleAuthProvider();
     const credential = await this.afAuth.signInWithPopup(provider);
-    console.log(credential.user);
     return this.updateUserData(credential.user);
   }
 
@@ -72,7 +77,7 @@ export class AuthService {
     }
     dbUserRef.set(data);
     this.user$ = dbUserRef.valueChanges();
-    this.userKey = uid;
+    this.userKey = newUid;
     this.checkPermission();
     // return location.reload();
   }

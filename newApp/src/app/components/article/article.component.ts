@@ -23,8 +23,6 @@ export class ArticleComponent implements OnInit {
     // Fetch current article id from URL.
     this.currentArticleId = this.route.snapshot.paramMap.get('articleId');
 
-    console.log(this.currentArticleId);
-
     // Fetch data on current article from db.
     const dbPortfolioRef = this.auth.db.database.ref(`articles/moderating/${this.currentArticleId}`);
     dbPortfolioRef.once('value', (snapshot) => {
