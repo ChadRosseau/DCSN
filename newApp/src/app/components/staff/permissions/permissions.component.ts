@@ -5,8 +5,10 @@ import { map } from 'rxjs/operators';
 import { AuthService } from '@services/auth.service';
 import { SharedDataService } from '@services/shared-data.service';
 import { Router } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MergeMapSubscriber } from 'rxjs/internal/operators/mergeMap';
+
+// Interfaces
+import { User } from '@interfaces/user';
+import { StaffProfile } from '@interfaces/staff-profile';
 
 @Component({
   selector: 'app-permissions',
@@ -92,7 +94,7 @@ export class PermissionsComponent implements OnInit {
     let user = this.users[uid];
     let names = this.makeName(user.displayName);
     let description = this.makeDescription(user.roles);
-    this.staff.push({
+    let newMember: StaffProfile = {
       uid: user.uid,
       public: true,
       email: user.email,
@@ -102,7 +104,8 @@ export class PermissionsComponent implements OnInit {
       photoURL: user.photoURL,
       roles: [],
       permission: 10
-    })
+    }
+    this.staff.push(newMember);
     this.staffIds.push(uid);
   }
 

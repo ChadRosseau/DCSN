@@ -21,6 +21,7 @@
             "@guards/*": ["src/app/guards/*"],
             "@pipes/*": ["src/app/pipes/*"],
             "@services/*": ["src/app/services/*"],
+            "@interfaces/*": ["src/app/interfaces/*"],
     }
   }
 }
