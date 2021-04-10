@@ -59,17 +59,11 @@
 .permissionsTable input {
     background: none;
     border: none;
+    max-width: 100%;
 }
 
 .permissionsTable .pfpCell {
     padding: 5px;
-}
-
-.permissionsTable .uidCell {
-    opacity: 0.5;
-    max-width: 200px;
-    overflow: auto;
-    padding-bottom: 0;
 }
 
 .permissionsTable .userPfp {
@@ -80,6 +74,17 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.permissionsTable .uidCell {
+    opacity: 0.5;
+    max-width: 100px;
+    overflow: auto;
+    padding-bottom: 0;
+}
+
+.permissionsTable .nameCell {
+    max-width: 150px;
 }
 
 .permissionsTable .rolesCell {
@@ -114,7 +119,7 @@
 }
 
 .permissionsTable .permissionCell input {
-    width: 45%;
+    width: 35%;
     border: 2px solid rgb(0, 45, 115);
     border-radius: 200px;
     padding: 1px 5px;
@@ -126,9 +131,19 @@
     border-color: rgb(94, 158, 214);
 }
 
+.permissionsTable .permissionCell .publicButton {
+    color: rgb(0, 45, 115);
+    font-size: 1.6em;
+    cursor: pointer;
+}
+
 .permissionsTable .permissionCell .incomplete {
     color: palevioletred;
     font-size: 1.6em;
+}
+
+.permissionsTable .permissionCell .incomplete.hidden {
+    opacity: 0;
 }
 
 .permissionsTable .deleteButton {
@@ -137,7 +152,8 @@
     cursor: pointer;
 }
 
-.permissionsTable tbody tr.disabled .deleteButton {
+.permissionsTable tbody tr.disabled .deleteButton,
+.permissionsTable tbody tr.disabled .publicButton {
     cursor: initial;
 }
 

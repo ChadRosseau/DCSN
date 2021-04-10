@@ -6,6 +6,7 @@ import { AuthService } from '@services/auth.service';
 import { SharedDataService } from '@services/shared-data.service';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MergeMapSubscriber } from 'rxjs/internal/operators/mergeMap';
 
 @Component({
   selector: 'app-permissions',
@@ -51,20 +52,10 @@ export class PermissionsComponent implements OnInit {
     })
 
     // Fetch data on all staff.
-    this.auth.db.database.ref('profiles').once('value', (snapshot) => {
+    this.auth.db.database.ref('staffProfiles').once('value', (snapshot) => {
       this.profiles = snapshot.val();
       this.staffIds = Object.keys(this.profiles);
-      this.profilesArray = Object.values(this.profiles);
-      this.profilesArray.forEach(member => {
-        this.staff.push({
-          uid: member.uid,
-          photoURL: member.photoURL,
-          firstName: member.firstName,
-          lastName: member.lastName,
-          roles: member.roles,
-          permission: Number.isInteger(member.permission) ? member.permission : 10
-        })
-      });
+      this.staff = Object.values(this.profiles);
       this.sortTable()
     })
     this.tableReady = true;
@@ -75,13 +66,24 @@ export class PermissionsComponent implements OnInit {
     if (this.canEdit(this.staff[index].permission)) {
       if (this.staff[index].roles.includes(role)) {
         this.staff[index].roles = this.staff[index].roles.filter(e => { return e !== role });
+        this.staff[index].description = this.makeDescription(this.staff[index].roles);
       } else {
         this.staff[index].roles.push(role);
+        this.staff[index].roles = this.sortRoles(this.staff[index].roles);
+        this.staff[index].description = this.makeDescription(this.staff[index].roles);
       }
     }
   }
 
-  makeProfile(uid) {
+  togglePublic(uid) {
+    let index = this.findWithAttr(this.staff, 'uid', uid);
+    if (this.canEdit(this.staff[index].permission)) {
+      this.staff[index].public = !this.staff[index].public;
+    }
+
+  }
+
+  addStaff(uid) {
     if (!uid) {
       console.log("No user selected");
       return;
@@ -89,11 +91,14 @@ export class PermissionsComponent implements OnInit {
     this.newProfileId = "";
     let user = this.users[uid];
     let names = this.makeName(user.displayName);
+    let description = this.makeDescription(user.roles);
     this.staff.push({
       uid: user.uid,
+      public: true,
       email: user.email,
       firstName: names.firstName,
       lastName: names.lastName,
+      description: description,
       photoURL: user.photoURL,
       roles: [],
       permission: 10
@@ -141,6 +146,34 @@ export class PermissionsComponent implements OnInit {
     }
   }
 
+  makeDescription(roles) {
+    if (!roles) {
+      return "";
+    }
+    let description = "";
+    for (let i = 0; i < roles.length; i++) {
+      const element = roles[i];
+      switch (element) {
+        case 'contributor':
+          description += "Contributor";
+          break;
+        case 'moderator':
+          description += "Moderator";
+          break;
+        case 'technology':
+          description += "ICT Technician";
+          break;
+        case 'graphics':
+          description += "Graphic Designer";
+          break;
+      }
+      if (i < roles.length - 1) {
+        description += ", ";
+      }
+    }
+    return description;
+  }
+
   deleteStaff(uid) {
     let index = this.findWithAttr(this.staff, 'uid', uid);
     if (this.canEdit(this.staff[index].permission)) {
@@ -153,13 +186,12 @@ export class PermissionsComponent implements OnInit {
   }
 
   setPermissions() {
-    console.log(this.staff);
+    let newStaffObject = {};
     this.staff.forEach(staff => {
-      if (staff.permission != 100) {
-        this.profiles[staff.uid].permission = staff.permission;
-      }
+      newStaffObject[staff.uid] = staff;
     });
-    this.auth.db.database.ref('profiles').set(this.profiles);
+    console.log(newStaffObject);
+    this.auth.db.database.ref('staffProfiles').set(newStaffObject);
     this.router.navigateByUrl('/staff/overview');
   }
 
@@ -190,9 +222,13 @@ export class PermissionsComponent implements OnInit {
 
   checkMin(uid) {
     let index = this.findWithAttr(this.staff, 'uid', uid);
-    if (this.staff[index].permission < this.minPermission) {
+    if (!Number.isInteger(this.staff[index].permission)) {
+      this.staff[index].permission = 10;
+    }
+    else if (this.staff[index].permission < this.minPermission) {
       this.staff[index].permission = this.minPermission;
     }
+    this.sortTable();
   }
 
   sortTable() {
@@ -205,5 +241,15 @@ export class PermissionsComponent implements OnInit {
       }
       return 0;
     })
+  }
+
+  sortRoles(array) {
+    let presetOrder = ['contributor', 'moderator', 'technology', 'graphics']
+    var result = [],
+      i, j;
+    for (i = 0; i < presetOrder.length; i++)
+      while (-1 != (j = array.indexOf(presetOrder[i])))
+        result.push(array.splice(j, 1)[0]);
+    return result;
   }
 }

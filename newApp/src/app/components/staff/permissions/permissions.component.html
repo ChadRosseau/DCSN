@@ -2,7 +2,7 @@
     <h2>Staff Permissions</h2>
     <div class="tableContainer">
         <div class="permissionsKey">
-            <h4>KEY</h4>
+            <h4><i class="fas fa-key"></i></h4>
             <hr>
             <p>0: Superuser (ICT)</p>
             <hr>
@@ -18,11 +18,12 @@
             <thead>
                 <tr>
                     <th>PFP</th>
-                    <th>Unique User ID</th>
+                    <th>User ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
+                    <th>Description</th>
                     <th>Role(s)</th>
-                    <th>Authority</th>
+                    <th>Authority </th>
                 </tr>
             </thead>
             <tbody>
@@ -31,9 +32,14 @@
                         <div class="userPfp" [style.backgroundImage]="'url(' + member.photoURL + ')'"></div>
                     </td>
                     <td class="uidCell">{{member.uid}}</td>
-                    <td><input type="text" [(ngModel)]="member.firstName" [disabled]="!canEdit(member.permission)">
+                    <td class="nameCell"><input type="text" [(ngModel)]="member.firstName"
+                            [disabled]="!canEdit(member.permission)">
                     </td>
-                    <td><input type="text" [(ngModel)]="member.lastName" [disabled]="!canEdit(member.permission)"></td>
+                    <td class="nameCell"><input type="text" [(ngModel)]="member.lastName"
+                            [disabled]="!canEdit(member.permission)"></td>
+                    <td class="nameCell"><input type="text" [(ngModel)]="member.description"
+                            [disabled]="!canEdit(member.permission)">
+                    </td>
                     <td>
                         <div class="rolesCell">
                             <div class="role" [ngClass]="{'active': member.roles.includes('contributor')}"
@@ -58,14 +64,21 @@
                         <div class="permissionWrapper">
                             <input type="number" [(ngModel)]="member.permission"
                                 [disabled]="!canEdit(member.permission)" min="{{minPermission}}"
-                                (change)="checkMin(member.uid); sortTable()">
-                            <i class="incomplete fas fa-exclamation-triangle" [hidden]="checkValid(member)"></i>
+                                (change)="checkMin(member.uid)">
+                            <div>
+                                <i class="publicButton far fa-eye" [hidden]="!member.public"
+                                    (click)="togglePublic(member.uid)"></i>
+                                <i class="publicButton far fa-eye-slash" [hidden]="member.public"
+                                    (click)="togglePublic(member.uid)"></i>
+                            </div>
+                            <i class="incomplete fas fa-exclamation-triangle"
+                                [ngClass]="{'hidden': checkValid(member)}"></i>
                             <i class="deleteButton far fa-window-close" (click)="deleteStaff(member.uid)"></i>
                         </div>
                     </td>
                 </tr>
                 <tr class="addProfileRow">
-                    <td colspan="3"></td>
+                    <td colspan="4"></td>
                     <td colspan="2">
                         <div class="addProfileWrapper">
                             <select [(ngModel)]="newProfileId">
@@ -73,10 +86,10 @@
                                 <option *ngFor="let user of usersArray" [value]="user.uid"
                                     [hidden]="staffIds.includes(user.uid)">{{user.displayName}}</option>
                             </select>
-                            <i class="far fa-plus-square" (click)="makeProfile(newProfileId)"></i>
+                            <i class="far fa-plus-square" (click)="addStaff(newProfileId)"></i>
                         </div>
                     </td>
-                    <td colspan="1"></td>
+                    <td colspan="2"></td>
                 </tr>
             </tbody>
         </table>

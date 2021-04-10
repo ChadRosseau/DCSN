@@ -22,11 +22,11 @@ export class AboutComponent implements OnInit {
       hero5Background: this.sharedData.dcImages.groupwork,
     };
     this.currentDepartment = 'all';
-    let dbProfileRef = this.auth.db.database.ref(`profiles`);
+    let dbProfileRef = this.auth.db.database.ref(`staffProfiles`);
     dbProfileRef.once('value', (snapshot) => {
       let data = Object.values(snapshot.val());
       for (let i = 0; i < data.length; i++) {
-        if (!data[i]['complete']) {
+        if (!data[i]['public']) {
           data.splice(i, 1);
         } else {
           if (!data[i]['description'] || data[i]['description'] == 'none') {
@@ -35,30 +35,20 @@ export class AboutComponent implements OnInit {
         }
       }
       data.sort((a, b) => {
-        let aPrio = this.checkImportant(a['description']),
-          bPrio = this.checkImportant(b['description']);
-        if (aPrio && !bPrio) {
+        if (a['permission'] == 0) {
+          a['permission'] = 1.5;
+        } else if (b['permission'] == 0) {
+          b['permission'] = 1.5;
+        }
+
+        if (a['permission'] < b['permission']) {
           return -1;
-        } else if (!aPrio && bPrio) {
+        } else if (b['permission'] < a['permission']) {
           return 1;
         } else {
           return 0;
         }
       });
-      data.sort((a, b) => {
-        let aDesc = a['description'].toLowerCase(),
-          bDesc = b['description'].toLowerCase();
-        let aPrio = aDesc.includes("chief"),
-          bPrio = bDesc.includes("chief");
-        if (aPrio && !bPrio) {
-          return -1;
-        } else if (!aPrio && bPrio) {
-          return 1;
-        } else {
-          return 0;
-        }
-      });
-      console.log(data);
       this.profiles = data;
     });
     this.number = Array(12).fill(0);
@@ -78,9 +68,8 @@ export class AboutComponent implements OnInit {
     }
   }
 
-  checkImportant(description) {
-    description = description.toString().toLowerCase();
-    if (description.includes("chief") || description.includes("head")) {
+  checkImportant(permission) {
+    if (permission <= 5) {
       return true;
     } else {
       return false;

@@ -56,10 +56,16 @@ export class AuthService {
   }
 
   async updateUserData({ uid, email, displayName, photoURL }: User) {
+    let newUid;
+    if (email.includes("@dc.edu.hk")) {
+      newUid = email.split("@")[0];
+    } else {
+      newUid = uid;
+    }
     // Set user data
-    const dbUserRef = this.db.object<User>(`users/${uid}`);
+    const dbUserRef = this.db.object<User>(`users/${newUid}`);
     const data = {
-      uid: uid,
+      uid: newUid,
       email: email,
       displayName: displayName,
       photoURL: photoURL
@@ -72,7 +78,7 @@ export class AuthService {
   }
 
   checkPermission() {
-    this.db.object<any>('profiles').valueChanges().subscribe(value => {
+    this.db.object<any>('staffProfiles').valueChanges().subscribe(value => {
       if (Object.keys(value).includes(this.userKey)) {
         this.isStaff = true;
         this.permission = value[this.userKey]['permission'];
