@@ -57,8 +57,8 @@ export class CreatePostComponent implements OnInit {
   private editorSubject: Subject<any> = new AsyncSubject();
 
   loadEmptyTemplate() {
-    if (this.auth.userKey && !this.writerInfo) {
-      this.auth.db.object<any>(`staffProfiles/${this.auth.userKey}`).valueChanges().subscribe(data => {
+    if (this.auth.user.userKey && !this.writerInfo) {
+      this.auth.db.object<any>(`staffProfiles/${this.auth.user.userKey}`).valueChanges().subscribe(data => {
         this.writerInfo = data;
       });
     }

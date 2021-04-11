@@ -41,10 +41,10 @@ export class PermissionsComponent implements OnInit {
     this.newProfileId = "";
 
     // Determine permission editing power of user.
-    if (this.auth.permission > 1) {
-      this.minPermission = this.auth.permission + 1;
+    if (this.auth.staffObject.permission > 1) {
+      this.minPermission = this.auth.staffObject.permission + 1;
     } else {
-      this.minPermission = this.auth.permission;
+      this.minPermission = this.auth.staffObject.permission;
     }
 
     // Fetch data on all users of site.

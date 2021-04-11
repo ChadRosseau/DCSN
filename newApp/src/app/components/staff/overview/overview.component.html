@@ -1,4 +1,91 @@
-<div class="router">
-    <a [routerLink]="['/staff', 'create-article', '-MXvgEkASpfToZvoeZda']">Create Article</a>
-    <a [routerLink]="['/staff', 'permissions']">Permissions</a>
+<div class="wrapper">
+    <div class="sidebar">
+        <hr>
+        <a [routerLink]="['/staff', 'create-article']"
+            [hidden]="!(auth.staffObject.roles.includes('contributor') || auth.staffObject.permission <= 2)">
+            <i class="roleIcon far fa-edit"></i>
+            <hr>
+        </a>
+        <a [routerLink]="['/staff', 'create-article']"
+            [hidden]="!(auth.staffObject.roles.includes('moderator') || auth.staffObject.permission <= 2)">
+            <i class="roleIcon far fa-copy"></i>
+            <hr>
+        </a>
+        <a [routerLink]="['/staff', 'create-article']">
+            <i class="far fa-user"></i>
+            <hr>
+        </a>
+        <a [routerLink]="['/staff', 'create-article']">
+            <i class="fas fa-comment-medical"></i>
+            <hr>
+        </a>
+        <a [routerLink]="['/staff', 'permissions']" [hidden]="!(auth.staffObject.permission <= 2)">
+            <i class="fas fa-user-cog"></i>
+            <hr>
+        </a>
+    </div>
+    <div class="columnWrapper">
+        <div class="vDivider"></div>
+        <div class="articleColumn">
+            <h2>DRAFTS</h2>
+            <div class="articleWrapper">
+                <div class="article" *ngFor="let article of articles.drafts"
+                    [routerLink]="['/staff', 'create-article', article.articleId]">
+                    <h5>{{article.title}}</h5>
+                    <div class="infoContainer">
+                        <div class="authorPfp"
+                            [style.backgroundImage]="staffProfiles ? 'url('+ staffProfiles[article.author]['photoURL'] +')' : 'none'">
+                        </div>
+                        <div class="authorWrapper">
+                            <p class="authorName">
+                                {{staffProfiles[article.author]['firstName'] + ' ' + staffProfiles[article.author]['lastName']}}
+                            </p>
+                            <p>
+                                {{formatDate(article.writtenDate)}}
+                            </p>
+                        </div>
+                        <div class="statusWrapper">
+                            <div class="articleTag"
+                                [style.backgroundColor]="sharedData.colors.categories[article.category]">
+                                {{article.subcategory}}</div>
+                            <div class="statusTag" style="color: green">In progress</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="vDivider"></div>
+        <div class="articleColumn">
+            <h2>MODERATING</h2>
+            <div class="articleWrapper">
+                <div class="article" *ngFor="let article of articles.moderating">
+                    <h5>{{article.title}}</h5>
+                    <div class="infoContainer">
+                        <div class="authorPfp"
+                            [style.backgroundImage]="'url('+ staffProfiles[article.author]['photoURL'] +')'"></div>
+                        <div class="authorWrapper">
+                            <p class="authorName">
+                                {{staffProfiles[article.author]['firstName'] + ' ' + staffProfiles[article.author]['lastName']}}
+                            </p>
+                            <p>
+                                {{formatDate(article.writtenDate)}}
+                            </p>
+                        </div>
+                        <div class="statusWrapper">
+                            <div class="articleTag"
+                                [style.backgroundColor]="sharedData.colors.categories[article.category]">
+                                {{article.subcategory}}</div>
+                            <div class="statusTag" style="color: orangered">In moderation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="vDivider"></div>
+        <div class="articleColumn">
+            <h2>ON HOLD</h2>
+            <div class="articleWrapper"></div>
+        </div>
+        <div class="vDivider"></div>
+    </div>
 </div>

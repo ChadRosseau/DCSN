@@ -12,9 +12,9 @@ export class ChiefGuard implements CanActivate {
   constructor(private auth: AuthService, private router: Router) { }
 
   async canActivate(next, state) {
-    if (this.auth.permission > 1) {
+    if (this.auth.staffObject.permission > 1) {
       this.router.navigate(['/']);
-      console.log(this.auth.permission)
+      console.log(this.auth.staffObject.permission)
       console.log("access denied");
       return false;
     }

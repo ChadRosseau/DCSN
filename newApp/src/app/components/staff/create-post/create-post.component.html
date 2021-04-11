@@ -83,8 +83,8 @@
     <input type="text" name="" /> -->
 
 
-            <editor [formControl]="createArticleForm.controls.body" content="Body text of the article"
-                apiKey="yx8a3up6w2hnadnvmm5ntt1ryttjrdbddr7yjpdh4dm3kg92" [init]="tinymceInit">
+            <editor [init]="tinymceInit" [formControl]="createArticleForm.controls.body"
+                content="Body text of the article" apiKey="yx8a3up6w2hnadnvmm5ntt1ryttjrdbddr7yjpdh4dm3kg92">
             </editor>
             <div class="buttonsWrapper">
                 <button [routerLink]="['/']">Discard Article Draft</button>

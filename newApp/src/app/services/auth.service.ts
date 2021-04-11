@@ -17,7 +17,8 @@ import { User } from '@interfaces/user';
 })
 export class AuthService {
   user$: Observable<User>;
-  userKey: string;
+  user;
+  staffObject;
   isStaff: boolean;
   permission: number;
 
@@ -26,7 +27,8 @@ export class AuthService {
     public db: AngularFireDatabase,
     public router: Router
   ) {
-
+    this.user = {};
+    this.staffObject = null;
     sessionStorage.clear();
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -37,7 +39,7 @@ export class AuthService {
           } else {
             newUid = user.uid;
           }
-          this.userKey = newUid;
+          this.user.userKey = newUid;
           this.checkPermission();
           return this.db.object<User>(`users/${newUid}`).valueChanges();
         } else {
@@ -77,16 +79,20 @@ export class AuthService {
     }
     dbUserRef.set(data);
     this.user$ = dbUserRef.valueChanges();
-    this.userKey = newUid;
+    this.user$.subscribe(data => {
+      this.user = data;
+      console.log(this.user);
+    });
     this.checkPermission();
     // return location.reload();
   }
 
   checkPermission() {
-    this.db.object<any>('staffProfiles').valueChanges().subscribe(value => {
-      if (Object.keys(value).includes(this.userKey)) {
+    this.db.object<any>(`staffProfiles/${this.user.userKey}`).valueChanges().subscribe(value => {
+      if (value) {
         this.isStaff = true;
-        this.permission = value[this.userKey]['permission'];
+        console.log(value)
+        this.staffObject = value;
       } else {
         this.isStaff = false;
       }

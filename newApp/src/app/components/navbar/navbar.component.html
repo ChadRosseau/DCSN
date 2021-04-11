@@ -10,8 +10,8 @@
             </div>
             <div class="navButton" routerLink="/about">ABOUT</div>
             <div class="navButton" routerLink="/contact">CONTACT</div>
-            <div id="loginButton" [hidden]="auth.userKey != null" (click)="auth.googleSignIn()">LOGIN</div>
-            <div id="loginButton" [hidden]="auth.userKey == null" (click)="auth.signOut()">LOGOUT</div>
+            <div id="loginButton" [hidden]="userObject != null" (click)="auth.googleSignIn()">LOGIN</div>
+            <div id="loginButton" [hidden]="userObject == null" (click)="auth.signOut()">LOGOUT</div>
         </div>
     </div>
     <div id="genreContainerWrapper" (mouseenter)="navOpen = true" (mouseleave)="navOpen = false"
