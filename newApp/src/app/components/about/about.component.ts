@@ -22,7 +22,7 @@ export class AboutComponent implements OnInit {
       hero5Background: this.sharedData.dcImages.groupwork,
     };
     this.currentDepartment = 'all';
-    let dbProfileRef = this.auth.db.database.ref(`profiles`);
+    let dbProfileRef = this.auth.db.database.ref(`staffProfiles`);
     dbProfileRef.once('value', (snapshot) => {
       let data = Object.values(snapshot.val());
       for (let i = 0; i < data.length; i++) {
