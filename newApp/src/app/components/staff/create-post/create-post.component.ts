@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { SharedDataService } from '../../../services/shared-data.service';
 
@@ -13,21 +13,21 @@ import { getLocaleTimeFormat } from '@angular/common';
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.css'],
 })
-export class CreatePostComponent implements OnInit {
+export class CreatePostComponent implements OnInit, OnDestroy {
   showErrors;
-  writerInfo;
   time = {};
   tinymceInit = {
-    icons: 'material',
+    // icons: 'material',
     skin: 'borderless',
     plugins: 'wordcount',
     placeholder: "Body text for your article here...",
-    menubar: false,
-    min_height: 450
+    // menubar: false,
+    min_height: 450,
+    contextmenu: 'link image imagetools table spellchecker lists',
+    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
   };
-  currentArticleId;
 
-  currentImage;
+  currentArticleId;
   createArticleForm = new FormGroup({
     category: new FormControl("", Validators.required),
     subcategory: new FormControl("", Validators.required),
@@ -36,12 +36,18 @@ export class CreatePostComponent implements OnInit {
     thumbURL: new FormControl("", Validators.required),
     body: new FormControl("", Validators.required)
   });
+  writerInfo;
+  currentImage;
+  referencesList: Array<any>;
+  casList: Array<any>;
+
+  staffSubscription;
 
 
   constructor(public auth: AuthService, public sharedData: SharedDataService, public router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    this.writerInfo = {};
     this.currentArticleId = this.route.snapshot.paramMap.get('articleId');
     if (!this.currentArticleId) {
       this.loadEmptyTemplate();
@@ -57,11 +63,11 @@ export class CreatePostComponent implements OnInit {
   private editorSubject: Subject<any> = new AsyncSubject();
 
   loadEmptyTemplate() {
-    if (this.auth.user.userKey && !this.writerInfo) {
-      this.auth.db.object<any>(`staffProfiles/${this.auth.user.userKey}`).valueChanges().subscribe(data => {
-        this.writerInfo = data;
-      });
+    if (this.auth.staffObject) {
+      this.writerInfo = this.auth.staffObject;
     }
+    this.referencesList = [];
+    this.casList = [];
   }
 
   loadFullTemplate(articleId) {
@@ -75,11 +81,13 @@ export class CreatePostComponent implements OnInit {
           title: new FormControl(articleObject.title, Validators.required),
           subtitle: new FormControl(articleObject.subtitle, Validators.required),
           thumbURL: new FormControl(articleObject.thumbURL, Validators.required),
-          body: new FormControl(articleObject.body, Validators.required)
+          body: new FormControl(articleObject.body, Validators.required),
         });
         this.imageExists(articleObject.thumbURL);
-        this.auth.db.object<any>(`staffProfiles/${articleObject.author}`).valueChanges().subscribe(data => {
-          this.writerInfo = data;
+        this.referencesList = articleObject.references || [];
+        this.casList = articleObject.cas || [];
+        this.staffSubscription = this.auth.staff$.subscribe(data => {
+          this.writerInfo = data[articleObject.author];
         });
       } else {
         this.router.navigate(['/']);
@@ -113,6 +121,16 @@ export class CreatePostComponent implements OnInit {
       });
   }
 
+  addListing(list, value) {
+    if (value != "") {
+      this[list].push(value);
+    }
+  }
+
+  removeListing(list, index) {
+    this[list].splice(index, 1);
+  }
+
   createArticle(destination) {
 
     if (this.createArticleForm.valid) {
@@ -139,18 +157,18 @@ export class CreatePostComponent implements OnInit {
         subtitle: this.createArticleForm.value.subtitle,
         body: this.createArticleForm.value.body,
         thumbURL: this.createArticleForm.value.thumbURL,
-        writtenDate: this.time['timestamp']
+        writtenDate: this.time['timestamp'],
+        cas: this.casList,
+        references: this.referencesList
       });
       if (destination == 'moderating') {
         this.auth.db.database.ref(`articles/drafts/${this.currentArticleId}`).set(null);
       }
-      this.router.navigate(['/']);
+      this.router.navigate(['/staff', 'overview']);
     } else {
       this.showErrors = true;
     }
   }
-
-
 
   getTime() {
     if (!this.time['currentDate']) {
@@ -164,6 +182,13 @@ export class CreatePostComponent implements OnInit {
     }
   }
 
+  trackByFn(index, item) { return index; }
+
+  ngOnDestroy(): void {
+    if (this.staffSubscription) {
+      this.staffSubscription.unsubscribe();
+    }
+  }
 }
 
 

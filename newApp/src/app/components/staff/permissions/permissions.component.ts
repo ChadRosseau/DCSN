@@ -36,6 +36,7 @@ export class PermissionsComponent implements OnInit {
 
     // Clear array of staff showing, ready to be filled.
     this.staff = [];
+    this.staffIds = [];
 
     // Set creating of new profile to initially false.
     this.newProfileId = "";
@@ -65,23 +66,20 @@ export class PermissionsComponent implements OnInit {
 
   toggleRole(uid, role) {
     let index = this.findWithAttr(this.staff, 'uid', uid);
-    if (this.canEdit(this.staff[index].permission)) {
-      if (this.staff[index].roles.includes(role)) {
-        this.staff[index].roles = this.staff[index].roles.filter(e => { return e !== role });
-        this.staff[index].description = this.makeDescription(this.staff[index].roles);
-      } else {
-        this.staff[index].roles.push(role);
-        this.staff[index].roles = this.sortRoles(this.staff[index].roles);
-        this.staff[index].description = this.makeDescription(this.staff[index].roles);
-      }
+    if (this.staff[index].roles.includes(role)) {
+      this.staff[index].roles = this.staff[index].roles.filter(e => { return e !== role });
+      this.staff[index].description = this.makeDescription(this.staff[index].roles);
+    } else {
+      this.staff[index].roles.push(role);
+      this.staff[index].roles = this.sortRoles(this.staff[index].roles);
+      this.staff[index].description = this.makeDescription(this.staff[index].roles);
     }
+
   }
 
   togglePublic(uid) {
     let index = this.findWithAttr(this.staff, 'uid', uid);
-    if (this.canEdit(this.staff[index].permission)) {
-      this.staff[index].public = !this.staff[index].public;
-    }
+    this.staff[index].public = !this.staff[index].public;
 
   }
 
@@ -178,14 +176,10 @@ export class PermissionsComponent implements OnInit {
   }
 
   deleteStaff(uid) {
-    let index = this.findWithAttr(this.staff, 'uid', uid);
-    if (this.canEdit(this.staff[index].permission)) {
-      this.staff = this.staff.filter((member) => {
-        return member.uid != uid;
-      })
-      this.staffIds = this.staffIds.filter((id) => { return id != uid });
-    }
-    else { console.log("Deletion not permitted, permission level too low") }
+    this.staff = this.staff.filter((member) => {
+      return member.uid != uid;
+    })
+    this.staffIds = this.staffIds.filter((id) => { return id != uid });
   }
 
   setPermissions() {

@@ -32,13 +32,10 @@
                         <div class="userPfp" [style.backgroundImage]="'url(' + member.photoURL + ')'"></div>
                     </td>
                     <td class="uidCell">{{member.uid}}</td>
-                    <td class="nameCell"><input type="text" [(ngModel)]="member.firstName"
-                            [disabled]="!canEdit(member.permission)">
+                    <td class="nameCell"><input type="text" [(ngModel)]="member.firstName">
                     </td>
-                    <td class="nameCell"><input type="text" [(ngModel)]="member.lastName"
-                            [disabled]="!canEdit(member.permission)"></td>
-                    <td class="nameCell"><input type="text" [(ngModel)]="member.description"
-                            [disabled]="!canEdit(member.permission)">
+                    <td class="nameCell"><input type="text" [(ngModel)]="member.lastName"></td>
+                    <td class="nameCell"><input type="text" [(ngModel)]="member.description">
                     </td>
                     <td>
                         <div class="rolesCell">
@@ -62,8 +59,7 @@
                     </td>
                     <td class="permissionCell">
                         <div class="permissionWrapper">
-                            <input type="number" [(ngModel)]="member.permission"
-                                [disabled]="!canEdit(member.permission)" min="{{minPermission}}"
+                            <input type="number" [(ngModel)]="member.permission" min="{{minPermission}}"
                                 (change)="checkMin(member.uid)">
                             <div>
                                 <i class="publicButton far fa-eye" [hidden]="!member.public"

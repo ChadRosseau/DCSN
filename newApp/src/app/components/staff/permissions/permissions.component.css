@@ -54,6 +54,7 @@
 
 .permissionsTable tbody tr.disabled {
     opacity: 0.6;
+    pointer-events: none;
 }
 
 .permissionsTable input {
@@ -96,10 +97,6 @@
 .permissionsTable .role {
     opacity: 0.3;
     cursor: pointer;
-}
-
-.permissionsTable tbody tr.disabled .role {
-    cursor: initial;
 }
 
 .permissionsTable .role.active {
@@ -150,11 +147,6 @@
     color: rgb(0, 45, 115);
     font-size: 1.6em;
     cursor: pointer;
-}
-
-.permissionsTable tbody tr.disabled .deleteButton,
-.permissionsTable tbody tr.disabled .publicButton {
-    cursor: initial;
 }
 
 .addProfileRow td {

@@ -18,6 +18,7 @@ import { User } from '@interfaces/user';
 export class AuthService {
   user$: Observable<User>;
   user;
+  staff$;
   staffObject;
   isStaff: boolean;
   permission: number;
@@ -27,9 +28,9 @@ export class AuthService {
     public db: AngularFireDatabase,
     public router: Router
   ) {
+    sessionStorage.clear();
     this.user = {};
     this.staffObject = null;
-    sessionStorage.clear();
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
@@ -47,6 +48,7 @@ export class AuthService {
         }
       })
     )
+    this.staff$ = this.db.object<any>(`staffProfiles`).valueChanges();
   }
 
   async googleSignIn() {
@@ -97,6 +99,27 @@ export class AuthService {
         this.isStaff = false;
       }
     });
+  }
+
+  canEditArticle(overridePermission, role, author) {
+    if (this.staffObject.permission <= overridePermission) {
+      return true;
+    } else {
+      if (role == "contributor") {
+        if (this.staffObject.roles.includes(role) && (this.staffObject.uid == author || author == null)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else if (role == "moderator") {
+        if (this.staffObject.roles.includes(role) && (this.staffObject.uid != author || author == null)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+    return false;
   }
 }
 

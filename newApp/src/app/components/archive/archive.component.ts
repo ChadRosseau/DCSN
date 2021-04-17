@@ -1,30 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { SharedDataService } from '../../services/shared-data.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AuthService } from '@services/auth.service';
+import { SharedDataService } from '@services/shared-data.service';
+import { ArchiveService } from '@services/archive.service';
+import { ArticleService } from '@services/article.service';
 import * as _ from 'lodash';
-import { ArchiveService } from 'src/app/services/archive.service';
 
 @Component({
   selector: 'app-archive',
   templateUrl: './archive.component.html',
   styleUrls: ['./archive.component.css']
 })
-export class ArchiveComponent implements OnInit {
-  dbArticles;
+export class ArchiveComponent implements OnInit, OnDestroy {
   articlesData;
   pageData = {
     filterMenu: false
   }
 
-  constructor(private auth: AuthService, public sharedData: SharedDataService, public archiveService: ArchiveService) { }
+  articleSubscription;
+
+  constructor(private auth: AuthService, public sharedData: SharedDataService, public archiveService: ArchiveService, public articleService: ArticleService) { }
 
   ngOnInit(): void {
 
     // Fetch all articles to show, and apply filters.
-    this.dbArticles = this.auth.db.object<any>(`articles/moderating`).valueChanges().subscribe(data => {
+    this.articleSubscription = this.articleService.article$.subscribe(data => {
       if (data != null) {
         this.archiveService.articles = [];
-        this.articlesData = Object.values(data);
+        this.articlesData = Object.values(data['moderating']);
         for (let i = 0; i < this.articlesData.length; i++) {
           this.loadArrayData(i);
         }
@@ -80,5 +82,9 @@ export class ArchiveComponent implements OnInit {
   // Function used to pad dates into correct format.
   pad(n) {
     return n < 10 ? '0' + n : n;
+  }
+
+  ngOnDestroy(): void {
+    this.articleSubscription.unsubscribe();
   }
 }

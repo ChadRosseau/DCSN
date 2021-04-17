@@ -1,13 +1,11 @@
 <div class="wrapper">
     <div class="sidebar">
         <hr>
-        <a [routerLink]="['/staff', 'create-article']"
-            [hidden]="!(auth.staffObject.roles.includes('contributor') || auth.staffObject.permission <= 2)">
+        <a [routerLink]="['/staff', 'create-article']" [hidden]="!auth.canEditArticle(2, 'contributor', null)">
             <i class="roleIcon far fa-edit"></i>
             <hr>
         </a>
-        <a [routerLink]="['/staff', 'create-article']"
-            [hidden]="!(auth.staffObject.roles.includes('moderator') || auth.staffObject.permission <= 2)">
+        <a [routerLink]="['/staff', 'create-article']" [hidden]="!auth.canEditArticle(2, 'moderator', null)">
             <i class="roleIcon far fa-copy"></i>
             <hr>
         </a>
@@ -29,16 +27,17 @@
         <div class="articleColumn">
             <h2>DRAFTS</h2>
             <div class="articleWrapper">
-                <div class="article" *ngFor="let article of articles.drafts"
+                <div class="article" *ngFor="let article of articles?.drafts"
+                    [ngClass]="{'enabled': auth.canEditArticle(2, 'contributor', article.author)}"
                     [routerLink]="['/staff', 'create-article', article.articleId]">
                     <h5>{{article.title}}</h5>
                     <div class="infoContainer">
                         <div class="authorPfp"
-                            [style.backgroundImage]="staffProfiles ? 'url('+ staffProfiles[article.author]['photoURL'] +')' : 'none'">
+                            [style.backgroundImage]="staffProfiles[article.author] ? 'url('+ staffProfiles[article.author]['photoURL'] +')' : 'none'">
                         </div>
                         <div class="authorWrapper">
                             <p class="authorName">
-                                {{staffProfiles[article.author]['firstName'] + ' ' + staffProfiles[article.author]['lastName']}}
+                                {{staffProfiles[article.author] ? staffProfiles[article.author]['firstName'] + ' ' + staffProfiles[article.author]['lastName'] : ""}}
                             </p>
                             <p>
                                 {{formatDate(article.writtenDate)}}
@@ -58,14 +57,16 @@
         <div class="articleColumn">
             <h2>MODERATING</h2>
             <div class="articleWrapper">
-                <div class="article" *ngFor="let article of articles.moderating">
+                <div class="article" *ngFor="let article of articles?.moderating"
+                    [ngClass]="{'enabled': auth.canEditArticle(2, 'moderator', article.author)}">
                     <h5>{{article.title}}</h5>
                     <div class="infoContainer">
                         <div class="authorPfp"
-                            [style.backgroundImage]="'url('+ staffProfiles[article.author]['photoURL'] +')'"></div>
+                            [style.backgroundImage]="staffProfiles[article.author] ? 'url('+ staffProfiles[article.author]['photoURL'] +')' : 'none'">
+                        </div>
                         <div class="authorWrapper">
                             <p class="authorName">
-                                {{staffProfiles[article.author]['firstName'] + ' ' + staffProfiles[article.author]['lastName']}}
+                                {{staffProfiles[article.author] ? staffProfiles[article.author]['firstName'] + ' ' + staffProfiles[article.author]['lastName'] : ""}}
                             </p>
                             <p>
                                 {{formatDate(article.writtenDate)}}

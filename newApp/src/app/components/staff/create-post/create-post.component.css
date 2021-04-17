@@ -143,6 +143,74 @@ editor {
     margin: 30px 0;
 }
 
+
+/* References and CAS */
+
+.bottomWrapper {
+    margin: 50px 0;
+    border-top: 2px solid rgb(7, 27, 48);
+    min-height: 40vh;
+    width: 100%;
+    display: flex;
+}
+
+.referencesWrapper,
+.casWrapper {
+    width: 50%;
+    display: inline-block;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.casWrapper {
+    border-right: 2px solid rgb(7, 27, 48);
+}
+
+.referencesWrapper h4,
+.casWrapper h4 {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+
+.referencesWrapper h5,
+.casWrapper h5 {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.listing,
+.addListing {
+    width: 100%;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.listing input {
+    width: 80%;
+    border: none;
+}
+
+.listing i {
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+.addListing input {
+    border: 1px solid #000;
+}
+
+.addListing i {
+    font-size: 1.3em;
+    margin-right: 0;
+}
+
+
+/* Submission */
+
 .buttonsWrapper {
     width: 100%;
     display: flex;

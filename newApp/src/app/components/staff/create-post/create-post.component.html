@@ -86,6 +86,37 @@
             <editor [init]="tinymceInit" [formControl]="createArticleForm.controls.body"
                 content="Body text of the article" apiKey="yx8a3up6w2hnadnvmm5ntt1ryttjrdbddr7yjpdh4dm3kg92">
             </editor>
+
+            <div class="bottomWrapper">
+                <div class="casWrapper">
+                    <h4>CE/CAS</h4>
+                    <h5>Format: <span style="color: blue">(Organization name): (link)</span></h5>
+                    <hr>
+                    <div class="listing" *ngFor="let cas of casList; let i = index; trackBy: trackByFn">
+                        <input type="text" [(ngModel)]="casList[i]" [ngModelOptions]="{standalone: true}">
+                        <i class="fas fa-times" (click)="removeListing('casList', i)"></i>
+                    </div>
+                    <div class="addListing listing">
+                        <input type="text" #addCAS>
+                        <i class="far fa-plus-square"
+                            (click)="addListing('casList', addCAS.value); addCAS.value = ''"></i>
+                    </div>
+                </div>
+                <div class="referencesWrapper">
+                    <h4>References</h4>
+                    <h5>Format: <span style="color: blue">APA Citations</span></h5>
+                    <hr>
+                    <div class="listing" *ngFor="let reference of referencesList; let i = index; trackBy: trackByFn">
+                        <input type="text" [(ngModel)]="referencesList[i]" [ngModelOptions]="{standalone: true}">
+                        <i class="fas fa-times" (click)="removeListing('referencesList', i)"></i>
+                    </div>
+                    <div class="addListing listing">
+                        <input type="text" #addReference>
+                        <i class="far fa-plus-square"
+                            (click)="addListing('referencesList', addReference.value); addReference.value = ''"></i>
+                    </div>
+                </div>
+            </div>
             <div class="buttonsWrapper">
                 <button [routerLink]="['/']">Discard Article Draft</button>
                 <button (click)="createArticle('drafts')">Save Article Draft</button>

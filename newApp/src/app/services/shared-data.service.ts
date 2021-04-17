@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedDataService {
+
+  constructor() { }
 
   public dcImages = {
     map: 'url("https://drive.google.com/uc?id=11scR8_wk_4MTPWKIcJsoBXlmDN0xK9OD")',
@@ -135,6 +138,4 @@ export class SharedDataService {
     },
   ]
 
-
-  constructor() { }
 }

@@ -1,34 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { SharedDataService } from 'src/app/services/shared-data.service';
 import { ViewEncapsulation } from '@angular/core'
+import { ArticleService } from '@services/article.service';
 @Component({
   selector: 'app-new-stories',
   templateUrl: './new-stories.component.html',
   styleUrls: ['./new-stories.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class NewStoriesComponent implements OnInit {
+export class NewStoriesComponent implements OnInit, OnDestroy {
   recentArticles;
   articlesData;
+  subscription;
 
+  constructor(private auth: AuthService, public sharedData: SharedDataService, public articleService: ArticleService) {
+  }
 
-  constructor(private auth: AuthService, public sharedData: SharedDataService) {
+  ngOnInit(): void {
     // Fetch data on current article from db.
-    this.auth.db.object<any>(`articles/moderating`).valueChanges().subscribe(data => {
-      if (data != null) {
+    this.subscription = this.articleService.article$.subscribe(data => {
+      if (data['moderating'] != null) {
         this.recentArticles = [];
-        this.articlesData = Object.values(data);
+        this.articlesData = Object.values(data['moderating']);
         this.articlesData.sort((a, b) => (a.writtenDate < b.writtenDate) ? 1 : -1);
         for (let i = 0; i < 3; i++) {
           this.loadArrayData(i);
         }
-        console.log(this.recentArticles);
       }
     });
-  }
-
-  ngOnInit(): void {
   }
 
   // Parse custom data from db into reader-friendly versions for display.
@@ -51,7 +51,6 @@ export class NewStoriesComponent implements OnInit {
       title: true,
       background: "url('https://static01.nyt.com/images/2021/02/03/us/politics/03dc-repubs-1/03dc-repubs-1-jumbo.jpg?quality=90&auto=webp')"
     }
-
     // Code to get author data
     const authorRef = this.auth.db.database.ref(`staffProfiles/${article.author}`);
     authorRef.once('value', (snapshot) => {
@@ -66,5 +65,9 @@ export class NewStoriesComponent implements OnInit {
   // Function used to pad dates into correct format.
   pad(n) {
     return n < 10 ? '0' + n : n;
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

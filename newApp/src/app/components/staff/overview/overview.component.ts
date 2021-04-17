@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { ArticleService } from '@services/article.service';
 import { AuthService } from '@services/auth.service';
 import { SharedDataService } from '@services/shared-data.service';
 
@@ -8,26 +9,27 @@ import { SharedDataService } from '@services/shared-data.service';
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.css']
 })
-export class OverviewComponent implements OnInit {
+export class OverviewComponent implements OnInit, OnDestroy {
   articles;
   staffProfiles;
 
-  constructor(public auth: AuthService, public sharedData: SharedDataService, public router: Router) { }
+  articleSubscription;
+  staffSubscription;
+
+  constructor(public auth: AuthService, public sharedData: SharedDataService, public router: Router, public articleService: ArticleService) { }
 
   ngOnInit(): void {
-    this.articles = {
-      drafts: [],
-      moderating: []
-    };
 
-    this.auth.db.object<any>('articles').valueChanges().subscribe(articles => {
+    this.staffProfiles = {};
+
+    this.articleSubscription = this.articleService.article$.subscribe(articles => {
       this.articles = {
         drafts: Object.values(articles.drafts),
         moderating: Object.values(articles.moderating)
       }
     })
 
-    this.auth.db.object<any>('staffProfiles').valueChanges().subscribe(staff => {
+    this.staffSubscription = this.auth.staff$.subscribe(staff => {
       this.staffProfiles = staff;
     })
   }
@@ -47,5 +49,10 @@ export class OverviewComponent implements OnInit {
 
   pad(n) {
     return n < 10 ? '0' + n : n;
+  }
+
+  ngOnDestroy(): void {
+    this.articleSubscription.unsubscribe();
+    this.staffSubscription.unsubscribe();
   }
 }

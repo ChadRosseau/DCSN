@@ -1,14 +1,15 @@
 .wrapper {
     width: 100%;
     padding: 100px 0;
-    background-image: url("https://149501787.v2.pressablecdn.com/wp-content/uploads/2016/03/shutterstock_182727164.jpg");
-    background-position: center;
-    background-attachment: fixed;
+    /* background-image: url("https://149501787.v2.pressablecdn.com/wp-content/uploads/2016/03/shutterstock_182727164.jpg"); */
+    /* background-position: center; */
+    /* background-attachment: fixed; */
     position: relative;
     z-index: 0;
 }
 
-.wrapper:after {
+
+/* .wrapper:after {
     content: "";
     z-index: -1;
     position: absolute;
@@ -18,11 +19,13 @@
     left: 0;
     bottom: 0;
     right: 0;
-    /* background: rgba(0, 45, 115, 0.75); */
-    /* background: linear-gradient(90deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.75) 10%, rgba(0, 45, 115, 0.75) 90%, rgba(0, 45, 115, 1) 100%); */
-    background: rgba(7, 27, 48, 0.5);
-    background: linear-gradient(90deg, rgba(7, 27, 48, 1) 0%, rgba(7, 27, 48, 0.5) 10%, rgba(7, 27, 48, 0.5) 90%, rgba(7, 27, 48, 1) 100%);
-}
+    background: rgba(0, 45, 115, 0.75);
+    background: linear-gradient(90deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.75) 10%, rgba(0, 45, 115, 0.75) 90%, rgba(0, 45, 115, 1) 100%);
+    /* background: rgba(7, 27, 48, 0.5); */
+
+
+/* background: linear-gradient(90deg, rgba(7, 27, 48, 1) 0%, rgba(7, 27, 48, 0.5) 10%, rgba(7, 27, 48, 0.5) 90%, rgba(7, 27, 48, 1) 100%);/ 
+} */
 
 .sidebar {
     width: 100px;
@@ -31,12 +34,12 @@
     position: sticky;
     float: left;
     border-radius: 0 20px 20px 0;
-    border: 3px solid #FFF;
+    border: 3px solid rgb(0, 45, 115);
     border-left: none;
 }
 
 .sidebar a {
-    color: #FFF;
+    color: rgb(0, 45, 115);
     font-size: 2.5em;
     cursor: pointer;
     text-decoration: none;
@@ -44,7 +47,7 @@
 
 .sidebar hr {
     width: 80%;
-    border: 1px solid #FFF;
+    border: 1px solid rgb(0, 45, 115);
     margin: 0.5rem 0;
 }
 
@@ -59,7 +62,7 @@
 .columnWrapper .vDivider {
     width: 3px;
     height: 70vh;
-    background: #FFF;
+    background: rgb(0, 45, 115);
     border-radius: 200px;
 }
 
@@ -70,7 +73,7 @@
 
 .articleColumn h2 {
     text-align: center;
-    color: #FFF;
+    color: rgb(0, 45, 115);
     font-size: 3em;
     font-weight: 200;
     height: 15%;
@@ -91,19 +94,29 @@
 }
 
 .article {
+    scroll-snap-align: start;
     border-radius: 10px;
-    border: 2px solid #FFF;
+    border: 2px solid rgb(0, 45, 115);
     /* background: rgba(0, 45, 115, 0.5); */
-    background: rgba(7, 27, 48, 0.5);
+    background: none;
     padding: 5px 10px;
     margin-bottom: 20px;
+    opacity: 0.5;
+    cursor: initial;
+    pointer-events: none;
+}
+
+.article.enabled {
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: initial;
 }
 
 .article h5 {
     display: -webkit-box!important;
     overflow: hidden;
     font-size: 1em;
-    color: #FFF;
+    color: rgb(0, 45, 115);
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
@@ -119,7 +132,7 @@
 .article .infoContainer .authorPfp {
     width: 30px;
     height: 30px;
-    border: 1px solid #FFF;
+    border: 1px solid rgb(0, 45, 115);
     border-radius: 50%;
     background-size: cover;
     background-position: center;
@@ -129,7 +142,7 @@
 
 .article .infoContainer p {
     font-size: 0.8em;
-    color: #FFF;
+    color: rgb(0, 45, 115);
     margin-bottom: 0;
 }
 
@@ -156,7 +169,7 @@
     border-radius: 200px;
     width: 100%;
     font-size: 0.8em;
-    border: 1px solid #FFF;
+    border: 1px solid rgb(0, 45, 115);
     display: -webkit-box!important;
     overflow: hidden;
     -webkit-line-clamp: 1;
@@ -170,5 +183,4 @@
 
 .article .infoContainer .statusWrapper .statusTag {
     font-weight: 700;
-    background: #FFF;
 }
