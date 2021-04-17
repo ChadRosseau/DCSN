@@ -20,8 +20,7 @@
         <h4 class="subtitle">
             {{article.subtitle}}
         </h4>
-        <div class="mainImage"
-            [style.backgroundImage]="article.thumbURL ? 'url(' + article.thumbURL + ')' : 'url(https://static01.nyt.com/images/2021/02/03/us/politics/03dc-repubs-1/03dc-repubs-1-jumbo.jpg?quality=90&auto=webp)'">
+        <div class="mainImage" [style.backgroundImage]="'url(' + article.thumbURL + ')'">
         </div>
         <div class="bodyWrapper">
             <div class="bodyText" [innerHTML]="article.body | safeHtml">
@@ -30,11 +29,13 @@
         <div class="bottomWrapper">
             <div class="casWrapper">
                 <h4>CE/CAS</h4>
-                <p>CE/CAS goes here</p>
+                <hr>
+                <p *ngFor="let cas of article.cas">{{cas}}</p>
             </div>
             <div class="referencesWrapper">
                 <h4>References</h4>
-                <p>References go here</p>
+                <hr>
+                <p *ngFor="let reference of article.references">{{reference}}</p>
             </div>
         </div>
     </div>

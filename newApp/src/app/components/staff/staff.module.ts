@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../material.module';
 
 // Tiny Text Editor
-import { EditorModule } from '@tinymce/tinymce-angular';
+import { EditorModule, TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
 
 // Routing
 import { StaffRoutingModule } from './staff-routing.module';
@@ -26,5 +26,6 @@ import { CreatePostComponent } from './create-post/create-post.component';
   ],
   declarations: [OverviewComponent, PermissionsComponent, CreatePostComponent,],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [{ provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }]
 })
 export class StaffModule { }

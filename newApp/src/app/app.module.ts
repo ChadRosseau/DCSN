@@ -10,9 +10,6 @@ import { environment } from '../environments/environment';
 // Carousel
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
-// Tiny Text Editor
-import { EditorModule } from '@tinymce/tinymce-angular';
-
 // Firebase imports
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -69,7 +66,6 @@ import { StaffGuard } from './guards/staff.guard';
     AngularFireStorageModule, // storage
     SlickCarouselModule,
     BrowserModule,
-    EditorModule,
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -77,7 +73,9 @@ import { StaffGuard } from './guards/staff.guard';
     BrowserAnimationsModule,
     HttpClientModule,
   ],
-  providers: [StaffGuard],
+  providers: [
+    StaffGuard,
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

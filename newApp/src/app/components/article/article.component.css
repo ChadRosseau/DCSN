@@ -132,3 +132,8 @@
     font-weight: 300;
     margin-bottom: 1rem;
 }
+
+.referencesWrapper p,
+.casWrapper p {
+    overflow-wrap: break-word;
+}

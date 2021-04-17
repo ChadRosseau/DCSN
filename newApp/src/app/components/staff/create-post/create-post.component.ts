@@ -1,36 +1,33 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { SharedDataService } from '../../../services/shared-data.service';
+
+import 'tinymce';
+import 'tinymce/icons/default';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AsyncSubject, Subject } from 'rxjs';
 import { maxLength } from './maxlength.validator';
 import { Router, ActivatedRoute } from '@angular/router';
 import { getLocaleTimeFormat } from '@angular/common';
+import { TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
+
+declare var tinymce;
 
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.css'],
 })
-export class CreatePostComponent implements OnInit, OnDestroy {
+export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
   showErrors;
   time = {};
-  tinymceInit = {
-    // icons: 'material',
-    skin: 'borderless',
-    plugins: 'wordcount',
-    placeholder: "Body text for your article here...",
-    // menubar: false,
-    min_height: 450,
-    contextmenu: 'link image imagetools table spellchecker lists',
-    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
-  };
+  // public tinymce = tinymce.get()
 
   currentArticleId;
   createArticleForm = new FormGroup({
-    category: new FormControl("", Validators.required),
-    subcategory: new FormControl("", Validators.required),
+    category: new FormControl("?", Validators.required),
+    subcategory: new FormControl("?", Validators.required),
     title: new FormControl("", Validators.required),
     subtitle: new FormControl("", Validators.required),
     thumbURL: new FormControl("", Validators.required),
@@ -49,11 +46,6 @@ export class CreatePostComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.writerInfo = {};
     this.currentArticleId = this.route.snapshot.paramMap.get('articleId');
-    if (!this.currentArticleId) {
-      this.loadEmptyTemplate();
-    } else {
-      this.loadFullTemplate(this.currentArticleId);
-    }
     this.showErrors = false;
 
     this.getTime();
@@ -62,12 +54,85 @@ export class CreatePostComponent implements OnInit, OnDestroy {
 
   private editorSubject: Subject<any> = new AsyncSubject();
 
+  ngAfterViewInit() {
+
+    tinymce.init({
+      base_url: '/tinymce', // Root for resources
+      suffix: '.min',        // Suffix to use when loading resources
+      selector: '#bodyEditor',
+      plugins: 'wordcount image autoresize',
+      min_height: 450,
+      placeholder: "Body text for your article here...",
+      contextmenu: 'link image imagetools table spellchecker lists',
+      content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+
+      // Images
+      image_title: true,
+      automatic_uploads: true,
+      file_picker_types: 'image',
+      /* and here's our custom image picker*/
+      file_picker_callback: function (cb, value, meta) {
+        var input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
+
+        /*
+          Note: In modern browsers input[type="file"] is functional without
+          even adding it to the DOM, but that might not be the case in some older
+          or quirky browsers like IE, so you might want to add it to the DOM
+          just in case, and visually hide it. And do not forget do remove it
+          once you do not need it anymore.
+        */
+
+        input.onchange = () => {
+          var file = input.files[0];
+
+          var reader = new FileReader();
+          reader.onload = () => {
+            /*
+              Note: Now we need to register the blob in TinyMCEs image blob
+              registry. In the next release this part hopefully won't be
+              necessary, as we are looking to handle it internally.
+            */
+            var id = 'blobid' + (new Date()).getTime();
+            var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+            var base64 = (<string>reader.result).split(',')[1];
+            var blobInfo = blobCache.create(id, file, base64);
+            blobCache.add(blobInfo);
+
+            /* call the callback and populate the Title field with the file name */
+            cb(blobInfo.blobUri(), { title: file.name });
+          };
+          reader.readAsDataURL(file);
+        };
+
+        input.click();
+      },
+    });
+    tinymce.get("bodyEditor").on('init', (e) => {
+      tinymce.get("bodyEditor").setContent("");
+      tinymce.images_upload_url = "./postAcceptor.php";
+      if (!this.currentArticleId) {
+        this.loadEmptyTemplate();
+      } else {
+        this.loadFullTemplate(this.currentArticleId);
+      }
+    });
+
+    tinymce.activeEditor.on('blur', (e) => {
+      this.fetchBody();
+    })
+  }
+
   loadEmptyTemplate() {
     if (this.auth.staffObject) {
       this.writerInfo = this.auth.staffObject;
     }
     this.referencesList = [];
     this.casList = [];
+    this.createArticleForm.patchValue({
+      subcategory: new FormControl({ value: "?", disabled: this.createArticleForm.value.category == '?' }, Validators.required)
+    })
   }
 
   loadFullTemplate(articleId) {
@@ -81,8 +146,10 @@ export class CreatePostComponent implements OnInit, OnDestroy {
           title: new FormControl(articleObject.title, Validators.required),
           subtitle: new FormControl(articleObject.subtitle, Validators.required),
           thumbURL: new FormControl(articleObject.thumbURL, Validators.required),
-          body: new FormControl(articleObject.body, Validators.required),
+          body: new FormControl("", Validators.required)
         });
+        tinymce.get("bodyEditor").setContent(articleObject.body);
+        this.fetchBody();
         this.imageExists(articleObject.thumbURL);
         this.referencesList = articleObject.references || [];
         this.casList = articleObject.cas || [];
@@ -95,7 +162,11 @@ export class CreatePostComponent implements OnInit, OnDestroy {
     })
   }
 
-
+  fetchBody() {
+    this.createArticleForm.patchValue({
+      body: tinymce.activeEditor.getContent()
+    })
+  }
 
 
   handleEditorInit(e) {
@@ -148,6 +219,8 @@ export class CreatePostComponent implements OnInit, OnDestroy {
         this.currentArticleId = dbArticlesRef.push().key;
         dbArticlesRef = this.auth.db.database.ref(`articles/${destination}/${this.currentArticleId}`);
       }
+
+      this.fetchBody();
       dbArticlesRef.set({
         articleId: this.currentArticleId,
         author: this.writerInfo.uid,
@@ -188,6 +261,7 @@ export class CreatePostComponent implements OnInit, OnDestroy {
     if (this.staffSubscription) {
       this.staffSubscription.unsubscribe();
     }
+    tinymce.remove('#bodyEditor');
   }
 }
 
