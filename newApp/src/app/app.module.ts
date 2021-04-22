@@ -33,14 +33,17 @@ import { GlobalGoalsComponent } from './components/home/global-goals/global-goal
 import { ArticleComponent } from './components/article/article.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ArrayReversePipe } from './pipes/array-reverse.pipe';
 import { FooterComponent } from './components/footer/footer.component';
 
 // Pipes
-import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { ArrayReversePipe } from '@pipes/array-reverse.pipe';
+import { SafeHtmlPipe } from '@pipes/safe-html.pipe';
 
 // Guards
-import { StaffGuard } from './guards/staff.guard';
+import { StaffGuard } from '@guards/staff.guard';
+
+// Modules
+import { StaffModule } from '@components/staff/staff.module';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,6 @@ import { StaffGuard } from './guards/staff.guard';
     ArchiveComponent,
     ArrayReversePipe,
     FooterComponent,
-    SafeHtmlPipe,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -72,6 +74,8 @@ import { StaffGuard } from './guards/staff.guard';
     MaterialModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    SafeHtmlPipe,
+    StaffModule
   ],
   providers: [
     StaffGuard,

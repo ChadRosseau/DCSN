@@ -58,7 +58,8 @@
             <h2>MODERATING</h2>
             <div class="articleWrapper">
                 <div class="article" *ngFor="let article of articles?.moderating"
-                    [ngClass]="{'enabled': auth.canEditArticle(2, 'moderator', article.author)}">
+                    [ngClass]="{'enabled': auth.canEditArticle(2, 'moderator', article.author)}"
+                    [routerLink]="['/staff', 'moderate-article', article.articleId]">
                     <h5>{{article.title}}</h5>
                     <div class="infoContainer">
                         <div class="authorPfp"

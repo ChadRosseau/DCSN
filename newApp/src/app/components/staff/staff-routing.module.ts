@@ -9,6 +9,7 @@ import { HeadGuard } from '@guards/head.guard';
 import { OverviewComponent } from './overview/overview.component'
 import { PermissionsComponent } from './permissions/permissions.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { ModerateArticleComponent } from './moderate-article/moderate-article.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'overview' }, // Redirect to overview page
@@ -16,6 +17,7 @@ const routes: Routes = [
     { path: 'permissions', component: PermissionsComponent, canActivate: [HeadGuard] },
     { path: 'create-article', component: CreatePostComponent },
     { path: 'create-article/:articleId', component: CreatePostComponent },
+    { path: 'moderate-article/:articleId', component: ModerateArticleComponent },
 ]
 
 @NgModule({
