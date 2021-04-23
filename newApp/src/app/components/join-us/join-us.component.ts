@@ -12,7 +12,7 @@ export class JoinUsComponent implements OnInit {
   images;
 
   constructor(public sharedData: SharedDataService) {
-    this.setGuideRole('Contributors');
+    this.setGuideRole('contributor');
   }
 
   ngOnInit(): void {
