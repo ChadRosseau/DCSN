@@ -1,53 +1,62 @@
 .hero {
-    width: 100%;
-    padding: 10px;
-    background: rgb(0, 75, 135);
-    ;
+  width: 100%;
+  padding: 10px;
+  background: rgb(0, 75, 135);
 }
 
 .textWrapper {
-    width: 36%;
-    display: inline-block;
-    padding: 40px 40px 20px;
-    color: #FFF;
+  width: 36%;
+  display: inline-block;
+  padding: 40px 40px 20px;
+  color: #fff;
 }
 
 .textWrapper h2 {
-    font-size: 3.5em;
-    font-weight: 200;
+  font-size: 3.5em;
+  font-weight: 200;
 }
 
 .textWrapper p {
-    font-size: 1.2em;
-    font-weight: 300;
-    line-height: 1.3em;
+  font-size: 1.2em;
+  font-weight: 300;
+  line-height: 1.3em;
 }
 
 .goalsWrapper {
-    width: 64%;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    float: right;
-    background: #FFF;
+  width: 64%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  float: right;
+  background: #fff;
 }
 
 .goalBox {
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .goalBox:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #goal0 {
-    background-size: contain;
+  background-size: contain;
 }
 
 .goalOverlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 1090px) {
+  .textWrapper {
     width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.6);
+  }
+  .goalsWrapper {
+    padding: 0px 40px 20px;
+    width: 100%;
+  }
 }
