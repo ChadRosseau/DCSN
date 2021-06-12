@@ -1,54 +1,54 @@
 <div class="pageWrapper">
     <div class="hero1" [style.backgroundImage]="images.hero1Background">
-        <div class="overlay">
-            <div class="text">
-                <h2> Join Us</h2>
-                <p>
-                    The Discovery College Student News organization has a multitude of different positions open for
-                    application, with each catering for a specific skillset. Whether you are an inquisitive journalist,
-                    tech guru or aspiring Picasso, our organization has a place for you and your skills.
-                    <br><br>
-                    This page will
-                    guide you through the roles of our organization, the benefits of being a DCSN member, and how to
-                    apply.
-                </p>
-            </div>
-            <div class="image" [style.backgroundImage]="images.hero1Image"></div>
+        <div class="text">
+            <h2> Join Us</h2>
+            <p>
+                The Discovery College Student News organization has a multitude of different positions open for
+                application, with each catering for a specific skillset. Whether you are an inquisitive journalist,
+                tech guru or aspiring Picasso, our organization has a place for you and your skills.
+                <br><br>
+                This page will
+                guide you through the roles of our organization, the benefits of being a DCSN member, and how to
+                apply.
+            </p>
         </div>
+        <div class="image" [style.backgroundImage]="images.hero1Image"></div>
     </div>
     <div class="hero2">
         <div class="selector">
             <div class="header">Department</div>
             <div class="option" (click)="setGuideRole('contributor')"
                 [ngClass]="{'active': guideRole.name == 'Contributors'}">
-                <p><i class="far fa-edit"></i> Contributors</p>
+                <p><i class="far fa-edit"></i> <span>Contributors</span></p>
             </div>
             <div class="option" (click)="setGuideRole('moderator')"
                 [ngClass]="{'active': guideRole.name == 'Moderators'}">
-                <p><i class="far fa-copy"></i> Moderators</p>
+                <p><i class="far fa-copy"></i> <span>Moderators</span></p>
             </div>
             <div class="option" (click)="setGuideRole('technology')" [ngClass]="{'active': guideRole.name == 'ICT'}">
-                <p><i class="fas fa-laptop-code"></i> Technology</p>
+                <p><i class="fas fa-laptop-code"></i> <span>Technology</span></p>
             </div>
             <div class="option" (click)="setGuideRole('graphics')" [ngClass]="{'active': guideRole.name == 'Graphics'}">
-                <p><i class="fas fa-palette"></i> Graphics</p>
+                <p><i class="fas fa-palette"></i> <span>Graphics</span></p>
             </div>
         </div>
         <div class="rolesContainer">
             <h4>{{guideRole.name}}</h4>
-            <div class="rolesText">
-                <p [innerHTML]="guideRole.description">
-                </p>
-                <p>
-                    Interested? Fill out our <a
-                        href="https://docs.google.com/forms/d/e/1FAIpQLScX49SSRlk-WJ74R29r7x1ClJPcem9QGE682TJU6WsAPgI9HA/viewform?usp=sf_link">
-                        application form</a> to
-                    <!-- <a href="{{'mailto:dcsn@dc.edu.hk?subject=' + guideRole.name + ' DCSN Application'}}"
+            <div class="body">
+                <div class="rolesText">
+                    <p [innerHTML]="guideRole.description">
+                    </p>
+                    <p>
+                        Interested? Fill out our <a
+                            href="https://docs.google.com/forms/d/e/1FAIpQLScX49SSRlk-WJ74R29r7x1ClJPcem9QGE682TJU6WsAPgI9HA/viewform?usp=sf_link">
+                            application form</a> to
+                        <!-- <a href="{{'mailto:dcsn@dc.edu.hk?subject=' + guideRole.name + ' DCSN Application'}}"
                         target="_blank">dcsn@dc.edu.hk</a> -->
-                    be considered!
-                </p>
+                        be considered!
+                    </p>
+                </div>
+                <div class="rolesImage" [style.backgroundImage]="guideRole.image"></div>
             </div>
-            <div class="rolesImage" [style.backgroundImage]="guideRole.image"></div>
         </div>
     </div>
     <div class="hero3" [style.backgroundImage]="images.hero3Background">

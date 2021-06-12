@@ -6,40 +6,46 @@
 /* Hero 1 - Introduction */
 
 .hero1 {
+    z-index: 0;
     width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
     position: relative;
-    height: calc(85vh + 50px);
-}
-
-.hero1 .overlay {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top: 0;
-    height: 100%;
-    background: rgb(0, 45, 115);
-    background: linear-gradient(90deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
-    padding: 130px 50px 20px;
+    /* height: calc(85vh + 50px); */
+    padding: 130px 50px 40px;
     display: flex;
     justify-content: space-between;
 }
 
-.hero1 .overlay .text {
-    display: inline-block;
-    width: 65%;
+.hero1::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgb(0, 45, 115);
+    background: linear-gradient(90deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
 }
 
-.hero1 .overlay .text h2 {
+.hero1 .text {
+    display: inline-block;
+    width: 65%;
+    margin-right: 100px;
+}
+
+.hero1 .text h2 {
     font-size: 6em;
     border-bottom: 5px solid #FFF;
     color: #FFF;
     margin-bottom: 30px;
 }
 
-.hero1 .overlay .text p {
+.hero1 .text p {
     color: #FFF;
     font-size: 1.5em;
     font-weight: 200;
@@ -50,7 +56,7 @@
     background-position: center;
     background-repeat: no-repeat;
     width: 25%;
-    height: 85%;
+    flex-grow: 1;
     margin-right: 50px;
     border: 5px solid #FFF;
 }
@@ -68,7 +74,7 @@
 
 /* Selector */
 
-.selector {
+.hero2 .selector {
     display: flex;
     flex-direction: column;
     border: 4px solid rgb(0, 45, 115);
@@ -78,8 +84,8 @@
     overflow: hidden;
 }
 
-.selector .header,
-.selector .option {
+.hero2 .selector .header,
+.hero2 .selector .option {
     flex-grow: 1;
     display: flex;
     align-items: center;
@@ -87,7 +93,7 @@
     color: rgb(0, 45, 115);
 }
 
-.selector .header {
+.hero2 .selector .header {
     font-size: 2em;
     text-align: center;
     border-bottom: 4px solid rgb(0, 45, 115);
@@ -96,28 +102,28 @@
     justify-content: center;
 }
 
-.selector .option {
+.hero2 .selector .option {
     font-size: 1.5em;
     border-bottom: 2px solid rgb(0, 45, 115);
     cursor: pointer;
     transition-duration: 300ms;
 }
 
-.selector .option p {
+.hero2 .selector .option p {
     margin: 0;
 }
 
-.selector .option i {
+.hero2 .selector .option i {
     width: 30px;
     margin-right: 10px;
     text-align: center;
 }
 
-.selector .option:last-child {
+.hero2 .selector .option:last-child {
     border-bottom: none;
 }
 
-.selector .option.active {
+.hero2 .selector .option.active {
     background: rgb(0, 45, 115);
     color: #FFF;
 }
@@ -251,4 +257,125 @@
 
 .hero4 .questionsContainer a:hover {
     color: rgba(0, 45, 115, 0.6);
+}
+
+@media (max-width: 900px) {
+    /* Hero 1 */
+    .hero1 {
+        flex-direction: column;
+        padding: 100px 20px 20px;
+        background-position: center top;
+    }
+    .hero1::after {
+        background: linear-gradient(180deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.8) 50%, rgba(255, 255, 255, 0) 100%);
+    }
+    .hero1 .text {
+        width: 100%;
+    }
+    .hero1 .text h2 {
+        font-size: 4em;
+        text-align: center;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .hero1 .text p {
+        font-size: 1em;
+        margin-top: 20px;
+        text-align: center;
+    }
+    .hero1 .image {
+        width: 80%;
+        height: 30vh;
+        margin: 0 auto;
+    }
+    /* Hero 2 */
+    .hero2 {
+        flex-direction: column;
+        padding: 20px;
+        height: initial;
+    }
+    /* Selector */
+    .hero2 .selector {
+        flex-direction: initial;
+        border: 4px solid rgb(0, 45, 115);
+        border-radius: 10px;
+        width: 100%;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+    .hero2 .selector .header,
+    .hero2 .selector .option {
+        justify-content: center;
+        padding: 10px;
+    }
+    .hero2 .selector .header {
+        display: none
+    }
+    .hero2 .selector .option {
+        font-size: 1.5em;
+        border-right: 2px solid rgb(0, 45, 115);
+        border-bottom: none;
+    }
+    .hero2 .selector .option i {
+        margin: 0;
+    }
+    .hero2 .selector .option span {
+        display: none;
+    }
+    .hero2 .selector .option:last-child {
+        border-right: none;
+    }
+    /* Container */
+    .hero2 .rolesContainer {
+        width: 100%;
+        height: initial;
+        margin-right: 0;
+        float: initial;
+    }
+    .hero2 .rolesContainer h4 {
+        font-size: 2.5em;
+        height: initial;
+        text-align: center;
+    }
+    .hero2 .rolesContainer .body {
+        padding: 20px;
+    }
+    .hero2 .rolesContainer .rolesText {
+        width: 100%;
+        line-height: 1.2;
+        display: inline-block;
+        margin: 0;
+    }
+    .hero2 .rolesContainer .rolesImage {
+        width: 100%;
+        height: 400px;
+        margin: 0 auto;
+        float: none;
+    }
+    /* Hero 3 */
+    .hero3 {
+        height: inherit;
+    }
+    .hero3 .overlay {
+        position: inherit;
+    }
+    .hero3 .overlay .infoWrapper {
+        flex-direction: column;
+    }
+    .hero3 .overlay .infoWrapper .infoColumn {
+        width: 100%;
+        border-top: 3px solid #FFF;
+        border-bottom: 3px solid #FFF;
+        padding: 20px 0;
+    }
+    .hero3 .overlay .infoWrapper .infoColumn.dividing {
+        border: none;
+    }
+    /* Hero 4 */
+    .hero4 .questionsContainer {
+        width: 90%;
+    }
+    .hero4 a {
+        text-decoration: underline!important;
+    }
 }

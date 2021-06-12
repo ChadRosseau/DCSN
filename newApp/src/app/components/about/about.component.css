@@ -446,7 +446,7 @@
     }
 }
 
-@media (max-width: 1140px) {
+@media (max-width: 900px) {
     .hero4 .wrapper .selector {
         flex-direction: row;
     }
