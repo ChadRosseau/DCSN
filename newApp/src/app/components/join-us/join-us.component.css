@@ -59,7 +59,7 @@
 /* Hero 2 - Role info */
 
 .hero2 {
-    height: 90vh;
+    height: 95vh;
     width: 100%;
     padding: 70px 50px;
     display: flex;
@@ -81,7 +81,8 @@
 .selector .header,
 .selector .option {
     flex-grow: 1;
-    line-height: 300%;
+    display: flex;
+    align-items: center;
     padding: 0 20px;
     color: rgb(0, 45, 115);
 }
@@ -90,6 +91,9 @@
     font-size: 2em;
     text-align: center;
     border-bottom: 4px solid rgb(0, 45, 115);
+    height: 100px;
+    flex-grow: initial;
+    justify-content: center;
 }
 
 .selector .option {
@@ -97,6 +101,10 @@
     border-bottom: 2px solid rgb(0, 45, 115);
     cursor: pointer;
     transition-duration: 300ms;
+}
+
+.selector .option p {
+    margin: 0;
 }
 
 .selector .option i {
@@ -123,7 +131,7 @@
     margin-right: 5%;
     float: right;
     border-radius: 10px;
-    border: 1px solid rgba(0, 45, 115, 0.5);
+    border: 3px solid rgba(0, 45, 115, 1);
     position: relative;
     overflow: hidden;
 }
@@ -133,6 +141,7 @@
     background-color: rgba(0, 45, 115, 1);
     color: #FFF;
     padding: 20px;
+    height: 100px;
 }
 
 .hero2 .rolesContainer .rolesText {

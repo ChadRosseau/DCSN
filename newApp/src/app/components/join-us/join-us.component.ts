@@ -27,6 +27,7 @@ export class JoinUsComponent implements OnInit {
 
   setGuideRole(role) {
     this.guideRole = this.sharedData.roleData[role];
+    console.log(this.guideRole.name);
   }
 
 }
