@@ -67,12 +67,19 @@ button {
     outline: none;
 }
 
+.navButtons {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+}
+
 .navButton {
     font-size: 1em;
     color: #FFF;
     padding: 5px 10px;
     text-align: center;
     letter-spacing: 0.3em;
+    line-height: 40px;
     display: inline-block;
     vertical-align: middle;
     -webkit-transform: perspective(1px) translateZ(0);
@@ -118,11 +125,15 @@ button {
 #navArticleButton {
     font-size: 2.5em;
     font-weight: bold;
-    line-height: 1;
+    line-height: 50px;
     padding: 0;
     letter-spacing: 0.1em;
     -webkit-text-stroke: 1.5px #FFF;
     color: transparent;
+}
+
+#mobileNavArticleButton {
+    display: none;
 }
 
 #navArticleButton:hover:before,
@@ -342,4 +353,69 @@ button {
 .addButton:hover {
     cursor: pointer;
     color: rgba(0, 45, 115, .85);
+}
+
+.mobileMenuButton {
+    display: none;
+    padding: 16px;
+    margin-left: 30px;
+    cursor: pointer;
+    position: relative;
+}
+
+.mobileMenuButton .line {
+    background-color: #FFF;
+    width: 20px;
+    height: 3px;
+    margin-top: 3px;
+    transition-duration: 0.3s;
+    -webkit-transition-duration: 0.3s;
+}
+
+.mobileMenuButton.active .line2 {
+    transform: translateX(7px);
+}
+
+.mobileMenuButton.active .line3 {
+    transform: translateX(3px);
+}
+
+@media (max-width: 700px) {
+    nav {
+        width: 100vw;
+    }
+    #navWrapper {
+        position: relative;
+        width: 100vw;
+    }
+    #loginButton,
+    #navArticleButton,
+    #genreContainerWrapper {
+        display: none;
+    }
+    #mobileNavArticleButton {
+        display: block;
+    }
+    .navButtonWrapper {
+        display: inline-block;
+    }
+    .navButtons {
+        position: absolute;
+        height: 0px;
+        top: 50px;
+        left: 0;
+        width: 100vw;
+        overflow: hidden;
+        background: rgba(0, 45, 115, .85);
+        transition-duration: 200ms;
+    }
+    .navButtons.mobileOpened {
+        height: 50px;
+    }
+    .navButton {
+        letter-spacing: 0.15em;
+    }
+    .mobileMenuButton {
+        display: inline-block;
+    }
 }

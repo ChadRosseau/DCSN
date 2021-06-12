@@ -1,17 +1,27 @@
 <nav>
-    <div class="logo" id="navLogo"></div>
     <div id="navWrapper">
+        <div class="logo" id="navLogo" [routerLink]="['/']"></div>
         <div class="navButtonWrapper">
-            <div class="navButton" routerLink="/">HOME</div>
-            <div class="navButton" routerLink="/join-us">JOIN US</div>
-            <div class="navButton" id="navArticleButton" (mouseenter)="navOpen = true; navOpening = true"
-                (mouseleave)="navOpening = false" [routerLink]="['/archive']">
+            <div class="navButton" id="mobileNavArticleButton" [routerLink]="['/archive']">
                 ARTICLES
             </div>
-            <div class="navButton" routerLink="/about">ABOUT</div>
-            <div class="navButton" routerLink="/contact">CONTACT</div>
+            <div class="navButtons" [ngClass]="{'mobileOpened': mobileOpen}">
+                <div class="navButton" routerLink="/">HOME</div>
+                <div class="navButton" routerLink="/join-us">JOIN US</div>
+                <div class="navButton" id="navArticleButton" (mouseenter)="navOpen = true; navOpening = true"
+                    (mouseleave)="navOpening = false" [routerLink]="['/archive']">
+                    ARTICLES
+                </div>
+                <div class="navButton" routerLink="/about">ABOUT</div>
+                <div class="navButton" routerLink="/contact">CONTACT</div>
+            </div>
             <div id="loginButton" [hidden]="userObject != null" (click)="auth.googleSignIn()">LOGIN</div>
             <div id="loginButton" [hidden]="userObject == null" (click)="auth.signOut()">LOGOUT</div>
+        </div>
+        <div class="mobileMenuButton" (click)="mobileOpen = !mobileOpen" [ngClass]="{'active': mobileOpen}">
+            <div class="line1 line"></div>
+            <div class="line2 line"></div>
+            <div class="line3 line"></div>
         </div>
     </div>
     <div id="genreContainerWrapper" (mouseenter)="navOpen = true" (mouseleave)="navOpen = false"

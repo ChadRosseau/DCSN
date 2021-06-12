@@ -1,24 +1,11 @@
 .aboutWrapper {
-<<<<<<< HEAD
-  width: 100%;
-  margin-top: 50px;
-=======
     width: 100%;
->>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
+
 
 /* Hero 1 - Header */
 
 .hero1 {
-<<<<<<< HEAD
-  width: 100%;
-  height: 50vh;
-  position: relative;
-  background-position: 0% 15%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-=======
     width: 100%;
     height: 60vh;
     position: relative;
@@ -26,49 +13,33 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
->>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 .hero1 .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(196, 196, 196, 0) 0%,
-    rgba(0, 45, 115, 0.8) 70%
-  );
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient( 180deg, rgba(196, 196, 196, 0) 0%, rgba(0, 45, 115, 0.8) 70%);
 }
 
 .hero1 .overlay h1 {
-  position: absolute;
-  left: 0;
-  bottom: 30px;
-  width: 100%;
-  text-align: center;
-  font-size: 7em;
-  color: #fff;
-  font-weight: 200;
-  text-shadow: 0px 12px 6px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    left: 0;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    font-size: 7em;
+    color: #fff;
+    font-weight: 200;
+    text-shadow: 0px 12px 6px rgba(0, 0, 0, 0.25);
 }
+
 
 /* Hero 2 - Our Mission*/
 
 .hero2 {
-<<<<<<< HEAD
-  width: 100%;
-  padding: 50px;
-}
-
-.hero2 h3 {
-  font-size: 4em;
-  font-weight: 300;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-bottom: 40px;
-  color: rgb(0, 45, 115);
-=======
     width: 100%;
     padding: 50px 0;
 }
@@ -79,53 +50,30 @@
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     color: rgb(0, 45, 115);
     margin-left: 50px;
->>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 .hero2 .textWrapper {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  color: #000;
-  position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #000;
+    position: relative;
 }
 
 .hero2 .textWrapper .leftColumn,
 .hero2 .textWrapper .rightColumn {
-<<<<<<< HEAD
-  width: 45%;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-=======
     width: 45%;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     padding-top: 20px;
->>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 .hero2 .textWrapper .section {
-  flex-grow: 1;
-  padding-bottom: 30px;
+    flex-grow: 1;
+    padding-bottom: 30px;
 }
 
-<<<<<<< HEAD
-.hero2 .textWrapper .leftColumn .section {
-  text-align: right;
-}
-
-.hero2 .textWrapper .leftColumn {
-  margin-right: 5%;
-}
-
-.hero2 .textWrapper .rightColumn h5 {
-  font-size: 2em;
-  font-weight: 300;
-  color: rgb(0, 45, 115);
-  margin-bottom: 10px;
-=======
 .hero2 .textWrapper .leftColumn {
     margin-right: 5%;
     padding-left: 50px;
@@ -148,120 +96,106 @@
     font-size: 2em;
     font-weight: 300;
     margin-bottom: 10px;
->>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 .hero2 .textWrapper .rightColumn h5 i {
-  width: 10%;
-  text-align: center;
-  margin-right: 20px;
+    width: 10%;
+    text-align: center;
+    margin-right: 20px;
 }
 
 .hero2 .textWrapper .rightColumn p {
-  margin-left: calc(10% + 20px);
+    margin-left: calc(10% + 20px);
 }
+
 
 /* Hero 3 - Our History */
 
 .hero3 {
-  width: 100%;
-  position: relative;
-  background: rgb(0, 45, 115);
-  background: linear-gradient(
-    180deg,
-    rgba(0, 45, 115, 1) 0%,
-    rgba(0, 45, 115, 0.75) 25%,
-    rgba(0, 45, 115, 0.75) 75%,
-    rgba(0, 45, 115, 1) 100%
-  );
-  padding: 50px;
-  display: flex;
-  justify-content: space-between;
+    width: 100%;
+    position: relative;
+    background: rgb(0, 45, 115);
+    background: linear-gradient( 180deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.75) 25%, rgba(0, 45, 115, 0.75) 75%, rgba(0, 45, 115, 1) 100%);
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .hero3 .backgroundImage {
-  z-index: -1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .hero3 .text {
-  width: 36%;
-  color: #fff;
-  margin-right: 5%;
+    width: 36%;
+    color: #fff;
+    margin-right: 5%;
 }
 
 .hero3 .text h3 {
-  font-size: 4em;
-  font-weight: 300;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-bottom: 20px;
+    font-size: 4em;
+    font-weight: 300;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 20px;
 }
 
 .hero3 .text p {
-  font-size: 1.1em;
-  margin-bottom: 15px;
-  text-align: left;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    text-align: left;
 }
 
 .hero3 .text button {
-  padding: 10px 30px;
-  background: none;
-  color: #fff;
-  border: 2px solid #fff;
-  border-radius: 50px;
-  text-align: center;
-  margin-top: 40px;
-  width: fit-content;
-  opacity: 0.65;
+    padding: 10px 30px;
+    background: none;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    text-align: center;
+    margin-top: 40px;
+    width: fit-content;
+    opacity: 0.65;
 }
 
 .hero3 .chart {
-  background-image: url("../../../assets/images/about-chart.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  flex-grow: 1;
+    background-image: url("../../../assets/images/about-chart.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-grow: 1;
 }
+
 
 /* Hero 4 - Our Staff */
 
 .hero4 {
-  width: 100%;
-  padding: 50px;
-  padding-right: 20px;
+    width: 100%;
+    padding: 50px;
+    padding-right: 20px;
 }
 
 .hero4 h3 {
-  font-size: 4em;
-  font-weight: 300;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-bottom: 20px;
-  color: rgb(0, 45, 115);
+    font-size: 4em;
+    font-weight: 300;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 20px;
+    color: rgb(0, 45, 115);
 }
 
 .hero4 .wrapper {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .hero4 .wrapper .selector {
-<<<<<<< HEAD
-  display: flex;
-  flex-direction: column;
-  border: 4px solid rgb(0, 45, 115);
-  border-radius: 20px;
-
-  margin-right: 5%;
-  overflow: hidden;
-=======
     display: flex;
     flex-direction: column;
     border: 4px solid rgb(0, 45, 115);
@@ -269,201 +203,181 @@
     width: 20%;
     margin-right: 5%;
     overflow: hidden;
->>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 .hero4 .wrapper .selector .header,
 .hero4 .wrapper .selector .option {
-  flex-grow: 1;
-  line-height: 300%;
-  padding: 0 20px;
-  color: rgb(0, 45, 115);
+    flex-grow: 1;
+    line-height: 300%;
+    padding: 0 20px;
+    color: rgb(0, 45, 115);
 }
 
 .hero4 .wrapper .selector .header {
-  font-size: 2em;
-  text-align: center;
-  border-bottom: 4px solid rgb(0, 45, 115);
+    font-size: 2em;
+    text-align: center;
+    border-bottom: 4px solid rgb(0, 45, 115);
 }
 
 .hero4 .wrapper .selector .option {
-<<<<<<< HEAD
-  font-size: 1.5em;
-  border-bottom: 2px solid rgb(0, 45, 115);
-  cursor: pointer;
-=======
     font-size: 1.5em;
     border-bottom: 2px solid rgb(0, 45, 115);
     cursor: pointer;
     transition-duration: 300ms;
->>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 .hero4 .wrapper .selector .option i {
-  width: 30px;
-  margin-right: 10px;
-  text-align: center;
+    width: 30px;
+    margin-right: 10px;
+    text-align: center;
 }
 
 .hero4 .wrapper .selector .option:last-child {
-  border-bottom: none;
+    border-bottom: none;
 }
 
 .hero4 .wrapper .selector .option.active {
-  background: rgb(0, 45, 115);
-  color: #fff;
+    background: rgb(0, 45, 115);
+    color: #fff;
 }
 
 .hero4 .wrapper .staffWrapper {
-  flex-grow: 1;
-  display: flex;
-  flex-wrap: wrap;
-  overflow-y: auto;
-  padding-right: 30px;
-  scroll-snap-type: mandatory;
-  scroll-snap-points-y: repeat(50%);
-  scroll-snap-type: y mandatory;
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    padding-right: 30px;
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(50%);
+    scroll-snap-type: y mandatory;
 }
 
 .hero4 .wrapper .staffWrapper::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
 
 .hero4 .wrapper .staffWrapper::-webkit-scrollbar-track {
-  background: none;
-  border: 2px solid rgb(0, 45, 115);
-  /* border-bottom: 2px solid rgb(0, 45, 115); */
+    background: none;
+    border: 2px solid rgb(0, 45, 115);
+    /* border-bottom: 2px solid rgb(0, 45, 115); */
 }
 
 .hero4 .wrapper .staffWrapper::-webkit-scrollbar-thumb {
-  background: rgb(0, 45, 115);
-  /* border-radius: 5px; */
+    background: rgb(0, 45, 115);
+    /* border-radius: 5px; */
 }
 
 .hero4 .wrapper .staffWrapper::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 45, 115, 0.75);
+    background: rgba(0, 45, 115, 0.75);
 }
 
 .hero4 .wrapper .staffWrapper .profile {
-  width: 30%;
-  height: 50%;
-  position: relative;
-  scroll-snap-align: start;
-  margin: 0 calc(10% / 6);
+    width: 30%;
+    height: 50%;
+    position: relative;
+    scroll-snap-align: start;
+    margin: 0 calc(10% / 6);
 }
 
 .hero4 .wrapper .staffWrapper .profile .body {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 70%;
-  background: #1d3389;
-  border-radius: 10px;
-  color: #fff;
-  padding: 60px 10px 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background: #1d3389;
+    border-radius: 10px;
+    color: #fff;
+    padding: 60px 10px 10px;
 }
 
 .hero4 .wrapper .staffWrapper .profile .body .pfp {
-  width: 100px;
-  height: 100px;
-  border: 4px solid #1d3389;
-  border-radius: 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  top: -50px;
+    width: 100px;
+    height: 100px;
+    border: 4px solid #1d3389;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: -50px;
 }
 
 .hero4 .wrapper .staffWrapper .profile .body h4 {
-  text-align: center;
-  font-size: 1.1em;
-  line-height: 0.8;
-  font-weight: 200;
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 0.8;
+    font-weight: 200;
 }
 
 .hero4 .wrapper .staffWrapper .profile .body h6 {
-  text-align: center;
-  font-size: 1em;
-  line-height: 1.2;
-  font-weight: 200;
-  margin-top: 15px;
-  margin-bottom: 2px;
+    text-align: center;
+    font-size: 1em;
+    line-height: 1.2;
+    font-weight: 200;
+    margin-top: 15px;
+    margin-bottom: 2px;
 }
 
 .hero4 .wrapper .staffWrapper .profile.important .body {
-  background: #091a62;
+    background: #091a62;
 }
 
 .hero4 .wrapper .staffWrapper .profile.important .pfp {
-  border-color: #091a62;
+    border-color: #091a62;
 }
+
 
 /* Hero 5 - Our Process */
 
 .hero5 {
-  width: 100%;
-  position: relative;
-  background: rgb(0, 45, 115);
-  background: linear-gradient(
-    180deg,
-    rgba(0, 45, 115, 1) 0%,
-    rgba(0, 45, 115, 0.75) 25%,
-    rgba(0, 45, 115, 0.75) 75%,
-    rgba(0, 45, 115, 1) 100%
-  );
-  padding: 50px 12%;
-  display: flex;
-  flex-direction: column;
-  color: #fff;
-  text-align: center;
+    width: 100%;
+    position: relative;
+    background: rgb(0, 45, 115);
+    background: linear-gradient( 180deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.75) 25%, rgba(0, 45, 115, 0.75) 75%, rgba(0, 45, 115, 1) 100%);
+    padding: 50px 12%;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    text-align: center;
 }
 
 .hero5 .backgroundImage {
-  z-index: -1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .hero5 h3 {
-  font-size: 4em;
-  font-weight: 300;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  margin-bottom: 20px;
+    font-size: 4em;
+    font-weight: 300;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 20px;
 }
 
 .hero5 p {
-  font-size: 1.2em;
-  margin-bottom: 15px;
+    font-size: 1.2em;
+    margin-bottom: 15px;
 }
 
 .hero5 .buttons {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .hero5 .button {
-<<<<<<< HEAD
-  padding: 10px 15px;
-  color: #fff;
-  border: 2px solid #fff;
-  text-align: center;
-  margin-top: 40px;
-  min-width: 200px;
-=======
     padding: 10px 15px;
     color: #FFF;
     border: 2px solid #FFF;
@@ -477,94 +391,84 @@
 .hero5 .button:hover {
     color: rgb(0, 45, 115);
     background-color: #FFF;
->>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
+
 
 /* Hero 6 - Questions */
 
 .hero6 {
-  width: 100%;
-  padding: 50px 0;
+    width: 100%;
+    padding: 50px 0;
 }
 
 .hero6 .questionsContainer {
-  width: 50%;
-  margin: 0 auto;
-  padding: 10px;
-  /* border-radius: 20px; */
-  color: #000;
-  text-align: center;
-  /* border: 4px solid rgb(0, 45, 115); */
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+    /* border-radius: 20px; */
+    color: #000;
+    text-align: center;
+    /* border: 4px solid rgb(0, 45, 115); */
 }
 
 .hero6 .questionsContainer h4 {
-  font-size: 2.5em;
-  font-weight: 500;
-  color: rgb(0, 45, 115);
-  margin-bottom: 15px;
+    font-size: 2.5em;
+    font-weight: 500;
+    color: rgb(0, 45, 115);
+    margin-bottom: 15px;
 }
 
 .hero6 .questionsContainer a {
-<<<<<<< HEAD
-  color: rgb(0, 75, 135);
-  font-weight: 500;
-=======
     color: rgb(0, 75, 135);
     font-weight: 500;
     text-decoration: underline;
->>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 .hero6 .questionsContainer a:hover {
-  color: rgba(0, 75, 135, 0.6);
+    color: rgba(0, 75, 135, 0.6);
 }
 
 @media (max-width: 900px) {
-  .textWrapper {
-    flex-direction: column;
-  }
-
-  .hero2 .textWrapper .leftColumn {
-    width: 100%;
-  }
-  .hero2 .textWrapper .rightColumn {
-    width: 100%;
-  }
-
-  .hero2 .textWrapper .leftColumn .section {
-    text-align: center;
-  }
-
-  .hero2 .textWrapper .rightColumn .section {
-    text-align: left;
-  }
+    .textWrapper {
+        flex-direction: column;
+    }
+    .hero2 .textWrapper .leftColumn {
+        width: 100%;
+    }
+    .hero2 .textWrapper .rightColumn {
+        width: 100%;
+    }
+    .hero2 .textWrapper .leftColumn .section {
+        text-align: center;
+    }
+    .hero2 .textWrapper .rightColumn .section {
+        text-align: left;
+    }
 }
 
 @media (max-width: 1140px) {
-  .hero4 .wrapper .selector {
-    flex-direction: row;
-  }
-
-  .hero4 .wrapper .selector .option i {
-    display: none;
-  }
-  .hero4 .wrapper .selector .header {
-    display: none;
-  }
-
-  .hero4 .wrapper .selector .option {
-    font-size: 1em;
-  }
-
-  .hero3 {
-    flex-direction: column;
-  }
-
-  .hero3 .text {
-    width: 100%;
-  }
-
-  /* Still need to work on it but doesnt look too ugly now */
-  /* "Our history" part if I try to make it flex-dir column and width100% the image disappears ;-; */
-  /* "Our process" part doesnt work?*/
+    .hero4 .wrapper .selector {
+        flex-direction: row;
+    }
+    .hero4 .wrapper .selector .option i {
+        display: none;
+    }
+    .hero4 .wrapper .selector .header {
+        display: none;
+    }
+    .hero4 .wrapper .selector .option {
+        font-size: 1em;
+    }
+    .hero3 {
+        flex-direction: column;
+    }
+    .hero3 .text {
+        width: 100%;
+    }
+    /* Still need to work on it but doesnt look too ugly now */
+    /* "Our history" part if I try to make it flex-dir column and width100% the image disappears ;-; */
+    /* "Our process" part doesnt work?*/
+    .hero5 .buttons {
+        flex-direction: column;
+    }
 }

@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
 	userObject = null;
 	navOpen;
 	navOpening;
+	mobileOpen;
 
 	constructor(public auth: AuthService, public sharedData: SharedDataService, public archiveService: ArchiveService) {
 		if (auth.user$) {
@@ -24,6 +25,7 @@ export class NavbarComponent implements OnInit {
 	ngOnInit(): void {
 		this.navOpen = false;
 		this.navOpening = false;
+		this.mobileOpen = false;
 	}
 
 	setFilter(category, subcategory) {
@@ -38,4 +40,7 @@ export class NavbarComponent implements OnInit {
 		this.archiveService.applyFilters();
 	}
 
+	log() {
+		console.log(this.mobileOpen)
+	}
 }
