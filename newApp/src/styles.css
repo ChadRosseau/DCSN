@@ -71,3 +71,10 @@ app-root {
 app-footer {
     margin-top: auto;
 }
+
+@media (max-width: 900px) {
+    .prev-slide,
+    .next-slide {
+        display: none!important;
+    }
+}

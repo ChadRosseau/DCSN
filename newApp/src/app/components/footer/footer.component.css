@@ -132,7 +132,7 @@ footer {
     /* color: #FFF; */
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     footer {
         padding: 0 10px 10px;
         flex-direction: column;

@@ -1,5 +1,5 @@
 <div class="hero">
-    <div class="textWrapper" [style.height]="3*boxSize + 'px'">
+    <div class="textWrapper">
         <h2>Current Goal</h2>
         <p>
             DCSN operates on a system where we periodically select a topic of focus from the United Nations
@@ -11,8 +11,7 @@
     </div>
     <div class="goalsWrapper">
         <div class="goalBox" *ngFor="let goal of goals; let i = index"
-            [ngStyle]="{'background-image': 'url(' + goal.image + ')', 'width': boxSize+ 'px', 'height': boxSize + 'px'}"
-            (click)="flipDisplay(i)" id="goal{{goal.id}}">
+            [ngStyle]="{'background-image': 'url(' + goal.image + ')'}" (click)="flipDisplay(i)" id="goal{{goal.id}}">
             <div class="goalOverlay" style="display: {{goal.display}}"></div>
         </div>
     </div>

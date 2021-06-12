@@ -158,15 +158,37 @@
     .storiesHeroWrapper #articleBody {
         margin-bottom: 70px;
     }
-    .storiesHeroWrapper .categoriesContainer div {
-        margin-top: 10px;
-        margin-right: 10px;
+    .storiesHeroWrapper h2 {
+        font-size: 2.5em;
+        margin: 0;
+    }
+    .storiesHeroWrapper h2::before,
+    .storiesHeroWrapper h2::after {
+        width: 0;
     }
     .storiesHeroWrapper .storyWrapper {
         width: 90%;
         margin: 0 25px;
     }
+    .storiesHeroWrapper .textContainer {
+        margin-bottom: 40px;
+    }
+    .storiesHeroWrapper .textContainer h3 {
+        font-size: 1em;
+        -webkit-line-clamp: 3;
+    }
+    .storiesHeroWrapper .textContainer .authorContainer,
+    .storiesHeroWrapper .textContainer #articleBody {
+        display: none;
+    }
     .storiesHeroWrapper .categoriesContainer {
         width: 50%;
+    }
+    .storiesHeroWrapper .categoriesContainer div {
+        margin-top: 10px;
+        margin-right: 0px;
+    }
+    .storiesHeroWrapper .categoriesContainer .categoryTag {
+        display: none;
     }
 }

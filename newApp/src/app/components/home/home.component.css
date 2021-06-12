@@ -114,17 +114,19 @@
 /* ^ doesnt work for some reason ill need to get back to it */
 
 @media (max-width: 900px) {
-    .slick-track {
-        width: 100%;
-    }
     .heroWrapper {
         display: block;
+        flex-direction: column;
+        padding: 30px 50px 10px;
     }
     .heroCell {
         width: 100%;
-        margin: 40px 0px;
+        margin: 80px 0px;
+        padding-bottom: 15px;
     }
-    .storiesHeroWrapper .categoriesContainer div {
-        display: block;
+    .heroCell h5 {
+        position: initial;
+        text-align: left;
+        margin-top: 10px;
     }
 }
