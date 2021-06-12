@@ -59,45 +59,66 @@
 /* Hero 2 - Role info */
 
 .hero2 {
-    height: 90vh;
+    height: 95vh;
     width: 100%;
-    padding: 70px 0;
+    padding: 70px 50px;
+    display: flex;
 }
 
 
 /* Selector */
 
-.roleSelectorWrapper {
-    display: inline-block;
-    height: 100%;
-    padding-top: 28px;
-    width: 15%;
-    margin-left: 5%;
-    align-items: center;
-}
-
-.roleSelectorWrapper h2 {
-    font-size: 3.5em;
-    width: 100%;
-    text-align: center;
-    letter-spacing: 7px;
-    color: rgb(0, 45, 115);
-    font-weight: 300;
-}
-
-.roleSelector {
-    width: 100%;
-    margin-bottom: 20px;
+.selector {
+    display: flex;
+    flex-direction: column;
+    border: 4px solid rgb(0, 45, 115);
     border-radius: 10px;
-    padding: 2px 5px;
-    border: 2px solid #000;
-    cursor: pointer;
+    width: 20%;
+    margin-right: 5%;
+    overflow: hidden;
+}
+
+.selector .header,
+.selector .option {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    color: rgb(0, 45, 115);
+}
+
+.selector .header {
+    font-size: 2em;
+    text-align: center;
+    border-bottom: 4px solid rgb(0, 45, 115);
+    height: 100px;
+    flex-grow: initial;
+    justify-content: center;
+}
+
+.selector .option {
     font-size: 1.5em;
+    border-bottom: 2px solid rgb(0, 45, 115);
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+.selector .option p {
+    margin: 0;
+}
+
+.selector .option i {
+    width: 30px;
+    margin-right: 10px;
     text-align: center;
 }
 
-.roleSelector.active {
-    background: rgba(0, 45, 115, 1);
+.selector .option:last-child {
+    border-bottom: none;
+}
+
+.selector .option.active {
+    background: rgb(0, 45, 115);
     color: #FFF;
 }
 
@@ -109,8 +130,8 @@
     height: 100%;
     margin-right: 5%;
     float: right;
-    border-radius: 30px;
-    border: 3px solid black;
+    border-radius: 10px;
+    border: 3px solid rgba(0, 45, 115, 1);
     position: relative;
     overflow: hidden;
 }
@@ -120,6 +141,7 @@
     background-color: rgba(0, 45, 115, 1);
     color: #FFF;
     padding: 20px;
+    height: 100px;
 }
 
 .hero2 .rolesContainer .rolesText {

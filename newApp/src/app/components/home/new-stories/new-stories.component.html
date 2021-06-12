@@ -9,7 +9,7 @@
                     <div class="authorPfp" style="background-image: url({{article.author.photoURL}})"></div>
                     <p>{{article.author.displayName}} <br> {{article.newDate}}</p>
                 </div>
-                <p id="articleBody" [innerHTML]="article.body | safeHtml" [style.fontSize]="'1rem!important'"></p>
+                <p id="articleBody" [style.fontSize]="'1rem!important'">{{article.subtitle}}</p>
             </div>
             <div class="categoriesContainer">
                 <div class="categoryTag" [style.backgroundColor]="sharedData.colors.categories[article.category]">

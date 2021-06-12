@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SharedDataService } from 'src/app/services/shared-data.service';
-import { AuthService } from '../../services/auth.service';
+import { SharedDataService } from '@services/shared-data.service';
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-article',

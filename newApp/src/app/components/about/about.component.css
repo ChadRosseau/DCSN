@@ -1,11 +1,16 @@
 .aboutWrapper {
+<<<<<<< HEAD
   width: 100%;
   margin-top: 50px;
+=======
+    width: 100%;
+>>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 /* Hero 1 - Header */
 
 .hero1 {
+<<<<<<< HEAD
   width: 100%;
   height: 50vh;
   position: relative;
@@ -13,6 +18,15 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+=======
+    width: 100%;
+    height: 60vh;
+    position: relative;
+    background-position: 0% 15%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+>>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 .hero1 .overlay {
@@ -43,6 +57,7 @@
 /* Hero 2 - Our Mission*/
 
 .hero2 {
+<<<<<<< HEAD
   width: 100%;
   padding: 50px;
 }
@@ -53,6 +68,18 @@
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 40px;
   color: rgb(0, 45, 115);
+=======
+    width: 100%;
+    padding: 50px 0;
+}
+
+.hero2 h3 {
+    font-size: 4em;
+    font-weight: 300;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: rgb(0, 45, 115);
+    margin-left: 50px;
+>>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 .hero2 .textWrapper {
@@ -65,10 +92,18 @@
 
 .hero2 .textWrapper .leftColumn,
 .hero2 .textWrapper .rightColumn {
+<<<<<<< HEAD
   width: 45%;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+=======
+    width: 45%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+>>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 .hero2 .textWrapper .section {
@@ -76,6 +111,7 @@
   padding-bottom: 30px;
 }
 
+<<<<<<< HEAD
 .hero2 .textWrapper .leftColumn .section {
   text-align: right;
 }
@@ -89,6 +125,30 @@
   font-weight: 300;
   color: rgb(0, 45, 115);
   margin-bottom: 10px;
+=======
+.hero2 .textWrapper .leftColumn {
+    margin-right: 5%;
+    padding-left: 50px;
+}
+
+.hero2 .textWrapper .rightColumn {
+    padding-left: 20px;
+    padding-right: 50px;
+    background-color: rgb(0, 45, 115);
+    box-shadow: -1px 5px 10px #000;
+    color: #FFF;
+    border-radius: 20px 0px 0px 20px;
+}
+
+.hero2 .textWrapper .leftColumn .section {
+    text-align: right;
+}
+
+.hero2 .textWrapper .rightColumn h5 {
+    font-size: 2em;
+    font-weight: 300;
+    margin-bottom: 10px;
+>>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 .hero2 .textWrapper .rightColumn h5 i {
@@ -193,6 +253,7 @@
 }
 
 .hero4 .wrapper .selector {
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   border: 4px solid rgb(0, 45, 115);
@@ -200,6 +261,15 @@
 
   margin-right: 5%;
   overflow: hidden;
+=======
+    display: flex;
+    flex-direction: column;
+    border: 4px solid rgb(0, 45, 115);
+    border-radius: 10px;
+    width: 20%;
+    margin-right: 5%;
+    overflow: hidden;
+>>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 .hero4 .wrapper .selector .header,
@@ -217,9 +287,16 @@
 }
 
 .hero4 .wrapper .selector .option {
+<<<<<<< HEAD
   font-size: 1.5em;
   border-bottom: 2px solid rgb(0, 45, 115);
   cursor: pointer;
+=======
+    font-size: 1.5em;
+    border-bottom: 2px solid rgb(0, 45, 115);
+    cursor: pointer;
+    transition-duration: 300ms;
+>>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 .hero4 .wrapper .selector .option i {
@@ -379,12 +456,28 @@
 }
 
 .hero5 .button {
+<<<<<<< HEAD
   padding: 10px 15px;
   color: #fff;
   border: 2px solid #fff;
   text-align: center;
   margin-top: 40px;
   min-width: 200px;
+=======
+    padding: 10px 15px;
+    color: #FFF;
+    border: 2px solid #FFF;
+    text-align: center;
+    margin-top: 40px;
+    min-width: 200px;
+    background-color: transparent;
+    transition-duration: 300ms;
+}
+
+.hero5 .button:hover {
+    color: rgb(0, 45, 115);
+    background-color: #FFF;
+>>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 /* Hero 6 - Questions */
@@ -412,8 +505,14 @@
 }
 
 .hero6 .questionsContainer a {
+<<<<<<< HEAD
   color: rgb(0, 75, 135);
   font-weight: 500;
+=======
+    color: rgb(0, 75, 135);
+    font-weight: 500;
+    text-decoration: underline;
+>>>>>>> 25d3f61af8d1e3df57460225f685d51855d907eb
 }
 
 .hero6 .questionsContainer a:hover {

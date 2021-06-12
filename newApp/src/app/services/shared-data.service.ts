@@ -70,7 +70,7 @@ export class SharedDataService {
   }
 
   public roleData = {
-    Contributors: {
+    contributor: {
       name: 'Contributors',
       description: `Contributors are a body of the newspaper who create various types of content, whether they be articles, op-eds, videos, artwork, photos, plays, and more, on a plethora of global and local issues. Exemplary classwork could also be featured on the website. The group is split between <b>regular</b> and <b>irregular</b> contributors. 
                   <br></br>
@@ -79,7 +79,7 @@ export class SharedDataService {
                   <b>Irregular</b> contributors can submit content at any time. They are not liable for external benefits.`,
       image: this.dcImages.writerDuo
     },
-    Moderators: {
+    moderator: {
       name: 'Moderators',
       description: `Student moderators edit, evaluate, and approve content submitted by contributors, graphics supplied by the graphic designers, and software developed by ICT technicians. 
                   <br></br>
@@ -88,7 +88,7 @@ export class SharedDataService {
                   Acting as a mix between a judicial and legislative body, the content moderation team rules on important decisions and has the power to make, change, or repeal the guidelines of the newspaper.`,
       image: this.dcImages.moderator
     },
-    ICT: {
+    technology: {
       name: 'ICT',
       description: `The ICT division is responsible for managing, maintaining, and updating any software the newspaper requires. Website management, upkeep and development are core elements of an ICT technician’s role. 
                   <br><br>
@@ -97,7 +97,7 @@ export class SharedDataService {
                   Prospective programmers must have basic knowledge of HyperText Markup Language (HTML) and Cascading Style Sheets (CSS), along experience with at least one object-oriented programming language (<b>JavaScript, TypeScript</b>, Java, C++, C#, Python, etc). Since Angular uses ES6 Javascript and Typescript, previous familiarity with these languages is preferred.`,
       image: this.dcImages.techSingle
     },
-    Graphics: {
+    graphics: {
       name: 'Graphics',
       description: `The Graphic Design department at DCSN provides a variety of visual content for the newspaper. 
                     <br><br>

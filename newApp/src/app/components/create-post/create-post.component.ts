@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { SharedDataService } from '../../services/shared-data.service';
+import { AuthService } from '@services/auth.service';
+import { SharedDataService } from '@services/shared-data.service';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AsyncSubject, Subject } from 'rxjs';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedDataService } from 'src/app/services/shared-data.service';
-import { AuthService } from '../../services/auth.service';
-import { ArchiveService } from '../../services/archive.service';
+import { AuthService } from '@services/auth.service';
+import { ArchiveService } from '@services/archive.service';
 
 @Component({
 	selector: 'app-navbar',

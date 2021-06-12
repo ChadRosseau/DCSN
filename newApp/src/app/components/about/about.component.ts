@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { SharedDataService } from 'src/app/services/shared-data.service';
+import { AuthService } from '@services/auth.service';
+import { SharedDataService } from '@services/shared-data.service';
 
 @Component({
   selector: 'app-about',
@@ -22,7 +22,7 @@ export class AboutComponent implements OnInit {
       hero5Background: this.sharedData.dcImages.groupwork,
     };
     this.currentDepartment = 'all';
-    let dbProfileRef = this.auth.db.database.ref(`profiles`);
+    let dbProfileRef = this.auth.db.database.ref(`staffProfiles`);
     dbProfileRef.once('value', (snapshot) => {
       let data = Object.values(snapshot.val());
       for (let i = 0; i < data.length; i++) {
@@ -58,7 +58,6 @@ export class AboutComponent implements OnInit {
           return 0;
         }
       });
-      console.log(data);
       this.profiles = data;
     });
     this.number = Array(12).fill(0);
@@ -67,7 +66,6 @@ export class AboutComponent implements OnInit {
   setDepartment(department) {
     this.currentDepartment = department;
     document.getElementById('staffWrapper').scrollTop = 0;
-    console.log(this.currentDepartment);
   }
 
   checkDepartment(array) {

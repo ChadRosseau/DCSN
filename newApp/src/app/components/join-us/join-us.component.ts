@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedDataService } from 'src/app/services/shared-data.service';
+import { SharedDataService } from '@services/shared-data.service';
 
 @Component({
   selector: 'app-join-us',
@@ -12,7 +12,7 @@ export class JoinUsComponent implements OnInit {
   images;
 
   constructor(public sharedData: SharedDataService) {
-    this.setGuideRole('Contributors');
+    this.setGuideRole('contributor');
   }
 
   ngOnInit(): void {
@@ -27,6 +27,7 @@ export class JoinUsComponent implements OnInit {
 
   setGuideRole(role) {
     this.guideRole = this.sharedData.roleData[role];
+    console.log(this.guideRole.name);
   }
 
 }

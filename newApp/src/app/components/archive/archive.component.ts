@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
-import { SharedDataService } from '../../services/shared-data.service';
+import { AuthService } from '@services/auth.service';
+import { SharedDataService } from '@services/shared-data.service';
+import { ArchiveService } from '@services/archive.service';
 import * as _ from 'lodash';
-import { ArchiveService } from 'src/app/services/archive.service';
 
 @Component({
   selector: 'app-archive',

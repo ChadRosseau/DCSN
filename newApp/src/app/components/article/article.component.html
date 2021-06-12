@@ -1,28 +1,31 @@
 <div class="articleWrapper" [hidden]="!dataLoaded">
     <div class="headingWrapper">
-        <div class="categoriesContainer">
-            <div class="categoryTag" [style.backgroundColor]="sharedData.colors.categories[article.category]">
-                {{article.category}}</div>
-            <div class="subcategoryTag" [style.backgroundColor]="sharedData.colors.subcategories[article.category]">
-                {{article.subcategory}}
+        <div class="headingContainer">
+            <div class="categoriesContainer">
+                <div class="categoryTag" [style.backgroundColor]="sharedData.colors.categories[article.category]">
+                    {{article.category}}</div>
+                <div class="subcategoryTag" [style.backgroundColor]="sharedData.colors.subcategories[article.category]">
+                    {{article.subcategory}}
+                </div>
             </div>
-        </div>
-        <h2 class="title">{{article.title}}</h2>
-        <hr>
-        <div class="authorContainer">
-            <div class="authorPfp" [style.backgroundImage]="'url(' + article.author.photoURL + ')'">
+            <h2 class="title">{{article.title}}</h2>
+            <hr>
+            <div class="authorContainer">
+                <div class="authorPfp" [style.backgroundImage]="'url(' + article.author.photoURL + ')'">
+                </div>
+                <p class="authorName">{{article.author.displayName}}</p>
+                <p class="timestamp">{{article.writtenDate}}</p>
             </div>
-            <p class="authorName">{{article.author.displayName}}</p>
-            <p class="timestamp">{{article.writtenDate}}</p>
         </div>
     </div>
     <div class="textWrapper">
         <h4 class="subtitle">
             {{article.subtitle}}
         </h4>
-        <div class="mainImage"
+        <!-- <div class="mainImage"
             [style.backgroundImage]="article.thumbURL ? 'url(' + article.thumbURL + ')' : 'url(https://static01.nyt.com/images/2021/02/03/us/politics/03dc-repubs-1/03dc-repubs-1-jumbo.jpg?quality=90&auto=webp)'">
-        </div>
+        </div> -->
+        <hr>
         <div class="bodyWrapper">
             <div class="bodyText" [innerHTML]="article.body | safeHtml">
             </div>
@@ -30,11 +33,11 @@
         <div class="bottomWrapper">
             <div class="casWrapper">
                 <h4>CE/CAS</h4>
-                <p>CE/CAS goes here</p>
+                <p *ngFor="let cas of article.cas">{{cas}}</p>
             </div>
             <div class="referencesWrapper">
                 <h4>References</h4>
-                <p>References go here</p>
+                <p *ngFor="let reference of article.references">{{reference}}</p>
             </div>
         </div>
     </div>
