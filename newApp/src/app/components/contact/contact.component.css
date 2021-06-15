@@ -1,186 +1,187 @@
 * {
-  transition-duration: 0.5s;
+    transition-duration: 0.5s;
 }
 
 *:active,
 *:focus,
 *:visited {
-  outline: none;
+    outline: none;
 }
 
 .pageWrapper {
-  width: 100%;
+    width: 100%;
 }
+
 
 /* Introduction */
 
 .hero1 {
-  width: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  position: relative;
-  height: calc(55vh + 50px);
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
+    height: calc(55vh + 50px);
 }
 
 .hero1 .overlay {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  top: 0;
-  height: 100%;
-  background: rgb(0, 45, 115);
-  background: linear-gradient(
-    90deg,
-    rgba(0, 45, 115, 1) 0%,
-    rgba(0, 45, 115, 0.7) 30%,
-    rgba(0, 45, 115, 0.7) 70%,
-    rgba(0, 45, 115, 1) 100%
-  );
-  padding: 130px 50px 20px;
-  text-align: center;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: rgb(0, 45, 115);
+    background: linear-gradient( 90deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.7) 30%, rgba(0, 45, 115, 0.7) 70%, rgba(0, 45, 115, 1) 100%);
+    padding: 130px 50px 20px;
+    text-align: center;
 }
 
 .hero1 .overlay .text {
-  display: inline-block;
-  width: 70%;
-  margin: 0 auto;
+    display: inline-block;
+    width: 70%;
+    margin: 0 auto;
 }
 
 .hero1 .overlay .text h2 {
-  font-size: 6em;
-  border-bottom: 5px solid #fff;
-  color: #fff;
-  margin-bottom: 30px;
+    font-size: 6em;
+    border-bottom: 5px solid #fff;
+    color: #fff;
+    margin-bottom: 30px;
 }
 
 .hero1 .overlay .text p {
-  color: #fff;
-  font-size: 1.5em;
-  font-weight: 200;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 200;
 }
+
 
 /* Form */
 
 section {
-  background: #fff;
+    background: #fff;
 }
 
 .hidden {
-  display: none;
+    display: none;
 }
 
 .visible {
-  display: block;
+    display: block;
 }
 
 .center-text {
-  text-align: center;
+    text-align: center;
 }
 
 .title {
-  margin-top: 70px;
-  text-align: center;
+    margin-top: 70px;
+    text-align: center;
 }
 
 .container {
-  width: 50%;
-  padding: 30px;
-  min-width: 500px;
-  margin: 0px auto 50px;
+    width: 50%;
+    padding: 30px;
+    min-width: 500px;
+    margin: 0px auto 50px;
 }
 
 .container form {
-  border: 3px solid rgb(0, 45, 115);
-  /* background: rgb(0, 45, 115); */
-  /* background: linear-gradient(90deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.7) 30%, rgba(0, 45, 115, 0.7) 70%, rgba(0, 45, 115, 1) 100%); */
-  padding: 30px 20px;
-  display: flex;
-  display: -webkit-flex;
-  display: -ms-flex;
-  flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  justify-content: space-between;
-  -webkit-justify-content: space-between;
-  -ms-justify-content: space-between;
+    border: 3px solid rgb(0, 45, 115);
+    /* background: rgb(0, 45, 115); */
+    /* background: linear-gradient(90deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.7) 30%, rgba(0, 45, 115, 0.7) 70%, rgba(0, 45, 115, 1) 100%); */
+    padding: 30px 20px;
+    display: flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    justify-content: space-between;
+    -webkit-justify-content: space-between;
+    -ms-justify-content: space-between;
 }
 
 .container form input {
-  padding: 10px;
-  border: 2px solid #c7c7c7;
-  margin: 6px 10px;
-  min-width: 240px;
-  flex-grow: 1;
-  transition-duration: 0.5s;
+    padding: 10px;
+    border: 2px solid #c7c7c7;
+    margin: 6px 10px;
+    min-width: 240px;
+    flex-grow: 1;
+    transition-duration: 0.5s;
 }
 
 .container form input:focus {
-  border-color: rgb(0, 45, 115);
-  background-color: #fbfbfb;
+    border-color: rgb(0, 45, 115);
+    background-color: #fbfbfb;
 }
 
 .container form .long {
-  min-width: 90%;
-  flex-grow: 1;
+    min-width: 90%;
+    flex-grow: 1;
 }
 
 form textarea {
-  padding: 10px;
-  border: 2px solid #c7c7c7;
-  margin: 5px 10px;
-  min-width: 90%;
-  flex-grow: 1;
-  height: 200px;
-  min-height: 200px;
-  max-height: 200px;
-  transition-duration: 0.5s;
+    padding: 10px;
+    border: 2px solid #c7c7c7;
+    margin: 5px 10px;
+    min-width: 90%;
+    flex-grow: 1;
+    height: 200px;
+    min-height: 200px;
+    max-height: 200px;
+    transition-duration: 0.5s;
 }
 
 form textarea:focus {
-  border-color: #585858;
-  background-color: #fbfbfb;
+    border-color: #585858;
+    background-color: #fbfbfb;
 }
 
 button {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 button {
-  margin: 10px;
-  background-color: rgba(0, 45, 115, 0.9);
-  color: #fff;
-  border: 2px solid rgba(0, 45, 115, 0.9);
-  padding: 4px 16px;
-  transition: 0.4s;
-  width: 100%;
-  margin-top: 10px;
+    margin: 10px;
+    background-color: rgba(0, 45, 115, 0.9);
+    color: #fff;
+    border: 2px solid rgba(0, 45, 115, 0.9);
+    padding: 4px 16px;
+    transition: 0.4s;
+    width: 100%;
+    margin-top: 10px;
 }
 
 button:hover:enabled {
-  color: rgb(0, 45, 115);
-  background-color: transparent;
+    color: rgb(0, 45, 115);
+    background-color: transparent;
 }
 
-@media (max-width: 770px) {
-  .hero1 {
-    height: calc(70vh + 50px);
-  }
-
-  .hero1 .overlay .text h2 {
-    font-size: 3em;
-  }
-
-  .hero1 .overlay .text p {
-    font-size: 1.25em;
-  }
-
-  .hero1 .overlay {
-    padding-bottom: 5px;
-  }
-
-  .container form {
-    width: 75%;
-  }
+@media (max-width: 900px) {
+    .hero1 {
+        height: calc(45vh + 50px);
+    }
+    .hero1 .overlay {
+        padding: 100px 20px 20px;
+    }
+    .hero1 .overlay .text {
+        width: 90%;
+    }
+    .hero1 .overlay .text h2 {
+        font-size: 3em;
+    }
+    .hero1 .overlay .text p {
+        font-size: 1.25em;
+    }
+    .container {
+        width: initial;
+        min-width: initial;
+        margin: 0;
+    }
+    .container form {
+        width: initial;
+        margin: 0 auto;
+    }
 }
