@@ -429,35 +429,30 @@
 }
 
 @media (max-width: 900px) {
-    .textWrapper {
+    .hero1 {
+        background-position: top center;
+    }
+    .hero2 .textWrapper {
         flex-direction: column;
     }
+    .hero2 h3 {
+        width: 100%;
+        text-align: center;
+        margin: 0 0 30px;
+    }
     .hero2 .textWrapper .leftColumn {
+        width: 100%;
+        padding: 0 23px;
+    }
+    .hero2 .textWrapper .leftColumn .section {
+        text-align: center;
         width: 100%;
     }
     .hero2 .textWrapper .rightColumn {
         width: 100%;
     }
-    .hero2 .textWrapper .leftColumn .section {
-        text-align: center;
-    }
     .hero2 .textWrapper .rightColumn .section {
         text-align: left;
-    }
-}
-
-@media (max-width: 900px) {
-    .hero4 .wrapper .selector {
-        flex-direction: row;
-    }
-    .hero4 .wrapper .selector .option i {
-        display: none;
-    }
-    .hero4 .wrapper .selector .header {
-        display: none;
-    }
-    .hero4 .wrapper .selector .option {
-        font-size: 1em;
     }
     .hero3 {
         flex-direction: column;
@@ -468,6 +463,74 @@
     /* Still need to work on it but doesnt look too ugly now */
     /* "Our history" part if I try to make it flex-dir column and width100% the image disappears ;-; */
     /* "Our process" part doesnt work?*/
+    /* Hero 2 */
+    .hero2 {
+        flex-direction: column;
+        padding: 20px;
+        height: initial;
+    }
+    /* Selector */
+    .hero4 {
+        padding: 50px 20px;
+    }
+    .hero4 h3 {
+        text-align: center;
+    }
+    .hero4 .wrapper {
+        flex-direction: column;
+    }
+    .hero4 .wrapper .selector {
+        flex-direction: initial;
+        border: 4px solid rgb(0, 45, 115);
+        border-radius: 10px;
+        width: 100%;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+    .hero4 .wrapper .selector .header,
+    .hero4 .wrapper .selector .option {
+        justify-content: center;
+        padding: 10px;
+    }
+    .hero4 .wrapper .selector .header {
+        display: none
+    }
+    .hero4 .wrapper .selector .option {
+        font-size: 1.5em;
+        border-right: 2px solid rgb(0, 45, 115);
+        border-bottom: none;
+        display: flex;
+    }
+    .hero4 .wrapper .selector .option i {
+        margin: 0;
+    }
+    .hero4 .wrapper .selector .option span {
+        display: none;
+    }
+    .hero4 .wrapper .selector .option:last-child {
+        border-right: none;
+    }
+    .hero4 .wrapper .staffWrapper {
+        flex-grow: initial;
+        min-height: 30vh;
+        padding: 20px;
+        flex-wrap: nowrap;
+        align-items: center;
+        scroll-snap-type: mandatory;
+        scroll-snap-points-x: repeat(50%);
+        scroll-snap-type: x mandatory;
+    }
+    .hero4 .wrapper .staffWrapper .profile {
+        min-width: 225px;
+        height: 29vh;
+        margin: 0 10px;
+    }
+    .hero4 .wrapper .staffWrapper .profile .body h6 {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
     .hero5 .buttons {
         flex-direction: column;
     }

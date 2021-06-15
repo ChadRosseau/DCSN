@@ -19,6 +19,7 @@ export class AuthService {
   user$: Observable<User>;
   userKey: string;
   isStaff: boolean;
+  dcEmail: boolean;
   permission: number;
 
   constructor(
@@ -28,6 +29,7 @@ export class AuthService {
   ) {
 
     sessionStorage.clear();
+    this.dcEmail = false;
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
@@ -66,6 +68,11 @@ export class AuthService {
     dbUserRef.set(data);
     this.user$ = dbUserRef.valueChanges();
     this.userKey = uid;
+    if (email.includes("@dc.edu.hk")) {
+      this.dcEmail = true;
+    } else {
+      this.dcEmail = false;
+    }
     this.checkPermission(uid, email, displayName, photoURL);
     // return location.reload();
   }
