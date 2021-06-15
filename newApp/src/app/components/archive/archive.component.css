@@ -1,7 +1,7 @@
 .archiveHero {
-  margin-top: 50px;
-  display: flex;
+    display: flex;
 }
+
 
 /* .archiveHero .sidebar {
     width: 25%;
@@ -11,373 +11,397 @@
 } */
 
 .archiveWrapper {
-  float: right;
-  width: 100%;
-  padding: 50px 10px;
+    float: right;
+    width: 100%;
+    padding: 50px 0;
 }
 
-.archiveWrapper h2 {
-  font-size: 7em;
-  font-weight: lighter;
-  text-align: center;
-  width: 65%;
-  margin: 0 auto;
-  border-bottom: 2px solid #000;
+.archiveWrapper .hero1 {
+    width: 100%;
+    height: calc(40vh + 50px);
+    padding: calc(5vh + 50px) 0 5vh;
+    background-image: url("../../../assets/images/siteImages/library.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    position: relative;
+}
+
+.archiveWrapper .hero1::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgb(0, 45, 115);
+    background: linear-gradient(rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.8) 15%, rgba(0, 45, 115, 0.5) 50%, rgba(0, 45, 115, 1) 100%);
+}
+
+.archiveWrapper .hero1 h2 {
+    font-size: 10em;
+    text-align: center;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 4px #fff;
 }
 
 .archiveWrapper .filterButton {
-  border: 3px solid rgb(0, 45, 115);
-  color: rgb(0, 45, 115);
-  background-color: #fff;
-  font-size: 20px;
-  padding: 5px 10px 5px 16px;
-  border-radius: 5000px;
-  margin: 0 auto;
-  width: fit-content;
-  cursor: pointer;
-  text-align: center;
-  letter-spacing: 0.3em;
-  margin-top: 20px;
-  font-weight: bold;
+    border: 3px solid rgb(0, 45, 115);
+    color: rgb(0, 45, 115);
+    background-color: #fff;
+    font-size: 20px;
+    padding: 5px 10px 5px 16px;
+    border-radius: 5000px;
+    margin: 0 auto;
+    width: fit-content;
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: 0.3em;
+    margin-top: 20px;
+    font-weight: bold;
 }
 
 .archiveWrapper .filterButton.active {
-  color: #fff;
-  background-color: rgb(0, 45, 115);
+    color: #fff;
+    background-color: rgb(0, 45, 115);
 }
 
 .articlesWrapper {
-  width: 100%;
-  margin: 30px auto;
-  display: flex;
-  /* justify-content: space-between; */
-  flex-wrap: wrap;
+    width: 100%;
+    margin: 30px auto;
+    display: flex;
+    /* justify-content: space-between; */
+    flex-wrap: wrap;
 }
 
 .articlePreview {
-  width: 30%;
-  margin: 10px 1.5%;
-  height: 250px;
-  border: 1px solid #000;
-  box-shadow: 2px 5px 5px;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
+    width: 30%;
+    margin: 10px 1.5%;
+    height: 250px;
+    border: 1px solid #000;
+    box-shadow: 2px 5px 5px;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
 .articlePreview .titleBar {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 150px;
-  background: rgb(0, 45, 115);
-  background: linear-gradient(
-    0deg,
-    rgba(0, 45, 115, 1) 0%,
-    rgba(0, 45, 115, 0.65) 60%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  padding: 50px 10px 5px;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 150px;
+    background: rgb(0, 45, 115);
+    background: linear-gradient( 0deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.65) 60%, rgba(255, 255, 255, 0) 100%);
+    padding: 50px 10px 5px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
 }
 
 .articlePreview .titleBar .previewTitle {
-  width: 100%;
-  color: rgba(255, 255, 255, 0.9);
-  font-size: 1.6em;
-  line-height: 1.1em;
-  font-family: "Roboto Condensed", sans-serif;
-  margin-bottom: 0;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.6em;
+    line-height: 1.1em;
+    font-family: "Roboto Condensed", sans-serif;
+    margin-bottom: 0;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .articlePreview .titleBar .articleBlurb {
-  display: none;
-  color: #fff;
-  font-size: 1.2em;
-  line-height: 1.4em;
-  font-family: "Roboto Condensed", sans-serif;
-  -webkit-transition-duration: 0.4s;
-  transition-duration: 0.4s;
+    display: none;
+    color: #fff;
+    font-size: 1.2em;
+    line-height: 1.4em;
+    font-family: "Roboto Condensed", sans-serif;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
 }
 
 .articlePreview .titleBar .barBottom {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  width: 95%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: -10px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -10px;
 }
 
 .articlePreview .titleBar .previewTimestamp {
-  color: #fff;
-  width: 30%;
-  margin-bottom: 0px;
+    color: #fff;
+    width: 30%;
+    margin-bottom: 0px;
 }
 
 .articlePreview .titleBar .categoryTag {
-  padding: 2px 10px;
-  border-radius: 200px;
-  border: 1.75px solid rgba(0, 0, 0, 0.2);
-  width: fit-content;
-  opacity: 0.85;
+    padding: 2px 10px;
+    border-radius: 200px;
+    border: 1.75px solid rgba(0, 0, 0, 0.2);
+    width: fit-content;
+    opacity: 0.85;
 }
+
 
 /* On Hover */
 
 .articlePreview:hover {
-  margin-top: 0px;
-  margin-bottom: 20px;
-  cursor: pointer;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .articlePreview:hover .titleBar {
-  height: 250px;
-  padding-top: 20px;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 45, 115, 1) 0%,
-    rgba(0, 45, 115, 0.65) 80%,
-    rgba(0, 45, 115, 0.2) 100%
-  );
+    height: 250px;
+    padding-top: 20px;
+    background: linear-gradient( 0deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 0.65) 80%, rgba(0, 45, 115, 0.2) 100%);
 }
 
 .articlePreview:hover .titleBar .previewTitle {
-  height: initial;
-  margin-bottom: 20px;
+    height: initial;
+    margin-bottom: 20px;
 }
 
 .articlePreview:hover .titleBar .articleBlurb {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 
 .articlePreview:hover .titleBar .barBottom {
-  margin-top: -30px;
+    margin-top: -30px;
 }
 
 .articlePreview:hover .titleBar .categoryTag {
-  opacity: 1;
+    opacity: 1;
 }
+
 
 /* Sidebar */
 
 .sidebar {
-  height: calc(100% - 50px);
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 45, 115, 0.9);
-  overflow-x: hidden;
-  transition: 0.5s;
+    height: calc(100% - 50px);
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 45, 115, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
 }
+
 
 /* Custom Scrollbar */
 
 ::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: none;
+    background: none;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #fff;
-  border-radius: 5px;
+    background: #fff;
+    border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ccc;
+    background: #ccc;
 }
 
 .sidebar.open {
-  width: 25vw !important;
-  padding-left: 10px;
-  border: 5px solid transparent;
+    width: 25vw !important;
+    padding-left: 10px;
+    border: 5px solid transparent;
 }
 
 .sidebar h4 {
-  font-size: 3em;
-  color: #fff;
+    font-size: 3em;
+    color: #fff;
 }
 
 .sidebar .closebtn {
-  position: absolute;
-  top: 0;
-  right: 47px;
-  font-size: 36px;
-  color: #fff;
+    position: absolute;
+    top: 0;
+    right: 47px;
+    font-size: 36px;
+    color: #fff;
 }
+
 
 /* Sidebar labels */
 
 .searchBar {
-  white-space: nowrap;
+    white-space: nowrap;
 }
 
 .searchBar label {
-  margin-right: 10px;
-  color: #fff;
-  font-weight: bold;
-  font-size: 20px;
+    margin-right: 10px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 #resetButton {
-  font-size: 35px;
-  margin-left: 10px;
-  position: absolute;
-  top: 64px;
-  color: white;
-  cursor: pointer;
+    font-size: 35px;
+    margin-left: 10px;
+    position: absolute;
+    top: 64px;
+    color: white;
+    cursor: pointer;
 }
+
 
 /* Customize the label (the container) */
 
 .categoryFilter .inputContainer {
-  display: block;
-  position: relative;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 25px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding-left: 35px;
-  color: #fff;
-  white-space: nowrap;
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 25px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-left: 35px;
+    color: #fff;
+    white-space: nowrap;
 }
 
 .subcategoryFilter .inputContainer {
-  display: block;
-  position: relative;
-  margin-bottom: 10px;
-  cursor: pointer;
-  font-size: 18px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding-left: 45px;
-  color: #fff;
+    display: block;
+    position: relative;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-left: 45px;
+    color: #fff;
 }
+
 
 /* Hide the browser's default checkbox */
 
 .inputContainer input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
 }
+
 
 /* Create a custom checkbox */
 
 .categoryFilter .inputContainer .checkmark {
-  position: absolute;
-  top: 7px;
-  left: 0;
-  height: 24px;
-  width: 24px;
-  background-color: rgba(0, 0, 0, 0);
-  border: 3px solid #fff;
-  opacity: 0.75;
+    position: absolute;
+    top: 7px;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 3px solid #fff;
+    opacity: 0.75;
 }
 
 .subcategoryFilter .inputContainer .checkmark {
-  position: absolute;
-  top: 5px;
-  left: 10px;
-  height: 20px;
-  width: 20px;
-  background-color: rgba(0, 0, 0, 0);
-  border: 2px solid #fff;
-  opacity: 0.75;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid #fff;
+    opacity: 0.75;
 }
+
 
 /* On mouse-over, add a grey background color */
 
-.inputContainer:hover input ~ .checkmark {
-  background-color: rgba(0, 0, 0, 0.2);
+.inputContainer:hover input~.checkmark {
+    background-color: rgba(0, 0, 0, 0.2);
 }
+
 
 /* When the checkbox is checked, set border big enough to act as background. */
 
-.categoryFilter .inputContainer input:checked ~ .checkmark {
-  border-width: 12px;
-  opacity: 1;
+.categoryFilter .inputContainer input:checked~.checkmark {
+    border-width: 12px;
+    opacity: 1;
 }
 
-.subcategoryFilter .inputContainer input:checked ~ .checkmark {
-  border-width: 10px;
-  opacity: 1;
+.subcategoryFilter .inputContainer input:checked~.checkmark {
+    border-width: 10px;
+    opacity: 1;
 }
+
 
 /* Create the checkmark/indicator (hidden when not checked) */
 
 .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
+    content: "";
+    position: absolute;
+    display: none;
 }
+
 
 /* Show the checkmark when checked */
 
-.categoryFilter .inputContainer input:checked ~ .checkmark:after {
-  display: block;
+.categoryFilter .inputContainer input:checked~.checkmark:after {
+    display: block;
 }
+
 
 /* Style the checkmark/indicator */
 
 .categoryFilter .inputContainer .checkmark:after {
-  left: -3px;
-  top: -6px;
-  width: 5px;
-  height: 10px;
-  border: solid #000;
-  border-width: 0 2px 2px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+    left: -3px;
+    top: -6px;
+    width: 5px;
+    height: 10px;
+    border: solid #000;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
-@media (max-width: 900) {
-  .articlePreview {
-    height: 150px;
-  }
-
-  .articlePreview .titleBar .previewTitle {
-    font-size: 1em;
-  }
-
-  .articlePreview .titleBar .previewTimestamp {
-    font-size: 0.5em;
-  }
-
-  .articlePreview .titleBar .barBottom {
-    justify-content: unset;
-  }
-
-  .archiveWrapper h2 {
-    font-size: 3em;
-  }
+@media (max-width: 900px) {
+    .archiveWrapper .hero1 {
+        height: calc(20vh + 50px);
+        padding: calc(2vh + 50px) 0 0;
+    }
+    .archiveWrapper .hero1 h2 {
+        font-size: 4.5em;
+        -webkit-text-stroke-width: 2px;
+    }
+    .articlePreview {
+        width: 90%;
+        margin: 10px auto;
+    }
+    .sidebar.open {
+        width: 77.5vw !important;
+        padding-left: 10px;
+        border: 5px solid transparent;
+    }
 }
