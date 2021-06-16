@@ -417,5 +417,8 @@ button {
     }
     .mobileMenuButton {
         display: inline-block;
+        position: absolute;
+        right: 10px;
+        top: 0;
     }
 }

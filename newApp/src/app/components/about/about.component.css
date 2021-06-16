@@ -432,6 +432,9 @@
     .hero1 {
         background-position: top center;
     }
+    .hero2 {
+        padding: 20px 0 20px 20px;
+    }
     .hero2 .textWrapper {
         flex-direction: column;
     }
@@ -530,6 +533,9 @@
         overflow: hidden;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
+    }
+    .hero5 h3 {
+        font-size: 3em;
     }
     .hero5 .buttons {
         flex-direction: column;
