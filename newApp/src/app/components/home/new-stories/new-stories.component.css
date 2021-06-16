@@ -187,6 +187,7 @@
     .storiesHeroWrapper .categoriesContainer div {
         margin-top: 10px;
         margin-right: 0px;
+        font-size: 0.8em;
     }
     .storiesHeroWrapper .categoriesContainer .categoryTag {
         display: none;

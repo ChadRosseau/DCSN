@@ -7,22 +7,10 @@ import { HostListener } from "@angular/core";
   styleUrls: ['./global-goals.component.css']
 })
 export class GlobalGoalsComponent implements OnInit {
-
+  currentGoalId;
   boxSize;
   screenHeight: number;
   screenWidth: number;
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event?) {
-    this.screenHeight = window.innerHeight;
-    this.screenWidth = window.innerWidth;
-    this.boxSize = (this.screenWidth / 9.5) - 2;
-    console.log("window resized");
-  }
-
-  constructor() {
-    this.onResize();
-  }
 
   goals = [
     {
@@ -35,7 +23,7 @@ export class GlobalGoalsComponent implements OnInit {
       id: 1,
       image: "",
       url: "",
-      display: "none"
+      display: "block"
     },
     {
       id: 2,
@@ -134,18 +122,26 @@ export class GlobalGoalsComponent implements OnInit {
     }
   ]
 
-  flipDisplay(id) {
-    for (let i = 0; i < this.goals.length; i++) {
-      if (id === this.goals[i].id) {
-        if (this.goals[i].display === "block") {
-          this.goals[i].display = "none";
-        } else if (this.goals[i].display === "none") {
-          this.goals[i].display = "block";
-        }
-      }
-    }
-    console.log("flipped " + id);
+  constructor() {
+    this.currentGoalId = 1;
+
+    this.goals[this.currentGoalId].display = "none";
   }
+
+
+
+  // flipDisplay(id) {
+  //   for (let i = 0; i < this.goals.length; i++) {
+  //     if (id === this.goals[i].id) {
+  //       if (this.goals[i].display === "block") {
+  //         this.goals[i].display = "none";
+  //       } else if (this.goals[i].display === "none") {
+  //         this.goals[i].display = "block";
+  //       }
+  //     }
+  //   }
+  //   console.log("flipped " + id);
+  // }
 
   getImage(id) {
     return "../../../assets/images/un_goals/" + id + ".png";

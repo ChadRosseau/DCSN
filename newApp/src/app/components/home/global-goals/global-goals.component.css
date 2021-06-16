@@ -36,7 +36,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    width: calc((100vw / 9.5) - 2px);
+    width: calc(100% / 6);
     height: calc((100vw / 9.5) - 2px);
 }
 
@@ -73,7 +73,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
-        width: calc((98vw / 6) - 2px);
-        height: calc((98vw / 6) - 2px);
+        width: calc((100% / 6));
+        height: calc((100% / 6));
     }
 }
