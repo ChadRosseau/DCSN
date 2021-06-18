@@ -13,14 +13,12 @@
 .archiveWrapper {
     float: right;
     width: 100%;
-    padding: 50px 0;
 }
 
 .archiveWrapper .hero1 {
     width: 100%;
-    height: calc(40vh + 50px);
-    padding: calc(5vh + 50px) 0 5vh;
-    background-image: url("../../../assets/images/siteImages/library.png");
+    height: calc(45vh + 50px);
+    padding: calc(10vh + 50px) 0 5vh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -388,8 +386,8 @@
 
 @media (max-width: 900px) {
     .archiveWrapper .hero1 {
-        height: calc(20vh + 50px);
-        padding: calc(2vh + 50px) 0 0;
+        height: calc(30vh + 50px);
+        padding: calc(10vh + 50px) 0 0;
     }
     .archiveWrapper .hero1 h2 {
         font-size: 4.5em;

@@ -72,6 +72,16 @@ app-footer {
     margin-top: auto;
 }
 
+
+/* Article */
+
+.articleWrapper .textWrapper .bodyWrapper .bodyText img {
+    max-width: 100%;
+    height: unset;
+    display: block;
+    margin: 0 auto;
+}
+
 @media (max-width: 900px) {
     .prev-slide,
     .next-slide {

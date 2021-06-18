@@ -26,7 +26,7 @@
         <a href="javascript:void(0)" class="closebtn" (click)="pageData.filterMenu = !pageData.filterMenu">&times;</a>
     </div>
     <div class="archiveWrapper">
-        <div class="hero1">
+        <div class="hero1" [style.backgroundImage]="images.hero1Background">
             <h2>ARTICLES</h2>
         </div>
         <div class="filterButton" (click)="pageData.filterMenu = !pageData.filterMenu"

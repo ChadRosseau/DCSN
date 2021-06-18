@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HostListener } from "@angular/core";
+import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-global-goals',
@@ -122,34 +123,22 @@ export class GlobalGoalsComponent implements OnInit {
     }
   ]
 
-  constructor() {
-    this.currentGoalId = 1;
-
-    this.goals[this.currentGoalId].display = "none";
-  }
-
-
-
-  // flipDisplay(id) {
-  //   for (let i = 0; i < this.goals.length; i++) {
-  //     if (id === this.goals[i].id) {
-  //       if (this.goals[i].display === "block") {
-  //         this.goals[i].display = "none";
-  //       } else if (this.goals[i].display === "none") {
-  //         this.goals[i].display = "block";
-  //       }
-  //     }
-  //   }
-  //   console.log("flipped " + id);
-  // }
-
-  getImage(id) {
-    return "../../../assets/images/un_goals/" + id + ".png";
+  constructor(private auth: AuthService) {
+    this.auth.db.database.ref(`siteInfo/home/currentGoal`).once('value', snapshot => {
+      this.currentGoalId = snapshot.val();
+    }).then(() => {
+      this.goals[this.currentGoalId].display = "none";
+      for (let i = 0; i < this.goals.length; i++) {
+        this.goals[i].image = this.getImage(this.goals[i].id);
+      }
+    });
   }
 
   ngOnInit(): void {
-    for (let i = 0; i < this.goals.length; i++) {
-      this.goals[i].image = this.getImage(this.goals[i].id);
-    }
+
+  }
+
+  getImage(id) {
+    return "../../../assets/images/un_goals/" + id + ".png";
   }
 }

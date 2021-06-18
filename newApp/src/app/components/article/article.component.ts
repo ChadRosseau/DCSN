@@ -13,7 +13,7 @@ export class ArticleComponent implements OnInit {
   article;
   dataLoaded;
 
-  constructor(private auth: AuthService, private route: ActivatedRoute, public sharedData: SharedDataService) { }
+  constructor(public auth: AuthService, private route: ActivatedRoute, public sharedData: SharedDataService) { }
 
   ngOnInit(): void {
 
@@ -37,6 +37,11 @@ export class ArticleComponent implements OnInit {
         let author = snapshot.val();
         console.log(author)
         articleData.author = author;
+        this.auth.db.database.ref(`staffProfiles/${articleData.author.uid}`).once('value', (data) => {
+          let tempAuthor = data.val();
+          articleData.author['firstName'] = tempAuthor.firstName;
+          articleData.author['lastName'] = tempAuthor.lastName;
+        })
       }).then(() => {
 
         // Code to convert timestamp

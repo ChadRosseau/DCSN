@@ -200,6 +200,12 @@
     }
     .bodyText {
         font-size: 13px;
+        overflow: hidden;
+        overflow-wrap: normal;
+    }
+    .bodyText p img {
+        max-width: 100%;
+        height: unset;
     }
     .bottomWrapper {
         flex-direction: column;

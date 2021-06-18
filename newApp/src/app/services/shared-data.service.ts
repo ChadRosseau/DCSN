@@ -6,17 +6,18 @@ import { Injectable } from '@angular/core';
 export class SharedDataService {
 
   public dcImages = {
-    map: 'url("https://drive.google.com/uc?id=11scR8_wk_4MTPWKIcJsoBXlmDN0xK9OD")',
-    groupwork: 'url("https://drive.google.com/uc?id=1paM6_4yyIAMvRMwo_ZRptOYmm7gJ2pNf")',
-    presentation: 'url("https://drive.google.com/uc?id=1AgHEEMiEmxMfNlHOa0pAMFOkLVaKcf_7")',
-    techDuo: 'url("https://drive.google.com/uc?id=1ACLirFjyNvnio1eyKSbi-855zJaMyxbG")',
-    mapPointing: 'url("https://drive.google.com/uc?id=1fuEwgmlbkHLnf_TwDIeDIWQ8rNybeZoJ")',
-    moderator: 'url("https://drive.google.com/uc?id=1CECRcnXcIUymxaH4qslU3dyT8zksPik-")',
-    techSingle: 'url("https://drive.google.com/uc?id=1D-WrOpO2OzyLffAINmMu_PWG81WP6BU-")',
-    writerDuo: 'url("https://drive.google.com/uc?id=1_zeRTYylRcDzWIIzSoyCwKfpKMl_lnmC")',
-    graphics: 'url("https://drive.google.com/uc?id=1n7GgVnrmp_oFxvauDb_w5Hge_uLl4aww")',
-    graphicsPro: 'url("https://drive.google.com/uc?id=1W5SFWDW86HZPtjIwP9YI7AVgq8i6uyI_")',
-    groupPhoto: 'url("https://drive.google.com/uc?id=1QIoxS3zyTCMjcW8_sA3lwUZGKXxhZREL")',
+    map: 'url("../../assets/images/siteImages/map.jpeg")',
+    groupwork: 'url("../../assets/images/siteImages/groupwork.jpeg")',
+    presentation: 'url("../../assets/images/siteImages/presentation.jpeg")',
+    techDuo: 'url("../../assets/images/siteImages/techDuo.jpeg")',
+    mapPointing: 'url("../../assets/images/siteImages/mapPointing.jpeg")',
+    moderator: 'url("../../assets/images/siteImages/moderator.jpeg")',
+    techSingle: 'url("../../assets/images/siteImages/techSingle.jpeg")',
+    writerDuo: 'url("../../assets/images/siteImages/writerDuo.jpeg")',
+    graphics: 'url("../../assets/images/siteImages/graphics.jpeg")',
+    graphicsPro: 'url("../../assets/images/siteImages/graphicsPro.jpeg")',
+    groupPhoto: 'url("../../assets/images/siteImages/groupPhoto.jpeg")',
+    library: 'url("../../assets/images/siteImages/library.png")',
   };
 
   public subcategories = {

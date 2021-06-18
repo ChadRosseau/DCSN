@@ -10,6 +10,7 @@ import * as _ from 'lodash';
   styleUrls: ['./archive.component.css']
 })
 export class ArchiveComponent implements OnInit {
+  images;
   dbArticles;
   articlesData;
   pageData = {
@@ -19,6 +20,10 @@ export class ArchiveComponent implements OnInit {
   constructor(private auth: AuthService, public sharedData: SharedDataService, public archiveService: ArchiveService) { }
 
   ngOnInit(): void {
+
+    this.images = {
+      hero1Background: this.sharedData.dcImages.library,
+    };
 
     // Fetch all articles to show, and apply filters.
     this.dbArticles = this.auth.db.object<any>(`articles/moderating`).valueChanges().subscribe(data => {

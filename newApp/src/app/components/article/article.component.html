@@ -13,7 +13,7 @@
             <div class="authorContainer">
                 <div class="authorPfp" [style.backgroundImage]="'url(' + article.author.photoURL + ')'">
                 </div>
-                <p class="authorName">{{article.author.displayName}}</p>
+                <p class="authorName">{{article.author.firstName}} {{auth.dcEmail ? article.author.lastName : ""}}</p>
                 <p class="timestamp">{{article.writtenDate}}</p>
             </div>
         </div>
