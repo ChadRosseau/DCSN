@@ -45,6 +45,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 // Guards
 import { StaffGuard } from './guards/staff.guard';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { StaffGuard } from './guards/staff.guard';
     ArrayReversePipe,
     FooterComponent,
     SafeHtmlPipe,
+    LoginComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LoginComponent } from '@components/login/login.component';
 
 // Components
 import { AboutComponent } from './components/about/about.component';
@@ -9,6 +10,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { HomeComponent } from './components/home/home.component';
 import { JoinUsComponent } from './components/join-us/join-us.component';
+
 import { StaffGuard } from './guards/staff.guard';
 
 const routes: Routes = [
@@ -22,7 +24,8 @@ const routes: Routes = [
     canActivate: [StaffGuard]
   },
   { path: 'article/:articleId', component: ArticleComponent },
-  { path: 'archive', component: ArchiveComponent }
+  { path: 'archive', component: ArchiveComponent },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
