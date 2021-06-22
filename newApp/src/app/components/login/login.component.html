@@ -1,1 +1,34 @@
-<p>login works!</p>
+<div class="loginWrapper">
+    <div class="columnWrapper">
+        <div class="leftColumn">
+            <h2>Login</h2>
+            <p>Logging into the DCSN website will provide some additional features for those using Discovery College
+                (@dc.edu.hk) emails, such as being able to see more information on student staff members.</p>
+            <p>Logging in with a non-DC email will provide no additional features over remaining logged out.</p>
+            <p>Feel free to <a [routerLink]="['/contact']">contact us</a> if you have any questions or concerns.</p>
+        </div>
+        <div class="middleColumn">
+            <h3>Please note:</h3>
+            <p>By logging into the DCSN website, you are consenting to storage of some personal information. This
+                information includes:</p>
+            <ul>
+                <li>The display name tied to your Google account</li>
+                <li>Your Google account's profile picture</li>
+                <li>Your Google email address</li>
+            </ul>
+            <p>All authentication is handled by externally by Google's GAuth API. We do not store usernames or passwords
+                in
+                our database.</p>
+        </div>
+        <div class="rightColumn">
+            <div>
+                <h5>Ready to login?</h5>
+                <button>Sign in with Google</button>
+            </div>
+            <div>
+                <h5>Currently logged in as ____</h5>
+                <button>Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
