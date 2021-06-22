@@ -38,11 +38,11 @@ export class ArticleComponent implements OnInit {
         articleData.author = author;
         this.auth.db.database.ref(`staffProfiles/${articleData.author.uid}`).once('value', (data) => {
           let tempAuthor = data.val();
+          console.log(tempAuthor);
           articleData.author['firstName'] = tempAuthor.firstName;
           articleData.author['lastName'] = tempAuthor.lastName;
         })
       }).then(() => {
-
         // Code to convert timestamp
         const articleDate = new Date(articleData.writtenDate).toLocaleDateString('en-GB', {
           day: 'numeric',
@@ -54,6 +54,7 @@ export class ArticleComponent implements OnInit {
         // Set article data
         this.article = articleData;
         this.dataLoaded = true;
+        console.log(this.dataLoaded)
       });
     });
   }

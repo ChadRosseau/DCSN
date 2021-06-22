@@ -13,7 +13,8 @@
             <div class="authorContainer">
                 <div class="authorPfp" [style.backgroundImage]="'url(' + article.author.photoURL + ')'">
                 </div>
-                <p class="authorName">{{article.author.firstName}} {{auth.dcEmail ? article.author.lastName : ""}}</p>
+                <p class="authorName">{{article.author ? article.author.firstName : ""}}
+                    {{article && auth.dcEmail ? article.author.lastName : ""}}</p>
                 <p class="timestamp">{{article.writtenDate}}</p>
             </div>
         </div>
@@ -22,15 +23,9 @@
         <h4 class="subtitle">
             {{article.subtitle}}
         </h4>
-<<<<<<< HEAD
-        <!-- <div class="mainImage"
-            [style.backgroundImage]="article.thumbURL ? 'url(' + article.thumbURL + ')' : 'url(https://static01.nyt.com/images/2021/02/03/us/politics/03dc-repubs-1/03dc-repubs-1-jumbo.jpg?quality=90&auto=webp)'">
-        </div> -->
+
         <hr>
-=======
-        <div class="mainImage" [style.backgroundImage]="'url(' + article.thumbURL + ')'">
-        </div>
->>>>>>> staff-pages
+
         <div class="bodyWrapper">
             <div class="bodyText" [innerHTML]="article.body | safeHtml">
             </div>
@@ -38,18 +33,14 @@
         <div class="bottomWrapper">
             <div class="casWrapper">
                 <h4>CE/CAS</h4>
-<<<<<<< HEAD
-=======
                 <hr>
->>>>>>> staff-pages
+
                 <p *ngFor="let cas of article.cas">{{cas}}</p>
             </div>
             <div class="referencesWrapper">
                 <h4>References</h4>
-<<<<<<< HEAD
-=======
                 <hr>
->>>>>>> staff-pages
+
                 <p *ngFor="let reference of article.references">{{reference}}</p>
             </div>
         </div>
