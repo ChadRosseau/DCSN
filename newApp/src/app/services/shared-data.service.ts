@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedDataService {
+
+  constructor() { }
 
   public dcImages = {
     map: 'url("../../assets/images/siteImages/map.jpeg")',
@@ -78,7 +81,8 @@ export class SharedDataService {
                   <b>Regular</b> contributors are required to submit content for every rotational period (at this moment it is every month). They are liable for certain external benefits that come with the student school newspaper such as scheduled guest speakers, tours, awards, and more. 
                   <br></br>
                   <b>Irregular</b> contributors can submit content at any time. They are not liable for external benefits.`,
-      image: this.dcImages.writerDuo
+      image: this.dcImages.writerDuo,
+      icon: `<i class="roleIcon far fa-edit"></i>`
     },
     moderator: {
       name: 'Moderators',
@@ -87,7 +91,8 @@ export class SharedDataService {
                   This group forms the <b>content moderation team</b>, the main priority of which is to publish content for the newspaper by a majority vote while adhering to the <a href="">content guidelines</a>. 
                   <br></br>
                   Acting as a mix between a judicial and legislative body, the content moderation team rules on important decisions and has the power to make, change, or repeal the guidelines of the newspaper.`,
-      image: this.dcImages.moderator
+      image: this.dcImages.moderator,
+      icon: `<i class="roleIcon far fa-copy"></i>`
     },
     technology: {
       name: 'ICT',
@@ -96,7 +101,8 @@ export class SharedDataService {
                   The DCSN website is built using the Angular CLI framework and maintains a Firebase database backend. Technicians must be eager to learn and improve, and familiar with working with APIs and external documentation to write custom code. It should be noted that the level of programming skill required for this role exceeds that of the average high-school student.
                   <br><br>
                   Prospective programmers must have basic knowledge of HyperText Markup Language (HTML) and Cascading Style Sheets (CSS), along experience with at least one object-oriented programming language (<b>JavaScript, TypeScript</b>, Java, C++, C#, Python, etc). Since Angular uses ES6 Javascript and Typescript, previous familiarity with these languages is preferred.`,
-      image: this.dcImages.techSingle
+      image: this.dcImages.techSingle,
+      icon: `<i class="roleIcon fas fa-laptop-code"></i>`
     },
     graphics: {
       name: 'Graphics',
@@ -105,7 +111,8 @@ export class SharedDataService {
                     The primary role of the Graphic Design department lies in creating artistic pieces to accompany articles or other media produced by contributors. However, there are also a variety of other areas it contributes to, including graphics for the ICT team to implement in the DCSN website, standalone content in the form of posters or banners, and promotional content such as advertising graphics for social media, the school Ding page, and more.
                     <br><br>
                     Prospective artists should possess a solid understanding of basic artistic principles and a passion for creativity. While DCSN does accept use of a variety of mediums for artistic creation, experience using digital art tools and/or editing software is favourable.`,
-      image: this.dcImages.graphicsPro
+      image: this.dcImages.graphicsPro,
+      icon: `<i class="roleIcon fas fa-palette"></i>`
     },
   }
 
@@ -132,6 +139,4 @@ export class SharedDataService {
     },
   ]
 
-
-  constructor() { }
 }

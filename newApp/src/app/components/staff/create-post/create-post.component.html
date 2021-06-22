@@ -1,0 +1,133 @@
+<div class="wrapper">
+    <form [formGroup]="createArticleForm">
+        <div class="headingWrapper">
+            <div class="headingContent">
+                <div class="categoriesContainer">
+                    <select [formControl]="createArticleForm.controls.category"
+                        [style.backgroundColor]="sharedData.colors.categories[createArticleForm.value.category]">
+                        <option value="?" disabled>- Please select category -</option>
+                        <option [value]="category" *ngFor="let category of sharedData.categories">
+                            {{category}}
+                        </option>
+                    </select>
+                    <mat-error *ngIf="createArticleForm.controls.category.hasError('required')" [hidden]="!showErrors"
+                        class="error">
+                        Category is required
+                    </mat-error>
+
+                    <select [formControl]="createArticleForm.controls.subcategory"
+                        [style.backgroundColor]="sharedData.colors.subcategories[createArticleForm.value.category]">
+                        <option value="?" disabled>
+                            {{createArticleForm.value.category == '?' ? 
+                                '<--' : '- Please select subcategory -'}}</option>
+                        <option [value]="subcategory"
+                            *ngFor="let subcategory of sharedData.subcategories[createArticleForm.value.category]">
+                            {{subcategory}}
+                        </option>
+                    </select>
+                    <mat-error *ngIf="createArticleForm.controls.subcategory.hasError('required')"
+                        [hidden]="!showErrors" class="error">
+                        Subcategory is required
+                    </mat-error>
+                </div>
+
+                <mat-form-field class="title">
+                    <textarea [formControl]="createArticleForm.controls.title" type="text"
+                        placeholder="Your article title here"
+                        [ngClass]="{'empty': createArticleForm.value.title == ''}"></textarea>
+                    <mat-error *ngIf="createArticleForm.controls.title.hasError('required')" [hidden]="!showErrors"
+                        class="error">
+                        Title is required
+                    </mat-error>
+                </mat-form-field>
+
+                <hr>
+
+                <div class="authorContainer">
+                    <div class="authorPfp"
+                        [style.backgroundImage]="writerInfo ? 'url(' + writerInfo.photoURL + ')' : 'none'">
+                    </div>
+                    <p class="authorName">
+                        {{writerInfo ? writerInfo.firstName + " " + writerInfo.lastName : 'Name loading...'}}</p>
+                    <p class="timestamp">{{time != {} ? time['displayTime'] : 'DD Month YYYY'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="textWrapper">
+            <mat-form-field class="subtitle">
+                <textarea [formControl]="createArticleForm.controls.subtitle" type="text"
+                    placeholder="Your article subtitle here"
+                    [ngClass]="{'empty': createArticleForm.value.subtitle == ''}"></textarea>
+                <mat-error *ngIf="createArticleForm.controls.subtitle.hasError('required')" [hidden]="!showErrors"
+                    class="error">
+                    Subtitle is required
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="thumbURL">
+                <div class="thumbWrapper" [style.height]="createArticleForm.value.thumbURL != '' ? '300px' : '30px'">
+                    <input [formControl]="createArticleForm.controls.thumbURL" type="url" name=""
+                        placeholder="Thumbnail Image URL: (https://www.imageurl.com)"
+                        (input)="imageExists(createArticleForm.value.thumbURL)" />
+                    <mat-error *ngIf="createArticleForm.controls.thumbURL.hasError('required')" [hidden]="!showErrors"
+                        class="error">
+                        Thumbnail URL is required
+                    </mat-error>
+                    <div class="thumbURLPreview" [style.backgroundImage]="currentImage"
+                        [style.display]="createArticleForm.value.thumbURL != '' ? 'block' : 'none'"></div>
+                </div>
+            </mat-form-field>
+
+            <!-- <h5>Thumbnail:</h5>
+    <input [(ngModel)]="newArticle.title"type="file" id="fileUpload" name="" /> -->
+
+            <!-- <h5>Video Link:</h5>
+    <input type="text" name="" /> -->
+
+            <div class="mat-form-field-wrapper">
+                <textarea id="bodyEditor"></textarea>
+                <div class="mat-form-field-subscript-wrapper">
+                    <mat-error
+                        *ngIf="createArticleForm.controls.body.touched && createArticleForm.controls.body.hasError('required')">
+                        Your article body requires content
+                    </mat-error>
+                </div>
+            </div>
+            <div class="bottomWrapper">
+                <div class="casWrapper">
+                    <h4>CE/CAS</h4>
+                    <h5>Format: <span style="color: blue">(Organization name): (link)</span></h5>
+                    <hr>
+                    <div class="listing" *ngFor="let cas of casList; let i = index; trackBy: trackByFn">
+                        <input type="text" [(ngModel)]="casList[i]" [ngModelOptions]="{standalone: true}">
+                        <i class="fas fa-times" (click)="removeListing('casList', i)"></i>
+                    </div>
+                    <div class="addListing listing">
+                        <input type="text" #addCAS>
+                        <i class="far fa-plus-square"
+                            (click)="addListing('casList', addCAS.value); addCAS.value = ''"></i>
+                    </div>
+                </div>
+                <div class="referencesWrapper">
+                    <h4>References</h4>
+                    <h5>Format: <span style="color: blue">APA Citations</span></h5>
+                    <hr>
+                    <div class="listing" *ngFor="let reference of referencesList; let i = index; trackBy: trackByFn">
+                        <input type="text" [(ngModel)]="referencesList[i]" [ngModelOptions]="{standalone: true}">
+                        <i class="fas fa-times" (click)="removeListing('referencesList', i)"></i>
+                    </div>
+                    <div class="addListing listing">
+                        <input type="text" #addReference>
+                        <i class="far fa-plus-square"
+                            (click)="addListing('referencesList', addReference.value); addReference.value = ''"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="buttonsWrapper">
+                <button [routerLink]="['/']">Discard Article Draft</button>
+                <button (click)="createArticle('drafts')">Save Article Draft</button>
+                <button (click)="createArticle('moderating')">Submit for Moderation</button>
+            </div>
+        </div>
+    </form>
+</div>

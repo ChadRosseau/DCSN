@@ -19,23 +19,22 @@ export class ArticleComponent implements OnInit {
 
     // Set pagedata defaults
     this.dataLoaded = false;
+    this.article = {
+      author: {}
+    };
 
     // Fetch current article id from URL.
     this.currentArticleId = this.route.snapshot.paramMap.get('articleId');
-
-    console.log(this.currentArticleId);
 
     // Fetch data on current article from db.
     const dbPortfolioRef = this.auth.db.database.ref(`articles/moderating/${this.currentArticleId}`);
     dbPortfolioRef.once('value', (snapshot) => {
       let articleData = snapshot.val()
-      console.log(articleData)
 
       // Code to get author data
       const authorRef = this.auth.db.database.ref(`users/${articleData.author}`);
       authorRef.once('value', (snapshot) => {
         let author = snapshot.val();
-        console.log(author)
         articleData.author = author;
         this.auth.db.database.ref(`staffProfiles/${articleData.author.uid}`).once('value', (data) => {
           let tempAuthor = data.val();

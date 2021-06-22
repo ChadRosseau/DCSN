@@ -108,7 +108,7 @@
             </div>
             <div class="staffWrapper" id="staffWrapper">
                 <div class="profile" *ngFor="let profile of profiles"
-                    [ngClass]="{'important': checkImportant(profile.description)}"
+                    [ngClass]="{'important': checkImportant(profile.permission)}"
                     [hidden]="!checkDepartment(profile.roles)">
                     <div class="body">
                         <div class="pfp" [style.backgroundImage]="'url('+profile.photoURL+')'"></div>

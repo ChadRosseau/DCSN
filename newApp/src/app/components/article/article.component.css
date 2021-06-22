@@ -43,9 +43,8 @@
 }
 
 .categoriesContainer {
-    align-items: center;
-    margin-bottom: 10px;
-    width: 100%;
+    width: 60%;
+    margin: 20px auto;
 }
 
 .categoriesContainer div {
@@ -160,6 +159,11 @@
     font-size: 2em;
     font-weight: 300;
     margin-bottom: 1rem;
+}
+
+.referencesWrapper p,
+.casWrapper p {
+    overflow-wrap: break-word;
 }
 
 @media (max-width: 900px) {

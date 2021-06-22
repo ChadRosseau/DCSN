@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@services/auth.service';
 import { SharedDataService } from '@services/shared-data.service';
 import { ArchiveService } from '@services/archive.service';
+=======
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AuthService } from '@services/auth.service';
+import { SharedDataService } from '@services/shared-data.service';
+import { ArchiveService } from '@services/archive.service';
+import { ArticleService } from '@services/article.service';
+>>>>>>> staff-pages
 import * as _ from 'lodash';
 
 @Component({
@@ -9,15 +17,21 @@ import * as _ from 'lodash';
   templateUrl: './archive.component.html',
   styleUrls: ['./archive.component.css']
 })
+<<<<<<< HEAD
 export class ArchiveComponent implements OnInit {
   images;
   dbArticles;
+=======
+export class ArchiveComponent implements OnInit, OnDestroy {
+>>>>>>> staff-pages
   articlesData;
   pageData = {
     filterMenu: false
   }
 
-  constructor(private auth: AuthService, public sharedData: SharedDataService, public archiveService: ArchiveService) { }
+  articleSubscription;
+
+  constructor(private auth: AuthService, public sharedData: SharedDataService, public archiveService: ArchiveService, public articleService: ArticleService) { }
 
   ngOnInit(): void {
 
@@ -26,10 +40,10 @@ export class ArchiveComponent implements OnInit {
     };
 
     // Fetch all articles to show, and apply filters.
-    this.dbArticles = this.auth.db.object<any>(`articles/moderating`).valueChanges().subscribe(data => {
+    this.articleSubscription = this.articleService.article$.subscribe(data => {
       if (data != null) {
         this.archiveService.articles = [];
-        this.articlesData = Object.values(data);
+        this.articlesData = Object.values(data['moderating']);
         for (let i = 0; i < this.articlesData.length; i++) {
           this.loadArrayData(i);
         }
@@ -85,5 +99,9 @@ export class ArchiveComponent implements OnInit {
   // Function used to pad dates into correct format.
   pad(n) {
     return n < 10 ? '0' + n : n;
+  }
+
+  ngOnDestroy(): void {
+    this.articleSubscription.unsubscribe();
   }
 }

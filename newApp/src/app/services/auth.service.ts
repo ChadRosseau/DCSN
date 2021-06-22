@@ -10,14 +10,17 @@ import {
 
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators'
-import { User } from './user';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   user$: Observable<User>;
-  userKey: string;
+  user;
+  userKey;
+  staff$;
+  staffObject;
   isStaff: boolean;
   dcEmail: boolean;
   permission: number;
@@ -27,20 +30,28 @@ export class AuthService {
     public db: AngularFireDatabase,
     public router: Router
   ) {
-
     sessionStorage.clear();
     this.dcEmail = false;
+    this.user = {};
+    this.staffObject = null;
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
-          this.userKey = user.uid;
-          this.checkPermission(user.uid, user.email, user.displayName, user.photoURL);
-          return this.db.object<User>(`users/${user.uid}`).valueChanges();
+          let newUid;
+          if (user.email.includes("@dc.edu.hk")) {
+            newUid = user.email.split("@")[0];
+          } else {
+            newUid = user.uid;
+          }
+          this.user.userKey = newUid;
+          this.checkPermission();
+          return this.db.object<User>(`users/${newUid}`).valueChanges();
         } else {
           return of(null);
         }
       })
     )
+    this.staff$ = this.db.object<any>(`staffProfiles`).valueChanges();
   }
 
   async googleSignIn() {
@@ -57,10 +68,16 @@ export class AuthService {
   }
 
   async updateUserData({ uid, email, displayName, photoURL }: User) {
+    let newUid;
+    if (email.includes("@dc.edu.hk")) {
+      newUid = email.split("@")[0];
+    } else {
+      newUid = uid;
+    }
     // Set user data
-    const dbUserRef = this.db.object<User>(`users/${uid}`);
+    const dbUserRef = this.db.object<User>(`users/${newUid}`);
     const data = {
-      uid: uid,
+      uid: newUid,
       email: email,
       displayName: displayName,
       photoURL: photoURL
@@ -73,33 +90,46 @@ export class AuthService {
     } else {
       this.dcEmail = false;
     }
-    this.checkPermission(uid, email, displayName, photoURL);
+    this.checkPermission();
+    this.user$.subscribe(data => {
+      this.user = data;
+      console.log(this.user);
+    });
+    this.checkPermission();
     // return location.reload();
   }
 
-  checkPermission(uid, email, displayName, photoURL) {
-    this.db.object<any>('permissions').valueChanges().subscribe(value => {
-      if (Object.keys(value).includes(this.userKey)) {
+  checkPermission() {
+    this.db.object<any>(`staffProfiles/${this.user.userKey}`).valueChanges().subscribe(value => {
+      if (value) {
         this.isStaff = true;
-        this.permission = value[this.userKey];
-        let dbProfileRef = this.db.database.ref(`profiles/${this.userKey}`);
-        dbProfileRef.once('value', (snapshot) => {
-          if (!snapshot.val()) {
-            dbProfileRef.set({
-              complete: false,
-              uid: uid,
-              email: email,
-              firstName: "First Name",
-              lastName: "Last Name",
-              photoURL: photoURL,
-              roles: []
-            });
-          }
-        })
+        console.log(value)
+        this.staffObject = value;
       } else {
         this.isStaff = false;
       }
     });
+  }
+
+  canEditArticle(overridePermission, role, author) {
+    if (this.staffObject.permission <= overridePermission) {
+      return true;
+    } else {
+      if (role == "contributor") {
+        if (this.staffObject.roles.includes(role) && (this.staffObject.uid == author || author == null)) {
+          return true;
+        } else {
+          return false;
+        }
+      } else if (role == "moderator") {
+        if (this.staffObject.roles.includes(role) && (this.staffObject.uid != author || author == null)) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+    return false;
   }
 }
 

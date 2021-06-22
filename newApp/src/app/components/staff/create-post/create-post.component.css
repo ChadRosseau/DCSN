@@ -1,0 +1,232 @@
+.wrapper {
+    width: 100%;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(255, 255, 255, 0) 60%);
+}
+
+.headingWrapper {
+    width: 100%;
+    background: rgb(0, 45, 115);
+    padding: 100px 0 5px;
+}
+
+.headingContent {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.categoriesContainer {
+    width: 100%;
+    margin: 20px auto;
+}
+
+.categoriesContainer select {
+    display: inline-block;
+    padding: 0 10px;
+    border-radius: 200px;
+    margin-right: 10px;
+    outline: none;
+    border: 1.75px solid rgba(0, 0, 0, 0.2);
+}
+
+.title textarea {
+    width: 100%;
+    font-size: 2.5em;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    height: 130px;
+    padding: 2px 10px;
+    background: none;
+    color: #FFF;
+    border: none;
+}
+
+.title textarea.empty,
+.title textarea:hover {
+    border: 1px solid #FFF;
+}
+
+.headingWrapper hr {
+    margin-bottom: 0;
+    border-top: 2px solid #FFF;
+    width: 100%;
+}
+
+.authorContainer {
+    height: 30px;
+    margin: 15px auto;
+    width: 100%;
+}
+
+.authorContainer p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 35px;
+    display: inline-block;
+    width: 50%;
+}
+
+.authorContainer .authorPfp {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid #FFF;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+.authorContainer .authorName {
+    width: 60%;
+}
+
+.authorContainer .timestamp {
+    float: right;
+    width: 20%;
+}
+
+.textWrapper {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px 5% 50px;
+    background: #FFF;
+}
+
+.subtitle textarea {
+    width: 100%;
+    font-weight: 300;
+    font-size: 1.25rem;
+    height: 70px;
+    padding: 2px 5px;
+    margin-bottom: 20px;
+    border: none;
+}
+
+.subtitle textarea.empty,
+.subtitle textarea:hover {
+    border: 1px solid #000;
+}
+
+.thumbURL .thumbWrapper {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.thumbURL input {
+    width: 100%;
+}
+
+.thumbURL .thumbURLPreview {
+    width: 100%;
+    height: 300px;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #000;
+    z-index: 1;
+}
+
+.thumbURL .thumbWrapper:hover .thumbURLPreview,
+.thumbURL input:focus~.thumbURLPreview {
+    opacity: 0.4;
+    z-index: -1;
+}
+
+editor {
+    border: 1px solid #000;
+    margin: 30px 0;
+}
+
+
+/* References and CAS */
+
+.bottomWrapper {
+    margin: 50px 0;
+    border-top: 2px solid rgb(7, 27, 48);
+    min-height: 40vh;
+    width: 100%;
+    display: flex;
+}
+
+.referencesWrapper,
+.casWrapper {
+    width: 50%;
+    display: inline-block;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.casWrapper {
+    border-right: 2px solid rgb(7, 27, 48);
+}
+
+.referencesWrapper h4,
+.casWrapper h4 {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+
+.referencesWrapper h5,
+.casWrapper h5 {
+    text-align: center;
+    font-size: 1rem;
+}
+
+.listing,
+.addListing {
+    width: 100%;
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.listing input {
+    width: 80%;
+    border: none;
+}
+
+.listing i {
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+.addListing input {
+    border: 1px solid #000;
+}
+
+.addListing i {
+    font-size: 1.3em;
+    margin-right: 0;
+}
+
+
+/* Submission */
+
+.buttonsWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.buttonsWrapper button {
+    padding: 3px 5px;
+    border-radius: 10px;
+    color: rgb(0, 45, 115);
+    border: 2px solid rgb(0, 45, 115);
+    background: #FFF;
+    width: 26%;
+}
+
+.error {
+    color: red;
+}

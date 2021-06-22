@@ -21,7 +21,11 @@
             "@guards/*": ["src/app/guards/*"],
             "@pipes/*": ["src/app/pipes/*"],
             "@services/*": ["src/app/services/*"],
+<<<<<<< HEAD
             "@assets/*": ["src/assets/*"],
+=======
+            "@interfaces/*": ["src/app/interfaces/*"],
+>>>>>>> staff-pages
     }
   }
 }

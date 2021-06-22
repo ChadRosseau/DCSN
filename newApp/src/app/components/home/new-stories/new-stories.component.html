@@ -7,7 +7,7 @@
                 <h3>{{article.title}}</h3>
                 <div class="authorContainer">
                     <div class="authorPfp" style="background-image: url({{article.author.photoURL}})"></div>
-                    <p>{{article.author.displayName}} <br> {{article.newDate}}</p>
+                    <p>{{article.author.firstName}} {{article.author.lastName}}<br> {{article.newDate}}</p>
                 </div>
                 <p id="articleBody" [style.fontSize]="'1rem!important'">{{article.subtitle}}</p>
             </div>

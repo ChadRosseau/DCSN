@@ -1,0 +1,98 @@
+<div class="wrapper">
+    <h2>Staff Permissions</h2>
+    <div class="tableContainer">
+        <div class="permissionsKey">
+            <h4><i class="fas fa-key"></i></h4>
+            <hr>
+            <p>0: Superuser (ICT)</p>
+            <hr>
+            <p>1: Editor in Chief</p>
+            <hr>
+            <p>2: Heads of Department</p>
+            <hr>
+            <p>3+: Implement if necessary</p>
+            <hr>
+            <p>10: Staff default</p>
+        </div>
+        <table class="permissionsTable" [hidden]="!tableReady">
+            <thead>
+                <tr>
+                    <th>PFP</th>
+                    <th>User ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Description</th>
+                    <th>Role(s)</th>
+                    <th>Authority </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let member of staff" [ngClass]="{'disabled': !canEdit(member.permission)}">
+                    <td class="pfpCell">
+                        <div class="userPfp" [style.backgroundImage]="'url(' + member.photoURL + ')'"></div>
+                    </td>
+                    <td class="uidCell">{{member.uid}}</td>
+                    <td class="nameCell"><input type="text" [(ngModel)]="member.firstName">
+                    </td>
+                    <td class="nameCell"><input type="text" [(ngModel)]="member.lastName"></td>
+                    <td class="nameCell"><input type="text" [(ngModel)]="member.description">
+                    </td>
+                    <td>
+                        <div class="rolesCell">
+                            <div class="role" [ngClass]="{'active': member.roles.includes('contributor')}"
+                                (click)="toggleRole(member.uid, 'contributor')">
+                                <i class="roleIcon far fa-edit"></i>
+                            </div>
+                            <div class="role" [ngClass]="{'active': member.roles.includes('moderator')}"
+                                (click)="toggleRole(member.uid, 'moderator')">
+                                <i class="roleIcon far fa-copy"></i>
+                            </div>
+                            <div class="role" [ngClass]="{'active': member.roles.includes('technology')}"
+                                (click)="toggleRole(member.uid, 'technology')">
+                                <i class="roleIcon fas fa-laptop-code"></i>
+                            </div>
+                            <div class="role" [ngClass]="{'active': member.roles.includes('graphics')}"
+                                (click)="toggleRole(member.uid, 'graphics')">
+                                <i class="roleIcon fas fa-palette"></i>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="permissionCell">
+                        <div class="permissionWrapper">
+                            <input type="number" [(ngModel)]="member.permission" min="{{minPermission}}"
+                                (change)="checkMin(member.uid)">
+                            <div>
+                                <i class="publicButton far fa-eye" [hidden]="!member.public"
+                                    (click)="togglePublic(member.uid)"></i>
+                                <i class="publicButton far fa-eye-slash" [hidden]="member.public"
+                                    (click)="togglePublic(member.uid)"></i>
+                            </div>
+                            <i class="incomplete fas fa-exclamation-triangle"
+                                [ngClass]="{'hidden': checkValid(member)}"></i>
+                            <i class="deleteButton far fa-window-close" (click)="deleteStaff(member.uid)"></i>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="addProfileRow">
+                    <td colspan="4"></td>
+                    <td colspan="2">
+                        <div class="addProfileWrapper">
+                            <select [(ngModel)]="newProfileId">
+                                <option value="" selected disabled>- Please select user -</option>
+                                <option *ngFor="let user of usersArray" [value]="user.uid"
+                                    [hidden]="staffIds.includes(user.uid)">{{user.displayName}}</option>
+                            </select>
+                            <i class="far fa-plus-square" (click)="addStaff(newProfileId)"></i>
+                        </div>
+                    </td>
+                    <td colspan="2"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div></div>
+    </div>
+    <div class="buttonWrapper">
+        <button [routerLink]="['/']">Cancel</button>
+        <button (click)="setPermissions()">Save</button>
+    </div>
+</div>

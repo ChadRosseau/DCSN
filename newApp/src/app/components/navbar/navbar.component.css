@@ -338,7 +338,7 @@ button {
     transform-origin: left;
 }
 
-.addButton {
+.staffButton {
     float: right;
     padding: 1px;
     width: 25px;
@@ -348,10 +348,10 @@ button {
     transform: none;
     font-size: 1.5em;
     right: 10px;
+    cursor: pointer;
 }
 
-.addButton:hover {
-    cursor: pointer;
+.staffButton:hover {
     color: rgba(0, 45, 115, .85);
 }
 
@@ -378,6 +378,10 @@ button {
 
 .mobileMenuButton.active .line3 {
     transform: translateX(3px);
+}
+
+.staffButton:focus {
+    outline: none;
 }
 
 @media (max-width: 900px) {
