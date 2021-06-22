@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'join-us', component: JoinUsComponent },
   { path: 'article/:articleId', component: ArticleComponent },
   { path: 'archive', component: ArchiveComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
   {
     path: 'staff',
     loadChildren: () => import('@components/staff/staff.module').then(m => m.StaffModule),

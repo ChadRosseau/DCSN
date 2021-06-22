@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@services/auth.service';
-import { SharedDataService } from '@services/shared-data.service';
-=======
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { SharedDataService } from 'src/app/services/shared-data.service';
->>>>>>> staff-pages
 import { ViewEncapsulation } from '@angular/core'
 import { ArticleService } from '@services/article.service';
 @Component({

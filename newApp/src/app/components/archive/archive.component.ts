@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@services/auth.service';
-import { SharedDataService } from '@services/shared-data.service';
-import { ArchiveService } from '@services/archive.service';
-=======
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '@services/auth.service';
 import { SharedDataService } from '@services/shared-data.service';
 import { ArchiveService } from '@services/archive.service';
 import { ArticleService } from '@services/article.service';
->>>>>>> staff-pages
 import * as _ from 'lodash';
 
 @Component({
@@ -17,13 +10,10 @@ import * as _ from 'lodash';
   templateUrl: './archive.component.html',
   styleUrls: ['./archive.component.css']
 })
-<<<<<<< HEAD
-export class ArchiveComponent implements OnInit {
+
+export class ArchiveComponent implements OnInit, OnDestroy {
   images;
   dbArticles;
-=======
-export class ArchiveComponent implements OnInit, OnDestroy {
->>>>>>> staff-pages
   articlesData;
   pageData = {
     filterMenu: false
