@@ -93,7 +93,6 @@ export class AuthService {
     this.checkPermission();
     this.user$.subscribe(data => {
       this.user = data;
-      console.log(this.user);
     });
     this.checkPermission();
     // return location.reload();
@@ -103,7 +102,6 @@ export class AuthService {
     this.db.object<any>(`staffProfiles/${this.user.userKey}`).valueChanges().subscribe(value => {
       if (value) {
         this.isStaff = true;
-        console.log(value)
         this.staffObject = value;
       } else {
         this.isStaff = false;

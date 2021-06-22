@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SharedDataService } from '@services/shared-data.service';
 import { AuthService } from '@services/auth.service';
@@ -6,14 +6,15 @@ import { AuthService } from '@services/auth.service';
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
-  styleUrls: ['./article.component.css']
+  styleUrls: ['./article.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArticleComponent implements OnInit {
   currentArticleId: string;
   article;
   dataLoaded;
 
-  constructor(public auth: AuthService, private route: ActivatedRoute, public sharedData: SharedDataService) { }
+  constructor(public auth: AuthService, private route: ActivatedRoute, public sharedData: SharedDataService, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
 
@@ -38,7 +39,6 @@ export class ArticleComponent implements OnInit {
         articleData.author = author;
         this.auth.db.database.ref(`staffProfiles/${articleData.author.uid}`).once('value', (data) => {
           let tempAuthor = data.val();
-          console.log(tempAuthor);
           articleData.author['firstName'] = tempAuthor.firstName;
           articleData.author['lastName'] = tempAuthor.lastName;
         })
@@ -54,7 +54,7 @@ export class ArticleComponent implements OnInit {
         // Set article data
         this.article = articleData;
         this.dataLoaded = true;
-        console.log(this.dataLoaded)
+        this.cd.detectChanges();
       });
     });
   }
