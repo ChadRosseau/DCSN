@@ -1,4 +1,4 @@
-<div class="articleWrapper">
+<div class="articleWrapper" [hidden]="!dataLoaded">
     <div class="headingWrapper">
         <div class="headingContainer">
             <div class="categoriesContainer">
@@ -11,10 +11,10 @@
             <h2 class="title">{{article.title}}</h2>
             <hr>
             <div class="authorContainer">
-                <div class="authorPfp" [style.backgroundImage]="'url(' + article.author.photoURL + ')'">
+                <div class="authorPfp" [style.backgroundImage]="'url(' + author.photoURL + ')'">
                 </div>
-                <p class="authorName">{{dataLoaded ? article.author.firstName : ""}}
-                    {{dataLoaded && auth.dcEmail ? article.author.lastName : ""}}</p>
+                <p class="authorName">{{author.firstName}}
+                    {{auth.dcEmail ? author.lastName : ""}}</p>
                 <p class="timestamp">{{article.writtenDate}}</p>
             </div>
         </div>
