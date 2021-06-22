@@ -10,7 +10,7 @@ import {
 
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators'
-import { User } from '@interfaces/user';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root'

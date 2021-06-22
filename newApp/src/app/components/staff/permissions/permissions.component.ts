@@ -7,8 +7,8 @@ import { SharedDataService } from '@services/shared-data.service';
 import { Router } from '@angular/router';
 
 // Interfaces
-import { User } from '@interfaces/user';
-import { StaffProfile } from '@interfaces/staff-profile';
+import { User } from '../../../interfaces/user';
+import { StaffProfile } from '../../../interfaces/staff-profile';
 
 @Component({
   selector: 'app-permissions',
@@ -51,7 +51,13 @@ export class PermissionsComponent implements OnInit {
     // Fetch data on all users of site.
     this.auth.db.database.ref('users').once('value', (snapshot) => {
       this.users = snapshot.val();
-      this.usersArray = Object.values(this.users);
+      let array = Object.values(this.users);
+      for (let i = 0; i < array.length; i++) {
+        if (!array[i]['email'].includes("@dc.edu.hk")) {
+          array.splice(i, 1);
+        }
+      };
+      this.usersArray = array;
     })
 
     // Fetch data on all staff.
