@@ -15,8 +15,9 @@
                 <div class="navButton" routerLink="/about">ABOUT</div>
                 <div class="navButton" routerLink="/contact">CONTACT</div>
             </div>
-            <div id="loginButton" [hidden]="userObject != null" (click)="auth.googleSignIn()">LOGIN</div>
-            <div id="loginButton" [hidden]="userObject == null" (click)="auth.signOut()">LOGOUT</div>
+            <div id="loginButton" [routerLink]="['/login']">
+                {{userObject == null ? "LOGIN" : "LOGOUT"}}</div>
+            <!-- <div id="loginButton" [hidden]="userObject == null" (click)="auth.signOut()">LOGOUT</div> -->
         </div>
         <div class="mobileMenuButton" (click)="mobileOpen = !mobileOpen" [ngClass]="{'active': mobileOpen}">
             <div class="line1 line"></div>

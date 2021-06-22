@@ -44,3 +44,11 @@
     font-size: 2em;
     font-weight: 300;
 }
+
+.loginWrapper .rightColumn button {
+    background: none;
+    border: 2px solid #FFF;
+    padding: 5px 10px;
+    font-weight: 400;
+    color: #FFF;
+}

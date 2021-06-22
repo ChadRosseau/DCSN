@@ -21,13 +21,13 @@
                 our database.</p>
         </div>
         <div class="rightColumn">
-            <div>
+            <div [hidden]="userObject != null">
                 <h5>Ready to login?</h5>
-                <button>Sign in with Google</button>
+                <button (click)="auth.googleSignIn()">Sign in with Google</button>
             </div>
-            <div>
-                <h5>Currently logged in as ____</h5>
-                <button>Logout</button>
+            <div [hidden]="userObject == null">
+                <h5>Currently logged in as: {{userObject.displayName}}</h5>
+                <button (click)="auth.signOut()">Logout</button>
             </div>
         </div>
     </div>
