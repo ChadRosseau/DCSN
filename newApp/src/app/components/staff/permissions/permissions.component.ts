@@ -193,7 +193,6 @@ export class PermissionsComponent implements OnInit {
     this.staff.forEach(staff => {
       newStaffObject[staff.uid] = staff;
     });
-    console.log(newStaffObject);
     this.auth.db.database.ref('staffProfiles').set(newStaffObject);
     this.router.navigateByUrl('/staff/overview');
   }

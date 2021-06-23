@@ -1,5 +1,5 @@
 <div class="articleWrapper" [hidden]="!dataLoaded">
-    <div class="headingWrapper">
+    <div class="headingWrapper" [style.backgroundImage]="'url(' + article.thumbURL + ')'">
         <div class="headingContainer">
             <div class="categoriesContainer">
                 <div class="categoryTag" [style.backgroundColor]="sharedData.colors.categories[article.category]">

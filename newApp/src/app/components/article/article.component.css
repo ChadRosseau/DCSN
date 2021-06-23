@@ -11,7 +11,6 @@
     background-color: rgb(0, 45, 115);
     min-height: 62vh;
     padding: 100px 0 5px;
-    background-image: url(https://cdn.i-scmp.com/sites/default/files/d8/topics/2020/03/18/philippines_epidemic_covid_19_coronavirus_rol15.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -128,9 +127,10 @@
     background-repeat: no-repeat;
 }
 
-.bodyText {
-    font-family: "Noto Serif TC", serif;
-    font-size: 17px;
+.bodyText,
+.bodyText p {
+    font-family: "Noto Serif TC", serif!important;
+    font-size: 17px!important;
 }
 
 .bottomWrapper {

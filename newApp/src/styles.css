@@ -75,6 +75,11 @@ app-footer {
 
 /* Article */
 
+.articleWrapper .textWrapper .bodyWrapper .bodyText p {
+    font-family: "Noto Serif TC", serif!important;
+    font-size: 17px!important;
+}
+
 .articleWrapper .textWrapper .bodyWrapper .bodyText img {
     max-width: 100%;
     height: unset;

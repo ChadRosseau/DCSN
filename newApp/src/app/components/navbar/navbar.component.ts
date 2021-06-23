@@ -39,8 +39,4 @@ export class NavbarComponent implements OnInit {
 		this.archiveService.fillFilters();
 		this.archiveService.applyFilters();
 	}
-
-	log() {
-		console.log(this.mobileOpen)
-	}
 }

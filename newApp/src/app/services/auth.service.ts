@@ -40,8 +40,10 @@ export class AuthService {
           let newUid;
           if (user.email.includes("@dc.edu.hk")) {
             newUid = user.email.split("@")[0];
+            this.dcEmail = true;
           } else {
             newUid = user.uid;
+            this.dcEmail = false;
           }
           this.user.userKey = newUid;
           this.checkPermission();
@@ -71,8 +73,10 @@ export class AuthService {
     let newUid;
     if (email.includes("@dc.edu.hk")) {
       newUid = email.split("@")[0];
+      this.dcEmail = true;
     } else {
       newUid = uid;
+      this.dcEmail = false;
     }
     // Set user data
     const dbUserRef = this.db.object<User>(`users/${newUid}`);
@@ -84,17 +88,11 @@ export class AuthService {
     }
     dbUserRef.set(data);
     this.user$ = dbUserRef.valueChanges();
-    this.userKey = uid;
-    if (email.includes("@dc.edu.hk")) {
-      this.dcEmail = true;
-    } else {
-      this.dcEmail = false;
-    }
+    this.userKey = newUid;
     this.checkPermission();
     this.user$.subscribe(data => {
       this.user = data;
     });
-    this.checkPermission();
     // return location.reload();
   }
 
