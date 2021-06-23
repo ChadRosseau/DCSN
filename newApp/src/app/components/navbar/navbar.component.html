@@ -66,7 +66,8 @@
                 </div>
             </div>
         </div>
-        <i class="staffButton far fa-plus-square" [routerLink]="['/staff', 'overview']" *ngIf="auth.isStaff"></i>
+        <i class="staffButton far fa-plus-square" [routerLink]="['/staff', 'overview']"
+            *ngIf="auth.isStaff && auth.staffObject.permission <= 2"></i>
 
     </div>
 

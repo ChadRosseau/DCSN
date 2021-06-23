@@ -23,7 +23,6 @@ export class AuthService {
   staffObject;
   isStaff: boolean;
   dcEmail: boolean;
-  permission: number;
 
   constructor(
     private afAuth: AngularFireAuth,
