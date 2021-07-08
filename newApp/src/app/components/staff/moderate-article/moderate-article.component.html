@@ -1,4 +1,4 @@
-<div class="articleWrapper" [hidden]="!dataLoaded">
+<div class="articleWrapper" [style.display]="dataLoaded ? 'inherit' : 'hidden'">
     <div class="headingWrapper">
         <div class="categoriesContainer">
             <div class="categoryTag" [style.backgroundColor]="sharedData.colors.categories[article.category]">

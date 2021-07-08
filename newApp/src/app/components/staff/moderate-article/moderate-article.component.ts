@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '@services/auth.service';
 import { SharedDataService } from '@services/shared-data.service';
@@ -9,40 +9,53 @@ import { SharedDataService } from '@services/shared-data.service';
   styleUrls: ['./moderate-article.component.css']
 })
 export class ModerateArticleComponent implements OnInit {
+  currentArticleId: string;
   article;
-  currentArticleId;
+  author;
   dataLoaded;
-  showErrors;
 
-  constructor(public auth: AuthService, public sharedData: SharedDataService, public router: Router, private route: ActivatedRoute) { }
+  constructor(public auth: AuthService, private route: ActivatedRoute, public sharedData: SharedDataService, private cd: ChangeDetectorRef, private ngZone: NgZone) {
+    this.author = {
+      firstName: "hi",
+      lastName: "hello",
+      photoURL: "What?"
+    };
+  }
 
   ngOnInit(): void {
+
+    // Set pagedata defaults
+    this.article = {};
+    this.dataLoaded = false;
+
+    // Fetch current article id from URL.
     this.currentArticleId = this.route.snapshot.paramMap.get('articleId');
-    this.showErrors = false;
+
+    // Fetch data on current article from db.
     const dbPortfolioRef = this.auth.db.database.ref(`articles/moderating/${this.currentArticleId}`);
     dbPortfolioRef.once('value', (snapshot) => {
       let articleData = snapshot.val()
-
+      this.article = articleData;
+      console.log(this.article)
+    }).then(() => {
       // Code to get author data
-      const authorRef = this.auth.db.database.ref(`users/${articleData.author}`);
+      const authorRef = this.auth.db.database.ref(`staffProfiles/${this.article.author}`);
       authorRef.once('value', (snapshot) => {
-        let author = snapshot.val();
-        articleData.author = author;
+        this.author = snapshot.val();
       }).then(() => {
 
         // Code to convert timestamp
-        const articleDate = new Date(articleData.writtenDate).toLocaleDateString('en-GB', {
+        const articleDate = new Date(this.article.writtenDate).toLocaleDateString('en-GB', {
           day: 'numeric',
           month: 'short',
           year: 'numeric',
         });
-        articleData.writtenDate = articleDate;
+        this.article.writtenDate = articleDate;
 
         // Set article data
-        this.article = articleData;
-        console.log(this.article)
         this.dataLoaded = true;
-      });
+        this.cd.detectChanges();
+      })
     });
   }
 
