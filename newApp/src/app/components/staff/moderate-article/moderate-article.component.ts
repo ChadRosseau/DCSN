@@ -40,6 +40,7 @@ export class ModerateArticleComponent implements OnInit {
 
         // Set article data
         this.article = articleData;
+        console.log(this.article)
         this.dataLoaded = true;
       });
     });

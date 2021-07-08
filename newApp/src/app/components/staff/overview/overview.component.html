@@ -1,25 +1,19 @@
 <div class="wrapper">
     <div class="sidebar">
-        <hr>
         <a [routerLink]="['/staff', 'create-article']" [hidden]="!auth.canEditArticle(2, 'contributor', null)">
             <i class="roleIcon far fa-edit"></i>
-            <hr>
         </a>
         <a [routerLink]="['/staff', 'create-article']" [hidden]="!auth.canEditArticle(2, 'moderator', null)">
             <i class="roleIcon far fa-copy"></i>
-            <hr>
         </a>
         <a [routerLink]="['/staff', 'create-article']">
             <i class="far fa-user"></i>
-            <hr>
         </a>
         <a [routerLink]="['/staff', 'create-article']">
             <i class="fas fa-comment-medical"></i>
-            <hr>
         </a>
         <a [routerLink]="['/staff', 'permissions']" [hidden]="!(auth.staffObject.permission <= 2)">
             <i class="fas fa-user-cog"></i>
-            <hr>
         </a>
     </div>
     <div class="columnWrapper">

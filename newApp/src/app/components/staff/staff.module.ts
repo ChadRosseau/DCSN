@@ -35,9 +35,9 @@ import { ModerateArticleComponent } from './moderate-article/moderate-article.co
     ModerateArticleComponent,
     SafeHtmlPipe,
   ],
-  // exports: [
-  // SafeHtmlPipe
-  // ],
+  exports: [
+    SafeHtmlPipe
+  ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{ provide: TINYMCE_SCRIPT_SRC, useValue: 'tinymce/tinymce.min.js' }]
 })

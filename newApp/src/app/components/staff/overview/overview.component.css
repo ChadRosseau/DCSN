@@ -28,14 +28,13 @@
 } */
 
 .sidebar {
-    width: 100px;
-    top: 100px;
-    padding: 20px;
-    position: sticky;
-    float: left;
-    border-radius: 0 20px 20px 0;
+    width: 50vw;
+    margin: 0px auto 50px;
+    border-radius: 20px;
     border: 3px solid rgb(0, 45, 115);
-    border-left: none;
+    /* border-left: none; */
+    display: flex;
+    justify-content: space-around;
 }
 
 .sidebar a {
@@ -67,7 +66,7 @@
 }
 
 .articleColumn {
-    width: calc(99%/3);
+    width: calc(99% / 3);
     height: 70vh;
 }
 
@@ -113,7 +112,7 @@
 }
 
 .article h5 {
-    display: -webkit-box!important;
+    display: -webkit-box !important;
     overflow: hidden;
     font-size: 1em;
     color: rgb(0, 45, 115);
@@ -151,7 +150,7 @@
 }
 
 .article .infoContainer .authorName {
-    display: -webkit-box!important;
+    display: -webkit-box !important;
     overflow: hidden;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
@@ -170,7 +169,7 @@
     width: 100%;
     font-size: 0.8em;
     border: 1px solid rgb(0, 45, 115);
-    display: -webkit-box!important;
+    display: -webkit-box !important;
     overflow: hidden;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;

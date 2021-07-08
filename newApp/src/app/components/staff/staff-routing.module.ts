@@ -12,7 +12,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { ModerateArticleComponent } from './moderate-article/moderate-article.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'overview' }, // Redirect to overview page
+    { path: '', redirectTo: 'overview', pathMatch: 'full' }, // Redirect to overview page
     { path: 'overview', component: OverviewComponent }, // default route of the module
     { path: 'permissions', component: PermissionsComponent, canActivate: [HeadGuard] },
     { path: 'create-article', component: CreatePostComponent },

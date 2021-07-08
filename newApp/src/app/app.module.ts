@@ -74,7 +74,6 @@ import { StaffModule } from '@components/staff/staff.module';
     MaterialModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    SafeHtmlPipe,
     StaffModule
   ],
   providers: [
