@@ -1,19 +1,21 @@
 <div class="wrapper">
     <div class="sidebar">
         <hr>
-        <a [routerLink]="['/staff', 'create-article']" [hidden]="!auth.canEditArticle(2, 'contributor', null)">
+        <a [routerLink]="['/staff', 'create-article']"
+            [ngClass]="{'disabled': !auth.canEditArticle(2, 'contributor', null)}">
             <i class="roleIcon far fa-edit"></i>
             <hr>
         </a>
-        <a [routerLink]="['/staff', 'create-article']" [hidden]="!auth.canEditArticle(2, 'moderator', null)">
+        <a [routerLink]="['/staff', 'create-article']"
+            [ngClass]="{'disabled': !auth.canEditArticle(2, 'moderator', null)}">
             <i class="roleIcon far fa-copy"></i>
             <hr>
         </a>
-        <a [routerLink]="['/staff', 'create-article']">
+        <a [routerLink]="['/staff', 'create-article']" class="disabled">
             <i class="far fa-user"></i>
             <hr>
         </a>
-        <a [routerLink]="['/staff', 'create-article']">
+        <a [routerLink]="['/staff', 'create-article']" class="disabled">
             <i class="fas fa-comment-medical"></i>
             <hr>
         </a>
@@ -22,15 +24,40 @@
             <hr>
         </a>
     </div>
+    <div class="topWrapper" [style.backgroundImage]="sharedData.dcImages.groupwork">
+        <h2>Staff Overview</h2>
+        <p class="description">This page provides an overview of staff activity within DCSN, and acts as a portal to
+            further staff
+            functions. Use the sidebar on the left to navigate to staff-exclusive pages such as article writing and
+            moderating, personal profile creation, ICT or graphics design feature requests, permissions control, and
+            more.</p>
+        <div class="infoWrapper">
+            <div class="infoContainer">
+                <h4>Current Goal</h4>
+                <p><i class="fas fa-bullseye"></i>17 - Partnership for the Goals</p>
+            </div>
+            <div class="infoContainer">
+                <h4>Current Rotational Period</h4>
+                <p><i class="far fa-calendar-alt"></i>July 8th - August 7th</p>
+            </div>
+            <div class="infoContainer">
+                <h4>Total Articles</h4>
+                <p><i class="fas fa-align-left"></i>20</p>
+            </div>
+        </div>
+    </div>
     <div class="columnWrapper">
-        <div class="vDivider"></div>
         <div class="articleColumn">
             <h2>DRAFTS</h2>
             <div class="articleWrapper">
                 <div class="article" *ngFor="let article of articles?.drafts"
                     [ngClass]="{'enabled': auth.canEditArticle(2, 'contributor', article.author)}"
-                    [routerLink]="['/staff', 'create-article', article.articleId]">
+                    [routerLink]="['/staff', 'create-article', article.articleId]"
+                    [style.borderColor]="sharedData.colors.categories[article.category]">
                     <h5>{{article.title}}</h5>
+                    <p class="subcategory" [style.background]="sharedData.colors.categories[article.category]">
+                        {{article.subcategory}}</p>
+                    <hr>
                     <div class="infoContainer">
                         <div class="authorPfp"
                             [style.backgroundImage]="staffProfiles[article.author] ? 'url('+ staffProfiles[article.author]['photoURL'] +')' : 'none'">
@@ -43,23 +70,22 @@
                                 {{formatDate(article.writtenDate)}}
                             </p>
                         </div>
-                        <div class="statusWrapper">
-                            <div class="articleTag"
-                                [style.backgroundColor]="sharedData.colors.categories[article.category]">
-                                {{article.subcategory}}</div>
-                            <div class="statusTag" style="color: green">In progress</div>
-                        </div>
                     </div>
+                    <hr>
+                    <div class="statusWrapper" [style.color]="'green'">In progress</div>
                 </div>
             </div>
         </div>
-        <div class="vDivider"></div>
         <div class="articleColumn">
             <h2>MODERATING</h2>
             <div class="articleWrapper">
                 <div class="article" *ngFor="let article of articles?.moderating"
-                    [ngClass]="{'enabled': auth.canEditArticle(2, 'moderator', article.author)}">
+                    [ngClass]="{'enabled': auth.canEditArticle(2, 'moderator', article.author)}"
+                    [style.borderColor]="sharedData.colors.categories[article.category]">
                     <h5>{{article.title}}</h5>
+                    <p class="subcategory" [style.background]="sharedData.colors.categories[article.category]">
+                        {{article.subcategory}}</p>
+                    <hr>
                     <div class="infoContainer">
                         <div class="authorPfp"
                             [style.backgroundImage]="staffProfiles[article.author] ? 'url('+ staffProfiles[article.author]['photoURL'] +')' : 'none'">
@@ -72,21 +98,15 @@
                                 {{formatDate(article.writtenDate)}}
                             </p>
                         </div>
-                        <div class="statusWrapper">
-                            <div class="articleTag"
-                                [style.backgroundColor]="sharedData.colors.categories[article.category]">
-                                {{article.subcategory}}</div>
-                            <div class="statusTag" style="color: orangered">In moderation</div>
-                        </div>
                     </div>
+                    <hr>
+                    <div class="statusWrapper" [style.color]="'orangered'">In moderation <span>3/5</span></div>
                 </div>
             </div>
         </div>
-        <div class="vDivider"></div>
         <div class="articleColumn">
             <h2>ON HOLD</h2>
             <div class="articleWrapper"></div>
         </div>
-        <div class="vDivider"></div>
     </div>
 </div>
