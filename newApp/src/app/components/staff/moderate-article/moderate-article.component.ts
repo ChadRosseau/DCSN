@@ -108,7 +108,7 @@ export class ModerateArticleComponent implements OnInit {
   }
 
   authMove(destination) {
-    if (this.auth.permission > 2) return;
+    if (this.auth.staffObject.permission > 2) return;
     if (destination == 'live') {
       this.auth.db.database.ref(`liveArticles/${this.currentArticleId}`).set(this.article);
     } else {

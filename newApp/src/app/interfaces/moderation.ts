@@ -2,7 +2,8 @@ export interface Moderation {
     checklist: Criteria,
     publishReady: boolean,
     comments?: String,
-    author: String
+    author: String,
+    timestamp?: number
 }
 
 export interface Criteria {

@@ -22,6 +22,7 @@ declare var tinymce;
 export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
   showErrors;
   time = {};
+  staffList;
   // public tinymce = tinymce.get()
 
   currentArticleId;
@@ -154,8 +155,9 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
         this.imageExists(articleObject.thumbURL);
         this.referencesList = articleObject.references || [];
         this.casList = articleObject.cas || [];
-        this.moderations = articleObject.moderations || [];
+        this.moderations = Object.values(articleObject.moderations) || [];
         this.staffSubscription = this.auth.staff$.subscribe(data => {
+          this.staffList = data;
           this.writerInfo = data[articleObject.author];
         });
       } else {
@@ -234,7 +236,8 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
         thumbURL: this.createArticleForm.value.thumbURL,
         writtenDate: this.time['timestamp'],
         cas: this.casList.length > 0 ? this.casList : [" "],
-        references: this.referencesList.length > 0 ? this.referencesList : [" "]
+        references: this.referencesList.length > 0 ? this.referencesList : [" "],
+        moderations: destination == 'moderating' ? [] : this.moderations
       });
       if (destination == 'moderating') {
         this.auth.db.database.ref(`articles/drafts/${this.currentArticleId}`).set(null);
@@ -255,6 +258,19 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
         year: 'numeric',
       });
     }
+  }
+
+  findTime(timestamp) {
+    return new Date(timestamp).toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    });
+  }
+
+  getStaffName(uid) {
+    let author = this.staffList[uid];
+    return `${author['firstName']} ${author['lastName']}`;
   }
 
   trackByFn(index, item) { return index; }

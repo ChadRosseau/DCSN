@@ -122,11 +122,70 @@
                 <button (click)="createArticle('drafts')">Save Article Draft</button>
                 <button (click)="createArticle('moderating')">Submit for Moderation</button>
             </div>
+            <div class="moderationsWrapper" [hidden]="moderations == []">
+                <h3>Moderations</h3>
+                <div class="moderation" *ngFor="let moderation of moderations">
+                    <h4>Review by {{getStaffName(moderation.author)}}
+                        {{moderation.timestamp ? 'on ' + findTime(moderation.timestamp) : ""}}</h4>
+                    <div class="checkboxes">
+                        <label class="container">
+                            <b>Article fulfils the
+                                <a href="https://docs.google.com/document/d/105syMxkH03lw9sIsE0NObdsW4po8SnKAZNceKYNnCqI/edit?usp=drivesdk"
+                                    target="_blank">writers criteria</a>
+                                . <br></b>
+                            <input type="checkbox" [checked]="moderation.checklist.criteria" disabled>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Article presents a sufficiently neutral view in line with the
+                            journalistic
+                            impartiality of DCSN.
+                            <input type="checkbox" [checked]="moderation.checklist.neutral" disabled>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Article falls within the HK basic and national security laws as
+                            outlined in
+                            the DCSN Operations Guidelines.
+                            <input type="checkbox" [checked]="moderation.checklist.law" disabled>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Article utilises grammar and language in a manner befitting of
+                            a school
+                            newspaper.
+                            <input type="checkbox" [checked]="moderation.checklist.language" disabled>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Article appropriately references and credits relevant sources,
+                            in the
+                            correct format.
+                            <input type="checkbox" [checked]="moderation.checklist.references" disabled>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Article links to appropriate CAS opportunities (if
+                            any) relevant to DC students.
+                            <input type="checkbox" [checked]="moderation.checklist.cas" disabled>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">All images and/or graphic designs included in the article abide by
+                            the DCSN
+                            article guidelines.
+                            <input type="checkbox" [checked]="moderation.checklist.graphics" disabled>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Article abides by the general formatting rules as outlined in
+                            the DCSN
+                            writing guidelines.
+                            <input type="checkbox" [checked]="moderation.checklist.formatting" disabled>
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container"><b>Article is ready for publishing.</b>
+                            <input type="checkbox" [checked]="moderation.publishReady" disabled>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <p [hidden]="!moderation.comments">Additional Comments: {{moderation.comments}}</p>
+                    <hr>
+                </div>
+            </div>
         </div>
     </form>
-    <div class="moderationsWrapper" [hidden]="moderations == []">
-        <div class="moderation" *ngFor="let moderation of moderations">
-            Review by: {{getStaff()}}
-        </div>
-    </div>
 </div>
