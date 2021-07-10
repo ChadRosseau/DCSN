@@ -78,12 +78,6 @@
                 </div>
             </mat-form-field>
 
-            <!-- <h5>Thumbnail:</h5>
-    <input [(ngModel)]="newArticle.title"type="file" id="fileUpload" name="" /> -->
-
-            <!-- <h5>Video Link:</h5>
-    <input type="text" name="" /> -->
-
             <div class="mat-form-field-wrapper">
                 <textarea id="bodyEditor"></textarea>
                 <div class="mat-form-field-subscript-wrapper">
@@ -130,4 +124,9 @@
             </div>
         </div>
     </form>
+    <div class="moderationsWrapper" [hidden]="moderations == []">
+        <div class="moderation" *ngFor="let moderation of moderations">
+            Review by: {{getStaff()}}
+        </div>
+    </div>
 </div>
