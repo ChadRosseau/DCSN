@@ -14,7 +14,7 @@ import { ModerateArticleComponent } from './moderate-article/moderate-article.co
 const routes: Routes = [
     { path: '', redirectTo: 'overview', pathMatch: 'full' }, // Redirect to overview page
     { path: 'overview', component: OverviewComponent }, // default route of the module
-    { path: 'permissions', component: PermissionsComponent, canActivate: [HeadGuard] },
+    { path: 'permissions', component: PermissionsComponent },
     { path: 'create-article', component: CreatePostComponent },
     { path: 'create-article/:articleId', component: CreatePostComponent },
     { path: 'moderate-article/:articleId', component: ModerateArticleComponent },

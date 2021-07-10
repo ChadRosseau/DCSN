@@ -3,6 +3,7 @@ export interface Moderation {
     publishReady: boolean,
     comments?: String,
     author: String
+    timestamp?: number
 }
 
 export interface Criteria {

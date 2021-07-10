@@ -73,7 +73,7 @@
                         </div>
                     </td>
                 </tr>
-                <tr class="addProfileRow">
+                <tr class="addProfileRow" [hidden]="auth.staffObject.permission > 2">
                     <td colspan="4"></td>
                     <td colspan="2">
                         <div class="addProfileWrapper">

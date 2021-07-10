@@ -1,15 +1,13 @@
-.wrapper {
-    margin-top: 100px;
-}
-
-
 /* Heading */
 
 .wrapper h2 {
     text-align: center;
-    color: rgb(0, 45, 115);
     font-size: 5em;
     font-weight: 400;
+    padding: 100px 0 20px;
+    background: rgb(0, 45, 115);
+    color: #fff;
+    font-weight: 200;
 }
 
 .tableContainer {
@@ -26,7 +24,7 @@
     font-size: 0.9em;
     font-family: sans-serif;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-    max-width: 80%;
+    width: 80%;
 }
 
 .permissionsTable thead tr {
@@ -160,8 +158,8 @@
 }
 
 .addProfileRow td select {
-    border: 2px solid #FFF;
-    color: #FFF;
+    border: 2px solid #fff;
+    color: #fff;
     padding: 3px 5px;
     background: none;
     outline: none;
@@ -170,7 +168,7 @@
 
 .addProfileRow td i {
     font-size: 2em;
-    color: #FFF;
+    color: #fff;
 }
 
 .buttonWrapper {
@@ -200,7 +198,7 @@
     position: sticky;
     background: rgb(0, 45, 115);
     float: right;
-    color: #FFF;
+    color: #fff;
     padding: 10px 20px;
 }
 
@@ -211,5 +209,5 @@
 }
 
 .permissionsKey hr {
-    border-color: #FFF;
+    border-color: #fff;
 }
