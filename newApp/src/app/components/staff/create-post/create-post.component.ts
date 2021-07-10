@@ -231,8 +231,8 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
         body: this.createArticleForm.value.body,
         thumbURL: this.createArticleForm.value.thumbURL,
         writtenDate: this.time['timestamp'],
-        cas: this.casList,
-        references: this.referencesList
+        cas: this.casList.length > 0 ? this.casList : [" "],
+        references: this.referencesList.length > 0 ? this.referencesList : [" "]
       });
       if (destination == 'moderating') {
         this.auth.db.database.ref(`articles/drafts/${this.currentArticleId}`).set(null);

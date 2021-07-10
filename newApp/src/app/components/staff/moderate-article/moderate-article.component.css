@@ -1,0 +1,321 @@
+.wrapper {
+    position: relative;
+}
+
+.articleWrapper {
+    display: inline-block;
+    width: 60%;
+    border-right: 3px solid rgb(0, 45, 115);
+    background: rgb(0, 0, 0);
+    background: linear-gradient( 0deg, rgba(0, 0, 0, 0.1) 0%, rgba(255, 255, 255, 0) 60%);
+}
+
+.articleWrapper .headingWrapper {
+    width: 100%;
+    background-color: rgb(0, 45, 115);
+    min-height: 40vh;
+    padding: 100px 20px 5px;
+}
+
+.articleWrapper .categoriesContainer {
+    margin: 20px;
+}
+
+.articleWrapper .categoriesContainer div {
+    display: inline-block;
+    padding: 0 10px;
+    border-radius: 200px;
+    margin-right: 10px;
+    width: fit-content;
+    border: 1.75px solid rgba(0, 0, 0, 0.2);
+    color: #000;
+}
+
+.articleWrapper .title {
+    font-size: 2.5em;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    margin: 0 20px;
+    color: #dfdfdf;
+}
+
+.articleWrapper .headingWrapper hr {
+    margin: 1em 20px 0;
+    border-top: 2px solid #fff;
+    width: 60%;
+}
+
+.articleWrapper .authorContainer {
+    height: 30px;
+    margin: 15px 20px;
+}
+
+.articleWrapper .authorContainer p {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 35px;
+    display: inline-block;
+    width: 50%;
+}
+
+.articleWrapper .authorContainer .authorPfp {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+.articleWrapper .authorContainer .authorName {
+    width: 60%;
+}
+
+.articleWrapper .authorContainer .timestamp {
+    float: right;
+    width: 20%;
+}
+
+.articleWrapper .textWrapper {
+    width: 100%;
+    padding: 20px 5% 50px;
+    background: #fff;
+}
+
+.articleWrapper .subtitle {
+    margin-bottom: 20px;
+    font-weight: 300;
+    font-size: 1.25rem;
+}
+
+.articleWrapper .mainImage {
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.articleWrapper .bodyText {
+    font-family: "Noto Serif TC", serif;
+    font-size: 17px;
+}
+
+.articleWrapper .bottomWrapper {
+    margin-top: 50px;
+    border-top: 2px solid rgb(7, 27, 48);
+    min-height: 40vh;
+    width: 100%;
+    display: flex;
+}
+
+.articleWrapper .referencesWrapper,
+.articleWrapper .casWrapper {
+    width: 50%;
+    display: inline-block;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.articleWrapper .casWrapper {
+    border-right: 2px solid rgb(7, 27, 48);
+}
+
+.articleWrapper .referencesWrapper h4,
+.articleWrapper .casWrapper h4 {
+    text-align: center;
+    font-size: 2em;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+
+.articleWrapper .referencesWrapper p,
+.articleWrapper .casWrapper p {
+    overflow-wrap: break-word;
+}
+
+
+/* Review panel */
+
+.moderationWrapper {
+    position: sticky;
+    width: 40%;
+    top: 50px;
+    right: 0;
+    padding: 20px 30px;
+    float: right;
+}
+
+.moderationWrapper h3 {
+    font-size: 3em;
+    font-weight: 300;
+    color: rgb(0, 45, 115);
+    border-bottom: 2px solid rgb(0, 45, 115);
+    text-align: center;
+}
+
+
+/* Customize the label (the container) */
+
+.moderationWrapper .checkboxes .container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    min-height: 35px;
+}
+
+.moderationWrapper .checkboxes .container a {
+    color: rgb(0, 45, 115);
+    border-bottom: 1px solid rgb(0, 45, 115);
+}
+
+.moderationWrapper .checkboxes .container a:hover {
+    color: rgba(0, 45, 115, 0.7);
+    border-bottom: 1px solid rgba(0, 45, 115, 0.7);
+}
+
+
+/* Hide the browser's default checkbox */
+
+.moderationWrapper .checkboxes .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+
+/* Create a custom checkbox */
+
+.moderationWrapper .checkboxes .checkmark {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 5px;
+    border: 2px solid rgb(0, 0, 0, 0.2);
+    transition-duration: 100ms;
+}
+
+
+/* On mouse-over, add a grey background color */
+
+.moderationWrapper .checkboxes .container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+
+/* When the checkbox is checked, add a blue background */
+
+.moderationWrapper .checkboxes .container input:checked~.checkmark {
+    background-color: rgb(0, 65, 160);
+}
+
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.moderationWrapper .checkboxes .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+
+/* Show the checkmark when checked */
+
+.moderationWrapper .checkboxes .container input:checked~.checkmark:after {
+    display: block;
+}
+
+
+/* Style the checkmark/indicator */
+
+.moderationWrapper .checkboxes .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.moderationWrapper .submission {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.moderationWrapper .submission .additionalComments {
+    width: 80%;
+    height: 60px;
+    resize: none;
+    padding: 5px 10px;
+}
+
+.moderationWrapper .submission button {
+    padding: 5px 10px;
+    border: 2px solid rgb(0, 45, 115);
+    background: none;
+    color: rgb(0, 45, 115);
+    outline: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition-duration: 200ms;
+}
+
+.moderationWrapper .submission button:hover {
+    background: rgb(0, 45, 115);
+    color: #fff;
+}
+
+.authControls {
+    padding: 30px 50px 50px;
+    text-align: center;
+    width: 100%;
+    color: rgb(0, 45, 115);
+    border-top: 4px solid rgb(0, 45, 115);
+}
+
+.authControls h3 {
+    font-size: 4em;
+    font-weight: 300;
+}
+
+.authControls .buttonWrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    margin: 30px auto 0;
+}
+
+.authControls .buttonWrapper button {
+    width: 250px;
+    border: 2px solid rgb(0, 45, 115);
+    background: #fff;
+    color: rgb(0, 45, 115);
+    border-radius: 5px;
+}
+
+.authControls .buttonWrapper button:hover {
+    background: rgb(0, 45, 115);
+    color: #fff;
+}
