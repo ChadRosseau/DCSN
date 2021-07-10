@@ -41,7 +41,8 @@ export class ModerateArticleComponent implements OnInit {
         graphics: false
       },
       publishReady: false,
-      comments: ""
+      comments: "",
+      author: this.auth.staffObject.uid
     }
 
     // Fetch current article id from URL.
@@ -103,7 +104,7 @@ export class ModerateArticleComponent implements OnInit {
     } else {
       this.auth.db.database.ref(`articles/moderating/${this.currentArticleId}/moderations/${this.auth.staffObject['uid']}`).set(this.moderation);
     }
-    this.router.navigate(['/']);
+    this.router.navigate(['/staff', 'overview']);
   }
 
   authMove(destination) {
@@ -114,6 +115,6 @@ export class ModerateArticleComponent implements OnInit {
       this.auth.db.database.ref(`articles/${destination}/${this.currentArticleId}`).set(this.article);
     }
     this.auth.db.database.ref(`articles/moderating/${this.currentArticleId}`).set(null);
-    this.router.navigate(['/']);
+    this.router.navigate(['/staff', 'overview']);
   }
 }

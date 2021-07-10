@@ -31,8 +31,8 @@ import { ModerateArticleComponent } from './moderate-article/moderate-article.co
   declarations: [
     OverviewComponent,
     PermissionsComponent,
-    CreatePostComponent,
     ModerateArticleComponent,
+    CreatePostComponent,
     SafeHtmlPipe,
   ],
   exports: [

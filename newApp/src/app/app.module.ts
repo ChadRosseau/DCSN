@@ -61,7 +61,6 @@ import { StaffModule } from '@components/staff/staff.module';
     ArchiveComponent,
     ArrayReversePipe,
     FooterComponent,
-    SafeHtmlPipe,
     LoginComponent,
   ],
   imports: [

@@ -5,16 +5,20 @@
             [ngClass]="{'disabled': !auth.canEditArticle(2, 'contributor', null)}">
             <i class="roleIcon far fa-edit"></i>
         </a>
+        <hr>
         <a [routerLink]="['/staff', 'create-article']"
             [ngClass]="{'disabled': !auth.canEditArticle(2, 'moderator', null)}">
             <i class="roleIcon far fa-copy"></i>
         </a>
+        <hr>
         <a [routerLink]="['/staff', 'create-article']" class="disabled">
             <i class="far fa-user"></i>
         </a>
+        <hr>
         <a [routerLink]="['/staff', 'create-article']" class="disabled">
             <i class="fas fa-comment-medical"></i>
         </a>
+        <hr>
         <a [routerLink]="['/staff', 'permissions']" [hidden]="!(auth.staffObject.permission <= 2)">
             <i class="fas fa-user-cog"></i>
         </a>
@@ -67,7 +71,7 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="statusWrapper" [style.color]="'green'">In progress</div>
+                    <div class="statusWrapper" [style.color]="'green'">In progress <span><b>Reviewed</b></span></div>
                 </div>
             </div>
         </div>
@@ -76,6 +80,7 @@
             <div class="articleWrapper">
                 <div class="article" *ngFor="let article of articles?.moderating"
                     [ngClass]="{'enabled': auth.canEditArticle(2, 'moderator', article.author)}"
+                    [routerLink]="['/staff', 'moderate-article', article.articleId]"
                     [style.borderColor]="sharedData.colors.categories[article.category]">
                     <h5>{{article.title}}</h5>
                     <p class="subcategory" [style.background]="sharedData.colors.categories[article.category]">
@@ -95,13 +100,39 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="statusWrapper" [style.color]="'orangered'">In moderation <span>3/5</span></div>
+                    <div class="statusWrapper" [style.color]="'orange'">In moderation
+                        <span><b>{{getObjectLen(article.moderations)}}/3</b></span>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="articleColumn">
             <h2>ON HOLD</h2>
-            <div class="articleWrapper"></div>
+            <div class="articleWrapper">
+                <div class="article" *ngFor="let article of articles?.onhold"
+                    [ngClass]="{'enabled': auth.permission <= 2}"
+                    [style.borderColor]="sharedData.colors.categories[article.category]">
+                    <h5>{{article.title}}</h5>
+                    <p class="subcategory" [style.background]="sharedData.colors.categories[article.category]">
+                        {{article.subcategory}}</p>
+                    <hr>
+                    <div class="infoContainer">
+                        <div class="authorPfp"
+                            [style.backgroundImage]="staffProfiles[article.author] ? 'url('+ staffProfiles[article.author]['photoURL'] +')' : 'none'">
+                        </div>
+                        <div class="authorWrapper">
+                            <p class="authorName">
+                                {{staffProfiles[article.author] ? staffProfiles[article.author]['firstName'] + ' ' + staffProfiles[article.author]['lastName'] : ""}}
+                            </p>
+                            <p>
+                                {{formatDate(article.writtenDate)}}
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="statusWrapper" [style.color]="'red'">Final revisions</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
