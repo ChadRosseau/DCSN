@@ -25,7 +25,8 @@ export class OverviewComponent implements OnInit, OnDestroy {
     this.articleSubscription = this.articleService.article$.subscribe(articles => {
       this.articles = {
         drafts: Object.values(articles.drafts),
-        moderating: Object.values(articles.moderating)
+        moderating: Object.values(articles.moderating),
+        onhold: Object.values(articles.onhold)
       }
     })
 
@@ -49,6 +50,14 @@ export class OverviewComponent implements OnInit, OnDestroy {
 
   pad(n) {
     return n < 10 ? '0' + n : n;
+  }
+
+  getObjectLen(object) {
+    if (object != undefined) {
+      return Object.keys(object).length;
+    } else {
+      return 0;
+    }
   }
 
   ngOnDestroy(): void {

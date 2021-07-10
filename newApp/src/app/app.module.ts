@@ -33,15 +33,18 @@ import { GlobalGoalsComponent } from './components/home/global-goals/global-goal
 import { ArticleComponent } from './components/article/article.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ArrayReversePipe } from './pipes/array-reverse.pipe';
 import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
 
 // Pipes
-import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { ArrayReversePipe } from '@pipes/array-reverse.pipe';
+import { SafeHtmlPipe } from '@pipes/safe-html.pipe';
 
 // Guards
-import { StaffGuard } from './guards/staff.guard';
-import { LoginComponent } from './components/login/login.component';
+import { StaffGuard } from '@guards/staff.guard';
+
+// Modules
+import { StaffModule } from '@components/staff/staff.module';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,6 @@ import { LoginComponent } from './components/login/login.component';
     ArchiveComponent,
     ArrayReversePipe,
     FooterComponent,
-    SafeHtmlPipe,
     LoginComponent,
   ],
   imports: [
@@ -74,6 +76,7 @@ import { LoginComponent } from './components/login/login.component';
     MaterialModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    StaffModule
   ],
   providers: [
     StaffGuard,

@@ -38,6 +38,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
   referencesList: Array<any>;
   casList: Array<any>;
 
+  moderations;
   staffSubscription;
 
 
@@ -47,7 +48,6 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
     this.writerInfo = {};
     this.currentArticleId = this.route.snapshot.paramMap.get('articleId');
     this.showErrors = false;
-
     this.getTime();
 
   }
@@ -130,6 +130,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this.referencesList = [];
     this.casList = [];
+    this.moderations = [];
     this.createArticleForm.patchValue({
       subcategory: new FormControl({ value: "?", disabled: this.createArticleForm.value.category == '?' }, Validators.required)
     })
@@ -153,6 +154,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
         this.imageExists(articleObject.thumbURL);
         this.referencesList = articleObject.references || [];
         this.casList = articleObject.cas || [];
+        this.moderations = articleObject.moderations || [];
         this.staffSubscription = this.auth.staff$.subscribe(data => {
           this.writerInfo = data[articleObject.author];
         });
@@ -231,8 +233,8 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
         body: this.createArticleForm.value.body,
         thumbURL: this.createArticleForm.value.thumbURL,
         writtenDate: this.time['timestamp'],
-        cas: this.casList,
-        references: this.referencesList
+        cas: this.casList.length > 0 ? this.casList : [" "],
+        references: this.referencesList.length > 0 ? this.referencesList : [" "]
       });
       if (destination == 'moderating') {
         this.auth.db.database.ref(`articles/drafts/${this.currentArticleId}`).set(null);
