@@ -260,7 +260,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  findTime(timestamp) {
+  makeTime(timestamp) {
     return new Date(timestamp).toLocaleDateString('en-GB', {
       day: 'numeric',
       month: 'short',

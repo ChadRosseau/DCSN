@@ -9,6 +9,6 @@ export class ArticleService {
   article$;
 
   constructor(private auth: AuthService, private router: Router) {
-    this.article$ = this.auth.db.object<any>(`articles`).valueChanges();
+    this.article$ = this.auth.db.object<any>(`liveArticles`).query;
   }
 }

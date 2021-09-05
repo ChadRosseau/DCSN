@@ -1,8 +1,14 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, NgZone } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
+// Services
 import { AuthService } from '@services/auth.service';
 import { SharedDataService } from '@services/shared-data.service';
+
+// Types
+import { Article } from '@interfaces/article';
 import { Criteria, Moderation } from '@interfaces/moderation';
+import { StaffProfile } from '@interfaces/staff-profile';
 
 @Component({
   selector: 'app-moderate-article',
@@ -12,24 +18,22 @@ import { Criteria, Moderation } from '@interfaces/moderation';
 
 export class ModerateArticleComponent implements OnInit {
   currentArticleId: string;
-  article;
-  author;
+  article: Article | null;
+  author: StaffProfile | null;
   dataLoaded;
   moderation: Moderation;
 
   constructor(public auth: AuthService, private route: ActivatedRoute, public sharedData: SharedDataService, private cd: ChangeDetectorRef, private ngZone: NgZone, private router: Router) {
-    this.author = {
-      firstName: "hi",
-      lastName: "hello",
-      photoURL: "What?"
-    };
+    this.author = null;
   }
 
   ngOnInit(): void {
 
     // Set pagedata defaults
-    this.article = {};
+    this.article = null;
     this.dataLoaded = false;
+
+    // Empty moderation, overwritten if there is subsequently one fetched.
     this.moderation = <Moderation>{
       checklist: <Criteria>{
         criteria: false,
@@ -55,14 +59,14 @@ export class ModerateArticleComponent implements OnInit {
       this.article = articleData;
       console.log(this.article)
     }).then(() => {
-      // Code to get author data
+      // Get author data
       const authorRef = this.auth.db.database.ref(`staffProfiles/${this.article.author}`);
       authorRef.once('value', (snapshot) => {
         this.author = snapshot.val();
       }).then(() => {
 
-        // Code to convert timestamp
-        const articleDate = new Date(this.article.writtenDate).toLocaleDateString('en-GB', {
+        // Convert timestamp
+        const articleDate = new Date(this.article.writtenDate.toString()).toLocaleDateString('en-GB', {
           day: 'numeric',
           month: 'short',
           year: 'numeric',
@@ -105,6 +109,14 @@ export class ModerateArticleComponent implements OnInit {
       this.auth.db.database.ref(`articles/moderating/${this.currentArticleId}/moderations/${this.auth.staffObject['uid']}`).set(this.moderation);
     }
     this.router.navigate(['/staff', 'overview']);
+  }
+
+  makeDate(timestamp: number) {
+    return new Date(timestamp.toString()).toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+    });
   }
 
   authMove(destination) {

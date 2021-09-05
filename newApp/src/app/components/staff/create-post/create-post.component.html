@@ -3,20 +3,17 @@
         <div class="headingWrapper">
             <div class="headingContent">
                 <div class="categoriesContainer">
-                    <select [formControl]="createArticleForm.controls.category"
-                        [style.backgroundColor]="sharedData.colors.categories[createArticleForm.value.category]">
+                    <select [formControl]="createArticleForm.controls.category" [style.backgroundColor]="sharedData.colors.categories[createArticleForm.value.category]">
                         <option value="?" disabled>- Please select category -</option>
                         <option [value]="category" *ngFor="let category of sharedData.categories">
                             {{category}}
                         </option>
                     </select>
-                    <mat-error *ngIf="createArticleForm.controls.category.hasError('required')" [hidden]="!showErrors"
-                        class="error">
+                    <mat-error *ngIf="createArticleForm.controls.category.hasError('required')" [hidden]="!showErrors" class="error">
                         Category is required
                     </mat-error>
 
-                    <select [formControl]="createArticleForm.controls.subcategory"
-                        [style.backgroundColor]="sharedData.colors.subcategories[createArticleForm.value.category]">
+                    <select [formControl]="createArticleForm.controls.subcategory" [style.backgroundColor]="sharedData.colors.subcategories[createArticleForm.value.category]">
                         <option value="?" disabled>
                             {{createArticleForm.value.category == '?' ? 
                                 '<--' : '- Please select subcategory -'}}</option>
@@ -25,18 +22,14 @@
                             {{subcategory}}
                         </option>
                     </select>
-                    <mat-error *ngIf="createArticleForm.controls.subcategory.hasError('required')"
-                        [hidden]="!showErrors" class="error">
+                    <mat-error *ngIf="createArticleForm.controls.subcategory.hasError('required')" [hidden]="!showErrors" class="error">
                         Subcategory is required
                     </mat-error>
                 </div>
 
                 <mat-form-field class="title">
-                    <textarea [formControl]="createArticleForm.controls.title" type="text"
-                        placeholder="Your article title here"
-                        [ngClass]="{'empty': createArticleForm.value.title == ''}"></textarea>
-                    <mat-error *ngIf="createArticleForm.controls.title.hasError('required')" [hidden]="!showErrors"
-                        class="error">
+                    <textarea [formControl]="createArticleForm.controls.title" type="text" placeholder="Your article title here" [ngClass]="{'empty': createArticleForm.value.title == ''}"></textarea>
+                    <mat-error *ngIf="createArticleForm.controls.title.hasError('required')" [hidden]="!showErrors" class="error">
                         Title is required
                     </mat-error>
                 </mat-form-field>
@@ -44,8 +37,7 @@
                 <hr>
 
                 <div class="authorContainer">
-                    <div class="authorPfp"
-                        [style.backgroundImage]="writerInfo ? 'url(' + writerInfo.photoURL + ')' : 'none'">
+                    <div class="authorPfp" [style.backgroundImage]="writerInfo ? 'url(' + writerInfo.photoURL + ')' : 'none'">
                     </div>
                     <p class="authorName">
                         {{writerInfo ? writerInfo.firstName + " " + writerInfo.lastName : 'Name loading...'}}</p>
@@ -55,34 +47,26 @@
         </div>
         <div class="textWrapper">
             <mat-form-field class="subtitle">
-                <textarea [formControl]="createArticleForm.controls.subtitle" type="text"
-                    placeholder="Your article subtitle here"
-                    [ngClass]="{'empty': createArticleForm.value.subtitle == ''}"></textarea>
-                <mat-error *ngIf="createArticleForm.controls.subtitle.hasError('required')" [hidden]="!showErrors"
-                    class="error">
+                <textarea [formControl]="createArticleForm.controls.subtitle" type="text" placeholder="Your article subtitle here" [ngClass]="{'empty': createArticleForm.value.subtitle == ''}"></textarea>
+                <mat-error *ngIf="createArticleForm.controls.subtitle.hasError('required')" [hidden]="!showErrors" class="error">
                     Subtitle is required
                 </mat-error>
             </mat-form-field>
 
             <mat-form-field class="thumbURL">
                 <div class="thumbWrapper" [style.height]="createArticleForm.value.thumbURL != '' ? '300px' : '30px'">
-                    <input [formControl]="createArticleForm.controls.thumbURL" type="url" name=""
-                        placeholder="Thumbnail Image URL: (https://www.imageurl.com)"
-                        (input)="imageExists(createArticleForm.value.thumbURL)" />
-                    <mat-error *ngIf="createArticleForm.controls.thumbURL.hasError('required')" [hidden]="!showErrors"
-                        class="error">
+                    <input [formControl]="createArticleForm.controls.thumbURL" type="url" name="" placeholder="Thumbnail Image URL: (https://www.imageurl.com)" (input)="imageExists(createArticleForm.value.thumbURL)" />
+                    <mat-error *ngIf="createArticleForm.controls.thumbURL.hasError('required')" [hidden]="!showErrors" class="error">
                         Thumbnail URL is required
                     </mat-error>
-                    <div class="thumbURLPreview" [style.backgroundImage]="currentImage"
-                        [style.display]="createArticleForm.value.thumbURL != '' ? 'block' : 'none'"></div>
+                    <div class="thumbURLPreview" [style.backgroundImage]="currentImage" [style.display]="createArticleForm.value.thumbURL != '' ? 'block' : 'none'"></div>
                 </div>
             </mat-form-field>
 
             <div class="mat-form-field-wrapper">
                 <textarea id="bodyEditor"></textarea>
                 <div class="mat-form-field-subscript-wrapper">
-                    <mat-error
-                        *ngIf="createArticleForm.controls.body.touched && createArticleForm.controls.body.hasError('required')">
+                    <mat-error *ngIf="createArticleForm.controls.body.touched && createArticleForm.controls.body.hasError('required')">
                         Your article body requires content
                     </mat-error>
                 </div>
@@ -98,8 +82,7 @@
                     </div>
                     <div class="addListing listing">
                         <input type="text" #addCAS>
-                        <i class="far fa-plus-square"
-                            (click)="addListing('casList', addCAS.value); addCAS.value = ''"></i>
+                        <i class="far fa-plus-square" (click)="addListing('casList', addCAS.value); addCAS.value = ''"></i>
                     </div>
                 </div>
                 <div class="referencesWrapper">
@@ -112,8 +95,7 @@
                     </div>
                     <div class="addListing listing">
                         <input type="text" #addReference>
-                        <i class="far fa-plus-square"
-                            (click)="addListing('referencesList', addReference.value); addReference.value = ''"></i>
+                        <i class="far fa-plus-square" (click)="addListing('referencesList', addReference.value); addReference.value = ''"></i>
                     </div>
                 </div>
             </div>
@@ -125,8 +107,7 @@
             <div class="moderationsWrapper" [hidden]="moderations == []">
                 <h3>Moderations</h3>
                 <div class="moderation" *ngFor="let moderation of moderations">
-                    <h4>Review by {{getStaffName(moderation.author)}}
-                        {{moderation.timestamp ? 'on ' + findTime(moderation.timestamp) : ""}}</h4>
+                    <h4>Review by {{getStaffName(moderation.author)}} {{moderation.timestamp ? 'on ' + makeTime(moderation.timestamp) : ""}}</h4>
                     <div class="checkboxes">
                         <label class="container">
                             <b>Article fulfils the

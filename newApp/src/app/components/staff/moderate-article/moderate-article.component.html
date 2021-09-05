@@ -3,40 +3,40 @@
         <div class="headingWrapper">
             <div class="categoriesContainer">
                 <div class="categoryTag" [style.backgroundColor]="sharedData.colors.categories[article.category]">
-                    {{article.category}}</div>
+                    {{article?.category}}</div>
                 <div class="subcategoryTag" [style.backgroundColor]="sharedData.colors.subcategories[article.category]">
-                    {{article.subcategory}}
+                    {{article?.subcategory}}
                 </div>
             </div>
             <h2 class="title">{{article.title}}</h2>
             <hr>
             <div class="authorContainer">
-                <div class="authorPfp" [style.backgroundImage]="'url(' + author.photoURL + ')'">
+                <div class="authorPfp" [style.backgroundImage]="'url(' + author?.photoURL + ')'">
                 </div>
-                <p class="authorName">{{author.firstName}} {{author.lastName}}</p>
-                <p class="timestamp">{{article.writtenDate}}</p>
-            </div>
+                <p class="authorName">{{author?.firstName}} {{author?.lastName}}</p>
+                <p class="timestamp">{{article?.writtenDate}}</p>
+            </div>?
         </div>
         <div class="textWrapper">
             <h4 class="subtitle">
-                {{article.subtitle}}
+                {{article?.subtitle}}
             </h4>
-            <div class="mainImage" [style.backgroundImage]="'url(' + article.thumbURL + ')'">
+            <div class="mainImage" [style.backgroundImage]="'url(' + article?.thumbURL + ')'">
             </div>
             <div class="bodyWrapper">
-                <div class="bodyText" [innerHTML]="article.body | safeHtml">
+                <div class="bodyText" [innerHTML]="article?.body | safeHtml">
                 </div>
             </div>
             <div class="bottomWrapper">
                 <div class="casWrapper">
                     <h4>CE/CAS</h4>
                     <hr>
-                    <p *ngFor="let cas of article.cas">{{cas}}</p>
+                    <p *ngFor="let cas of article?.cas">{{cas}}</p>
                 </div>
                 <div class="referencesWrapper">
                     <h4>References</h4>
                     <hr>
-                    <p *ngFor="let reference of article.references">{{reference}}</p>
+                    <p *ngFor="let reference of article?.references">{{reference}}</p>
                 </div>
             </div>
         </div>
@@ -98,8 +98,7 @@
             </label>
         </div>
         <div class="submission">
-            <textarea class="additionalComments" [(ngModel)]="moderation.comments"
-                placeholder="Additional comments (required if not publish ready)"></textarea>
+            <textarea class="additionalComments" [(ngModel)]="moderation.comments" placeholder="Additional comments (required if not publish ready)"></textarea>
             <button (click)="submit()">Submit</button>
         </div>
     </div>
