@@ -1,13 +1,11 @@
 <div class="wrapper">
     <div class="sidebar">
         <hr>
-        <a [routerLink]="['/staff', 'create-article']"
-            [ngClass]="{'disabled': !auth.canEditArticle(2, 'contributor', null)}">
+        <a [routerLink]="['/staff', 'create-article']" [ngClass]="{'disabled': !auth.canEditArticle(2, 'contributor', null)}">
             <i class="roleIcon far fa-edit"></i>
         </a>
         <hr>
-        <a [routerLink]="['/staff', 'create-article']"
-            [ngClass]="{'disabled': !auth.canEditArticle(2, 'moderator', null)}">
+        <a [routerLink]="['/staff', 'create-article']" [ngClass]="{'disabled': !auth.canEditArticle(2, 'moderator', null)}">
             <i class="roleIcon far fa-copy"></i>
         </a>
         <hr>
@@ -25,11 +23,9 @@
     </div>
     <div class="topWrapper" [style.backgroundImage]="sharedData.dcImages.groupwork">
         <h2>Staff Overview</h2>
-        <p class="description">This page provides an overview of staff activity within DCSN, and acts as a portal to
-            further staff
-            functions. Use the sidebar on the left to navigate to staff-exclusive pages such as article writing and
-            moderating, personal profile creation, ICT or graphics design feature requests, permissions control, and
-            more.</p>
+        <p class="description">This page provides an overview of staff activity within DCSN, and acts as a portal to further staff functions. Use the sidebar on the left to navigate to staff-exclusive pages such as article writing and moderating, personal profile creation,
+            ICT or graphics design feature requests, permissions control, and more.
+        </p>
         <div class="infoWrapper">
             <div class="infoContainer">
                 <h4>Current Goal</h4>
@@ -49,17 +45,13 @@
         <div class="articleColumn">
             <h2>DRAFTS</h2>
             <div class="articleWrapper">
-                <div class="article" *ngFor="let article of articles?.drafts"
-                    [ngClass]="{'enabled': auth.canEditArticle(2, 'contributor', article.author)}"
-                    [routerLink]="['/staff', 'create-article', article.articleId]"
-                    [style.borderColor]="sharedData.colors.categories[article.category]">
+                <div class="article" *ngFor="let article of articles?.drafts" [ngClass]="{'enabled': auth.canEditArticle(2, 'contributor', article.author)}" [routerLink]="['/staff', 'create-article', article.articleId]" [style.borderColor]="sharedData.colors.categories[article.category]">
                     <h5>{{article.title}}</h5>
                     <p class="subcategory" [style.background]="sharedData.colors.categories[article.category]">
                         {{article.subcategory}}</p>
                     <hr>
                     <div class="infoContainer">
-                        <div class="authorPfp"
-                            [style.backgroundImage]="staffProfiles[article.author] ? 'url('+ staffProfiles[article.author]['photoURL'] +')' : 'none'">
+                        <div class="authorPfp" [style.backgroundImage]="staffProfiles[article.author] ? 'url('+ staffProfiles[article.author]['photoURL'] +')' : 'none'">
                         </div>
                         <div class="authorWrapper">
                             <p class="authorName">
@@ -78,17 +70,13 @@
         <div class="articleColumn">
             <h2>MODERATING</h2>
             <div class="articleWrapper">
-                <div class="article" *ngFor="let article of articles?.moderating"
-                    [ngClass]="{'enabled': auth.canEditArticle(2, 'moderator', article.author)}"
-                    [routerLink]="['/staff', 'moderate-article', article.articleId]"
-                    [style.borderColor]="sharedData.colors.categories[article.category]">
+                <div class="article" *ngFor="let article of articles?.moderating" [ngClass]="{'enabled': auth.canEditArticle(2, 'moderator', article.author)}" [routerLink]="['/staff', 'moderate-article', article.articleId]" [style.borderColor]="sharedData.colors.categories[article.category]">
                     <h5>{{article.title}}</h5>
                     <p class="subcategory" [style.background]="sharedData.colors.categories[article.category]">
                         {{article.subcategory}}</p>
                     <hr>
                     <div class="infoContainer">
-                        <div class="authorPfp"
-                            [style.backgroundImage]="staffProfiles[article.author] ? 'url('+ staffProfiles[article.author]['photoURL'] +')' : 'none'">
+                        <div class="authorPfp" [style.backgroundImage]="staffProfiles[article.author] ? 'url('+ staffProfiles[article.author]['photoURL'] +')' : 'none'">
                         </div>
                         <div class="authorWrapper">
                             <p class="authorName">
@@ -109,16 +97,13 @@
         <div class="articleColumn">
             <h2>ON HOLD</h2>
             <div class="articleWrapper">
-                <div class="article" *ngFor="let article of articles?.onhold"
-                    [ngClass]="{'enabled': auth.permission <= 2}"
-                    [style.borderColor]="sharedData.colors.categories[article.category]">
+                <div class="article" *ngFor="let article of articles?.onhold" [ngClass]="{'enabled': auth.staffObject.permission <= 2}" [routerLink]="['/staff', 'on-hold', article.articleId]" [style.borderColor]="sharedData.colors.categories[article.category]">
                     <h5>{{article.title}}</h5>
                     <p class="subcategory" [style.background]="sharedData.colors.categories[article.category]">
                         {{article.subcategory}}</p>
                     <hr>
                     <div class="infoContainer">
-                        <div class="authorPfp"
-                            [style.backgroundImage]="staffProfiles[article.author] ? 'url('+ staffProfiles[article.author]['photoURL'] +')' : 'none'">
+                        <div class="authorPfp" [style.backgroundImage]="staffProfiles[article.author] ? 'url('+ staffProfiles[article.author]['photoURL'] +')' : 'none'">
                         </div>
                         <div class="authorWrapper">
                             <p class="authorName">

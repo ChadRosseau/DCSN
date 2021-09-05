@@ -3,6 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { SharedDataService } from '@services/shared-data.service';
 import { AuthService } from '@services/auth.service';
 
+// Types
+import { Article } from '@interfaces/article';
+import { StaffProfile } from '@interfaces/staff-profile';
+
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -11,24 +15,15 @@ import { AuthService } from '@services/auth.service';
 })
 export class ArticleComponent implements OnInit {
   currentArticleId: string;
-  article;
-  author;
-  dataLoaded;
+  article: Article | null = null;
+  author: StaffProfile;
+  date: String;
+  dataLoaded: boolean = false;
 
   constructor(public auth: AuthService, private route: ActivatedRoute, public sharedData: SharedDataService, private cd: ChangeDetectorRef, private ngZone: NgZone) {
-    this.author = {
-      firstName: "hi",
-      lastName: "hello",
-      photoURL: "What?"
-    };
   }
 
   ngOnInit(): void {
-
-    // Set pagedata defaults
-    this.article = {};
-    this.dataLoaded = false;
-
     // Fetch current article id from URL.
     this.currentArticleId = this.route.snapshot.paramMap.get('articleId');
 
@@ -50,7 +45,7 @@ export class ArticleComponent implements OnInit {
           month: 'short',
           year: 'numeric',
         });
-        this.article.writtenDate = articleDate;
+        this.date = articleDate;
 
         // Set article data
         this.dataLoaded = true;

@@ -1,0 +1,56 @@
+<div class="wrapper" [style.display]="dataLoaded ? 'block' : 'hidden'">
+    <div class="articleWrapper">
+        <div class="headingWrapper" [style.backgroundImage]="'url(' + article?.thumbURL + ')'">
+            <div class="headingContainer">
+                <div class="categoriesContainer">
+                    <div class="categoryTag" [style.backgroundColor]="sharedData.colors.categories[article.category]">
+                        {{article?.category}}</div>
+                    <div class="subcategoryTag" [style.backgroundColor]="sharedData.colors.subcategories[article.category]">
+                        {{article?.subcategory}}
+                    </div>
+                </div>
+                <h2 class="title">{{article.title}}</h2>
+                <hr>
+                <div class="authorContainer">
+                    <div class="authorPfp" [style.backgroundImage]="'url(' + author?.photoURL + ')'">
+                    </div>
+                    <p class="authorName">{{author?.firstName}} {{author?.lastName}}</p>
+                    <p class="timestamp">{{date}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="textWrapper">
+            <h4 class="subtitle">
+                {{article?.subtitle}}
+            </h4>
+            <div class="bodyWrapper">
+                <div class="bodyText" [innerHTML]="article?.body | safeHtml">
+                </div>
+            </div>
+            <div class="bottomWrapper">
+                <div class="casWrapper">
+                    <h4>CE/CAS</h4>
+                    <hr>
+                    <p *ngFor="let cas of article?.cas">{{cas}}</p>
+                </div>
+                <div class="referencesWrapper">
+                    <h4>References</h4>
+                    <hr>
+                    <p *ngFor="let reference of article?.references">{{reference}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="authControls" [hidden]="auth.staffObject.permission > 2">
+    <h3>Admin Functions</h3>
+    <p>Advanced functions only available to Heads of Department or higher.</p>
+    <p>Note: using these advanced functions will not save the current moderation.</p>
+    <div class="buttonWrapper">
+        <button [routerLink]="['/staff', 'overview']">Cancel</button>
+        <button (click)="submit('drafts')">Pull back to drafts</button>
+        <button (click)="submit('moderating')">Pull back to moderating</button>
+        <button (click)="submit('live')">Publish article</button>
+    </div>
+</div>

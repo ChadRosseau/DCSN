@@ -208,7 +208,12 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
 
   createArticle(destination) {
 
-    if (this.createArticleForm.valid) {
+    if (destination == 'delete') {
+      if (this.currentArticleId) {
+        this.auth.db.database.ref(`articles/drafts/${this.currentArticleId}`).set(null);
+      }
+      this.router.navigate(['/staff', 'overview']);
+    } else if (this.createArticleForm.valid) {
 
       // Get timestamp for operation
       this.time['currentDate'] = new Date();

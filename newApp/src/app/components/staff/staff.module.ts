@@ -17,6 +17,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { PermissionsComponent } from './permissions/permissions.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { ModerateArticleComponent } from './moderate-article/moderate-article.component';
+import { OnHoldComponent } from './on-hold/on-hold.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { ModerateArticleComponent } from './moderate-article/moderate-article.co
     ModerateArticleComponent,
     CreatePostComponent,
     SafeHtmlPipe,
+    OnHoldComponent,
   ],
   exports: [
     SafeHtmlPipe

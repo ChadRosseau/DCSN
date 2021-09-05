@@ -1,6 +1,6 @@
 <div class="wrapper" [style.display]="dataLoaded ? 'block' : 'hidden'">
     <div class="articleWrapper">
-        <div class="headingWrapper">
+        <div class="headingWrapper" [style.backgroundImage]="'url(' + article?.thumbURL + ')'">
             <div class="categoriesContainer">
                 <div class="categoryTag" [style.backgroundColor]="sharedData.colors.categories[article.category]">
                     {{article?.category}}</div>
@@ -14,15 +14,13 @@
                 <div class="authorPfp" [style.backgroundImage]="'url(' + author?.photoURL + ')'">
                 </div>
                 <p class="authorName">{{author?.firstName}} {{author?.lastName}}</p>
-                <p class="timestamp">{{article?.writtenDate}}</p>
-            </div>?
+                <p class="timestamp">{{date}}</p>
+            </div>
         </div>
         <div class="textWrapper">
             <h4 class="subtitle">
                 {{article?.subtitle}}
             </h4>
-            <div class="mainImage" [style.backgroundImage]="'url(' + article?.thumbURL + ')'">
-            </div>
             <div class="bodyWrapper">
                 <div class="bodyText" [innerHTML]="article?.body | safeHtml">
                 </div>
@@ -104,13 +102,14 @@
     </div>
 </div>
 
-<div class="authControls" [hidden]="auth.permission > 2">
+<div class="authControls" [hidden]="auth.staffObject.permission > 2">
     <h3>Admin Functions</h3>
     <p>Advanced functions only available to Heads of Department or higher.</p>
     <p>Note: using these advanced functions will not save the current moderation.</p>
     <div class="buttonWrapper">
+        <button [routerLink]="['/staff', 'overview']">Cancel</button>
         <button (click)="authMove('drafts')">Pull back to drafts</button>
         <button (click)="authMove('onhold')">Move forward to on-hold</button>
-        <button (click)="authMove('live')">Push to published articles</button>
+        <button (click)="authMove('live')">Force-publish article</button>
     </div>
 </div>

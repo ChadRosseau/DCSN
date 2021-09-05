@@ -10,7 +10,7 @@ export interface Article {
     subcategory: Subcategory,
     thumbURL: string,
     body: string,
-    writtenDate: number | String,
+    writtenDate: number,
     cas: Array<String>,
     references: Array<String>,
     moderations: Array<Moderation>,

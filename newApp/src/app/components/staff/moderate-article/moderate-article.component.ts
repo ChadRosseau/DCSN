@@ -18,9 +18,10 @@ import { StaffProfile } from '@interfaces/staff-profile';
 
 export class ModerateArticleComponent implements OnInit {
   currentArticleId: string;
-  article: Article | null;
+  article: Article | null = null;
   author: StaffProfile | null;
-  dataLoaded;
+  date: String = "";
+  dataLoaded: boolean = false;
   moderation: Moderation;
 
   constructor(public auth: AuthService, private route: ActivatedRoute, public sharedData: SharedDataService, private cd: ChangeDetectorRef, private ngZone: NgZone, private router: Router) {
@@ -28,10 +29,6 @@ export class ModerateArticleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    // Set pagedata defaults
-    this.article = null;
-    this.dataLoaded = false;
 
     // Empty moderation, overwritten if there is subsequently one fetched.
     this.moderation = <Moderation>{
@@ -66,12 +63,12 @@ export class ModerateArticleComponent implements OnInit {
       }).then(() => {
 
         // Convert timestamp
-        const articleDate = new Date(this.article.writtenDate.toString()).toLocaleDateString('en-GB', {
+        const articleDate = new Date(this.article.writtenDate).toLocaleDateString('en-GB', {
           day: 'numeric',
           month: 'short',
           year: 'numeric',
         });
-        this.article.writtenDate = articleDate;
+        this.date = articleDate;
 
         // Get current moderation by user (if any)
         if (this.article.moderations) {
