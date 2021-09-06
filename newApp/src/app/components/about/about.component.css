@@ -74,6 +74,16 @@
     padding-bottom: 30px;
 }
 
+.hero2 .textWrapper .section a {
+    color: rgb(0, 75, 135);
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.hero2 .textWrapper .section a:hover {
+    color: rgba(0, 75, 135, 0.6);
+}
+
 .hero2 .textWrapper .leftColumn {
     margin-right: 5%;
     padding-left: 50px;
@@ -84,7 +94,7 @@
     padding-right: 50px;
     background-color: rgb(0, 45, 115);
     box-shadow: -1px 5px 10px #000;
-    color: #FFF;
+    color: #fff;
     border-radius: 20px 0px 0px 20px;
 }
 
@@ -379,8 +389,8 @@
 
 .hero5 .button {
     padding: 10px 15px;
-    color: #FFF;
-    border: 2px solid #FFF;
+    color: #fff;
+    border: 2px solid #fff;
     text-align: center;
     margin-top: 40px;
     min-width: 200px;
@@ -390,7 +400,7 @@
 
 .hero5 .button:hover {
     color: rgb(0, 45, 115);
-    background-color: #FFF;
+    background-color: #fff;
 }
 
 
@@ -506,7 +516,7 @@
         padding: 10px;
     }
     .hero4 .wrapper .selector .header {
-        display: none
+        display: none;
     }
     .hero4 .wrapper .selector .option {
         font-size: 1.5em;
