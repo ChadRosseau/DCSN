@@ -30,10 +30,10 @@ export class ArchiveComponent implements OnInit, OnDestroy {
     };
 
     // Fetch all articles to show, and apply filters.
-    this.articleSubscription = this.articleService.article$.subscribe(data => {
+    this.articleSubscription = this.articleService.liveArticle$.subscribe(data => {
       if (data != null) {
         this.archiveService.articles = [];
-        this.articlesData = Object.values(data['moderating']);
+        this.articlesData = Object.values(data);
         for (let i = 0; i < this.articlesData.length; i++) {
           this.loadArrayData(i);
         }

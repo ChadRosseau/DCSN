@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
+import { Category, Subcategory } from '@interfaces/categories';
 
 @Injectable({
   providedIn: 'root'
@@ -24,29 +25,29 @@ export class SharedDataService {
   };
 
   public subcategories = {
-    Economy: [
-      'Responsible Consumption',
-      'Decent Work',
-      'Industry & Innovation',
-      'Wealth Inequality',
+    [Category.Economy]: [
+      Subcategory.Consumption,
+      Subcategory.Work,
+      Subcategory.Industry,
+      Subcategory.Wealth
     ],
-    Poverty: [
-      'Hunger',
-      'Health & Wellbeing',
-      'Education',
-      'Clean Water & Sanitation',
+    [Category.Poverty]: [
+      Subcategory.Hunger,
+      Subcategory.Health,
+      Subcategory.Education,
+      Subcategory.Sanitation
     ],
-    Sustainability: [
-      'Clean Energy',
-      'Climate Action',
-      'Life On Land',
-      'Life Below Water',
-      'Sustainable Cities'
+    [Category.Sustainability]: [
+      Subcategory.Energy,
+      Subcategory.Climate,
+      Subcategory.Land,
+      Subcategory.Water,
+      Subcategory.Cities
     ],
-    Politics: [
-      'Peace & Justice',
-      'Gender Equality',
-      'Partnerships'
+    [Category.Politics]: [
+      Subcategory.Peace,
+      Subcategory.Gender,
+      Subcategory.Partnerships
     ]
   };
 

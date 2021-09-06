@@ -1,5 +1,5 @@
 <div class="articleWrapper" [hidden]="!dataLoaded">
-    <div class="headingWrapper" [style.backgroundImage]="'url(' + article.thumbURL + ')'">
+    <div class="headingWrapper" [style.backgroundImage]="'url(' + article?.thumbURL + ')'">
         <div class="headingContainer">
             <div class="categoriesContainer">
                 <div class="categoryTag" [style.backgroundColor]="sharedData.colors.categories[article.category]">
@@ -13,9 +13,8 @@
             <div class="authorContainer">
                 <div class="authorPfp" [style.backgroundImage]="'url(' + author.photoURL + ')'">
                 </div>
-                <p class="authorName">{{author.firstName}}
-                    {{auth.dcEmail ? author.lastName : ""}}</p>
-                <p class="timestamp">{{article.writtenDate}}</p>
+                <p class="authorName">{{author.firstName}} {{auth.dcEmail ? author.lastName : ""}}</p>
+                <p class="timestamp">{{date}}</p>
             </div>
         </div>
     </div>

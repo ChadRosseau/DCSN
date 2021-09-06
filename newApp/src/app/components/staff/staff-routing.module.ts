@@ -10,6 +10,7 @@ import { OverviewComponent } from './overview/overview.component'
 import { PermissionsComponent } from './permissions/permissions.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { ModerateArticleComponent } from './moderate-article/moderate-article.component';
+import { OnHoldComponent } from './on-hold/on-hold.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'overview', pathMatch: 'full' }, // Redirect to overview page
@@ -18,6 +19,7 @@ const routes: Routes = [
     { path: 'create-article', component: CreatePostComponent },
     { path: 'create-article/:articleId', component: CreatePostComponent },
     { path: 'moderate-article/:articleId', component: ModerateArticleComponent },
+    { path: 'on-hold/:articleId', component: OnHoldComponent },
 ]
 
 @NgModule({

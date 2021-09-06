@@ -127,10 +127,9 @@
     background-repeat: no-repeat;
 }
 
-.bodyText,
-.bodyText p {
-    font-family: "Noto Serif TC", serif!important;
-    font-size: 17px!important;
+.bodyText {
+    font-family: "Noto Serif TC", serif;
+    font-size: 17px;
 }
 
 .bottomWrapper {
@@ -166,66 +165,39 @@
     overflow-wrap: break-word;
 }
 
-@media (max-width: 900px) {
-    .headingWrapper {
-        padding-top: 50px;
-        background-size: cover;
-        background-position: center;
-        background-attachment: unset;
-    }
-    .headingWrapper .headingContainer {
-        width: 90%;
-    }
-    .authorContainer {
-        width: 95%;
-    }
-    .categoriesContainer {
-        width: 95%;
-    }
-    .title {
-        font-size: 1.5em;
-        width: 95%;
-    }
-    .textWrapper {
-        width: 95%;
-    }
-    .authorPfp {
-        margin-right: 10px;
-    }
-    .authorContainer .authorName {
-        width: 50%;
-    }
-    .authorContainer .timestamp {
-        width: 30%;
-    }
-    .casWrapper h4,
-    .referencesWrapper h4 {
-        font-size: 1.5em;
-    }
-    .bodyText {
-        font-size: 13px;
-        overflow: hidden;
-        overflow-wrap: normal;
-    }
-    .bodyText p img {
-        max-width: 100%;
-        height: unset;
-    }
-    .bottomWrapper {
-        flex-direction: column;
-    }
-    .bottomWrapper .casWrapper,
-    .bottomWrapper .referencesWrapper {
-        width: 100%;
-    }
-    .bottomWrapper .casWrapper {
-        border-right: none;
-        border-bottom: 2px solid rgb(7, 27, 48);
-    }
-    .bottomWrapper h5 {
-        text-align: center;
-    }
-    .bottomWrapper p {
-        overflow-wrap: break-word;
-    }
+
+/* Advanced Auth Controls */
+
+.authControls {
+    padding: 30px 50px 50px;
+    text-align: center;
+    width: 100%;
+    color: rgb(0, 45, 115);
+    border-top: 4px solid rgb(0, 45, 115);
+}
+
+.authControls h3 {
+    font-size: 4em;
+    font-weight: 300;
+}
+
+.authControls .buttonWrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    margin: 30px auto 0;
+}
+
+.authControls .buttonWrapper button {
+    width: 250px;
+    border: 2px solid rgb(0, 45, 115);
+    background: #fff;
+    color: rgb(0, 45, 115);
+    border-radius: 5px;
+}
+
+.authControls .buttonWrapper button:hover {
+    background: rgb(0, 45, 115);
+    color: #fff;
 }

@@ -19,10 +19,10 @@ export class NewStoriesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // Fetch data on current article from db.
-    this.subscription = this.articleService.article$.subscribe(data => {
-      if (data['moderating'] != null) {
+    this.subscription = this.articleService.liveArticle$.subscribe(data => {
+      if (data != null) {
         this.recentArticles = [];
-        this.articlesData = Object.values(data['moderating']);
+        this.articlesData = Object.values(data);
         this.articlesData.sort((a, b) => (a.writtenDate < b.writtenDate) ? 1 : -1);
         for (let i = 0; i < 3; i++) {
           this.loadArrayData(i);

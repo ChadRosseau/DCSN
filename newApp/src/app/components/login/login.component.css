@@ -4,19 +4,18 @@
 
 .columnWrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 100%;
     margin: 0 auto;
-    background: rgb(0, 45, 115);
-    background: linear-gradient(90deg, rgba(0, 45, 115, 1) 0%, rgba(0, 45, 115, 1) 30%, rgba(0, 77, 196, 1) 33%, rgba(0, 77, 196, 1) 66%, rgba(0, 45, 115, 1) 70%, rgba(0, 45, 115, 1) 100%);
-    box-shadow: 2px 5px 5px #000;
 }
 
 .columnWrapper>div {
     width: calc(90% / 3);
     /* border: 1px solid black; */
     padding: 20px 30px 30px;
-    color: #FFF;
+    color: #fff;
+    box-shadow: 2px 5px 5px #000;
+    background: rgb(0, 45, 115);
 }
 
 .loginWrapper .leftColumn h2 {
@@ -47,8 +46,8 @@
 
 .loginWrapper .rightColumn button {
     background: none;
-    border: 2px solid #FFF;
+    border: 2px solid #fff;
     padding: 5px 10px;
     font-weight: 400;
-    color: #FFF;
+    color: #fff;
 }
