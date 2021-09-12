@@ -104,7 +104,7 @@
                 <button (click)="createArticle('drafts')">Save Article Draft</button>
                 <button (click)="createArticle('moderating')">Submit for Moderation</button>
             </div>
-            <div class="moderationsWrapper" [hidden]="moderations == []">
+            <div class="moderationsWrapper" [hidden]="moderations.length == 0">
                 <h3>Moderations</h3>
                 <div class="moderation" *ngFor="let moderation of moderations">
                     <h4>Review by {{getStaffName(moderation.author)}} {{moderation.timestamp ? 'on ' + makeTime(moderation.timestamp) : ""}}</h4>

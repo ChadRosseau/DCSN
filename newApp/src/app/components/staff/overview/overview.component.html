@@ -33,19 +33,18 @@
             </div>
             <div class="infoContainer">
                 <h4>Current Rotational Period</h4>
-                <p><i class="far fa-calendar-alt"></i>July 8th - August 7th</p>
+                <p><i class="far fa-calendar-alt"></i>September 1st - September 30th</p>
             </div>
             <div class="infoContainer">
                 <h4>Total Pending Articles</h4>
-                <p><i
-                        class="fas fa-align-left"></i>{{getObjectLen(articles.drafts) + getObjectLen(articles.moderating) + getObjectLen(articles.onhold)}}
+                <p><i class="fas fa-align-left"></i>{{getObjectLen(articles?.moderating) + getObjectLen(articles?.onhold)}}
                 </p>
             </div>
         </div>
     </div>
     <div class="columnWrapper">
         <div class="articleColumn">
-            <h2>DRAFTS</h2>
+            <h2>DRAFTS - {{getObjectLen(articles?.drafts)}}</h2>
             <div class="articleWrapper">
                 <div class="article" *ngFor="let article of articles?.drafts" [ngClass]="{'enabled': auth.canEditArticle(2, 'contributor', article.author)}" [routerLink]="['/staff', 'create-article', article.articleId]" [style.borderColor]="sharedData.colors.categories[article.category]">
                     <h5>{{article.title}}</h5>
@@ -65,12 +64,12 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="statusWrapper" [style.color]="'green'">In progress <span><b>Reviewed</b></span></div>
+                    <div class="statusWrapper" [style.color]="'green'">In progress <span [hidden]="!article.moderations"><b>Reviewed</b></span></div>
                 </div>
             </div>
         </div>
         <div class="articleColumn">
-            <h2>MODERATING</h2>
+            <h2>MODERATING - {{getObjectLen(articles?.moderating)}}</h2>
             <div class="articleWrapper">
                 <div class="article" *ngFor="let article of articles?.moderating" [ngClass]="{'enabled': auth.canEditArticle(2, 'moderator', article.author)}" [routerLink]="['/staff', 'moderate-article', article.articleId]" [style.borderColor]="sharedData.colors.categories[article.category]">
                     <h5>{{article.title}}</h5>
@@ -90,14 +89,14 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="statusWrapper" [style.color]="'orange'">In moderation
+                    <div class="statusWrapper" [style.color]="'#C45017'">In moderation
                         <span><b>{{getObjectLen(article.moderations)}}/2</b></span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="articleColumn">
-            <h2>ON HOLD</h2>
+            <h2>ON HOLD - {{getObjectLen(articles?.onhold)}}</h2>
             <div class="articleWrapper">
                 <div class="article" *ngFor="let article of articles?.onhold" [ngClass]="{'enabled': auth.staffObject.permission <= 2}" [routerLink]="['/staff', 'on-hold', article.articleId]" [style.borderColor]="sharedData.colors.categories[article.category]">
                     <h5>{{article.title}}</h5>

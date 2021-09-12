@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { SharedDataService } from '../../../services/shared-data.service';
 
@@ -11,6 +11,7 @@ import { maxLength } from './maxlength.validator';
 import { Router, ActivatedRoute } from '@angular/router';
 import { getLocaleTimeFormat } from '@angular/common';
 import { TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
+import { Moderation } from '@interfaces/moderation';
 
 declare var tinymce;
 
@@ -39,18 +40,18 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
   referencesList: Array<any>;
   casList: Array<any>;
 
-  moderations;
+  moderations: Array<Moderation> | [];
   staffSubscription;
 
 
-  constructor(public auth: AuthService, public sharedData: SharedDataService, public router: Router, private route: ActivatedRoute) { }
+  constructor(public auth: AuthService, public sharedData: SharedDataService, public router: Router, private route: ActivatedRoute, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.writerInfo = {};
     this.currentArticleId = this.route.snapshot.paramMap.get('articleId');
     this.showErrors = false;
     this.getTime();
-
+    this.moderations = [];
   }
 
   private editorSubject: Subject<any> = new AsyncSubject();
@@ -135,6 +136,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
     this.createArticleForm.patchValue({
       subcategory: new FormControl({ value: "?", disabled: this.createArticleForm.value.category == '?' }, Validators.required)
     })
+    this.cd.detectChanges();
   }
 
   loadFullTemplate(articleId) {
@@ -155,7 +157,9 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
         this.imageExists(articleObject.thumbURL);
         this.referencesList = articleObject.references || [];
         this.casList = articleObject.cas || [];
-        this.moderations = Object.values(articleObject.moderations) || [];
+        console.log(articleObject.moderations)
+        this.moderations = articleObject.moderations != undefined ? Object.values(articleObject.moderations) : [];
+        console.log(this.moderations)
         this.staffSubscription = this.auth.staff$.subscribe(data => {
           this.staffList = data;
           this.writerInfo = data[articleObject.author];
@@ -164,6 +168,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
         this.router.navigate(['/']);
       }
     })
+    this.cd.detectChanges();
   }
 
   fetchBody() {
