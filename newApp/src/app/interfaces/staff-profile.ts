@@ -9,3 +9,7 @@ export interface StaffProfile {
     roles: Array<string>,
     permission: number
 }
+
+export interface StaffList {
+    readonly [index: string]: StaffProfile
+}

@@ -107,7 +107,7 @@
             <div class="moderationsWrapper" [hidden]="moderations.length == 0">
                 <h3>Moderations</h3>
                 <div class="moderation" *ngFor="let moderation of moderations">
-                    <h4>Review by {{getStaffName(moderation.author)}} {{moderation.timestamp ? 'on ' + makeTime(moderation.timestamp) : ""}}</h4>
+                    <h4>Review by {{getStaffName(moderation?.author)}} {{'on ' + makeTime(moderation?.timestamp)}}</h4>
                     <div class="checkboxes">
                         <label class="container">
                             <b>Article fulfils the
