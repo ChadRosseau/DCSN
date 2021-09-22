@@ -46,7 +46,6 @@
 <div class="authControls" [hidden]="auth.staffObject.permission > 2">
     <h3>Admin Functions</h3>
     <p>Advanced functions only available to Heads of Department or higher.</p>
-    <p>Note: using these advanced functions will not save the current moderation.</p>
     <div class="buttonWrapper">
         <button [routerLink]="['/staff', 'overview']">Cancel</button>
         <button (click)="submit('drafts')">Pull back to drafts</button>

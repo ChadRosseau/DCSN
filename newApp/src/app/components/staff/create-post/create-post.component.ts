@@ -306,6 +306,11 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  public deleteArticle() {
+    this.auth.db.database.ref(`articles/drafts/${this.currentArticleId}`).set({});
+    this.auth.db.database.ref(`articleBodies/${this.currentArticleId}`).set({});
+  }
+
   // Get current time
   private getTime() {
     if (!this.time['currentDate']) {

@@ -19,7 +19,7 @@ const routes: Routes = [
     { path: 'create-article', component: CreatePostComponent },
     { path: 'create-article/:articleId', component: CreatePostComponent },
     { path: 'moderate-article/:articleId', component: ModerateArticleComponent },
-    { path: 'on-hold/:articleId', component: OnHoldComponent, canActivate: [HeadGuard] },
+    { path: 'on-hold/:articleId', component: OnHoldComponent },
 ]
 
 @NgModule({

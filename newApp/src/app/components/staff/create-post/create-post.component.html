@@ -100,7 +100,8 @@
                 </div>
             </div>
             <div class="buttonsWrapper">
-                <button [routerLink]="['/']">Discard Article Draft</button>
+                <button (click)="deleteArticle()">Delete draft</button>
+                <button [routerLink]="['/staff', 'overview']">Discard Changes</button>
                 <button (click)="createArticle('drafts')">Save Article Draft</button>
                 <button (click)="createArticle('moderating')">Submit for Moderation</button>
             </div>
