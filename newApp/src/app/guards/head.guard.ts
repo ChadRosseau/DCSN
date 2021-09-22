@@ -11,13 +11,12 @@ export class HeadGuard implements CanActivate {
   constructor(private auth: AuthService, private router: Router) { }
 
   async canActivate(next, state) {
-    if (this.auth.staffObject.permission > 2) {
-      this.router.navigate(['/']);
-      console.log(this.auth.staffObject.permission)
-      console.log("access denied - not a department head");
-      return false;
+    if (this.auth.staffObject.permission <= 2) {
+      return true;
     }
-    return true;
+    this.router.navigate(['/']);
+    console.log("access denied - not a department head");
+    return false;
   }
 
 }

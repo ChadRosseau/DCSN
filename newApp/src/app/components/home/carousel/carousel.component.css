@@ -103,6 +103,11 @@
     .carouselOverlay .imageWrapper div.image {
         width: 75px;
         height: 75px;
+        margin-bottom: 0px;
+    }
+    .carouselOverlay .imageWrapper p {
+        font-size: 1em;
+        width: 30vw;
     }
     .slick-slider {
         height: calc(50vh + 50px);
