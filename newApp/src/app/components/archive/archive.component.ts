@@ -1,9 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+
+import * as _ from 'lodash';
+
+// Services
 import { AuthService } from '@services/auth.service';
 import { SharedDataService } from '@services/shared-data.service';
 import { ArchiveService } from '@services/archive.service';
 import { ArticleService } from '@services/article.service';
-import * as _ from 'lodash';
+
+// Types
+import { ArticleInfo } from '@interfaces/article';
 
 @Component({
   selector: 'app-archive',
@@ -13,8 +19,7 @@ import * as _ from 'lodash';
 
 export class ArchiveComponent implements OnInit, OnDestroy {
   images;
-  dbArticles;
-  articlesData;
+  articlesData: Array<ArticleInfo>;
   pageData = {
     filterMenu: false
   }
@@ -74,14 +79,6 @@ export class ArchiveComponent implements OnInit, OnDestroy {
       year = articleDate.getFullYear();
 
     article['newDate'] = `${this.pad(date)}-${this.pad(month + 1)}-${year}`;
-
-    article['previewData'] = {
-      state: "default",
-      bar: "150px",
-      barTop: "-10px",
-      title: true,
-      background: "url('https://static01.nyt.com/images/2021/02/03/us/politics/03dc-repubs-1/03dc-repubs-1-jumbo.jpg?quality=90&auto=webp')"
-    }
 
     this.archiveService.articles.push(article);
   }

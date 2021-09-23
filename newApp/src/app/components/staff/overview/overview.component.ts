@@ -1,8 +1,17 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { ArticleInfo } from '@interfaces/article';
+import { StaffProfile } from '@interfaces/staff-profile';
 import { ArticleService } from '@services/article.service';
 import { AuthService } from '@services/auth.service';
 import { SharedDataService } from '@services/shared-data.service';
+import { Subscription } from 'rxjs';
+
+interface ArticleTypes {
+  drafts: Array<ArticleInfo>,
+  moderating: Array<ArticleInfo>,
+  onhold: Array<ArticleInfo>
+}
 
 @Component({
   selector: 'app-overview',
@@ -10,11 +19,10 @@ import { SharedDataService } from '@services/shared-data.service';
   styleUrls: ['./overview.component.css']
 })
 export class OverviewComponent implements OnInit, OnDestroy {
-  articles;
-  staffProfiles;
+  articles: ArticleTypes;
+  staffProfiles: { [index: string]: StaffProfile };
 
-  articleSubscription;
-  staffSubscription;
+  subscriptions: Array<Subscription> = [];
 
   constructor(public auth: AuthService, public sharedData: SharedDataService, public router: Router, public articleService: ArticleService, private cd: ChangeDetectorRef) { }
 
@@ -27,7 +35,7 @@ export class OverviewComponent implements OnInit, OnDestroy {
     }
     this.staffProfiles = {};
 
-    this.articleSubscription = this.articleService.article$.subscribe(articles => {
+    this.subscriptions.push(this.articleService.article$.subscribe(articles => {
       Object.entries(articles).forEach((value) => {
         this.articles[value[0]] = Object.values(value[1]);
       });
@@ -36,11 +44,11 @@ export class OverviewComponent implements OnInit, OnDestroy {
       //   moderating: Object.values(articles.moderating) || [],
       //   onhold: Object.values(articles.onhold) || []
       // }
-    })
+    }))
 
-    this.staffSubscription = this.auth.staff$.subscribe(staff => {
+    this.subscriptions.push(this.auth.staff$.subscribe(staff => {
       this.staffProfiles = staff;
-    })
+    }));
 
     this.cd.detectChanges();
   }
@@ -71,7 +79,8 @@ export class OverviewComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.articleSubscription.unsubscribe();
-    this.staffSubscription.unsubscribe();
+    this.subscriptions.forEach((subscription: Subscription) => {
+      subscription.unsubscribe();
+    });
   }
 }
