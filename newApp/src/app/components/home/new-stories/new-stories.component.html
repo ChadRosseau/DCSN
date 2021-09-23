@@ -1,13 +1,12 @@
 <div class="storiesHeroWrapper">
     <h2>LATEST ARTICLES</h2>
     <div class="storyWrapper">
-        <div class="storyContainer" *ngFor="let article of recentArticles"
-            [routerLink]="['/article', article.articleId]">
+        <div class="storyContainer" *ngFor="let article of recentArticles" [routerLink]="['/article', article.articleId]">
             <div class=" textContainer">
                 <h3>{{article.title}}</h3>
                 <div class="authorContainer">
                     <div class="authorPfp" style="background-image: url({{article.author.photoURL}})"></div>
-                    <p>{{article.author.firstName}} {{article.author.lastName}}<br> {{article.newDate}}</p>
+                    <p>{{article.author}}<br> {{article.newDate}}</p>
                 </div>
                 <p id="articleBody" [style.fontSize]="'1rem!important'">{{article.subtitle}}</p>
             </div>
@@ -18,8 +17,7 @@
                     {{article.subcategory}}
                 </div>
             </div>
-            <div class="articleImage"
-                [style.backgroundImage]="article.thumbURL ? 'url(' + article.thumbURL + ')' : 'url(https://static01.nyt.com/images/2021/02/03/us/politics/03dc-repubs-1/03dc-repubs-1-jumbo.jpg?quality=90&auto=webp)'">
+            <div class="articleImage" [style.backgroundImage]="article.thumbURL ? 'url(' + article.thumbURL + ')' : 'url(https://static01.nyt.com/images/2021/02/03/us/politics/03dc-repubs-1/03dc-repubs-1-jumbo.jpg?quality=90&auto=webp)'">
             </div>
         </div>
     </div>

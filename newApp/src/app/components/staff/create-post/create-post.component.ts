@@ -1,19 +1,26 @@
+// Angular
 import { AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+// Services
 import { AuthService } from '../../../services/auth.service';
 import { SharedDataService } from '../../../services/shared-data.service';
 
+// Tinymce - Rich text editor
 import 'tinymce';
 import 'tinymce/icons/default';
-
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AsyncSubject, Subject } from 'rxjs';
-import { maxLength } from './maxlength.validator';
-import { Router, ActivatedRoute } from '@angular/router';
-import { getLocaleTimeFormat } from '@angular/common';
-import { TINYMCE_SCRIPT_SRC } from '@tinymce/tinymce-angular';
-import { Moderation } from '@interfaces/moderation';
-
 declare var tinymce;
+
+// RXJS
+import { AsyncSubject, Subject, Subscription } from 'rxjs';
+
+// Types
+import { Moderation } from '@interfaces/moderation';
+import { DraftArticleInfo } from '@interfaces/article';
+import { StaffList, StaffProfile } from '@interfaces/staff-profile';
+import { DatabaseReference } from '@angular/fire/database/interfaces';
+
 
 @Component({
   selector: 'app-create-post',
@@ -21,10 +28,8 @@ declare var tinymce;
   styleUrls: ['./create-post.component.css'],
 })
 export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
-  showErrors;
+  showErrors: boolean;
   time = {};
-  staffList;
-  // public tinymce = tinymce.get()
 
   currentArticleId;
   createArticleForm = new FormGroup({
@@ -35,27 +40,29 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
     thumbURL: new FormControl("", Validators.required),
     body: new FormControl("", Validators.required)
   });
-  writerInfo;
-  currentImage;
-  referencesList: Array<any>;
-  casList: Array<any>;
-
+  currentImage: string;
+  referencesList: Array<String>;
+  casList: Array<String>;
   moderations: Array<Moderation> | [];
-  staffSubscription;
+
+  writerInfo: StaffProfile;
+  staffList: StaffList;
+  subscriptions: Array<Subscription> = [];
 
 
   constructor(public auth: AuthService, public sharedData: SharedDataService, public router: Router, private route: ActivatedRoute, private cd: ChangeDetectorRef) { }
 
+  // On page load
   ngOnInit(): void {
-    this.writerInfo = {};
     this.currentArticleId = this.route.snapshot.paramMap.get('articleId');
-    this.showErrors = false;
     this.getTime();
+    this.showErrors = false;
     this.moderations = [];
   }
 
   private editorSubject: Subject<any> = new AsyncSubject();
 
+  // Initialise text editor after viewport loads
   ngAfterViewInit() {
 
     tinymce.init({
@@ -122,11 +129,12 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
     });
 
     tinymce.activeEditor.on('blur', (e) => {
-      this.fetchBody();
+      this.tieBody();
     })
   }
 
-  loadEmptyTemplate() {
+  // Load empty draft template
+  private loadEmptyTemplate() {
     if (this.auth.staffObject) {
       this.writerInfo = this.auth.staffObject;
     }
@@ -139,11 +147,13 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
     this.cd.detectChanges();
   }
 
-  loadFullTemplate(articleId) {
-    let dbArticleRef = this.auth.db.database.ref(`articles/drafts/${articleId}`);
+  private loadFullTemplate(articleId) {
+    // Get current article's info from db.
+    const dbArticleRef: DatabaseReference = this.auth.db.database.ref(`articles/drafts/${articleId}`);
     dbArticleRef.once('value', (snapshot) => {
-      let articleObject = snapshot.val();
+      let articleObject: DraftArticleInfo = snapshot.val();
       if (articleObject) {
+        // Initialise form with data from db.
         this.createArticleForm = new FormGroup({
           category: new FormControl(articleObject.category, Validators.required),
           subcategory: new FormControl(articleObject.subcategory, Validators.required),
@@ -152,48 +162,74 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
           thumbURL: new FormControl(articleObject.thumbURL, Validators.required),
           body: new FormControl("", Validators.required)
         });
-        tinymce.get("bodyEditor").setContent(articleObject.body);
-        this.fetchBody();
+
+        // Fetch article body from db and insert into editor.
+        this.auth.db.database.ref(`articleBodies/${articleId}`).once('value', (bodyData) => {
+          let body: string = bodyData.val() || "";
+          tinymce.get("bodyEditor").setContent(body);
+          this.tieBody();
+        })
+
+        // Check image url.
         this.imageExists(articleObject.thumbURL);
+
+        // Initialise references, CAS and moderations.
         this.referencesList = articleObject.references || [];
         this.casList = articleObject.cas || [];
-        console.log(articleObject.moderations)
         this.moderations = articleObject.moderations != undefined ? Object.values(articleObject.moderations) : [];
-        console.log(this.moderations)
-        this.staffSubscription = this.auth.staff$.subscribe(data => {
-          this.staffList = data;
-          this.writerInfo = data[articleObject.author];
-        });
+
+        // Set up database subscription for article author.
+        this.subscriptions.push(this.auth.db.object<StaffProfile>(`staffProfiles/${articleObject.author}`).valueChanges().subscribe(data => {
+          this.writerInfo = data;
+          this.staffList = {
+            [this.writerInfo.uid]: this.writerInfo
+          }
+        }));
+
+        if (this.moderations.length > 0) {
+          this.subscriptions.push(this.auth.staff$.subscribe(data => {
+            this.staffList = data;
+          }))
+        }
       } else {
+        // If no data exists for this article ID, redirect to home.
         this.router.navigate(['/']);
       }
     })
+
+    // Refresh UI
     this.cd.detectChanges();
   }
 
-  fetchBody() {
+  // Tie tinymce rich text editor to form controller.
+  private tieBody() {
     this.createArticleForm.patchValue({
       body: tinymce.activeEditor.getContent()
     })
   }
 
-
-  handleEditorInit(e) {
+  // Initialise tinymce editor.
+  public handleEditorInit(e) {
     this.editorSubject.next(e.editor);
     this.editorSubject.complete();
   }
 
-  imageExists(imageURL) {
+  // Fetch image using URL in textbox.
+  public imageExists(imageURL) {
     // Play loading gif while fetching.
     this.currentImage = "url('https://wpamelia.com/wp-content/uploads/2018/11/ezgif-2-6d0b072c3d3f.gif')";
 
+    // Perform fetch http request.
     fetch(imageURL, { method: 'HEAD' })
       .then(res => {
+        // If not found, display error.
         if (res.status == 404) {
           this.currentImage = "url('../../../assets/images/image-not-found.jpg')";
+          // If found, display image
         } else {
           this.currentImage = `url('${imageURL}')`;
         }
+        // Catch error
       }).catch(err => {
         if (err == 'TypeError: Failed to fetch') {
           this.currentImage = `url('${imageURL}')`;
@@ -201,17 +237,18 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
       });
   }
 
-  addListing(list, value) {
+
+  public addListing(list, value) {
     if (value != "") {
       this[list].push(value);
     }
   }
 
-  removeListing(list, index) {
+  public removeListing(list, index) {
     this[list].splice(index, 1);
   }
 
-  createArticle(destination) {
+  public createArticle(destination) {
 
     if (destination == 'delete') {
       if (this.currentArticleId) {
@@ -224,7 +261,7 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
       this.time['currentDate'] = new Date();
       this.time['timestamp'] = this.time['currentDate'].getTime();
 
-      let dbArticlesRef;
+      let dbArticlesRef: DatabaseReference;
       // Upload article to db.
       if (this.currentArticleId) {
         dbArticlesRef = this.auth.db.database.ref(`articles/${destination}/${this.currentArticleId}`);
@@ -234,31 +271,48 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
         dbArticlesRef = this.auth.db.database.ref(`articles/${destination}/${this.currentArticleId}`);
       }
 
-      this.fetchBody();
-      dbArticlesRef.set({
+      this.tieBody();
+
+      // Update article info
+      dbArticlesRef.set(<DraftArticleInfo>{
         articleId: this.currentArticleId,
         author: this.writerInfo.uid,
         category: this.createArticleForm.value.category,
         subcategory: this.createArticleForm.value.subcategory,
         title: this.createArticleForm.value.title,
         subtitle: this.createArticleForm.value.subtitle,
-        body: this.createArticleForm.value.body,
         thumbURL: this.createArticleForm.value.thumbURL,
         writtenDate: this.time['timestamp'],
         cas: this.casList.length > 0 ? this.casList : [" "],
         references: this.referencesList.length > 0 ? this.referencesList : [" "],
         moderations: destination == 'moderating' ? [] : this.moderations
       });
-      if (destination == 'moderating') {
+
+      // Update body
+      this.auth.db.database.ref(`articleBodies/${this.currentArticleId}`).set({
+        body: this.createArticleForm.value.body
+      })
+
+      // If pushing forward from drafts, remove from drafts.
+      if (destination != 'drafts') {
         this.auth.db.database.ref(`articles/drafts/${this.currentArticleId}`).set(null);
       }
+
+      // Return to homepage
       this.router.navigate(['/staff', 'overview']);
     } else {
+      // If form checks are failed, display errors.
       this.showErrors = true;
     }
   }
 
-  getTime() {
+  public deleteArticle() {
+    this.auth.db.database.ref(`articles/drafts/${this.currentArticleId}`).set({});
+    this.auth.db.database.ref(`articleBodies/${this.currentArticleId}`).set({});
+  }
+
+  // Get current time
+  private getTime() {
     if (!this.time['currentDate']) {
       this.time['currentDate'] = new Date();
       this.time['timestamp'] = this.time['currentDate'].getTime();
@@ -270,7 +324,8 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  makeTime(timestamp) {
+  // Format time for display
+  public makeTime(timestamp) {
     return new Date(timestamp).toLocaleDateString('en-GB', {
       day: 'numeric',
       month: 'short',
@@ -278,16 +333,24 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  getStaffName(uid) {
-    let author = this.staffList[uid];
-    return `${author['firstName']} ${author['lastName']}`;
+  // Format name for display
+  public getStaffName(uid) {
+    if (this.staffList) {
+      const author = this.staffList[uid];
+      return `${author['firstName']} ${author['lastName']}`;
+    } else {
+      return "Name loading...";
+    }
   }
 
-  trackByFn(index, item) { return index; }
+  // Track ngfor
+  public trackByFn(index, item) { return index; }
 
   ngOnDestroy(): void {
-    if (this.staffSubscription) {
-      this.staffSubscription.unsubscribe();
+    if (this.subscriptions?.length > 0) {
+      this.subscriptions.forEach((subscription: Subscription) => {
+        subscription.unsubscribe();
+      });
     }
     tinymce.remove('#bodyEditor');
   }

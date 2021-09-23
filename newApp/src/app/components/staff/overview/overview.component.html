@@ -98,7 +98,7 @@
         <div class="articleColumn">
             <h2>ON HOLD - {{getObjectLen(articles?.onhold)}}</h2>
             <div class="articleWrapper">
-                <div class="article" *ngFor="let article of articles?.onhold" [ngClass]="{'enabled': auth.staffObject.permission <= 2}" [routerLink]="['/staff', 'on-hold', article.articleId]" [style.borderColor]="sharedData.colors.categories[article.category]">
+                <div class="enabled article" *ngFor="let article of articles?.onhold" [routerLink]="['/staff', 'on-hold', article.articleId]" [style.borderColor]="sharedData.colors.categories[article.category]">
                     <h5>{{article.title}}</h5>
                     <p class="subcategory" [style.background]="sharedData.colors.categories[article.category]">
                         {{article.subcategory}}</p>

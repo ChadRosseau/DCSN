@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ArticleInfo } from '@interfaces/article';
 import { SharedDataService } from './shared-data.service';
 
 @Injectable({
@@ -14,13 +15,13 @@ export class ArchiveService {
   }
 
   // Article storage for nav and archive.
-  articles = [];
-  filteredArticles = [];
+  articles: Array<ArticleInfo> = [];
+  filteredArticles: Array<ArticleInfo> = [];
 
   constructor(public sharedData: SharedDataService) {
     this.filters = {
       categories: [],
-      subcategories: [],//"Decent Work"],
+      subcategories: [],
       words: ""
     }
   }
@@ -65,9 +66,7 @@ export class ArchiveService {
       let match = false;
       array.forEach(word => {
         word = word.toLowerCase();
-        if (title.toLowerCase().includes(word)) {
-          match = true;
-        } else if (subtitle.toLowerCase().includes(word)) {
+        if (title.toLowerCase().includes(word) || subtitle.toLowerCase().includes(word)) {
           match = true;
         }
       });
