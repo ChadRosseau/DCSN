@@ -289,9 +289,9 @@ export class CreatePostComponent implements OnInit, AfterViewInit, OnDestroy {
       });
 
       // Update body
-      this.auth.db.database.ref(`articleBodies/${this.currentArticleId}`).set({
-        body: this.createArticleForm.value.body
-      })
+      this.auth.db.database.ref(`articleBodies/${this.currentArticleId}`).set(
+        this.createArticleForm.value.body
+      )
 
       // If pushing forward from drafts, remove from drafts.
       if (destination != 'drafts') {
